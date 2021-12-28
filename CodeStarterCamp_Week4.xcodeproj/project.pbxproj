@@ -65,11 +65,11 @@
 		34811DE6274B93FB00A1E994 /* CodeStarterCamp_Week4 */ = {
 			isa = PBXGroup;
 			children = (
-				34811DE7274B93FB00A1E994 /* main.swift */,
 				A164425C277B2BD3009CE2B9 /* BodyCondition.swift */,
 				A164425E277B2C11009CE2B9 /* Exercise.swift */,
 				A1644260277B2C37009CE2B9 /* Routine.swift */,
 				A1644262277B2C54009CE2B9 /* ExerciseOption.swift */,
+				34811DE7274B93FB00A1E994 /* main.swift */,
 			);
 			path = CodeStarterCamp_Week4;
 			sourceTree = "<group>";
