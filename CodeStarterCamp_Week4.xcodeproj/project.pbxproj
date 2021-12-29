@@ -12,6 +12,7 @@
 		A164425F277B2C11009CE2B9 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = A164425E277B2C11009CE2B9 /* Exercise.swift */; };
 		A1644261277B2C37009CE2B9 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1644260277B2C37009CE2B9 /* Routine.swift */; };
 		A1644263277B2C54009CE2B9 /* ExerciseOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1644262277B2C54009CE2B9 /* ExerciseOption.swift */; };
+		A1644265277C3391009CE2B9 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1644264277C3391009CE2B9 /* Person.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +34,7 @@
 		A164425E277B2C11009CE2B9 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		A1644260277B2C37009CE2B9 /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
 		A1644262277B2C54009CE2B9 /* ExerciseOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseOption.swift; sourceTree = "<group>"; };
+		A1644264277C3391009CE2B9 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 		34811DE6274B93FB00A1E994 /* CodeStarterCamp_Week4 */ = {
 			isa = PBXGroup;
 			children = (
+				A1644264277C3391009CE2B9 /* Person.swift */,
 				A164425C277B2BD3009CE2B9 /* BodyCondition.swift */,
 				A164425E277B2C11009CE2B9 /* Exercise.swift */,
 				A1644260277B2C37009CE2B9 /* Routine.swift */,
@@ -131,6 +134,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1644265277C3391009CE2B9 /* Person.swift in Sources */,
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
 				A164425D277B2BD3009CE2B9 /* BodyCondition.swift in Sources */,
 				A1644261277B2C37009CE2B9 /* Routine.swift in Sources */,
