@@ -14,4 +14,16 @@ struct InputView {
         case valueMustConvertToInt
         case valueMustPositiveNumber
     }
+    
+    func inputNameOfNumber() throws -> String {
+        print("안녕하세요. 야곰 피트니스 센터입니다. 회원님의 이름은 무엇인가요?")
+        
+        guard let input = readLine() else {
+            throw InputError.valueIsNil
+        }
+        
+        return input
+    }
+    
+
 }
