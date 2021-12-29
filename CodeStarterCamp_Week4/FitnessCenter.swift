@@ -9,7 +9,7 @@ import Foundation
 
 final class FitnessCenter {
     let goalsBodyCondition: BodyCondition
-    let member: Person
+    let member: Person?
     let routineList: [Routine]
     
     init(goalsBodyCondition: BodyCondition, member: Person, routineList: [Routine]) {
@@ -18,7 +18,7 @@ final class FitnessCenter {
         self.routineList = routineList
     }
     
-    func start() {
+    func register() {
         
     }
 }
