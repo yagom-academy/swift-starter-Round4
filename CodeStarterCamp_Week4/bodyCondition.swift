@@ -14,4 +14,16 @@ struct BodyCondition {
     var muscularendurance :Int
     var fatigue :Int
    
+    
+    func nowCondition(){
+        print("---------------")
+        print("현제의 컨디션은 다음과 같습니다.")
+        print(upperbodystrength)
+        print(lowerbodystrength)
+        print(muscularendurance)
+        print(fatigue)
+       
+    }
+
+    
    }

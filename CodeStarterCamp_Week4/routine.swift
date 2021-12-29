@@ -14,13 +14,11 @@ struct Routine {
        
     func start() {
           print("--------------")
-          print("\(name)을 시작합니다.")
+          print("hellRoutine을 시작합니다.")
          excercises.forEach { exercise in
               print(exercise.name)
               exercise.action()
-          }
+}
           
-      }
-    
-    
+}
 }

@@ -14,3 +14,4 @@ var routine: Routine = Routine(name: "루틴")
 
 
 routine.start()
+bodyCondition.nowCondition()
