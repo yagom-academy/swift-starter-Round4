@@ -22,6 +22,8 @@ struct InputView {
             throw InputError.valueIsNil
         }
         
+        try checkValidInputStringValue(input: nameOfMember)
+        
         return nameOfMember
     }
     
@@ -76,6 +78,17 @@ extension InputView {
             print(InputError.valueMustConvertToInt)
         } catch InputError.valueMustPositiveNumber {
             print(InputError.valueMustPositiveNumber)
+        }
+    }
+    
+    private func checkValidInputStringValue(input: String) throws {
+        do {
+            guard input.isEmpty == false else {
+                throw InputError.valueIsEmpty
+            }
+            
+        } catch InputError.valueIsEmpty {
+            print(InputError.valueIsEmpty)
         }
     }
     
