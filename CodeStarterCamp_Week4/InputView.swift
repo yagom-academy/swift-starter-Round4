@@ -34,18 +34,21 @@ struct InputView {
         guard let golasUpperBodyStrength = readLine() else {
             throw InputError.valueIsNil
         }
+        try checkValidInputIntValue(input: golasUpperBodyStrength)
         goalsBodyConditions.append(try convertInputValueToInt(input: golasUpperBodyStrength))
         
         print("하체근력:", terminator:"")
         guard let golasLowerBodyStrength = readLine() else {
             throw InputError.valueIsNil
         }
+        try checkValidInputIntValue(input: golasLowerBodyStrength)
         goalsBodyConditions.append(try convertInputValueToInt(input: golasLowerBodyStrength))
         
         print("근지구력:", terminator:"")
         guard let golasMuscularEndurance = readLine() else {
             throw InputError.valueIsNil
         }
+        try checkValidInputIntValue(input: golasMuscularEndurance)
         goalsBodyConditions.append(try convertInputValueToInt(input: golasMuscularEndurance))
         
         return goalsBodyConditions
@@ -53,6 +56,29 @@ struct InputView {
 }
 
 extension InputView {
+    private func checkValidInputIntValue(input: String) throws {
+        do {
+            guard input.isEmpty == false else {
+                throw InputError.valueIsEmpty
+            }
+            
+            guard Int(input) != nil else {
+                throw InputError.valueMustConvertToInt
+            }
+            
+            guard Int(input) ?? -1 > 0 else {
+                throw InputError.valueMustPositiveNumber
+            }
+            
+        } catch InputError.valueIsEmpty {
+            print(InputError.valueIsEmpty)
+        } catch InputError.valueMustConvertToInt {
+            print(InputError.valueMustConvertToInt)
+        } catch InputError.valueMustPositiveNumber {
+            print(InputError.valueMustPositiveNumber)
+        }
+    }
+    
     private func convertInputValueToInt(input: String) throws -> Int {
         guard let intNumber = Int(input) else {
             throw InputError.valueMustConvertToInt
