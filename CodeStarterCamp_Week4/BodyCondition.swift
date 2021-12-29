@@ -26,9 +26,9 @@ final class BodyCondition {
     func checkCurrentCondition() {
         print("--------------")
         print("현재의 컨디션은 다음과 같습니다.")
-        print(upperBodyStrength)
-        print(lowerBodyStrength)
-        print(muscularEndurance)
-        print(fatigue)
+        print("상체근력: \(upperBodyStrength)")
+        print("하체근력: \(lowerBodyStrength)")
+        print("근지구력: \(muscularEndurance)")
+        print("피로도: \(fatigue)")
     }
 }
