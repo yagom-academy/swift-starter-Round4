@@ -8,5 +8,9 @@
 
 import Foundation
 
-print("Hello, World!")
 
+var bodyCondition: BodyCondition = BodyCondition(upperbodystrength: 0, lowerbodystrength: 0, muscularendurance: 0, fatigue: 0)
+var routine: Routine = Routine(name: "루틴")
+
+
+routine.start()
