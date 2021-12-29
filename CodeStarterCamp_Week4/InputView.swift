@@ -32,28 +32,20 @@ struct InputView {
         
         print("운동 목표치를 순서대로 알려주세요. 예시) 상체근력:130,하체근력:120,근지구력:150")
         
-        print("상체근력:", terminator:"")
-        guard let golasUpperBodyStrength = readLine() else {
-            throw InputError.valueIsNil
-        }
-        try checkValidInputIntValue(input: golasUpperBodyStrength)
-        goalsBodyConditions.append(try convertInputValueToInt(input: golasUpperBodyStrength))
-        
-        print("하체근력:", terminator:"")
-        guard let golasLowerBodyStrength = readLine() else {
-            throw InputError.valueIsNil
-        }
-        try checkValidInputIntValue(input: golasLowerBodyStrength)
-        goalsBodyConditions.append(try convertInputValueToInt(input: golasLowerBodyStrength))
-        
-        print("근지구력:", terminator:"")
-        guard let golasMuscularEndurance = readLine() else {
-            throw InputError.valueIsNil
-        }
-        try checkValidInputIntValue(input: golasMuscularEndurance)
-        goalsBodyConditions.append(try convertInputValueToInt(input: golasMuscularEndurance))
+        goalsBodyConditions.append(try convertInputValueToInt(input: makeEachInputGolasBodyCondition(type: "상체근력")))
+        goalsBodyConditions.append(try convertInputValueToInt(input: makeEachInputGolasBodyCondition(type: "하체근력")))
+        goalsBodyConditions.append(try convertInputValueToInt(input: makeEachInputGolasBodyCondition(type: "근지구력")))
         
         return goalsBodyConditions
+    }
+    
+    func makeEachInputGolasBodyCondition(type: String) throws -> String {
+        print("\(type):", terminator:"")
+        guard let golasBodyCondition = readLine() else {
+            throw InputError.valueIsNil
+        }
+        try checkValidInputIntValue(input: golasBodyCondition)
+        return golasBodyCondition
     }
 }
 
