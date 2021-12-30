@@ -18,7 +18,9 @@ final class FitnessCenter {
         self.routineList = routineList
     }
     
-    func register() {
+    func start() throws {
+        let inputView = InputView()
+        let routineOrder = try inputView.inputRoutineOrder(routineList: self.routineList)
         
     }
 }

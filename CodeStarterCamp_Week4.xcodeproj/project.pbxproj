@@ -77,8 +77,8 @@
 				A1644262277B2C54009CE2B9 /* ExerciseOption.swift */,
 				A1644260277B2C37009CE2B9 /* Routine.swift */,
 				A1644266277C3760009CE2B9 /* FitnessCenter.swift */,
-				34811DE7274B93FB00A1E994 /* main.swift */,
 				A1644268277C8FB7009CE2B9 /* InputView.swift */,
+				34811DE7274B93FB00A1E994 /* main.swift */,
 			);
 			path = CodeStarterCamp_Week4;
 			sourceTree = "<group>";

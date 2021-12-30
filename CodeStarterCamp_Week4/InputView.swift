@@ -39,7 +39,28 @@ struct InputView {
         return goalsBodyConditions
     }
     
-    func makeEachInputGolasBodyCondition(type: String) throws -> String {
+    func inputRoutineOrder(routineList: [Routine]) throws -> Int {
+        print("몇 번째 루틴으로 운동하시겠어요?")
+        
+        routineList
+            .enumerated()
+            .forEach { (routineOrder, routine) in
+                print("\(routineOrder + 1). \(routine.name)")
+            }
+        
+        guard let selectRoutineOrder = readLine() else {
+            throw InputError.valueIsNil
+        }
+        
+        try checkValidInputIntValue(input: selectRoutineOrder)
+        return try convertInputValueToInt(input: selectRoutineOrder)
+    }
+    
+    func inputRoutineSet() {
+        
+    }
+    
+    private func makeEachInputGolasBodyCondition(type: String) throws -> String {
         print("\(type):", terminator:"")
         guard let golasBodyCondition = readLine() else {
             throw InputError.valueIsNil
