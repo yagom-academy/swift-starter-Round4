@@ -17,6 +17,7 @@
 		A1644269277C8FB7009CE2B9 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1644268277C8FB7009CE2B9 /* InputView.swift */; };
 		A164426C277D866F009CE2B9 /* InputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A164426B277D866F009CE2B9 /* InputError.swift */; };
 		A164426E277D8D9C009CE2B9 /* FitnessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A164426D277D8D9C009CE2B9 /* FitnessError.swift */; };
+		A1644270277D9592009CE2B9 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A164426F277D9592009CE2B9 /* ResultView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,6 +44,7 @@
 		A1644268277C8FB7009CE2B9 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		A164426B277D866F009CE2B9 /* InputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputError.swift; sourceTree = "<group>"; };
 		A164426D277D8D9C009CE2B9 /* FitnessError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessError.swift; sourceTree = "<group>"; };
+		A164426F277D9592009CE2B9 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				A1644260277B2C37009CE2B9 /* Routine.swift */,
 				A1644266277C3760009CE2B9 /* FitnessCenter.swift */,
 				A1644268277C8FB7009CE2B9 /* InputView.swift */,
+				A164426F277D9592009CE2B9 /* ResultView.swift */,
 				34811DE7274B93FB00A1E994 /* main.swift */,
 			);
 			path = CodeStarterCamp_Week4;
@@ -156,6 +159,7 @@
 			files = (
 				A1644265277C3391009CE2B9 /* Person.swift in Sources */,
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
+				A1644270277D9592009CE2B9 /* ResultView.swift in Sources */,
 				A164425D277B2BD3009CE2B9 /* BodyCondition.swift in Sources */,
 				A1644261277B2C37009CE2B9 /* Routine.swift in Sources */,
 				A1644267277C3760009CE2B9 /* FitnessCenter.swift in Sources */,
