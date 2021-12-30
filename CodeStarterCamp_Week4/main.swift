@@ -130,3 +130,20 @@ enum Routines {
         }
     }
 }
+
+var quokka = BodyCondition(uppperBodyStrength: 0, lowerBodyStrength: 0,
+                           muscularEndurance: 0, fatigue: 0)
+let sitUp = Exercise(name: Exercises.sitUp.name, action: quokka.sitUp)
+let squart = Exercise(name: Exercises.squart.name, action: quokka.moveSquat)
+let runLong = Exercise(name: Exercises.runLong.name, action: quokka.runLong)
+let pushUp = Exercise(name: Exercises.pushUp.name, action: quokka.pushUp)
+let activeRest = Exercise(name: Exercises.activeRest.name, action: quokka.moveActiveRest)
+
+let upperBodyExercise = Routine(name: Routines.uppperBodyExercise.name,
+                                exercises: [pushUp.action, sitUp.action,
+                                            pushUp.action, sitUp.action,
+                                            activeRest.action])
+let lowerBodyStrength = Routine(name: Routines.lowerBodyExercise.name,
+                                exercises: [squart.action, squart.action,
+                                            activeRest.action, squart.action,
+                                            squart.action, activeRest.action])
