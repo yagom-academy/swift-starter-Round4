@@ -49,3 +49,8 @@ struct Exercise {
     let name: String
     var action: () -> Self
 }
+
+struct Routine {
+    let name: String
+    let exercises: [() -> Exercise]
+}
