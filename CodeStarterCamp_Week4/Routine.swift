@@ -24,15 +24,13 @@ final class Routine {
         try self.exercises.forEach { exercise in
             print(exercise.name)
             exercise.action()
-            try run()
+            try checkFatigueFull()
         }
     }
     
-    private func run() throws {
+    private func checkFatigueFull() throws {
         guard bodyCondition.fatigue < 100 else {
             throw FitnessError.fatigueFull
         }
     }
-    
-    
 }

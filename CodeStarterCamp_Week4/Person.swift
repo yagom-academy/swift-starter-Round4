@@ -20,15 +20,15 @@ final class Person {
         for setOrder in 1 ... set {
             do {
                 try routine.start(for: setOrder)
-                checkCurrentCondition(for: setOrder)
+                checkCondition(for: setOrder)
             } catch FitnessError.fatigueFull {
-                fatigue()
+                checkFatigueFull()
                 break
             }
         }
     }
     
-    func checkCurrentCondition(for set: Int) {
+    func checkCondition(for set: Int) {
         print("--------------")
         print("\(set)set 성공입니다! 현재 \(name)님의 컨디션은 다음과 같습니다.")
         print("상체근력: \(self.bodyCondition.upperBodyStrength)")
@@ -37,7 +37,7 @@ final class Person {
         print("피로도: \(self.bodyCondition.fatigue)")
     }
     
-    func fatigue() {
+    func checkFatigueFull() {
         print("--------------")
         print("\(name)님의 피로도가 \(self.bodyCondition.fatigue)입니다. 회원님이 도망갔습니다.")
     }
