@@ -16,20 +16,29 @@ final class Person {
         self.bodyCondition = bodyCondition
     }
     
-    func exercise(for set: Int, routine: Routine) {
+    func exercise(for set: Int, routine: Routine) throws {
         for setOrder in 1 ... set {
-            routine.start(for: setOrder)
+            do {
+                try routine.start(for: setOrder)
+                checkCurrentCondition(for: setOrder)
+            } catch fatigue.fatigueFull {
+                fatigue()
+                break
+            }
         }
-        
-        checkCurrentCondition()
     }
     
-    func checkCurrentCondition() {
+    func checkCurrentCondition(for set: Int) {
         print("--------------")
-        print("현재의 컨디션은 다음과 같습니다.")
+        print("\(set)set 성공입니다! 현재 \(name)님의 컨디션은 다음과 같습니다.")
         print("상체근력: \(self.bodyCondition.upperBodyStrength)")
         print("하체근력: \(self.bodyCondition.lowerBodyStrength)")
         print("근지구력: \(self.bodyCondition.muscularEndurance)")
         print("피로도: \(self.bodyCondition.fatigue)")
+    }
+    
+    func fatigue() {
+        print("--------------")
+        print("\(name)님의 피로도가 \(self.bodyCondition.fatigue)입니다. 회원님이 도망갔습니다.")
     }
 }

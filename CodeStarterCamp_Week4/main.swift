@@ -32,6 +32,7 @@ let running: Exercise = Exercise(name: "오래달리기", action: {
 
 let activeRest: Exercise = Exercise(name: "동적휴식", action: {
     defaultBodyCondition.fatigue -= Int.random(in: ExerciseOption.lowLevelRange)
+    defaultBodyCondition.fatigue -= Int.random(in: ExerciseOption.lowLevelRange)
 })
 
 let hellRoutine = Routine(name: "hellRoutine",
