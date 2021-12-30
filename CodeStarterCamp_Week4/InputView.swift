@@ -48,22 +48,12 @@ struct InputView {
                 print("\(routineOrder + 1). \(routine.name)")
             }
         
-        guard let selectRoutineOrder = readLine() else {
-            throw InputError.valueIsNil
-        }
-        
-        try checkValidInputIntValue(input: selectRoutineOrder)
-        return try convertInputValueToInt(input: selectRoutineOrder)
+        return try makeEachInputRoutine() - 1
     }
     
     func inputRoutineRepeatSet() throws -> Int {
         print("몇 세트 반복하시겠어요?")
-        guard let repeatSeveralSet = readLine() else {
-            throw InputError.valueIsNil
-        }
-        
-        try checkValidInputIntValue(input: repeatSeveralSet)
-        return try convertInputValueToInt(input: repeatSeveralSet)
+        return try makeEachInputRoutine()
     }
     
     private func makeEachInputGolasBodyCondition(type: String) throws -> String {
@@ -73,6 +63,15 @@ struct InputView {
         }
         try checkValidInputIntValue(input: golasBodyCondition)
         return golasBodyCondition
+    }
+    
+    private func makeEachInputRoutine() throws -> Int {
+        guard let input = readLine() else {
+            throw InputError.valueIsNil
+        }
+        
+        try checkValidInputIntValue(input: input)
+        return try convertInputValueToInt(input: input)
     }
 }
 
