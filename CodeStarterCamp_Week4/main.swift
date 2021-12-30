@@ -57,6 +57,7 @@ let ohMyGodRoutine = Routine(name: "ohMyGodRoutine",
 
 let routineList = [hellRoutine, ohMyGodRoutine]
 let inputView = InputView()
+let resultView = ResultView()
 let nameOfMember = try inputView.inputNameOfMember()
 let goalsBodyCondition = try inputView.inputGolasBodyCondition()
 let member = Person(name: nameOfMember, bodyCondition: defaultBodyCondition)
@@ -69,24 +70,11 @@ let fitnessCenter = FitnessCenter(goalsBodyCondition: BodyCondition(upperBodyStr
 
 do {
     try fitnessCenter.start()
-    print("--------------")
-    print("성공입니다! 현재 \(member.name)님의 컨디션은 다음과 같습니다.")
-    print("상체근력: \(member.bodyCondition.upperBodyStrength)")
-    print("하체근력: \(member.bodyCondition.lowerBodyStrength)")
-    print("근지구력: \(member.bodyCondition.muscularEndurance)")
-    print("피로도: \(member.bodyCondition.fatigue)")
+    resultView.printSuccessMessage(member: member)
 } catch FitnessError.fatigueFull {
-    print("--------------")
-    print("\(member.name)님의 피로도가 \(member.bodyCondition.fatigue)입니다. 회원님이 도망갔습니다.")
+    resultView.printError(fitnessError: FitnessError.fatigueFull, member: member)
 } catch FitnessError.failToReachGoals {
-    print("--------------")
-    print("목표치에 도달하지 못했습니다. 현재 \(member.name)님의 컨디션은 다음과 같습니다.")
-    print("상체근력: \(member.bodyCondition.upperBodyStrength)")
-    print("하체근력: \(member.bodyCondition.lowerBodyStrength)")
-    print("근지구력: \(member.bodyCondition.muscularEndurance)")
-    print("피로도: \(member.bodyCondition.fatigue)")
-    print("--------------")
-    
+    resultView.printError(fitnessError: FitnessError.failToReachGoals, member: member)
     try fitnessCenter.start()
 }
 

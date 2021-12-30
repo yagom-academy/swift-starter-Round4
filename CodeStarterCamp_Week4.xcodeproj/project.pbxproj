@@ -77,15 +77,11 @@
 		34811DE6274B93FB00A1E994 /* CodeStarterCamp_Week4 */ = {
 			isa = PBXGroup;
 			children = (
+				A1644271277D970D009CE2B9 /* Views */,
+				A1644272277D9727009CE2B9 /* Models */,
 				A164426A277D8662009CE2B9 /* Errors */,
-				A1644264277C3391009CE2B9 /* Person.swift */,
-				A164425C277B2BD3009CE2B9 /* BodyCondition.swift */,
-				A164425E277B2C11009CE2B9 /* Exercise.swift */,
-				A1644262277B2C54009CE2B9 /* ExerciseOption.swift */,
-				A1644260277B2C37009CE2B9 /* Routine.swift */,
+				A1644273277D973C009CE2B9 /* Options */,
 				A1644266277C3760009CE2B9 /* FitnessCenter.swift */,
-				A1644268277C8FB7009CE2B9 /* InputView.swift */,
-				A164426F277D9592009CE2B9 /* ResultView.swift */,
 				34811DE7274B93FB00A1E994 /* main.swift */,
 			);
 			path = CodeStarterCamp_Week4;
@@ -98,6 +94,34 @@
 				A164426D277D8D9C009CE2B9 /* FitnessError.swift */,
 			);
 			path = Errors;
+			sourceTree = "<group>";
+		};
+		A1644271277D970D009CE2B9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A1644268277C8FB7009CE2B9 /* InputView.swift */,
+				A164426F277D9592009CE2B9 /* ResultView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A1644272277D9727009CE2B9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A1644264277C3391009CE2B9 /* Person.swift */,
+				A164425C277B2BD3009CE2B9 /* BodyCondition.swift */,
+				A164425E277B2C11009CE2B9 /* Exercise.swift */,
+				A1644260277B2C37009CE2B9 /* Routine.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A1644273277D973C009CE2B9 /* Options */ = {
+			isa = PBXGroup;
+			children = (
+				A1644262277B2C54009CE2B9 /* ExerciseOption.swift */,
+			);
+			path = Options;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
