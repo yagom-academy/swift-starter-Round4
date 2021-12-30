@@ -156,3 +156,11 @@ let lowerBodyStrength = Routine(name: Routines.lowerBodyExercise.name,
                                 exercises: [squart.action, squart.action,
                                             activeRest.action, squart.action,
                                             squart.action, activeRest.action])
+func workOut() {
+    print("--------------")
+    upperBodyExercise.exercises.forEach { exercise in exercise() }
+    print("--------------")
+    lowerBodyStrength.exercises.forEach { exercise in exercise() }
+    quokka.printBodyCondition()
+}
+workOut()
