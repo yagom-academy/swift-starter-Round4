@@ -13,3 +13,18 @@ enum InputError: Error {
     case valueMustConvertToInt
     case valueMustPositiveNumber
 }
+
+extension InputError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .valueIsNil:
+            return "빈 값은 입력이 불가능합니다."
+        case .valueIsEmpty:
+            return "빈 값은 입력이 불가능합니다."
+        case .valueMustConvertToInt:
+            return "숫자만 입력이 가능합니다."
+        case .valueMustPositiveNumber:
+            return "양수만 입력이 가능합니다."
+        }
+    }
+}

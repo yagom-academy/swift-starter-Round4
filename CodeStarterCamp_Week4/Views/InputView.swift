@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct InputView {    
+struct InputView {
+    private let resultView = ResultView()
+    
     func inputNameOfMember() throws -> String {
         print("안녕하세요. 야곰 피트니스 센터입니다. 회원님의 이름은 무엇인가요?")
         
@@ -84,11 +86,11 @@ extension InputView {
             }
             
         } catch InputError.valueIsEmpty {
-            print(InputError.valueIsEmpty)
+            resultView.printError(error: InputError.valueIsEmpty)
         } catch InputError.valueMustConvertToInt {
-            print(InputError.valueMustConvertToInt)
+            resultView.printError(error: InputError.valueMustConvertToInt)
         } catch InputError.valueMustPositiveNumber {
-            print(InputError.valueMustPositiveNumber)
+            resultView.printError(error: InputError.valueMustPositiveNumber)
         }
     }
     
@@ -99,7 +101,7 @@ extension InputView {
             }
             
         } catch InputError.valueIsEmpty {
-            print(InputError.valueIsEmpty)
+            resultView.printError(error: InputError.valueIsEmpty)
         }
     }
     

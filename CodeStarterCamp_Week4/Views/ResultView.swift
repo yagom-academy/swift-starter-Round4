@@ -32,4 +32,9 @@ struct ResultView {
             print("--------------")
         }
     }
+    
+    func printError(error: InputError) {
+        guard let errorDescription = error.errorDescription else { return }
+        print(errorDescription)
+    }
 }
