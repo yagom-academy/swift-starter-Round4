@@ -44,3 +44,8 @@ class BodyCondition {
         self.fatigue += Int.random(in: 5...10)
     }
 }
+
+struct Exercise {
+    let name: String
+    var action: () -> Self
+}
