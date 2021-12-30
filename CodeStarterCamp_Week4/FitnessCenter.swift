@@ -24,5 +24,24 @@ final class FitnessCenter {
         let repeatSeveralSet = try inputView.inputRoutineRepeatSet()
         
         try self.member?.exercise(for: repeatSeveralSet, routine: self.routineList[routineOrder])
+        try compareGolasAndCurrentCondition()
+    }
+    
+    private func compareGolasAndCurrentCondition() throws {
+        guard let member = member else {
+            return
+        }
+        
+        guard member.bodyCondition.upperBodyStrength > goalsBodyCondition.upperBodyStrength else {
+            throw FitnessError.failToReachGoals
+        }
+        
+        guard member.bodyCondition.lowerBodyStrength > goalsBodyCondition.lowerBodyStrength else {
+            throw FitnessError.failToReachGoals
+        }
+        
+        guard member.bodyCondition.muscularEndurance > goalsBodyCondition.muscularEndurance else {
+            throw FitnessError.failToReachGoals
+        }
     }
 }

@@ -66,4 +66,27 @@ let fitnessCenter = FitnessCenter(goalsBodyCondition: BodyCondition(upperBodyStr
                                                                      fatigue: 0),
                                    member: member,
                                    routineList: routineList)
-try fitnessCenter.start()
+
+do {
+    try fitnessCenter.start()
+    print("--------------")
+    print("성공입니다! 현재 \(member.name)님의 컨디션은 다음과 같습니다.")
+    print("상체근력: \(member.bodyCondition.upperBodyStrength)")
+    print("하체근력: \(member.bodyCondition.lowerBodyStrength)")
+    print("근지구력: \(member.bodyCondition.muscularEndurance)")
+    print("피로도: \(member.bodyCondition.fatigue)")
+} catch FitnessError.fatigueFull {
+    print("--------------")
+    print("\(member.name)님의 피로도가 \(member.bodyCondition.fatigue)입니다. 회원님이 도망갔습니다.")
+} catch FitnessError.failToReachGoals {
+    print("--------------")
+    print("목표치에 도달하지 못했습니다. 현재 \(member.name)님의 컨디션은 다음과 같습니다.")
+    print("상체근력: \(member.bodyCondition.upperBodyStrength)")
+    print("하체근력: \(member.bodyCondition.lowerBodyStrength)")
+    print("근지구력: \(member.bodyCondition.muscularEndurance)")
+    print("피로도: \(member.bodyCondition.fatigue)")
+    print("--------------")
+    
+    try fitnessCenter.start()
+}
+

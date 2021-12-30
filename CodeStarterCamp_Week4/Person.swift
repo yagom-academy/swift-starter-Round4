@@ -18,27 +18,7 @@ final class Person {
     
     func exercise(for set: Int, routine: Routine) throws {
         for setOrder in 1 ... set {
-            do {
-                try routine.start(for: setOrder)
-                checkCondition(for: setOrder)
-            } catch FitnessError.fatigueFull {
-                checkFatigueFull()
-                break
-            }
+            try routine.start(for: setOrder)
         }
-    }
-    
-    func checkCondition(for set: Int) {
-        print("--------------")
-        print("\(set)set 성공입니다! 현재 \(name)님의 컨디션은 다음과 같습니다.")
-        print("상체근력: \(self.bodyCondition.upperBodyStrength)")
-        print("하체근력: \(self.bodyCondition.lowerBodyStrength)")
-        print("근지구력: \(self.bodyCondition.muscularEndurance)")
-        print("피로도: \(self.bodyCondition.fatigue)")
-    }
-    
-    func checkFatigueFull() {
-        print("--------------")
-        print("\(name)님의 피로도가 \(self.bodyCondition.fatigue)입니다. 회원님이 도망갔습니다.")
     }
 }

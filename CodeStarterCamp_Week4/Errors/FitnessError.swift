@@ -9,4 +9,5 @@ import Foundation
 
 enum FitnessError: Error {
     case fatigueFull
+    case failToReachGoals
 }
