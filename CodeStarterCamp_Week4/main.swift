@@ -53,6 +53,15 @@ class BodyCondition {
         self.fatigue += Int.random(in: 5...10)
         return Exercise(name: Exercises.pushUp.name, action: pushUp)
     }
+    
+    func printBodyCondition() {
+        print("--------------")
+        print("현재의 컨디션은 다음과 같습니다.")
+        print("\(InBody.uppperBodyStrength.name): \(self.uppperBodyStrength)")
+        print("\(InBody.lowerBodyStrength.name): \(self.lowerBodyStrength)")
+        print("\(InBody.muscularEndurance.name): \(self.muscularEndurance)")
+        print("\(InBody.fatigue.name): \(self.fatigue)")
+    }
 }
 
 enum InBody {
