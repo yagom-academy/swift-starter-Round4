@@ -21,6 +21,7 @@ final class FitnessCenter {
     func start() throws {
         let inputView = InputView()
         let routineOrder = try inputView.inputRoutineOrder(routineList: self.routineList)
-        
+        let repeatSeveralSet = try inputView.inputRoutineRepeatSet()
+
     }
 }

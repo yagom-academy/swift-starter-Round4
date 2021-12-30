@@ -56,8 +56,14 @@ struct InputView {
         return try convertInputValueToInt(input: selectRoutineOrder)
     }
     
-    func inputRoutineSet() {
+    func inputRoutineRepeatSet() throws -> Int {
+        print("몇 세트 반복하시겠어요?")
+        guard let repeatSeveralSet = readLine() else {
+            throw InputError.valueIsNil
+        }
         
+        try checkValidInputIntValue(input: repeatSeveralSet)
+        return try convertInputValueToInt(input: repeatSeveralSet)
     }
     
     private func makeEachInputGolasBodyCondition(type: String) throws -> String {
