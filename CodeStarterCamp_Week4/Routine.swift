@@ -18,13 +18,12 @@ final class Routine {
         self.exercises = exercises
     }
     
-    func start() {
+    func start(for set: Int) {
         print("--------------")
-        print("\(name)을 시작합니다.")
+        print("\(name)을 \(set)set시작합니다.")
         self.exercises.forEach { exercise in
             print(exercise.name)
             exercise.action()
         }
-        bodyCondition.checkCurrentCondition()
     }
 }
