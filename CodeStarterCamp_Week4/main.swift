@@ -55,6 +55,26 @@ class BodyCondition {
     }
 }
 
+enum InBody {
+    case uppperBodyStrength
+    case lowerBodyStrength
+    case muscularEndurance
+    case fatigue
+    
+    var name: String {
+        switch self {
+        case .uppperBodyStrength:
+            return "상체근력"
+        case .lowerBodyStrength:
+            return "하체근력"
+        case .muscularEndurance:
+            return "근지구력"
+        case .fatigue:
+            return "피로도"
+        }
+    }
+}
+
 struct Exercise {
     let name: String
     var action: () -> Self
