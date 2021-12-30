@@ -21,7 +21,7 @@ final class Person {
             do {
                 try routine.start(for: setOrder)
                 checkCurrentCondition(for: setOrder)
-            } catch fatigue.fatigueFull {
+            } catch FitnessError.fatigueFull {
                 fatigue()
                 break
             }

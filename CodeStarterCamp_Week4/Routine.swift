@@ -30,7 +30,7 @@ final class Routine {
     
     private func run() throws {
         guard bodyCondition.fatigue < 100 else {
-            throw fatigue.fatigueFull
+            throw FitnessError.fatigueFull
         }
     }
     
