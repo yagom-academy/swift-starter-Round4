@@ -8,5 +8,9 @@
 
 import Foundation
 
-print("Hello, World!")
+var myBodyCondition: BodyCondition = BodyCondition()
 
+hellRoutine.startRoutine()
+tabataRoutine.startRoutine()
+refresh.startRoutine()
+refresh.startRoutine()
