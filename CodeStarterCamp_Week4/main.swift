@@ -8,11 +8,5 @@
 
 import Foundation
 
-var myBodyCondition: BodyCondition = BodyCondition()
+print("Hello, World!")
 
-
-
-hellRoutine.startRoutine()
-tabataRoutine.startRoutine()
-refresh.startRoutine()
-refresh.startRoutine()
