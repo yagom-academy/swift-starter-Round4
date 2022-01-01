@@ -12,5 +12,4 @@ struct BodyCondition {
     var lowerBodyStrength: UInt = 0
     var muscularEndurance: UInt = 0
     var fatigue: Int = 0
-
 }
