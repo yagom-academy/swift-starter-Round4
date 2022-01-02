@@ -11,14 +11,17 @@ import Foundation
 var publicBodyCondition: BodyCondition = BodyCondition()
 var yagomFitness: FitnessCenter = FitnessCenter(name: "YagomFitness")
 
-do {
+
+do{
     try yagomFitness.startTraining()
 } catch FitnessError.NoMember {
-    print("No Member ERROR!")
+    print("No Member Error!!")
 } catch {}
 
 
-//hellRoutine.startRoutine()
-//tabataRoutine.startRoutine()
-//refresh.startRoutine()
-//refresh.startRoutine()
+yagomFitness.member = Person()
+do{
+    try yagomFitness.startTraining()
+} catch FitnessError.NoMember {
+    print("No Member Error!!")
+} catch {}

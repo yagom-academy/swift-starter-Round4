@@ -21,10 +21,41 @@ class FitnessCenter {
         self.name = name
     }
     
-    func startTraining() {
+    func startTraining() throws {
+        guard member != nil else { throw FitnessError.NoMember }
         greeting()
         askTargetCondition()
         askForSelectRoutine()
+    }
+    
+    func greeting() {
+        print("안녕하세요. \(self.name) 피트니스 센터입니다. 회원님의 이름은 무엇인가요?")
+        saveMemberName()
+    }
+    
+    func askTargetCondition() {
+        print("운동 목표치를 순서대로 알려주세요.")
+        do {
+            try saveTargetCondition()
+        } catch FitnessError.TargetConditionOutOfRange {
+            print("모든 목표치는 0보다 커야합니다.")
+            return
+        } catch {}
+    }
+    
+    func askForSelectRoutine() {
+        print("몇 번째 루틴으로 운동하시겠어요?")
+        for (routineNum, routine) in self.routines.enumerated() {
+            print("\(routineNum + 1). \(routine.name)")
+        }
+        do {
+            try saveRoutineIndex()
+        } catch FitnessError.RoutineOufOfRange {
+            print("루틴의 번호가 올바르지 않습니다.")
+            return
+        } catch {}
+        
+        askNumOfSet()
     }
     
     func checkTrainingStatus() throws {
@@ -98,36 +129,6 @@ class FitnessCenter {
         } catch {}
     }
     
-    func greeting() {
-        print("안녕하세요. \(self.name) 피트니스 센터입니다. 회원님의 이름은 무엇인가요?")
-        saveMemberName()
-    }
-    
-    func askTargetCondition() {
-        print("운동 목표치를 순서대로 알려주세요.")
-        do {
-            try saveTargetCondition()
-        } catch FitnessError.TargetConditionOutOfRange {
-            print("모든 목표치는 0보다 커야합니다.")
-            return
-        } catch {}
-    }
-    
-    func askForSelectRoutine() {
-        print("몇 번째 루틴으로 운동하시겠어요?")
-        for (routineNum, routine) in self.routines.enumerated() {
-            print("\(routineNum + 1). \(routine.name)")
-        }
-        do {
-            try saveRoutineIndex()
-        } catch FitnessError.RoutineOufOfRange {
-            print("루틴의 번호가 올바르지 않습니다.")
-            return
-        } catch {}
-        
-        askNumOfSet()
-    }
-    
     func askNumOfSet() {
         print("몇 세트 반복하시겠어요?")
         do{
@@ -135,8 +136,7 @@ class FitnessCenter {
         } catch FitnessError.NumOfSetOutOfRange {
             print("세트 수는 0보다 커야합니다.")
             return
-        }
-        catch {}
+        } catch {}
     }
     
 }
