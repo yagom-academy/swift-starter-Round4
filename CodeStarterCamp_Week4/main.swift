@@ -17,44 +17,8 @@ class BodyCondition {
         self.muscularEndurance = muscularEndurance
         self.fatigue = fatigue
     }
-    
-    func sitUp() -> Exercise {
-        print(Exercises.sitUp.name)
-        self.uppperBodyStrength += Int.random(in: 10...20)
-        self.fatigue += Int.random(in: 10...20)
-        return Exercise(name: Exercises.sitUp.name, action: sitUp)
-    }
-    
-    func moveSquat() -> Exercise {
-        print(Exercises.squart.name)
-        self.lowerBodyStrength += Int.random(in: 20...30)
-        self.fatigue += Int.random(in: 10...20)
-        return Exercise(name: Exercises.squart.name, action: moveSquat)
-    }
-    
-    func runLong() -> Exercise {
-        print(Exercises.runLong.name)
-        self.muscularEndurance += Int.random(in: 20...30)
-        self.uppperBodyStrength += Int.random(in: 5...10)
-        self.lowerBodyStrength += Int.random(in: 5...10)
-        self.fatigue += Int.random(in: 20...30)
-        return Exercise(name: Exercises.runLong.name, action: runLong)
-    }
-    
-    func moveActiveRest() -> Exercise {
-        print(Exercises.activeRest.name)
-        self.fatigue -= Int.random(in: 5...10)
-        return Exercise(name: Exercises.activeRest.name, action: moveActiveRest)
-    }
-    
-    func pushUp() -> Exercise {
-        print(Exercises.pushUp.name)
-        self.uppperBodyStrength += Int.random(in: 10...15)
-        self.fatigue += Int.random(in: 5...10)
-        return Exercise(name: Exercises.pushUp.name, action: pushUp)
-    }
-    
-    func printBodyCondition() {
+
+    func checkCurrentBodyCondition() {
         print("--------------")
         print("현재의 컨디션은 다음과 같습니다.")
         print("\(InBody.uppperBodyStrength.name): \(self.uppperBodyStrength)")
@@ -62,6 +26,7 @@ class BodyCondition {
         print("\(InBody.muscularEndurance.name): \(self.muscularEndurance)")
         print("\(InBody.fatigue.name): \(self.fatigue)")
     }
+    deinit { print("BodyCondition Type Properties is being deinitializsed")}
 }
 
 enum InBody {
@@ -86,7 +51,7 @@ enum InBody {
 
 struct Exercise {
     let name: String
-    var action: () -> Self
+    let action: () -> Void
 }
 
 enum Exercises {
@@ -114,7 +79,7 @@ enum Exercises {
 
 struct Routine {
     let name: String
-    let exercises: [() -> Exercise]
+    let exercises: [Exercise]
 }
 
 enum Routines {
@@ -140,27 +105,47 @@ enum Routines {
     }
 }
 
-var quokka = BodyCondition(uppperBodyStrength: 0, lowerBodyStrength: 0,
+let quokka = BodyCondition(uppperBodyStrength: 0, lowerBodyStrength: 0,
                            muscularEndurance: 0, fatigue: 0)
-let sitUp = Exercise(name: Exercises.sitUp.name, action: quokka.sitUp)
-let squart = Exercise(name: Exercises.squart.name, action: quokka.moveSquat)
-let runLong = Exercise(name: Exercises.runLong.name, action: quokka.runLong)
-let pushUp = Exercise(name: Exercises.pushUp.name, action: quokka.pushUp)
-let activeRest = Exercise(name: Exercises.activeRest.name, action: quokka.moveActiveRest)
+let sitUp = Exercise(name: Exercises.sitUp.name) {
+    print("\(sitUp.name)")
+    quokka.uppperBodyStrength += Int.random(in: 10...20)
+    quokka.fatigue += Int.random(in: 10...20)
+}
+let squart = Exercise(name: Exercises.squart.name) {
+    print("\(squart.name)")
+    quokka.lowerBodyStrength += Int.random(in: 20...30)
+    quokka.fatigue += Int.random(in: 10...20)
+}
+let runLong = Exercise(name: Exercises.runLong.name) {
+    print("\(runLong.name)")
+    quokka.muscularEndurance += Int.random(in: 20...30)
+    quokka.uppperBodyStrength += Int.random(in: 5...10)
+    quokka.lowerBodyStrength += Int.random(in: 5...10)
+    quokka.fatigue += Int.random(in: 20...30)
+}
+let pushUp = Exercise(name: Exercises.pushUp.name) {
+    print("\(pushUp.name)")
+    quokka.fatigue -= Int.random(in: 5...10)
+}
+let activeRest = Exercise(name: Exercises.activeRest.name) {
+    print("\(activeRest.name)")
+    quokka.uppperBodyStrength += Int.random(in: 10...15)
+    quokka.fatigue += Int.random(in: 5...10)
+}
 
 let upperBodyExercise = Routine(name: Routines.uppperBodyExercise.name,
-                                exercises: [pushUp.action, sitUp.action,
-                                            pushUp.action, sitUp.action,
-                                            activeRest.action])
+                                exercises: [pushUp, sitUp,
+                                            pushUp, sitUp,
+                                            activeRest])
 let lowerBodyStrength = Routine(name: Routines.lowerBodyExercise.name,
-                                exercises: [squart.action, squart.action,
-                                            activeRest.action, squart.action,
-                                            squart.action, activeRest.action])
-func workOut() {
+                                exercises: [squart, squart,
+                                            activeRest, squart,
+                                            squart, activeRest])
+func workOut(_ routine: Routine, person: BodyCondition) {
     print("--------------")
-    upperBodyExercise.exercises.forEach { exercise in exercise() }
-    print("--------------")
-    lowerBodyStrength.exercises.forEach { exercise in exercise() }
-    quokka.printBodyCondition()
+    print("\(routine.name) 루틴을 시작합니다.")
+    routine.exercises.forEach { $0.action() }
+    person.checkCurrentBodyCondition()
 }
-workOut()
+workOut(upperBodyExercise, person: quokka)
