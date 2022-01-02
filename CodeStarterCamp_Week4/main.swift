@@ -8,12 +8,9 @@
 
 import Foundation
 
-var myBodyCondition: BodyCondition = BodyCondition()
+var publicBodyCondition: BodyCondition = BodyCondition()
+var yagomFitness: FitnessCenter = FitnessCenter(name: "YagomFitness")
 
-var yagomFitness: FitnessCenter = FitnessCenter()
-
-
-yagomFitness.name = "YagomFitness"
 do {
     try yagomFitness.startTraining()
 } catch FitnessError.NoMember {
