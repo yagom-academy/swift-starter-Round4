@@ -9,53 +9,51 @@ import Foundation
 
 class FitnessCenter {
     var name: String
-    var upperBodyTargetCondition: UInt
-    var lowerBodyTargetCondition: UInt
-    var muscularEnduranceTargetCondition: UInt
-    var member: Person?
-    var routines: [Routine]
-    var selectedRoutineIndex: Int
-    var numOfSet: UInt
+    var upperBodyTargetCondition: UInt = 0
+    var lowerBodyTargetCondition: UInt = 0
+    var muscularEnduranceTargetCondition: UInt = 0
+    var member: Person? = nil
+    var routines: [Routine] = [hellRoutine, tabataRoutine, refresh]
+    var selectedRoutineIndex: Int = 0
+    var numOfSet: UInt = 0
     
-    init(name: String = "",
-         upperBodyTargetCondition: UInt = 0,
-         lowerBodyTargetCondition: UInt = 0,
-         muscularEnduranceTargetCondition: UInt = 0,
-         member: Person? = nil,
-         routines: [Routine] = [hellRoutine, tabataRoutine, refresh],
-         selectedRoutineIndex: Int = 0,
-         numOfSet: UInt = 0)
-    {
+    init(name: String) {
         self.name = name
-        self.upperBodyTargetCondition = upperBodyTargetCondition
-        self.lowerBodyTargetCondition = lowerBodyTargetCondition
-        self.muscularEnduranceTargetCondition = muscularEnduranceTargetCondition
-        self.member = member
-        self.routines = routines
-        self.selectedRoutineIndex = selectedRoutineIndex
-        self.numOfSet = numOfSet
     }
     
-    func startTraining() throws {
+    func startTraining() {
         greeting()
         askTargetCondition()
         askForSelectRoutine()
-        askNumOfSet()
+    }
+    
+    func checkTrainingStatus() throws {
         guard let notNilMember = self.member else { throw FitnessError.NoMember }
-        notNilMember.exercise(for: Int(self.numOfSet),
-                                 routine: self.routines[self.selectedRoutineIndex])
+        
+        guard notNilMember.bodyCondition.upperBodyStrength > self.upperBodyTargetCondition
+                && notNilMember.bodyCondition.lowerBodyStrength > self.lowerBodyTargetCondition
+                && notNilMember.bodyCondition.muscularEndurance > self.muscularEnduranceTargetCondition
+        else {
+            print("목표치에 도달하지 못했습니다. 현재 \(notNilMember.name)님의 컨디션은 다음과 같습니다.")
+            notNilMember.bodyCondition.printBodyCondition()
+            print("--------------")
+            throw FitnessError.CouldNotReachedTarget
+        }
+        
+        print("성공입니다! 현재 \(notNilMember.name)님의 컨디션은 다음과 같습니다.")
+        notNilMember.bodyCondition.printBodyCondition()
     }
         
     func saveMemberName() {
         guard let name = readLine() else { return }
-        self.member = Person(name: name, bodyCondition: BodyCondition())
+        self.member = Person(name: name)
     }
     
     func saveRoutineIndex() throws {
         guard let routineIndexString = readLine() else { return }
         guard let routineIndexInt = Int(routineIndexString) else { return }
         guard routineIndexInt <= routines.count && routineIndexInt > 0 else { throw FitnessError.RoutineOufOfRange }
-        self.selectedRoutineIndex = routineIndexInt
+        self.selectedRoutineIndex = routineIndexInt - 1
     }
     
     func saveTargetCondition() throws {
@@ -84,6 +82,20 @@ class FitnessCenter {
         guard let numOfSetInt = UInt(numOfSetString) else { return }
         guard numOfSetInt > 0 else { throw FitnessError.NumOfSetOutOfRange }
         self.numOfSet = numOfSetInt
+        try makePersonExercise()
+    }
+    
+    func makePersonExercise() throws {
+        guard let notNilMember = self.member else { throw FitnessError.NoMember }
+        do {
+            try notNilMember.exercise(for: Int(self.numOfSet),
+                                     routine: self.routines[self.selectedRoutineIndex])
+            try checkTrainingStatus()
+        } catch FitnessError.HighFatigue {
+            print("\(notNilMember.name)의 피로도가 \(notNilMember.bodyCondition.fatigue)입니다. 회원님이 도망갔습니다.")
+        } catch FitnessError.CouldNotReachedTarget {
+            self.askForSelectRoutine()
+        } catch {}
     }
     
     func greeting() {
@@ -112,6 +124,8 @@ class FitnessCenter {
             print("루틴의 번호가 올바르지 않습니다.")
             return
         } catch {}
+        
+        askNumOfSet()
     }
     
     func askNumOfSet() {
