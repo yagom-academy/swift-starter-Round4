@@ -26,7 +26,6 @@ class BodyCondition {
         print("\(InBody.muscularEndurance.name): \(self.muscularEndurance)")
         print("\(InBody.fatigue.name): \(self.fatigue)")
     }
-    deinit { print("BodyCondition Type Properties is being deinitializsed")}
 }
 
 enum InBody {
