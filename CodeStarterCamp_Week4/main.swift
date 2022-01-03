@@ -1,12 +1,20 @@
-//
-//  main.swift
-//  CodeStarterCamp_Week4
-//
-//  Created by yagom.
-//  Copyright © yagom academy. All rights reserved.
-//
-
 import Foundation
 
-print("Hello, World!")
+class BodyCondition {
+    var upperBodyStrength: Int = 0
+    var lowerBodyStrength: Int = 0
+    var muscularEndurance: Int = 0
+    var muscleFatigue: Int = 0
+}
+
+struct Exercise {
+    let name: String
+    let action: () -> Void
+}
+
+struct Routine {
+    let name: String
+    let exercises: [Exercise]
+}
+
 
