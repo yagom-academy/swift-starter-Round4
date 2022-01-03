@@ -135,6 +135,14 @@ struct FitnessCenter {
             keysOrderCounter += 1
         }
     }
+    
+    enum Errors: Error {
+        case fatigueIsOver
+        case wasNotGoalIn
+        case wrongInput
+        case canNotFindMember
+        case unexpected
+    }
 }
 let quokka = BodyCondition(uppperBodyStrength: 0, lowerBodyStrength: 0,
                            muscularEndurance: 0, fatigue: 0)
