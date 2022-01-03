@@ -29,21 +29,27 @@ final class FitnessCenter {
         do {
             try registerFitness()
             try startRoutine()
+            self.resultView.printSuccessMessage(member: self.member)
         } catch InputError.valueIsNil {
+            self.resultView.printError(error: .valueIsNil)
             self.startFitnessProcess()
         } catch InputError.valueIsEmpty {
+            self.resultView.printError(error: .valueIsEmpty)
             self.startFitnessProcess()
         } catch InputError.valueMustPositiveNumber {
+            self.resultView.printError(error: .valueMustPositiveNumber)
             self.startFitnessProcess()
         } catch InputError.valueMustConvertToInt {
+            self.resultView.printError(error: .valueMustConvertToInt)
             self.startFitnessProcess()
         } catch FitnessError.noMember {
-            try? self.startRoutine()
+            self.resultView.printError(fitnessError: .noMember, member: nil)
         } catch FitnessError.noGoals {
-            try? self.startRoutine()
+            self.resultView.printError(fitnessError: .noGoals, member: nil)
         } catch FitnessError.fatigueFull {
-            try? self.startRoutine()
+            self.resultView.printError(fitnessError: .fatigueFull, member: self.member)
         } catch FitnessError.failToReachGoals {
+            self.resultView.printError(fitnessError: .failToReachGoals, member: self.member)
             try? self.startRoutine()
         } catch {}
     }
