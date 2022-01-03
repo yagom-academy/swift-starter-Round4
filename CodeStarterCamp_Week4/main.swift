@@ -104,6 +104,15 @@ enum Routines {
     }
 }
 
+struct Person {
+    let name: String
+    let bodyCondition: BodyCondition
+    
+    func exercise(for set: Int, routine: Routine) {
+        
+    }
+}
+
 let quokka = BodyCondition(uppperBodyStrength: 0, lowerBodyStrength: 0,
                            muscularEndurance: 0, fatigue: 0)
 let sitUp = Exercise(name: Exercises.sitUp.name) {
