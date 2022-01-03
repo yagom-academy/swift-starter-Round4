@@ -20,3 +20,34 @@ var personalBodyCondition: BodyCondition = .init(upperBodyStrength: 100,
                                                  muscleEndurance: 100,
                                                  fatigue: 0)
 
+struct Routine {
+    var name: String
+    var exercisesArray: [Exercise]
+    
+    init (name: String, exercisesArray: [Exercise]){
+        self.name = name
+        self.exercisesArray = exercisesArray
+    }
+    
+    func executeRoutine() {
+        print("--------------")
+        print("\(self.name)을 시작합니다.")
+        for element in 0..<exercisesArray.count{
+            exercisesArray[element].action()
+            print(exercisesArray[element].name)
+        }
+        print("--------------")
+        print("현재의 컨디션은 다음과 같습니다.")
+        print("""
+              상체근력: \(personalBodyCondition.upperBodyStrength)
+              하체근력: \(personalBodyCondition.lowerBodyStrength)
+              근지구력: \(personalBodyCondition.muscleEndurance)
+              피로도: \(personalBodyCondition.fatigue)
+              """)
+    }
+}
+
+struct Exercise {
+        var name: String
+        let action: () -> Void
+}
