@@ -114,9 +114,14 @@ class FitnessCenter {
         try makePersonExercise()
     }
     
+    func checkMemberNil() throws {
+        guard self.member != nil else { throw FitnessError.NoMember }
+    }
+    
     func makePersonExercise() throws {
-        guard let notNilMember = self.member else { throw FitnessError.NoMember }
+        guard let notNilMember = self.member else { return }
         do {
+            try checkMemberNil()
             try notNilMember.exercise(for: Int(self.numOfSet),
                                      routine: self.routines[self.selectedRoutineIndex])
             try checkTrainingStatus()
