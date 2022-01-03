@@ -51,3 +51,32 @@ struct Exercise {
         var name: String
         let action: () -> Void
 }
+
+let sitUp: Exercise = Exercise(name: "윗몸일으키기", action: {
+    personalBodyCondition.upperBodyStrength += Int.random(in: 10...20)
+    personalBodyCondition.fatigue += Int.random(in: 10...20)
+})
+
+let squat: Exercise = Exercise(name: "스쿼트", action: {
+    personalBodyCondition.lowerBodyStrength += Int.random(in: 20...30)
+    personalBodyCondition.fatigue += Int.random(in: 10...20)
+})
+
+let running: Exercise = Exercise(name: "오래달리기", action: {
+    personalBodyCondition.muscleEndurance += Int.random(in: 20...30)
+    personalBodyCondition.lowerBodyStrength += Int.random(in: 5...10)
+    personalBodyCondition.fatigue += Int.random(in: 20...30)
+})
+
+let pushUp: Exercise = Exercise(name: "오래달리기", action: {
+    personalBodyCondition.upperBodyStrength += Int.random(in: 20...30)
+    personalBodyCondition.lowerBodyStrength += Int.random(in: 5...10)
+    personalBodyCondition.fatigue += Int.random(in: 10...20)
+})
+
+let activeRest: Exercise = Exercise(name: "동적휴식", action: {
+    personalBodyCondition.fatigue -= Int.random(in: 5...10)
+})
+
+var mmimRoutine = Routine(name: "MMIM's Routine", exercisesArray: [squat, sitUp, running, pushUp, activeRest])
+mmimRoutine.executeRoutine()
