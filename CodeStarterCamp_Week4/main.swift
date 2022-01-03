@@ -115,36 +115,50 @@ struct Person {
 
 struct FitnessCenter {
     let goalBodyCondition: BodyCondition
-    let member: Person
-    let routines: [Routines: [Exercise]]
+    let member: Person?
+    let routines: [Routines: Routine]
     
-    func startFitnessProgram() {
-        print("안녕하세요 야곰 피트니스 센터입니다. 회원님의 이름은 무엇인가요?")
-        guard let inputMemberName = readLine() else { return }
-        print("운동 목표치를 순서대로 알려주세요.\n상체근력: ")
+    func startFitnessProgram(member: Person, routine: Routine) throws {
+        print("\(Guidance.helloWhatYourName.message)?")
+        guard let inputMemberName = readLine(), inputMemberName == self.member?.name else {
+            throw Errors.canNotFindMember
+        }
+        print("\(Guidance.tellMeYourGoalBodyCondition.message).\n\(Guidance.upperBodyStrength.message): ")
         guard let uppperBodyStrength = readLine() else { return }
-        print("\n하체근력: ")
+        print("\n\(Guidance.lowerBodyStrength.message): ")
         guard let lowerBodyStrength = readLine() else { return }
-        print("\n근지구력: ")
+        print("\n\(Guidance.muscularEndurance.message): ")
         guard let muscularEndurance = readLine() else { return }
         
-        print("몇 번째 루틴으로 운동하시겠어요?")
-        for _ in 0..<routines.keys.count {
+        print("\(Guidance.WhatRoutineWouldYouLikeToWorkOn.message)?")
+        for key in self.routines.keys {
             var keysOrderCounter = 1
-            print("\(keysOrderCounter). \(self.routines.keys)\n")
+            print("\(keysOrderCounter). \(key)\n")
             keysOrderCounter += 1
         }
-        guard let routineChoise = readLine() else { return }
+        guard let routineChoise = readLine(), let intRoutineChoise = Int(routineChoise),
+        intRoutineChoise <= self.routines.keys.count else {
+            throw Errors.wrongInput
+        }
+        
+        print("\(Guidance.howManyRepeatTheRoutine.message)?")
+        guard let stringRepeatCount = readLine(),
+              let intRepeatCount = Int(stringRepeatCount) else { return }
+        member.exercise(for: intRepeatCount, routine: routine)
+        // 루틴이 끝났을때 목표치에 미도달할 경우
+        // 진행 도중 회원의 피로도가 100을 넘은 경우
     }
     
-    enum GuidanceMessage {
+    enum Guidance {
         case helloWhatYourName
         case tellMeYourGoalBodyCondition
+        case WhatRoutineWouldYouLikeToWorkOn
         case upperBodyStrength
         case lowerBodyStrength
         case muscularEndurance
+        case howManyRepeatTheRoutine
         
-        var name: String {
+        var message: String {
             switch self {
             case .helloWhatYourName:
                 return "안녕하세요 야곰 피트니스 센터입니다. 회원님의 이름은 무엇인가요?"
@@ -156,6 +170,10 @@ struct FitnessCenter {
                 return "하체근력"
             case .muscularEndurance:
                 return "근지구력"
+            case .WhatRoutineWouldYouLikeToWorkOn:
+                return "몇 번째 루틴으로 운동하시겠어요"
+            case .howManyRepeatTheRoutine:
+                return "몇 세트 반복하시겠어요"
             }
         }
     }
