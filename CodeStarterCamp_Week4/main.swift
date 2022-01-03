@@ -113,6 +113,29 @@ struct Person {
     }
 }
 
+struct FitnessCenter {
+    let goalBodyCondition: BodyCondition
+    let member: Person
+    let routines: [Routines: [Exercise]]
+    
+    func startFitnessProgram() {
+        print("안녕하세요 야곰 피트니스 센터입니다. 회원님의 이름은 무엇인가요?")
+        let inputMemberName = readLine()
+        print("운동 목표치를 순서대로 알려주세요.\n상체근력: ")
+        let uppperBodyStrength = readLine()
+        print("\n하체근력: ")
+        let lowerBodyStrength = readLine()
+        print("\n근지구력: ")
+        let muscularEndurance = readLine()
+        
+        print("몇 번째 루틴으로 운동하시겠어요?")
+        for _ in 0..<routines.keys.count {
+            var keysOrderCounter = 1
+            print("\(keysOrderCounter). \(self.routines.keys)\n")
+            keysOrderCounter += 1
+        }
+    }
+}
 let quokka = BodyCondition(uppperBodyStrength: 0, lowerBodyStrength: 0,
                            muscularEndurance: 0, fatigue: 0)
 let sitUp = Exercise(name: Exercises.sitUp.name) {
