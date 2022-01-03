@@ -27,9 +27,9 @@ struct InputView {
         
         print("운동 목표치를 순서대로 알려주세요. 예시) 상체근력:130,하체근력:120,근지구력:150")
         
-        goalsBodyConditions.append(try convertInputValueToInt(input: makeEachInputGolasBodyCondition(type: "상체근력")))
-        goalsBodyConditions.append(try convertInputValueToInt(input: makeEachInputGolasBodyCondition(type: "하체근력")))
-        goalsBodyConditions.append(try convertInputValueToInt(input: makeEachInputGolasBodyCondition(type: "근지구력")))
+        goalsBodyConditions.append(try convertInputValueToInt(input: makeInputGolasBodyCondition(type: "상체근력")))
+        goalsBodyConditions.append(try convertInputValueToInt(input: makeInputGolasBodyCondition(type: "하체근력")))
+        goalsBodyConditions.append(try convertInputValueToInt(input: makeInputGolasBodyCondition(type: "근지구력")))
         
         return goalsBodyConditions
     }
@@ -43,15 +43,15 @@ struct InputView {
                 print("\(routineOrder + 1). \(routine.name)")
             }
         
-        return try makeEachInputRoutine() - 1
+        return try makeInputRoutine() - 1
     }
     
     func inputRoutineRepeatSet() throws -> Int {
         print("몇 세트 반복하시겠어요?")
-        return try makeEachInputRoutine()
+        return try makeInputRoutine()
     }
     
-    private func makeEachInputGolasBodyCondition(type: String) throws -> String {
+    private func makeInputGolasBodyCondition(type: String) throws -> String {
         print("\(type):", terminator:"")
         guard let golasBodyCondition = readLine() else {
             throw InputError.valueIsNil
@@ -60,7 +60,7 @@ struct InputView {
         return golasBodyCondition
     }
     
-    private func makeEachInputRoutine() throws -> Int {
+    private func makeInputRoutine() throws -> Int {
         guard let input = readLine() else {
             throw InputError.valueIsNil
         }
