@@ -14,13 +14,6 @@ class BodyCondition {
     var muscularEndurance = 0
     var fatigue = 0
     
-    init() {
-        upperBodyStrength = 0
-        lowerBodyStrength = 0
-        muscularEndurance = 0
-        fatigue = 0
-    }
-    
     func printBodyCondition() {
         print("--------------")
         print("현재의 컨디션은 다음과 같습니다.")
