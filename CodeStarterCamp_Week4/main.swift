@@ -21,10 +21,9 @@ func printOut(routine: Routine, person: BodyCondition) {
     print("-----------------")
     print("\(routine.name)을 시작합니다.")
     
-    for sequence in routine.exercises {
-        print("\(sequence.name)")
-        sequence.action()
-        
+    routine.exercises.forEach {
+        print("\($0.name)")
+        $0.action()
     }
     
     print("""
@@ -37,7 +36,7 @@ func printOut(routine: Routine, person: BodyCondition) {
           """)
 }
 
-var Minseong = BodyCondition()
+let Minseong = BodyCondition()
 
 let sitUp: Exercise = Exercise(name: "윗몸일으키기") {
     Minseong.upperBodyStrength += Int.random(in: 10...20)
@@ -60,7 +59,7 @@ let activeRest: Exercise = Exercise(name: "동적휴식") {
     Minseong.muscleFatigue -= Int.random(in: 5...10)
 }
 
-var hellRoutine = Routine(name: "hellRoutine", exercises: [sitUp, sitUp, activeRest,
+let hellRoutine = Routine(name: "hellRoutine", exercises: [sitUp, sitUp, activeRest,
                                                            squat, squat, activeRest,
                                                            longDistanceRunning, longDistanceRunning])
 printOut(routine: hellRoutine, person: Minseong)
