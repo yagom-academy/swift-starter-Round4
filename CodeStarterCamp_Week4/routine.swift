@@ -17,7 +17,6 @@ struct Routine {
         excercises.forEach { exercise in
             print(exercise.name)
             exercise.action()
-            
         }
     }
 }
