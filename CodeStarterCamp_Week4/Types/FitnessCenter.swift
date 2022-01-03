@@ -64,12 +64,7 @@ class FitnessCenter {
         guard notNilMember.bodyCondition.upperBodyStrength > self.upperBodyTargetCondition
                 && notNilMember.bodyCondition.lowerBodyStrength > self.lowerBodyTargetCondition
                 && notNilMember.bodyCondition.muscularEndurance > self.muscularEnduranceTargetCondition
-        else {
-            print("목표치에 도달하지 못했습니다. 현재 \(notNilMember.name)님의 컨디션은 다음과 같습니다.")
-            notNilMember.bodyCondition.printBodyCondition()
-            print("--------------")
-            throw FitnessError.CouldNotReachedTarget
-        }
+        else { throw FitnessError.CouldNotReachedTarget }
         
         print("성공입니다! 현재 \(notNilMember.name)님의 컨디션은 다음과 같습니다.")
         notNilMember.bodyCondition.printBodyCondition()
@@ -125,6 +120,9 @@ class FitnessCenter {
         } catch FitnessError.HighFatigue {
             print("\(notNilMember.name)의 피로도가 \(notNilMember.bodyCondition.fatigue)입니다. 회원님이 도망갔습니다.")
         } catch FitnessError.CouldNotReachedTarget {
+            print("목표치에 도달하지 못했습니다. 현재 \(notNilMember.name)님의 컨디션은 다음과 같습니다.")
+            notNilMember.bodyCondition.printBodyCondition()
+            print("--------------")
             self.askForSelectRoutine()
         } catch {}
     }
