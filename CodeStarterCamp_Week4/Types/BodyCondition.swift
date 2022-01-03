@@ -7,10 +7,17 @@
 
 import Foundation
 
-struct BodyCondition {
-    var upperBodyStrength: UInt = 0
-    var lowerBodyStrength: UInt = 0
-    var muscularEndurance: UInt = 0
+class BodyCondition {
+    var upperBodyStrength: Int = 0
+    var lowerBodyStrength: Int = 0
+    var muscularEndurance: Int = 0
     var fatigue: Int = 0
-
+    
+    func printBodyCondition() {
+        print("상체근력: \(self.upperBodyStrength)")
+        print("하체근력: \(self.lowerBodyStrength)")
+        print("근지구력: \(self.muscularEndurance)")
+        print("피로도: \(self.fatigue)")
+    }
 }
+

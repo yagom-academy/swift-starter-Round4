@@ -13,6 +13,9 @@
 		C69D0E10277F333000B1DEE5 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69D0E0F277F333000B1DEE5 /* Routine.swift */; };
 		C69D0E12277F334C00B1DEE5 /* DefineExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69D0E11277F334C00B1DEE5 /* DefineExercise.swift */; };
 		C69D0E14277F336C00B1DEE5 /* DefineRoutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69D0E13277F336C00B1DEE5 /* DefineRoutine.swift */; };
+		C69D0E16277F8E3E00B1DEE5 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69D0E15277F8E3E00B1DEE5 /* Person.swift */; };
+		C69D0E18277F8F9200B1DEE5 /* FitnessCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69D0E17277F8F9200B1DEE5 /* FitnessCenter.swift */; };
+		C69D0E1A2780A40500B1DEE5 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69D0E192780A40500B1DEE5 /* Error.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +38,9 @@
 		C69D0E0F277F333000B1DEE5 /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
 		C69D0E11277F334C00B1DEE5 /* DefineExercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefineExercise.swift; sourceTree = "<group>"; };
 		C69D0E13277F336C00B1DEE5 /* DefineRoutine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefineRoutine.swift; sourceTree = "<group>"; };
+		C69D0E15277F8E3E00B1DEE5 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		C69D0E17277F8F9200B1DEE5 /* FitnessCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessCenter.swift; sourceTree = "<group>"; };
+		C69D0E192780A40500B1DEE5 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +77,7 @@
 				C69D0E11277F334C00B1DEE5 /* DefineExercise.swift */,
 				C69D0E13277F336C00B1DEE5 /* DefineRoutine.swift */,
 				C69D0E0A277F32C700B1DEE5 /* Types */,
+				C69D0E1B2780C69900B1DEE5 /* Error */,
 			);
 			path = CodeStarterCamp_Week4;
 			sourceTree = "<group>";
@@ -78,11 +85,21 @@
 		C69D0E0A277F32C700B1DEE5 /* Types */ = {
 			isa = PBXGroup;
 			children = (
+				C69D0E17277F8F9200B1DEE5 /* FitnessCenter.swift */,
 				C69D0E0B277F32FB00B1DEE5 /* BodyCondition.swift */,
 				C69D0E0D277F331000B1DEE5 /* Exercise.swift */,
 				C69D0E0F277F333000B1DEE5 /* Routine.swift */,
+				C69D0E15277F8E3E00B1DEE5 /* Person.swift */,
 			);
 			path = Types;
+			sourceTree = "<group>";
+		};
+		C69D0E1B2780C69900B1DEE5 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				C69D0E192780A40500B1DEE5 /* Error.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,8 +162,11 @@
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
 				C69D0E0C277F32FB00B1DEE5 /* BodyCondition.swift in Sources */,
 				C69D0E10277F333000B1DEE5 /* Routine.swift in Sources */,
+				C69D0E18277F8F9200B1DEE5 /* FitnessCenter.swift in Sources */,
 				C69D0E0E277F331000B1DEE5 /* Exercise.swift in Sources */,
+				C69D0E16277F8E3E00B1DEE5 /* Person.swift in Sources */,
 				C69D0E12277F334C00B1DEE5 /* DefineExercise.swift in Sources */,
+				C69D0E1A2780A40500B1DEE5 /* Error.swift in Sources */,
 				C69D0E14277F336C00B1DEE5 /* DefineRoutine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

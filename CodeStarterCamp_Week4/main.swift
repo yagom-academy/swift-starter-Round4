@@ -8,9 +8,20 @@
 
 import Foundation
 
-var myBodyCondition: BodyCondition = BodyCondition()
+var publicBodyCondition: BodyCondition = BodyCondition()
+var yagomFitness: FitnessCenter = FitnessCenter(name: "YagomFitness")
 
-hellRoutine.startRoutine()
-tabataRoutine.startRoutine()
-refresh.startRoutine()
-refresh.startRoutine()
+
+do {
+    try yagomFitness.startTraining()
+} catch FitnessError.NoMember {
+    print("No Member Error!!")
+} catch {}
+
+
+yagomFitness.member = Person()
+do {
+    try yagomFitness.startTraining()
+} catch FitnessError.NoMember {
+    print("No Member Error!!")
+} catch {}
