@@ -12,7 +12,7 @@ var publicBodyCondition: BodyCondition = BodyCondition()
 var yagomFitness: FitnessCenter = FitnessCenter(name: "YagomFitness")
 
 
-do{
+do {
     try yagomFitness.startTraining()
 } catch FitnessError.NoMember {
     print("No Member Error!!")
@@ -20,7 +20,7 @@ do{
 
 
 yagomFitness.member = Person()
-do{
+do {
     try yagomFitness.startTraining()
 } catch FitnessError.NoMember {
     print("No Member Error!!")
