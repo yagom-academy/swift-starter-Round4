@@ -8,8 +8,11 @@
 
 import Foundation
 
-var bodyCondition: BodyCondition = BodyCondition(upperbodystrength: 0, lowerbodystrength: 0, muscularendurance: 0, fatigue: 0)
-var routine: Routine = Routine()
+let bodyCondition: BodyCondition = BodyCondition(upperbodystrength: 0, lowerbodystrength: 0, muscularendurance: 0, fatigue: 0)
+let routine: Routine = Routine()
 
+bodyCondition.nowCondition()
+routine.start()
+bodyCondition.nowCondition()
 routine.start()
 bodyCondition.nowCondition()

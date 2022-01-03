@@ -8,8 +8,8 @@
 import Foundation
 
 struct Routine {
-   
-    var excercises = [윗몸일으키기,윗몸일으키기,동적휴식,스쿼트,스쿼트,동적휴식,오래달리기,오래달리기]
+    
+    let excercises = [윗몸일으키기,윗몸일으키기,동적휴식,스쿼트,스쿼트,동적휴식,오래달리기,오래달리기]
     
     func start() {
         print("--------------")

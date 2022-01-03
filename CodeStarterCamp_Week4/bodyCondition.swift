@@ -21,11 +21,6 @@ class BodyCondition {
     }
     
     func nowCondition() {
-        print("---------------")
-        print("현제의 컨디션은 다음과 같습니다.")
-        print("상체근력: \(upperbodystrength)")
-        print("하체근력: \(lowerbodystrength)")
-        print("근지구력: \(muscularendurance)")
-        print("피로도: \(fatigue)")
+        print("---------------\n현제의 컨디션은 다음과 같습니다.\n상체근력: \(upperbodystrength)\n하체근력: \(lowerbodystrength)\n근지구력: \(muscularendurance)\n피로도: \(fatigue)")
     }
 }
