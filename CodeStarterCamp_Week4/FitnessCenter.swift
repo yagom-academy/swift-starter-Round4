@@ -29,7 +29,6 @@ final class FitnessCenter {
         do {
             try registerFitness()
             try startRoutine()
-            self.resultView.printSuccessMessage(member: self.member)
         } catch InputError.valueIsNil {
             self.resultView.printError(error: .valueIsNil)
             self.startFitnessProcess()
@@ -42,15 +41,6 @@ final class FitnessCenter {
         } catch InputError.valueMustConvertToInt {
             self.resultView.printError(error: .valueMustConvertToInt)
             self.startFitnessProcess()
-        } catch FitnessError.noMember {
-            self.resultView.printError(fitnessError: .noMember, member: nil)
-        } catch FitnessError.noGoals {
-            self.resultView.printError(fitnessError: .noGoals, member: nil)
-        } catch FitnessError.fatigueFull {
-            self.resultView.printError(fitnessError: .fatigueFull, member: self.member)
-        } catch FitnessError.failToReachGoals {
-            self.resultView.printError(fitnessError: .failToReachGoals, member: self.member)
-            try? self.startRoutine()
         } catch {}
     }
     
@@ -65,11 +55,23 @@ final class FitnessCenter {
     }
     
     private func startRoutine() throws {
-        let routineOrder = try inputView.inputRoutineOrder(routineList: self.routineList)
-        let repeatSeveralSet = try inputView.inputRoutineRepeatSet()
-        
-        try self.member?.exercise(for: repeatSeveralSet, routine: self.routineList[routineOrder])
-        try compareGolasAndCurrentCondition()
+        do {
+            let routineOrder = try inputView.inputRoutineOrder(routineList: self.routineList)
+            let repeatSeveralSet = try inputView.inputRoutineRepeatSet()
+            
+            try self.member?.exercise(for: repeatSeveralSet, routine: self.routineList[routineOrder])
+            try compareGolasAndCurrentCondition()
+            self.resultView.printSuccessMessage(member: self.member)
+        } catch FitnessError.noMember {
+            self.resultView.printError(fitnessError: .noMember, member: nil)
+        } catch FitnessError.noGoals {
+            self.resultView.printError(fitnessError: .noGoals, member: nil)
+        } catch FitnessError.fatigueFull {
+            self.resultView.printError(fitnessError: .fatigueFull, member: self.member)
+        } catch FitnessError.failToReachGoals {
+            self.resultView.printError(fitnessError: .failToReachGoals, member: self.member)
+            try? self.startRoutine()
+        } catch {}
     }
     
     private func compareGolasAndCurrentCondition() throws {

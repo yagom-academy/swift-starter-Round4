@@ -8,8 +8,6 @@
 import Foundation
 
 struct InputView {
-    private let resultView = ResultView()
-    
     func inputNameOfMember() throws -> String {
         print("안녕하세요. 야곰 피트니스 센터입니다. 회원님의 이름은 무엇인가요?")
         

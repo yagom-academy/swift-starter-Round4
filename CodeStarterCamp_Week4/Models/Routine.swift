@@ -29,7 +29,7 @@ final class Routine {
     }
     
     private func checkFatigueFull() throws {
-        guard bodyCondition.fatigue < 100 else {
+        guard bodyCondition.fatigue < 200 else {
             throw FitnessError.fatigueFull
         }
     }
