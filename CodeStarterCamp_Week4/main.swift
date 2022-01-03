@@ -5,7 +5,7 @@
 
 import Foundation
 
-class BodyCondition {
+struct BodyCondition {
     var uppperBodyStrength: Int
     var lowerBodyStrength: Int
     var muscularEndurance: Int
@@ -120,13 +120,13 @@ struct FitnessCenter {
     
     func startFitnessProgram() {
         print("안녕하세요 야곰 피트니스 센터입니다. 회원님의 이름은 무엇인가요?")
-        let inputMemberName = readLine()
+        guard let inputMemberName = readLine() else { return }
         print("운동 목표치를 순서대로 알려주세요.\n상체근력: ")
-        let uppperBodyStrength = readLine()
+        guard let uppperBodyStrength = readLine() else { return }
         print("\n하체근력: ")
-        let lowerBodyStrength = readLine()
+        guard let lowerBodyStrength = readLine() else { return }
         print("\n근지구력: ")
-        let muscularEndurance = readLine()
+        guard let muscularEndurance = readLine() else { return }
         
         print("몇 번째 루틴으로 운동하시겠어요?")
         for _ in 0..<routines.keys.count {
@@ -134,8 +134,32 @@ struct FitnessCenter {
             print("\(keysOrderCounter). \(self.routines.keys)\n")
             keysOrderCounter += 1
         }
+        guard let routineChoise = readLine() else { return }
     }
     
+    enum GuidanceMessage {
+        case helloWhatYourName
+        case tellMeYourGoalBodyCondition
+        case upperBodyStrength
+        case lowerBodyStrength
+        case muscularEndurance
+        
+        var name: String {
+            switch self {
+            case .helloWhatYourName:
+                return "안녕하세요 야곰 피트니스 센터입니다. 회원님의 이름은 무엇인가요?"
+            case .tellMeYourGoalBodyCondition:
+                return "운동 목표치를 순서대로 알려주세요"
+            case .upperBodyStrength:
+                return "상체근력"
+            case .lowerBodyStrength:
+                return "하체근력"
+            case .muscularEndurance:
+                return "근지구력"
+            }
+        }
+    }
+
     enum Errors: Error {
         case fatigueIsOver
         case wasNotGoalIn
@@ -144,7 +168,7 @@ struct FitnessCenter {
         case unexpected
     }
 }
-let quokka = BodyCondition(uppperBodyStrength: 0, lowerBodyStrength: 0,
+var quokka = BodyCondition(uppperBodyStrength: 0, lowerBodyStrength: 0,
                            muscularEndurance: 0, fatigue: 0)
 let sitUp = Exercise(name: Exercises.sitUp.name) {
     print("\(sitUp.name)")
