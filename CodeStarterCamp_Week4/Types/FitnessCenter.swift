@@ -76,8 +76,11 @@ class FitnessCenter {
     }
     
     func saveRoutineIndex() throws {
-        guard let routineIndexString = readLine() else { return }
-        guard let routineIndexInt = Int(routineIndexString) else { return }
+//        guard let routineIndexString = readLine() else { return }
+//        guard let routineIndexInt = Int(routineIndexString) else { return }
+        guard let routineIndexString = readLine(),
+              let routineIndexInt = Int(routineIndexString) else { return }
+        
         guard routineIndexInt <= routines.count && routineIndexInt > 0 else { throw FitnessError.RoutineOufOfRange }
         self.selectedRoutineIndex = routineIndexInt - 1
     }
