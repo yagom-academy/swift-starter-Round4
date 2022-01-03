@@ -71,7 +71,7 @@ class Routine {
     func doRoutine(){
         print("--------------")
         print("\(self.name)을 시작합니다.")
-        for count in 0...exercises.count {
+        for count in 0..<exercises.count {
             exercises[count].action()
             print("\(exercises[count].name)")
         }
