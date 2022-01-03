@@ -17,6 +17,26 @@ struct Routine {
     let exercises: [Exercise]
 }
 
+func printOut(routine: Routine, person: BodyCondition) {
+    print("-----------------")
+    print("\(routine.name)을 시작합니다.")
+    
+    for sequence in routine.exercises {
+        print("\(sequence.name)")
+        sequence.action()
+        
+    }
+    
+    print("""
+          -----------------
+          현재의 컨디션은 다음과 같습니다.
+          상체근력: \(person.upperBodyStrength)
+          하체근력: \(person.lowerBodyStrength)
+          근지구력: \(person.muscularEndurance)
+          피로도: \(person.muscleFatigue)
+          """)
+}
+
 var Minseong = BodyCondition()
 
 let sitUp: Exercise = Exercise(name: "윗몸일으키기") {
@@ -40,3 +60,7 @@ let activeRest: Exercise = Exercise(name: "동적휴식") {
     Minseong.muscleFatigue -= Int.random(in: 5...10)
 }
 
+var hellRoutine = Routine(name: "hellRoutine", exercises: [sitUp, sitUp, activeRest,
+                                                           squat, squat, activeRest,
+                                                           longDistanceRunning, longDistanceRunning])
+printOut(routine: hellRoutine, person: Minseong)
