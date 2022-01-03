@@ -9,9 +9,9 @@ import Foundation
 
 class FitnessCenter {
     var name: String
-    var upperBodyTargetCondition: UInt = 0
-    var lowerBodyTargetCondition: UInt = 0
-    var muscularEnduranceTargetCondition: UInt = 0
+    var upperBodyTargetCondition: Int = 0
+    var lowerBodyTargetCondition: Int = 0
+    var muscularEnduranceTargetCondition: Int = 0
     var member: Person? = nil
     var routines: [Routine] = [hellRoutine, tabataRoutine, refresh]
     var selectedRoutineIndex: Int = 0
@@ -95,9 +95,9 @@ class FitnessCenter {
         print("근지구력:", terminator: " ")
         guard let muscularEnduranceTargetConditionString = readLine() else { return }
         
-        guard let upperBodyMuscleTargetCondition = UInt(upperBodyMuscleTargetConditionString),
-              let lowerBodyMuscleTargetCondition = UInt(lowerBodyMuscleTargetConditionString),
-              let muscularEnduranceTargetCondition = UInt(muscularEnduranceTargetConditionString) else { return }
+        guard let upperBodyMuscleTargetCondition = Int(upperBodyMuscleTargetConditionString),
+              let lowerBodyMuscleTargetCondition = Int(lowerBodyMuscleTargetConditionString),
+              let muscularEnduranceTargetCondition = Int(muscularEnduranceTargetConditionString) else { return }
         
         guard upperBodyMuscleTargetCondition > 0
                 && lowerBodyMuscleTargetCondition > 0

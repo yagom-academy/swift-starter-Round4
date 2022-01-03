@@ -8,9 +8,9 @@
 import Foundation
 
 class BodyCondition {
-    var upperBodyStrength: UInt = 0
-    var lowerBodyStrength: UInt = 0
-    var muscularEndurance: UInt = 0
+    var upperBodyStrength: Int = 0
+    var lowerBodyStrength: Int = 0
+    var muscularEndurance: Int = 0
     var fatigue: Int = 0
     
     func printBodyCondition() {

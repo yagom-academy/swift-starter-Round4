@@ -9,19 +9,19 @@ import Foundation
 
 
 let 윗몸일으키기: Exercise = Exercise(name: "윗몸일으키기", action: {
-    publicBodyCondition.upperBodyStrength += UInt.random(in: 10...20)
+    publicBodyCondition.upperBodyStrength += Int.random(in: 10...20)
     publicBodyCondition.fatigue += Int.random(in: 10...20)
 })
 
 let 스쿼트: Exercise = Exercise(name: "스쿼트", action: {
-    publicBodyCondition.lowerBodyStrength += UInt.random(in: 20...30)
+    publicBodyCondition.lowerBodyStrength += Int.random(in: 20...30)
     publicBodyCondition.fatigue += Int.random(in: 10...20)
 })
 
 let 오래달리기: Exercise = Exercise(name: "오래달리기", action: {
-    publicBodyCondition.muscularEndurance += UInt.random(in: 20...30)
-    publicBodyCondition.upperBodyStrength += UInt.random(in: 5...10)
-    publicBodyCondition.lowerBodyStrength += UInt.random(in: 5...10)
+    publicBodyCondition.muscularEndurance += Int.random(in: 20...30)
+    publicBodyCondition.upperBodyStrength += Int.random(in: 5...10)
+    publicBodyCondition.lowerBodyStrength += Int.random(in: 5...10)
     publicBodyCondition.fatigue += Int.random(in: 20...30)
 })
 
