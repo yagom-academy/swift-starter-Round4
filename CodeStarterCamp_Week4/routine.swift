@@ -14,7 +14,7 @@ struct Routine {
     func start() {
         print("--------------")
         print("\(name)을 시작합니다.")
-        excercises.forEach { exercise in
+        for exercise in excercises {
             print(exercise.name)
             exercise.action()
         }
