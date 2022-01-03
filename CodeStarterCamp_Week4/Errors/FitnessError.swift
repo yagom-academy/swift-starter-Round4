@@ -8,6 +8,8 @@
 import Foundation
 
 enum FitnessError: Error {
+    case noMember
+    case noGoals
     case fatigueFull
     case failToReachGoals
 }

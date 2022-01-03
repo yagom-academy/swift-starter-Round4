@@ -8,7 +8,11 @@
 import Foundation
 
 struct ResultView {
-    func printSuccessMessage(member: Person) {
+    func printSuccessMessage(member: Person?) {
+        guard let member = member else {
+            return
+        }
+        
         print("--------------")
         print("성공입니다! 현재 \(member.name)님의 컨디션은 다음과 같습니다.")
         print("상체근력: \(member.bodyCondition.upperBodyStrength)")
@@ -17,7 +21,11 @@ struct ResultView {
         print("피로도: \(member.bodyCondition.fatigue)")
     }
     
-    func printError(fitnessError: FitnessError, member: Person) {
+    func printError(fitnessError: FitnessError, member: Person?) {
+        guard let member = member else {
+            return
+        }
+        
         switch fitnessError {
         case .fatigueFull:
             print("--------------")
@@ -30,6 +38,12 @@ struct ResultView {
             print("근지구력: \(member.bodyCondition.muscularEndurance)")
             print("피로도: \(member.bodyCondition.fatigue)")
             print("--------------")
+        case .noMember:
+            print("--------------")
+            print("현재 회원이 존재하지 않습니다.")
+        case .noGoals:
+            print("--------------")
+            print("현재 목표치가 없습니다.")
         }
     }
     

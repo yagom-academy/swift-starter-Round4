@@ -72,36 +72,22 @@ struct InputView {
 
 extension InputView {
     private func checkValidInputIntValue(input: String) throws {
-        do {
-            guard input.isEmpty == false else {
-                throw InputError.valueIsEmpty
-            }
-            
-            guard Int(input) != nil else {
-                throw InputError.valueMustConvertToInt
-            }
-            
-            guard Int(input) ?? -1 > 0 else {
-                throw InputError.valueMustPositiveNumber
-            }
-            
-        } catch InputError.valueIsEmpty {
-            resultView.printError(error: InputError.valueIsEmpty)
-        } catch InputError.valueMustConvertToInt {
-            resultView.printError(error: InputError.valueMustConvertToInt)
-        } catch InputError.valueMustPositiveNumber {
-            resultView.printError(error: InputError.valueMustPositiveNumber)
+        guard input.isEmpty == false else {
+            throw InputError.valueIsEmpty
+        }
+        
+        guard Int(input) != nil else {
+            throw InputError.valueMustConvertToInt
+        }
+        
+        guard Int(input) ?? -1 > 0 else {
+            throw InputError.valueMustPositiveNumber
         }
     }
     
     private func checkValidInputStringValue(input: String) throws {
-        do {
-            guard input.isEmpty == false else {
-                throw InputError.valueIsEmpty
-            }
-            
-        } catch InputError.valueIsEmpty {
-            resultView.printError(error: InputError.valueIsEmpty)
+        guard input.isEmpty == false else {
+            throw InputError.valueIsEmpty
         }
     }
     
