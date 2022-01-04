@@ -1,6 +1,6 @@
 //  main.swift
 //  CodeStarterCamp_Week4
-//  Created by quokka.
+//  Created by quokka
 //  Copyright © yagom academy. All rights reserved.
 
 import Foundation
@@ -76,7 +76,7 @@ enum Exercises {
     }
 }
 
-class Routine {
+struct Routine {
     let name: String
     let exercises: [Exercise]
     
