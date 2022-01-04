@@ -19,8 +19,15 @@ class BodyCondition {
         self.muscularendurance = muscularendurance
         self.fatigue = fatigue
     }
-    
+ 
     func nowCondition() {
-        print("---------------\n현제의 컨디션은 다음과 같습니다.\n상체근력: \(upperbodystrength)\n하체근력: \(lowerbodystrength)\n근지구력: \(muscularendurance)\n피로도: \(fatigue)")
+        print("""
+            --------------
+            현제의 컨디션은 다음과 같습니다
+            상체근력: \(upperbodystrength)
+            하체근력: \(lowerbodystrength)
+            근지구력: \(muscularendurance)
+            피로도: \(fatigue)
+            """)
     }
 }
