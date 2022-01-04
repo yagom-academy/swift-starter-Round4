@@ -22,13 +22,4 @@ final class BodyCondition {
         self.muscularEndurance = muscularEndurance
         self.fatigue = fatigue
     }
-    
-    func checkCurrentCondition() {
-        print("--------------")
-        print("현재의 컨디션은 다음과 같습니다.")
-        print(upperBodyStrength)
-        print(lowerBodyStrength)
-        print(muscularEndurance)
-        print(fatigue)
-    }
 }

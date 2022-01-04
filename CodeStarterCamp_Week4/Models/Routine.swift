@@ -18,13 +18,19 @@ final class Routine {
         self.exercises = exercises
     }
     
-    func start() {
+    func start(for set: Int) throws {
         print("--------------")
-        print("\(name)을 시작합니다.")
-        self.exercises.forEach { exercise in
+        print("\(name)을 \(set)set시작합니다.")
+        try self.exercises.forEach { exercise in
             print(exercise.name)
             exercise.action()
+            try checkFatigueFull()
         }
-        bodyCondition.checkCurrentCondition()
+    }
+    
+    private func checkFatigueFull() throws {
+        guard bodyCondition.fatigue < 100 else {
+            throw FitnessError.fatigueFull
+        }
     }
 }
