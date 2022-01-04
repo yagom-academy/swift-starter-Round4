@@ -146,12 +146,12 @@ struct FitnessCenter {
               let _ = Int(uppperBodyStrength) else {
                   throw Errors.wrongInput
               }
-        print("\n\(Guidance.lowerBodyStrength.description): ", terminator: "")
+        print("\(Guidance.lowerBodyStrength.description): ", terminator: "")
         guard let lowerBodyStrength = readLine()?.replacingOccurrences(of: " ", with: ""),
               let _ = Int(lowerBodyStrength) else {
                   throw Errors.wrongInput
               }
-        print("\n\(Guidance.muscularEndurance.description): ", terminator: "")
+        print("\(Guidance.muscularEndurance.description): ", terminator: "")
         guard let muscularEndurance = readLine()?.replacingOccurrences(of: " ", with: ""),
               let _ = Int(muscularEndurance) else {
                   throw Errors.wrongInput
