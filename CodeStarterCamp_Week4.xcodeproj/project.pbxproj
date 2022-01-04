@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		34811DE8274B93FB00A1E994 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34811DE7274B93FB00A1E994 /* main.swift */; };
+		AB07ED292784385B002CB75E /* FitnessCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB07ED282784385B002CB75E /* FitnessCenter.swift */; };
+		AB07ED2B2784389A002CB75E /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB07ED2A2784389A002CB75E /* Person.swift */; };
+		AB07ED2D278438B5002CB75E /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB07ED2C278438B5002CB75E /* Routine.swift */; };
+		AB07ED2F278438DF002CB75E /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB07ED2E278438DF002CB75E /* Exercise.swift */; };
+		AB07ED31278438FE002CB75E /* BodyCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB07ED30278438FE002CB75E /* BodyCondition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +30,11 @@
 /* Begin PBXFileReference section */
 		34811DE4274B93FB00A1E994 /* CodeStarterCamp_Week4 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CodeStarterCamp_Week4; sourceTree = BUILT_PRODUCTS_DIR; };
 		34811DE7274B93FB00A1E994 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		AB07ED282784385B002CB75E /* FitnessCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessCenter.swift; sourceTree = "<group>"; };
+		AB07ED2A2784389A002CB75E /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		AB07ED2C278438B5002CB75E /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
+		AB07ED2E278438DF002CB75E /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		AB07ED30278438FE002CB75E /* BodyCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyCondition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +68,11 @@
 			isa = PBXGroup;
 			children = (
 				34811DE7274B93FB00A1E994 /* main.swift */,
+				AB07ED282784385B002CB75E /* FitnessCenter.swift */,
+				AB07ED2A2784389A002CB75E /* Person.swift */,
+				AB07ED2C278438B5002CB75E /* Routine.swift */,
+				AB07ED2E278438DF002CB75E /* Exercise.swift */,
+				AB07ED30278438FE002CB75E /* BodyCondition.swift */,
 			);
 			path = CodeStarterCamp_Week4;
 			sourceTree = "<group>";
@@ -119,7 +134,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB07ED2F278438DF002CB75E /* Exercise.swift in Sources */,
+				AB07ED31278438FE002CB75E /* BodyCondition.swift in Sources */,
+				AB07ED2B2784389A002CB75E /* Person.swift in Sources */,
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
+				AB07ED2D278438B5002CB75E /* Routine.swift in Sources */,
+				AB07ED292784385B002CB75E /* FitnessCenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
