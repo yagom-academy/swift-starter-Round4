@@ -8,5 +8,8 @@
 
 import Foundation
 
-print("Hello, World!")
+let bodyCondition: BodyCondition = BodyCondition(upperbodystrength: 0, lowerbodystrength: 0, muscularendurance: 0, fatigue: 0)
+let routine: Routine = Routine(name: "hellRoutine")
 
+routine.start()
+bodyCondition.nowCondition()
