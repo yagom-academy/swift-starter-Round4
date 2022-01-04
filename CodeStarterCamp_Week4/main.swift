@@ -108,8 +108,24 @@ struct Person {
     let name: String
     let bodyCondition: BodyCondition
     
-    func exercise(for set: Int, routine: Routine) {
-        
+    func exercise(for set: Int, routine: Routine, at fitnessCenter: FitnessCenter) throws {
+        for _ in 1..<set {
+            guard self.bodyCondition.fatigue > 100 else {
+                throw FitnessCenter.Errors.fatigueIsOver
+            }
+            print("--------------")
+            print("\(routine.name)을 \(set)set시작합니다.")
+            routine.exercises.forEach { $0.action() }
+            
+            guard self.bodyCondition.uppperBodyStrength >= fitnessCenter.goalBodyCondition.uppperBodyStrength ||
+                self.bodyCondition.lowerBodyStrength >=
+                fitnessCenter.goalBodyCondition.lowerBodyStrength ||
+                self.bodyCondition.muscularEndurance >=
+                fitnessCenter.goalBodyCondition.muscularEndurance else {
+                    throw FitnessCenter.Errors.wasNotGoalIn
+            }
+        }
+        self.bodyCondition.checkCurrentBodyCondition()
     }
 }
 
@@ -118,44 +134,47 @@ struct FitnessCenter {
     let member: Person?
     let routines: [String: Routine]
     
-    func startFitnessProgram(member: Person?, routine: Routine) throws {
-        print("\(Guidance.helloWhatYourName.message)?")
+    func startFitnessProgram(member: Person?, routine: Routine, at fitnesscenter: FitnessCenter) throws {
+        print("\(Guidance.helloWhatYourName.description)?")
         guard let inputMemberName = readLine()?.replacingOccurrences(of: " ", with: ""),
               inputMemberName == self.member?.name else {
                   throw Errors.canNotFindMember
               }
         
-        print("\(Guidance.tellMeYourGoalBodyCondition.message).\n\(Guidance.upperBodyStrength.message): ", terminator: "")
-        guard let uppperBodyStrength = readLine(), let _ = Int(uppperBodyStrength) else {
-            throw Errors.wrongInput
-        }
-        print("\n\(Guidance.lowerBodyStrength.message): ", terminator: "")
-        guard let lowerBodyStrength = readLine(), let _ = Int(lowerBodyStrength) else {
-            throw Errors.wrongInput
-        }
-        print("\n\(Guidance.muscularEndurance.message): ", terminator: "")
-        guard let muscularEndurance = readLine(), let _ = Int(muscularEndurance) else {
-            throw Errors.wrongInput
-        }
+        print("\(Guidance.tellMeYourGoalBodyCondition.description).\n\(Guidance.upperBodyStrength.description): ", terminator: "")
+        guard let uppperBodyStrength = readLine()?.replacingOccurrences(of: " ", with: ""),
+              let _ = Int(uppperBodyStrength) else {
+                  throw Errors.wrongInput
+              }
+        print("\n\(Guidance.lowerBodyStrength.description): ", terminator: "")
+        guard let lowerBodyStrength = readLine()?.replacingOccurrences(of: " ", with: ""),
+              let _ = Int(lowerBodyStrength) else {
+                  throw Errors.wrongInput
+              }
+        print("\n\(Guidance.muscularEndurance.description): ", terminator: "")
+        guard let muscularEndurance = readLine()?.replacingOccurrences(of: " ", with: ""),
+              let _ = Int(muscularEndurance) else {
+                  throw Errors.wrongInput
+              }
         
-        print("\(Guidance.WhatRoutineWouldYouLikeToWorkOn.message)?")
+        print("\(Guidance.WhatRoutineWouldYouLikeToWorkOn.description)?")
         for key in self.routines.keys {
-            var keysOrderCounter = 1
-            print("\(keysOrderCounter). \(key)\n")
-            keysOrderCounter += 1
+            var keyListCounter = 1
+            print("\(keyListCounter). \(key)\n")
+            keyListCounter += 1
         }
-        guard let routineChoise = readLine(), let intRoutineChoise = Int(routineChoise),
+        guard let routineChoise = readLine()?.replacingOccurrences(of: " ", with: ""),
+              let intRoutineChoise = Int(routineChoise),
               intRoutineChoise <= self.routines.keys.count else {
                   throw Errors.wrongInput
               }
         
-        print("\(Guidance.howManyRepeatTheRoutine.message)?")
-        guard let stringRepeatCount = readLine(), let intRepeatCount = Int(stringRepeatCount) else {
-            throw Errors.wrongInput
-        }
-        member?.exercise(for: intRepeatCount, routine: routine)
-        // 루틴이 끝났을때 목표치에 미도달할 경우
-        // 진행 도중 회원의 피로도가 100을 넘은 경우
+        print("\(Guidance.howManyRepeatTheRoutine.description)?")
+        guard let stringRepeatCount = readLine()?.replacingOccurrences(of: " ", with: ""),
+              let intRepeatCount = Int(stringRepeatCount) else {
+                  throw Errors.wrongInput
+              }
+        try member?.exercise(for: intRepeatCount, routine: routine, at: fitnesscenter)
     }
     
     enum Guidance {
@@ -167,7 +186,7 @@ struct FitnessCenter {
         case muscularEndurance
         case howManyRepeatTheRoutine
         
-        var message: String {
+        var description: String {
             switch self {
             case .helloWhatYourName:
                 return "안녕하세요 야곰 피트니스 센터입니다. 회원님의 이름은 무엇인가요?"
@@ -193,24 +212,20 @@ struct FitnessCenter {
         case wrongInput
         case canNotFindMember
         case unexpected
-        case onlyInputTheIntType
-    }
-}
-extension FitnessCenter.Errors: LocalizedError {
-    var errorDescription: String? {
-        switch self {
-        case .fatigueIsOver:
-            return "피로도 초과했습니다."
-        case .wasNotGoalIn:
-            return "목표치 미도달 하였습니다."
-        case .wrongInput:
-            return "잘못된 입력입니다."
-        case .canNotFindMember:
-            return "회원을 찾을 수 없습니다."
-        case .unexpected:
-            return "알수없는 오류발생"
-        case .onlyInputTheIntType:
-            return "숫자만입력가능합니다."
+        
+        var description: String {
+            switch self {
+            case .fatigueIsOver:
+                return "피로도 초과했습니다."
+            case .wasNotGoalIn:
+                return "목표치 미도달 하였습니다."
+            case .wrongInput:
+                return "잘못된 입력입니다. 다시입력해주세요.(숫자만입력가능)"
+            case .canNotFindMember:
+                return "회원을 찾을 수 없습니다."
+            case .unexpected:
+                return "알수없는 오류발생"
+            }
         }
     }
 }
@@ -255,15 +270,13 @@ let lowerBodyStrength = Routine(name: Routines.lowerBodyExercise.name,
 var yagomFitnessCenter = FitnessCenter(goalBodyCondition: kaui.bodyCondition, member: kaui, routines: [Routines.uppperBodyExercise.name: upperBodyExercise])
 
 do {
-    try yagomFitnessCenter.startFitnessProgram(member: yagomFitnessCenter.member, routine: upperBodyExercise)
-} catch(let error) {
-    print(error)
+    try yagomFitnessCenter.startFitnessProgram(member: yagomFitnessCenter.member, routine: upperBodyExercise, at: yagomFitnessCenter)
+} catch FitnessCenter.Errors.canNotFindMember {
+    print(FitnessCenter.Errors.canNotFindMember.description)
+} catch FitnessCenter.Errors.wrongInput {
+    print(FitnessCenter.Errors.wrongInput.description)
+} catch FitnessCenter.Errors.fatigueIsOver {
+    print(FitnessCenter.Errors.fatigueIsOver.description)
+} catch FitnessCenter.Errors.wasNotGoalIn {
+    print(FitnessCenter.Errors.wasNotGoalIn.description)
 }
-
-func workOut(_ routine: Routine, person: BodyCondition) {
-    print("--------------")
-    print("\(routine.name) 루틴을 시작합니다.")
-    routine.exercises.forEach { $0.action() }
-    person.checkCurrentBodyCondition()
-}
-//workOut(upperBodyExercise, person: quokka)
