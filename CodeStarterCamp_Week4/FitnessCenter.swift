@@ -65,19 +65,26 @@ final class FitnessCenter {
             try compareGolasAndCurrentCondition()
             
             self.resultView.printSuccessMessage(member: self.member)
-        } catch {
-            switch error {
-            case FitnessError.noMember:
+        } catch let error where error is FitnessError {
+            guard error as! FitnessError != FitnessError.noMember else {
                 self.resultView.printError(fitnessError: .noMember, member: nil)
-            case FitnessError.noGoals:
+                return
+            }
+            
+            guard error as! FitnessError != FitnessError.noGoals else {
                 self.resultView.printError(fitnessError: .noGoals, member: nil)
-            case FitnessError.fatigueFull:
+                return
+            }
+            
+            guard error as! FitnessError != FitnessError.fatigueFull else {
                 self.resultView.printError(fitnessError: .fatigueFull, member: self.member)
-            case FitnessError.failToReachGoals:
+                return
+            }
+            
+            guard error as! FitnessError != FitnessError.failToReachGoals else {
                 self.resultView.printError(fitnessError: .failToReachGoals, member: self.member)
                 try self.startRoutine()
-            default:
-                self.resultView.printError(fitnessError: .noMember, member: nil)
+                return
             }
         }
     }
