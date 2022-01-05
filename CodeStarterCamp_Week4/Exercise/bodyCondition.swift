@@ -7,11 +7,18 @@
 
 import Foundation
 
-struct BodyCondition {
+class BodyCondition {
     var upperMuscles: Int
     var lowerMuscles: Int
     var endurance: Int
     var fatigue: Int
+    
+    init(upperMuscles: Int = 0, lowerMuscles: Int = 0, endurance: Int = 0, fatigue: Int = 0) {
+        self.upperMuscles = upperMuscles
+        self.lowerMuscles = lowerMuscles
+        self.endurance = endurance
+        self.fatigue = fatigue
+    }
     
     func printBodyCondition() {
         print("현재의 컨디션은 다음과 같습니다.")
