@@ -13,7 +13,6 @@
 		86AC583E277C4DF60038034C /* excercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AC583D277C4DF60038034C /* excercise.swift */; };
 		86AC584427866E910038034C /* FitnessCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AC584327866E910038034C /* FitnessCenter.swift */; };
 		86AC5846278670790038034C /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AC5845278670790038034C /* Person.swift */; };
-		86AC5848278826270038034C /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AC5847278826270038034C /* Input.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,7 +35,6 @@
 		86AC583D277C4DF60038034C /* excercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = excercise.swift; sourceTree = "<group>"; };
 		86AC584327866E910038034C /* FitnessCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessCenter.swift; sourceTree = "<group>"; };
 		86AC5845278670790038034C /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
-		86AC5847278826270038034C /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +73,6 @@
 				86AC583D277C4DF60038034C /* excercise.swift */,
 				86AC584327866E910038034C /* FitnessCenter.swift */,
 				86AC5845278670790038034C /* Person.swift */,
-				86AC5847278826270038034C /* Input.swift */,
 			);
 			path = CodeStarterCamp_Week4;
 			sourceTree = "<group>";
@@ -137,7 +134,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86AC5848278826270038034C /* Input.swift in Sources */,
 				86AC5846278670790038034C /* Person.swift in Sources */,
 				86AC583C277C4CFA0038034C /* routine.swift in Sources */,
 				86AC584427866E910038034C /* FitnessCenter.swift in Sources */,

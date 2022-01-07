@@ -38,5 +38,3 @@ let 동적휴식: Exercise = Exercise(name: "동적휴식",
                               action: {
     bodyCondition.fatigue -= Int.random(in: 5...10)
 })
-
-

@@ -8,9 +8,10 @@ import Foundation
 
 class Person {
     var name: String
-    
+    var exerciseSuccess: Bool
     init(name: String) {
         self.name = name
+        self.exerciseSuccess = true
     }
     enum PersonError : Error {
         case inputError
@@ -41,6 +42,9 @@ class Person {
                   근지구력:\( bodyCondition.muscularendurance)
                   """)
             } catch { }
+       exerciseSuccess = bodyCondition.upperbodystrength < goalsBodyCondition.upperbodystrength
+            || bodyCondition.lowerbodystrength < goalsBodyCondition.lowerbodystrength
+            || bodyCondition.muscularendurance < goalsBodyCondition.muscularendurance
         }
         else if choiseRoutinInt == 2 {
             print("하체루틴 실행")
@@ -52,15 +56,19 @@ class Person {
                 
             }catch PersonError.notEnoughStrength {
                 print("""
-                  목표치에 도달하지 못했습니다. 현제 \(person.name)님의 컨디션은
+                  목표치에 도달하지 못했습니다. 현제 \(person.name)님의 컨디션은 다음입니다
                   상체근력:\(bodyCondition.upperbodystrength)
                   하체근력:\(bodyCondition.lowerbodystrength)
                   근지구력:\( bodyCondition.muscularendurance)
                   """)
             } catch { }
-
-        }
+           
+       exerciseSuccess =  bodyCondition.upperbodystrength < goalsBodyCondition.upperbodystrength
+            || bodyCondition.lowerbodystrength < goalsBodyCondition.lowerbodystrength
+            || bodyCondition.muscularendurance < goalsBodyCondition.muscularendurance
+             }
     }
+    
     
     func routineUpperBodyExcercises(routine: Routine, bodyCondition: BodyCondition) throws {
         print("몇세트를 하시겠습니까")
@@ -79,6 +87,7 @@ class Person {
                 try routine.startUpperBodyExcercises()
             } catch Routine.ExcercisesError.fatigueOver {
                 print("\(person.name)님의 피로도가 \(bodyCondition.fatigue)입니다. 회원님이 도망갔습니다.")
+                break
             } catch{}
         }
         
@@ -90,6 +99,7 @@ class Person {
         print("성공입니다! 현재 \(person.name)님의 컨디션은 다음과 같습니다.")
         bodyCondition.nowCondition ()
     }
+    
     
     func routineLowerBodyExcercises(routine: Routine, bodyCondition: BodyCondition) throws{
         print("몇세트를 하시겠습니까")
@@ -107,6 +117,8 @@ class Person {
                 try routine.startLowerBodyExcercises()
             } catch Routine.ExcercisesError.fatigueOver {
                 print("\(person.name)님의 피로도가 \(bodyCondition.fatigue)입니다. 회원님이 도망갔습니다.")
+                break
+                
             } catch{}
         }
         guard bodyCondition.upperbodystrength > goalsBodyCondition.upperbodystrength || bodyCondition.lowerbodystrength > goalsBodyCondition.lowerbodystrength || bodyCondition.muscularendurance > goalsBodyCondition.muscularendurance else {
@@ -121,18 +133,27 @@ class Person {
         repeat{
             do{
                 try   person.choiseRoutine()
-                
+              
             }catch PersonError.inputError{
                 print("잘못입력하셨습니다.")
             }catch{}
             
-        }while bodyCondition.upperbodystrength < goalsBodyCondition.upperbodystrength || bodyCondition.lowerbodystrength < goalsBodyCondition.lowerbodystrength || bodyCondition.muscularendurance < goalsBodyCondition.muscularendurance
+            
+            
+        }while exerciseSuccess && bodyCondition.fatigue < goalsBodyCondition.fatigue
+     
         
-        print("""
-          목표치에 도달하여 운동을 끝냅니다.현제 \(person.name)님의 컨디션은
-          상체근력:\(bodyCondition.upperbodystrength)
-          하체근력:\(bodyCondition.lowerbodystrength)
-          근지구력:\( bodyCondition.muscularendurance)
-          """)
+        if bodyCondition.fatigue > goalsBodyCondition.fatigue {
+            print("byebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebye")
+        }
+        else {
+            print("""
+              목표치에 도달하여 운동을 끝냅니다.현제 \(person.name)님의 컨디션은 다음입니다.
+              상체근력:\(bodyCondition.upperbodystrength)
+              하체근력:\(bodyCondition.lowerbodystrength)
+              근지구력:\( bodyCondition.muscularendurance)
+              """)
+            
+        }
     }
 }

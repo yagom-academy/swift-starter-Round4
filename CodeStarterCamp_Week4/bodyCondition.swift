@@ -1,12 +1,3 @@
-//
-//  bodyCondition.swift
-//  CodeStarterCamp_Week4
-//
-//  Created by song on 2021/12/29.
-//
-
-
-
 //  bodyCondition.swift
 //  CodeStarterCamp_Week4
 //
@@ -27,7 +18,7 @@ class BodyCondition {
         self.muscularendurance = muscularendurance
         self.fatigue = fatigue
     }
- 
+    
     
     func nowCondition() {
         print("""
@@ -38,5 +29,3 @@ class BodyCondition {
             """)
     }
 }
-
-
