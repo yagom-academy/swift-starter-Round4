@@ -8,5 +8,8 @@
 
 import Foundation
 
-print("Hello, World!")
+var myBodyCondition = BodyCondition()
+let myRoutine = Routine(name: "hellRoutine", exercises: [squat, squat, situp, rest, running, rest, pilates])
 
+myRoutine.initiate()
+myBodyCondition.printBodyCondition()
