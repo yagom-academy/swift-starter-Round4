@@ -1,8 +1,5 @@
 var vennie = BodyCondition()
 
-func randomIntBetween(_ a: Int, _ b: Int) -> Int {
-    return Int.random(in: a...b)
-}
 
 let 윗몸일으키기 = Exercise(name: "윗몸일으키기", action: {
     vennie.upperBodyStrength += randomIntBetween(10, 20)
