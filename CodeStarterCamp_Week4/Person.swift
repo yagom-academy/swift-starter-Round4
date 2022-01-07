@@ -19,15 +19,13 @@ class Person {
     }
     
     
-    func choiseRoutine()  throws {
+    func choiseRoutine() throws {
         print("어떤 루틴으로 운동하시겠어요? 1번상체 2번하체")
         guard let choiseRoutin = readLine() else { return }
         guard let choiseRoutinInt = Int(choiseRoutin) else { return print("잘못입력하셨습니다.") }
         guard choiseRoutinInt == 1 || choiseRoutinInt == 2 else {
             throw PersonError.inputError
-            
         }
-        
         if choiseRoutinInt == 1 {
             print("상체루틴 실행")
             do{
@@ -50,10 +48,8 @@ class Person {
             print("하체루틴 실행")
             do{
                 try  routineLowerBodyExcercises(routine: lowerBodyExcercises, bodyCondition: bodyCondition)
-                
             }catch PersonError.inputError{
                 print("잘못입력하셨습니다.")
-                
             }catch PersonError.notEnoughStrength {
                 print("""
                   목표치에 도달하지 못했습니다. 현제 \(person.name)님의 컨디션은 다음입니다
@@ -62,7 +58,6 @@ class Person {
                   근지구력:\( bodyCondition.muscularendurance)
                   """)
             } catch { }
-           
        exerciseSuccess =  bodyCondition.upperbodystrength < goalsBodyCondition.upperbodystrength
             || bodyCondition.lowerbodystrength < goalsBodyCondition.lowerbodystrength
             || bodyCondition.muscularendurance < goalsBodyCondition.muscularendurance
@@ -81,7 +76,6 @@ class Person {
         var routineCount = 0
         while routineCount < set {
             routineCount += 1
-            
             print("upperBodyExcercises을 \(routineCount)set시작합니다.")
             do{
                 try routine.startUpperBodyExcercises()
@@ -94,8 +88,6 @@ class Person {
         guard bodyCondition.upperbodystrength > goalsBodyCondition.upperbodystrength || bodyCondition.lowerbodystrength > goalsBodyCondition.lowerbodystrength || bodyCondition.muscularendurance > goalsBodyCondition.muscularendurance else {
             throw PersonError.notEnoughStrength
         }
-        
-        
         print("성공입니다! 현재 \(person.name)님의 컨디션은 다음과 같습니다.")
         bodyCondition.nowCondition ()
     }
@@ -126,7 +118,6 @@ class Person {
         }
         print("성공입니다! 현재 \(person.name)님의 컨디션은 다음과 같습니다.")
         bodyCondition.nowCondition ()
-        
     }
     
     func excerciseLoop() {
@@ -137,9 +128,6 @@ class Person {
             }catch PersonError.inputError{
                 print("잘못입력하셨습니다.")
             }catch{}
-            
-            
-            
         }while exerciseSuccess && bodyCondition.fatigue < goalsBodyCondition.fatigue
      
         

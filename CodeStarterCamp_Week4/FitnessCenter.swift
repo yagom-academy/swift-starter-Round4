@@ -10,7 +10,7 @@ class FitnessCenter {
     let goalsBodyCondition: BodyCondition
     let member: Person?
     let routineList =  [upperBodyExcercises, lowerBodyExcercises]
-    
+
     init(goalsBodyCondition: BodyCondition, member: Person) {
         self.goalsBodyCondition = goalsBodyCondition
         self.member = member

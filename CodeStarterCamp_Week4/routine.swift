@@ -14,13 +14,11 @@ class Routine {
         self.name = name
     }
     enum ExcercisesError : Error {
-        
         case fatigueOver
     }
     
     
     func startLowerBodyExcercises() throws {
-        
         for exercise in lowerBodyExcercises {
             guard bodyCondition.fatigue < goalsBodyCondition.fatigue else {
                 throw ExcercisesError.fatigueOver
@@ -33,7 +31,6 @@ class Routine {
     
     
     func startUpperBodyExcercises() throws {
-        
         for exercise in upperBodyExcercises {
             guard bodyCondition.fatigue < goalsBodyCondition.fatigue else {
                 throw ExcercisesError.fatigueOver
