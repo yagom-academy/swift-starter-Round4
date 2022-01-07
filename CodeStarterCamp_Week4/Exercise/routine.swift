@@ -9,7 +9,12 @@ import Foundation
 
 struct Routine {
     let name: String
-    var exercises: [Exercise]
+    let exercises: [Exercise]
+    
+    func initiate() {
+        introduce()
+        execute()
+    }
     
     func introduce() {
         print("------------")
@@ -20,7 +25,7 @@ struct Routine {
         print("------------")
     }
     
-    func run() {
+    func execute() {
         exercises.forEach { exercise in
             exercise.action()
         }

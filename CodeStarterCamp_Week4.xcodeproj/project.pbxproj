@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		34811DE8274B93FB00A1E994 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34811DE7274B93FB00A1E994 /* main.swift */; };
 		4E23514D2785AED80028EC5A /* routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E23514C2785AED80028EC5A /* routine.swift */; };
-		4E235150278602770028EC5A /* randomNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E23514F278602770028EC5A /* randomNumber.swift */; };
 		4E235152278602AB0028EC5A /* bodyCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E235151278602AB0028EC5A /* bodyCondition.swift */; };
 		4E235155278603300028EC5A /* exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E235154278603300028EC5A /* exercise.swift */; };
 /* End PBXBuildFile section */
@@ -30,7 +29,6 @@
 		34811DE4274B93FB00A1E994 /* CodeStarterCamp_Week4 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CodeStarterCamp_Week4; sourceTree = BUILT_PRODUCTS_DIR; };
 		34811DE7274B93FB00A1E994 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		4E23514C2785AED80028EC5A /* routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = routine.swift; sourceTree = "<group>"; };
-		4E23514F278602770028EC5A /* randomNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = randomNumber.swift; sourceTree = "<group>"; };
 		4E235151278602AB0028EC5A /* bodyCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bodyCondition.swift; sourceTree = "<group>"; };
 		4E235154278603300028EC5A /* exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exercise.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,7 +63,6 @@
 		34811DE6274B93FB00A1E994 /* CodeStarterCamp_Week4 */ = {
 			isa = PBXGroup;
 			children = (
-				4E23514E2785AF2D0028EC5A /* Utils */,
 				4E23514B2785AE870028EC5A /* Exercise */,
 				34811DE7274B93FB00A1E994 /* main.swift */,
 			);
@@ -80,14 +77,6 @@
 				4E235154278603300028EC5A /* exercise.swift */,
 			);
 			path = Exercise;
-			sourceTree = "<group>";
-		};
-		4E23514E2785AF2D0028EC5A /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				4E23514F278602770028EC5A /* randomNumber.swift */,
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,7 +139,6 @@
 				4E235155278603300028EC5A /* exercise.swift in Sources */,
 				4E23514D2785AED80028EC5A /* routine.swift in Sources */,
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
-				4E235150278602770028EC5A /* randomNumber.swift in Sources */,
 				4E235152278602AB0028EC5A /* bodyCondition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

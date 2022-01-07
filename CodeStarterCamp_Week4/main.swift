@@ -11,7 +11,5 @@ import Foundation
 var myBodyCondition = BodyCondition()
 let myRoutine = Routine(name: "hellRoutine", exercises: [squat, squat, situp, rest, running, rest, pilates])
 
-var todayCondition = myBodyCondition
-myRoutine.introduce()
-myRoutine.run()
-todayCondition.printBodyCondition()
+myRoutine.initiate()
+myBodyCondition.printBodyCondition()
