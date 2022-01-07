@@ -54,3 +54,27 @@ let 동적휴식 = Exercise(name: "동적휴식", action: {
         vennie.fatigue = 0
     }
 })
+
+class Routine {
+    let name: String
+    let person: BodyCondition
+    let routines: [Exercise]
+    
+    init(name: String, person: BodyCondition, routines: [Exercise]) {
+        self.name = name
+        self.person = person
+        self.routines = routines
+    }
+    
+    func start() {
+        print("--------------------------")
+        print("\(name)을 시작합니다.")
+        for exercise in routines {
+            print(exercise.name)
+            exercise.action()
+        }
+        print("--------------------------")
+        person.printCondition()
+    }
+}
+
