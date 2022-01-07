@@ -77,4 +77,3 @@ class Routine {
         person.printCondition()
     }
 }
-
