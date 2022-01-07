@@ -120,6 +120,7 @@ class Person {
         bodyCondition.nowCondition ()
     }
     
+    
     func excerciseLoop() {
         repeat{
             do{
@@ -130,7 +131,6 @@ class Person {
             }catch{}
         }while exerciseSuccess && bodyCondition.fatigue < goalsBodyCondition.fatigue
      
-        
         if bodyCondition.fatigue > goalsBodyCondition.fatigue {
             print("byebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebye")
         }
