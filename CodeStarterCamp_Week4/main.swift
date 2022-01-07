@@ -25,4 +25,5 @@ let activeRest = Exercise(name: "동적휴식") {
 }
 
 let routine = Routine(name: "vennie's Routine", person: vennie, routines: [squat,sitUp, squat, running, activeRest, squat, sitUp, running, activeRest])
+
 routine.start()

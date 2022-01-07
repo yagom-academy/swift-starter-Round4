@@ -13,7 +13,7 @@ class BodyCondition {
     
     func checkCondition() {
         print("현재 컨디션은 다음과 같습니다.")
-        print("상체근력: \(upperBodyStrength)", "하체근력: \(lowerBodyStrength)", "근지구력: \(muscularEndurance)", "피로도 : \(fatigue)", separator: "\n")
+        print("상체근력: \(upperBodyStrength)\n하체근력: \(lowerBodyStrength)\n근지구력: \(muscularEndurance)\n피로도 : \(fatigue)")
     }
     
     func randomIntBetween(_ a: Int, _ b: Int) -> Int {
@@ -26,7 +26,7 @@ struct Exercise {
     let action: (BodyCondition) -> Void
 }
 
-class Routine {
+struct Routine {
     let name: String
     let person: BodyCondition
     let routines: [Exercise]
