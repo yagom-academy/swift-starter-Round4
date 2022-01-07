@@ -4,7 +4,6 @@
 //
 //  Created by song on 2021/12/29.
 //
-
 import Foundation
 
 struct Exercise {
@@ -39,3 +38,5 @@ let 동적휴식: Exercise = Exercise(name: "동적휴식",
                               action: {
     bodyCondition.fatigue -= Int.random(in: 5...10)
 })
+
+

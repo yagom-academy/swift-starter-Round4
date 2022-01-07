@@ -9,7 +9,21 @@
 import Foundation
 
 let bodyCondition: BodyCondition = BodyCondition(upperbodystrength: 0, lowerbodystrength: 0, muscularendurance: 0, fatigue: 0)
-let routine: Routine = Routine(name: "hellRoutine")
+let goalsBodyCondition: BodyCondition = BodyCondition(upperbodystrength: 0, lowerbodystrength: 0, muscularendurance: 0, fatigue: 0)
+let upperBodyExcercises: Routine = Routine(name: "upperBodyExcercises")
+let lowerBodyExcercises: Routine = Routine(name: "lowerBodyExcercises")
+let person: Person = Person(name: "")
 
-routine.start()
-bodyCondition.nowCondition()
+let yagomFitnessCenter : FitnessCenter = FitnessCenter(goalsBodyCondition: goalsBodyCondition, member: person)
+
+yagomFitnessCenter.noMemberCheck()
+
+yagomFitnessCenter.handlilgUpperbodystrength()
+yagomFitnessCenter.saveExceptLowerbodystrength()
+
+yagomFitnessCenter.saveExceptMuscularendurance()
+yagomFitnessCenter.saveExceptFatigue()
+
+
+yagomFitnessCenter.finalGoalsBodyCondition()
+person.excerciseLoop()

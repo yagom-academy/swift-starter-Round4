@@ -5,6 +5,14 @@
 //  Created by song on 2021/12/29.
 //
 
+
+
+//  bodyCondition.swift
+//  CodeStarterCamp_Week4
+//
+//  Created by song on 2021/12/29.
+//
+
 import Foundation
 
 class BodyCondition {
@@ -20,14 +28,15 @@ class BodyCondition {
         self.fatigue = fatigue
     }
  
+    
     func nowCondition() {
         print("""
-            --------------
-            현제의 컨디션은 다음과 같습니다
-            상체근력: \(upperbodystrength)
-            하체근력: \(lowerbodystrength)
-            근지구력: \(muscularendurance)
-            피로도: \(fatigue)
+            상체근력: \(bodyCondition.upperbodystrength)
+            하체근력: \(bodyCondition.lowerbodystrength)
+            근지구력: \(bodyCondition.muscularendurance)
+            피로도: \(bodyCondition.fatigue)
             """)
     }
 }
+
+
