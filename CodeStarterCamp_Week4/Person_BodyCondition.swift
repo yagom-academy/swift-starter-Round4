@@ -35,25 +35,24 @@ class Person {
                 routine.exerciseArray[element-1].action(personalBodyCondition)
             }
         }
-        if personalBodyCondition.fatigue < 140 &&
-            personalBodyCondition.upperBodyStrength >= inputGoalOfBodyCondition.upperBodyStrength &&
+        guard personalBodyCondition.fatigue < 140 else {
+            print("--------------")
+            print("\(name)님의 피로도가 \(personalBodyCondition.fatigue)입니다. 회원님이 도망갔습니다.")
+            return
+        }
+        
+        if personalBodyCondition.upperBodyStrength >= inputGoalOfBodyCondition.upperBodyStrength &&
             personalBodyCondition.lowerBodyStrength >= inputGoalOfBodyCondition.lowerBodyStrength &&
             personalBodyCondition.muscleEndurance >= inputGoalOfBodyCondition.muscleEndurance {
             print("--------------")
             print("성공입니다! 현재 \(name)님의 컨디션은 다음과 같습니다.")
             printRecentBodyCondition()
-        } else if personalBodyCondition.fatigue < 140 &&
-                    personalBodyCondition.upperBodyStrength < inputGoalOfBodyCondition.upperBodyStrength &&
-                    personalBodyCondition.lowerBodyStrength < inputGoalOfBodyCondition.lowerBodyStrength &&
-                    personalBodyCondition.muscleEndurance < inputGoalOfBodyCondition.muscleEndurance {
+        } else {
             print("--------------")
             print("목표치에 도달하지 못했습니다. 현재 \(name)님의 컨디션은 다음과 같습니다.")
             printRecentBodyCondition()
             let restartRoutine = myFitnesscenter.checkSelectRoutine()
             exercise(for: 1, routine: restartRoutine)
-        } else {
-            print("--------------")
-            print("\(name)님의 피로도가 \(personalBodyCondition.fatigue)입니다. 회원님이 도망갔습니다.")
         }
     }
 }
