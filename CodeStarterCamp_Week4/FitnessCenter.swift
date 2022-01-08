@@ -34,9 +34,12 @@ class FitnessCenter {
         checkInputGoal()
         selectRoutineFromReadline = checkSelectRoutine()
         inputSetFromReadline = checkInputSet()
+        if let member = members.map({ $0?.name }).firstIndex(of: inputNameFromReadline) {
+            members[member]?.exercise(for: inputSetFromReadline, routine: selectRoutineFromReadline)
+        }
     }
     
-    func inputName() throws -> String {
+    func saveInputName() throws -> String {
         guard let inputMemberName = readLine() else { throw ProgramErrror.valueIsNil }
         
         guard inputMemberName.isEmpty == false else {
@@ -50,8 +53,9 @@ class FitnessCenter {
     
     func checkInputName() {
         do {
-            let resultInputName = try inputName()
+            let resultInputName = try saveInputName()
             print("\(resultInputName)님, 반갑습니다.")
+            inputNameFromReadline = resultInputName
         } catch ProgramErrror.valueIsEmpty {
             print("이름을 입력하지 않았습니다. 다시 입력하세요.")
             return checkInputName()
@@ -61,7 +65,7 @@ class FitnessCenter {
         } catch { }
     }
     
-    func inputGoal() throws {
+    func saveInputGoal() throws {
         print("운동 목표치를 순서대로 알려주세요. 예시) 상체근력:130,하체근력:120,근지구력:150")
         
         print("상체근력:", terminator: "")
@@ -96,7 +100,7 @@ class FitnessCenter {
     
     func checkInputGoal() {
         do {
-            try inputGoal()
+            try saveInputGoal()
         } catch ProgramErrror.valueIsEmpty {
             print("목표치를 입력하지 않았습니다. 다시 입력하세요.")
             return checkInputGoal()
@@ -109,7 +113,8 @@ class FitnessCenter {
         } catch { return checkInputGoal() }
     }
     
-    func selectRoutine() throws -> Int {
+    func saveSelectedRoutine() throws -> Int {
+        print("몇 번째 루틴으로 운동하시겠어요?")
         for count in 1...routineList.count {
             print("\(count). \(routineList[count-1].name)")
         }
@@ -128,7 +133,7 @@ class FitnessCenter {
     
     func checkSelectRoutine() -> Routine {
         do {
-            let selectNumber = try selectRoutine()
+            let selectNumber = try saveSelectedRoutine()
             return routineList[selectNumber]
         } catch ProgramErrror.valueIsNil {
             print("숫자를 입력하세요")
@@ -145,7 +150,7 @@ class FitnessCenter {
         } catch { return checkSelectRoutine() }
     }
     
-    func inputSet() throws -> Int {
+    func saveInputSet() throws -> Int {
         print("몇 세트 반복하시겠어요?:", terminator: "")
         guard let inputSetNumber = readLine() else {
             throw ProgramErrror.valueIsNil
@@ -164,7 +169,7 @@ class FitnessCenter {
     
     func checkInputSet() -> Int {
         do {
-            let setNumber = try inputSet()
+            let setNumber = try saveInputSet()
             return setNumber
         } catch ProgramErrror.valueIsNotInt {
             print("숫자를 입력하세요.")
