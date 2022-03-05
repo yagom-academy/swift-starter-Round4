@@ -8,5 +8,9 @@
 
 import Foundation
 
-print("Hello, World!")
-
+struct BodyCondition {
+    var 상체근력: Int
+    var 하체근력: Int
+    var 근지구력: Int
+    var 피로도: Int
+}
