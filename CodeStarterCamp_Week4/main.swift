@@ -48,7 +48,7 @@ let 동적휴식: Exercise = Exercise(name: "동적휴식", action: {person in
     person.피로도 -= Int.random(in: 5...10)
 })
 
-class Routine {
+struct Routine {
     let name: String
     let exercises: [Exercise]
     
@@ -57,7 +57,7 @@ class Routine {
         self.exercises = exercises
     }
     
-    func start(_ person: BodyCondition) {         //클래스를 쓸것인가 , 스트럭트와 뮤테이팅 함수를 쓸것인가?
+    mutating func start(_ person: BodyCondition) {
         print("""
               --------------
               \(name)을 시작합니다.
@@ -90,7 +90,7 @@ func printPresentCondition(_ person: BodyCondition) {
 
 let misterLee: BodyCondition = BodyCondition(상체근력: 0, 하체근력: 0, 근지구력: 0, 피로도: 0)
 let missKim: BodyCondition = BodyCondition(상체근력: 0, 하체근력: 0, 근지구력: 0, 피로도: 0)
-let hellRoutine: Routine = Routine(name: "hellRoutine", exercises: [윗몸일으키기, 윗몸일으키기, 동적휴식, 스쿼트, 스쿼트, 동적휴식, 오래달리기, 오래달리기])
+var hellRoutine: Routine = Routine(name: "hellRoutine", exercises: [윗몸일으키기, 윗몸일으키기, 동적휴식, 스쿼트, 스쿼트, 동적휴식, 오래달리기, 오래달리기])
 
 hellRoutine.start(misterLee)
 hellRoutine.start(missKim)
