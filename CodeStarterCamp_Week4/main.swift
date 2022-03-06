@@ -8,5 +8,7 @@
 
 import Foundation
 
-print("Hello, World!")
-
+let randomNum: (Int, Int) -> Int
+randomNum = { (from: Int, to: Int) -> Int in
+    return Int.random(in: from...to)
+}
