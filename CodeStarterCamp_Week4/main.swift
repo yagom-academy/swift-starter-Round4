@@ -35,3 +35,8 @@ class Bodycondition {
         print("피로도: \(self.fatigue)")
     }
 }
+
+struct Exercise {
+    let name: String
+    let action: () -> Void
+}
