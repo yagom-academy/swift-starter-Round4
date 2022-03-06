@@ -40,3 +40,5 @@ struct Exercise {
     let name: String
     let action: () -> Void
 }
+
+var myBody = Bodycondition(upperBS: 50, lowerBS: 50, muscular: 50, fatigue: 0)
