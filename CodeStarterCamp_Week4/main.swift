@@ -63,3 +63,17 @@ let 오래달리기: Exercise = Exercise(name: "오래달리기", action: {
 let 동적휴식: Exercise = Exercise(name: "동적휴식", action: {
     myBody.fatigue -= randomNum(5,10)
 })
+
+struct Routine {
+    let routineName: String
+    let exercises: Array<Exercise>
+    
+    func routineStart() {
+        print("--------------")
+        print("\(routineName)을 시작합니다.")
+        for element in exercises {
+            print(element.name)
+            element.action()
+        }
+    }
+}
