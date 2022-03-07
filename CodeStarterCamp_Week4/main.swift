@@ -52,11 +52,6 @@ struct Routine {
     let name: String
     let exercises: [Exercise]
     
-    init(name: String, exercises: [Exercise]) {
-        self.name = name
-        self.exercises = exercises
-    }
-    
     mutating func start(_ person: BodyCondition) {
         print("""
               --------------
