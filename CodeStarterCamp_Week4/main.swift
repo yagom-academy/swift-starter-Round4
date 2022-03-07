@@ -53,3 +53,22 @@ let 오래달리기: Exercise = Exercise(name: "오래달리기", action: {
 let 동적휴식: Exercise = Exercise(name: "동적휴식", action: {
     bodyCondition.fatigAbility -= Int.random(in: 5...10)
 })
+
+struct Routine {
+    let routineName: String
+    let exercises = [윗몸일으키기,윗몸일으키기,동적휴식,스쿼트,스쿼트,동적휴식,오래달리기,오래달리기]
+    
+    func startRoutine() {
+        print("--------------")
+        print("\(self.routineName)을 시작합니다.")
+        for exercise in exercises {
+            print(exercise.name)
+            exercise.action()
+        }
+    }
+}
+
+let routine: Routine = Routine(routineName: "hellRoutine")
+
+routine.startRoutine()
+bodyCondition.presentCondition()
