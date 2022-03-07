@@ -27,24 +27,24 @@ struct Exercise {
     let action: (BodyCondition) -> Void
 }
 
-let 윗몸일으키기: Exercise = Exercise(name: "윗몸일으키기", action: {person in
+let 윗몸일으키기: Exercise = Exercise(name: "윗몸일으키기", action: { person in
     person.상체근력 += Int.random(in: 10...20)
     person.피로도 += Int.random(in: 10...20)
 })
 
-let 스쿼트: Exercise = Exercise(name: "스쿼트", action: {person in
+let 스쿼트: Exercise = Exercise(name: "스쿼트", action: { person in
     person.하체근력 += Int.random(in: 20...30)
     person.피로도 += Int.random(in: 10...20)
 })
 
-let 오래달리기: Exercise = Exercise(name: "오래달리기", action: {person in
+let 오래달리기: Exercise = Exercise(name: "오래달리기", action: { person in
     person.근지구력 += Int.random(in: 20...30)
     person.상체근력 += Int.random(in: 5...10)
     person.하체근력 += Int.random(in: 5...10)
     person.피로도 += Int.random(in: 20...30)
 })
 
-let 동적휴식: Exercise = Exercise(name: "동적휴식", action: {person in
+let 동적휴식: Exercise = Exercise(name: "동적휴식", action: { person in
     person.피로도 -= Int.random(in: 5...10)
 })
 
