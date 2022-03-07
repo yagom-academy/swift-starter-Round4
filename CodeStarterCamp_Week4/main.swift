@@ -25,3 +25,10 @@ struct BodyCondition {
             """)
     }
 }
+
+struct Exercise {
+    let name: String
+    let action: () -> Void
+}
+
+var bodyCondition: BodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigAbility: 0)
