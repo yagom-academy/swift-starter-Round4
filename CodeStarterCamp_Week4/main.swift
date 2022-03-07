@@ -52,7 +52,7 @@ struct Routine {
     let name: String
     let exercises: [Exercise]
     
-    mutating func start(_ person: BodyCondition) {
+    func start(_ person: BodyCondition) {
         print("""
               --------------
               \(name)을 시작합니다.
@@ -85,7 +85,7 @@ func printPresentCondition(_ person: BodyCondition) {
 
 let misterLee: BodyCondition = BodyCondition(상체근력: 0, 하체근력: 0, 근지구력: 0, 피로도: 0)
 let missKim: BodyCondition = BodyCondition(상체근력: 0, 하체근력: 0, 근지구력: 0, 피로도: 0)
-var hellRoutine: Routine = Routine(name: "hellRoutine", exercises: [윗몸일으키기, 윗몸일으키기, 동적휴식, 스쿼트, 스쿼트, 동적휴식, 오래달리기, 오래달리기])
+let hellRoutine: Routine = Routine(name: "hellRoutine", exercises: [윗몸일으키기, 윗몸일으키기, 동적휴식, 스쿼트, 스쿼트, 동적휴식, 오래달리기, 오래달리기])
 
 hellRoutine.start(misterLee)
 hellRoutine.start(missKim)
