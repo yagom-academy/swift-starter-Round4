@@ -85,5 +85,5 @@ struct Routine {
 
 let hellRoutine = Routine(routineName: "missKim's Hell Routine", exercises: [sitUps, sitUps, rest, squat, squat, rest, crossCountry, crossCountry])
 
-hellRoutine.routineStart()
-myBody.checkCurrentCondition()
+hellRoutine.startRoutine()
+myBody.printCurrentCondition()
