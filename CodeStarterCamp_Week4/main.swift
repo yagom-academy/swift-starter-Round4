@@ -65,8 +65,8 @@ let rest: Exercise = Exercise(name: "rest", action: {
 })
 
 struct Routine {
-    let routineName: String
-    let exercises: Array<Exercise>
+    private let routineName: String
+    private let exercises: Array<Exercise>
     
     func routineStart() {
         print("--------------")
