@@ -41,7 +41,7 @@ struct Exercise {
     let action: () -> Void
 }
 
-var myBody = Bodycondition(upperBS: 50, lowerBS: 50, muscular: 50, fatigue: 0)
+let myBody = Bodycondition(upperBodyStrength: 50, lowerBodyStrength: 50, muscular: 50, fatigue: 50)
 
 let 윗몸일으키기: Exercise = Exercise(name: "윗몸일으키기", action: {
     myBody.upperBodyStrength += randomNum(10,20)
