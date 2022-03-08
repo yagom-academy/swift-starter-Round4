@@ -68,6 +68,11 @@ struct Routine {
     private let routineName: String
     private let exercises: Array<Exercise>
     
+    init (routineName: String, exercises: Array<Exercise>) {
+        self.routineName = routineName
+        self.exercises = exercises
+    }
+    
     func startRoutine() {
         print("--------------")
         print("\(routineName)을 시작합니다.")
