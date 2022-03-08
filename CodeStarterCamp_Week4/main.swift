@@ -19,9 +19,9 @@ class Bodycondition {
     var muscularEndurance: Int
     var fatigue: Int
     
-    init(upperBS: Int = 0, lowerBS: Int = 0, muscular: Int = 0, fatigue: Int = 0) {
-        self.upperBodyStrength = upperBS
-        self.lowerBodyStrength = lowerBS
+    init(upperBodyStrength: Int = 0, lowerBodyStrength: Int = 0, muscular: Int = 0, fatigue: Int = 0) {
+        self.upperBodyStrength = upperBodyStrength
+        self.lowerBodyStrength = lowerBodyStrength
         self.muscularEndurance = muscular
         self.fatigue = fatigue
     }
