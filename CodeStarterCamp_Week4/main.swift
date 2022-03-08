@@ -68,7 +68,7 @@ struct Routine {
     private let routineName: String
     private let exercises: Array<Exercise>
     
-    func routineStart() {
+    func startRoutine() {
         print("--------------")
         print("\(routineName)을 시작합니다.")
         for element in exercises {
