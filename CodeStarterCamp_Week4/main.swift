@@ -44,24 +44,24 @@ struct Exercise {
 let myBody = Bodycondition(upperBodyStrength: 50, lowerBodyStrength: 50, muscular: 50, fatigue: 50)
 
 let 윗몸일으키기: Exercise = Exercise(name: "윗몸일으키기", action: {
-    myBody.upperBodyStrength += randomNum(10,20)
-    myBody.fatigue += randomNum(10,20)
+    myBody.upperBodyStrength += randomNum(10, 20)
+    myBody.fatigue += randomNum(10, 20)
 })
 
 let 스쿼트: Exercise = Exercise(name: "스쿼트", action: {
-    myBody.lowerBodyStrength += randomNum(20,30)
-    myBody.fatigue += randomNum(10,20)
+    myBody.lowerBodyStrength += randomNum(20, 30)
+    myBody.fatigue += randomNum(10, 20)
 })
 
 let 오래달리기: Exercise = Exercise(name: "오래달리기", action: {
-    myBody.muscularEndurance += randomNum(20,30)
-    myBody.upperBodyStrength += randomNum(5,10)
-    myBody.lowerBodyStrength += randomNum(5,10)
-    myBody.fatigue += randomNum(20,30)
+    myBody.muscularEndurance += randomNum(20, 30)
+    myBody.upperBodyStrength += randomNum(5, 10)
+    myBody.lowerBodyStrength += randomNum(5, 10)
+    myBody.fatigue += randomNum(20, 30)
 })
 
 let 동적휴식: Exercise = Exercise(name: "동적휴식", action: {
-    myBody.fatigue -= randomNum(5,10)
+    myBody.fatigue -= randomNum(5, 10)
 })
 
 struct Routine {
