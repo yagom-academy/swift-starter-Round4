@@ -25,3 +25,7 @@ class BodyCondition {
     }
 }
 
+struct Exercise {
+    let name: String
+    let action: () -> Void
+}
