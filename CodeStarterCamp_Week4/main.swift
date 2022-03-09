@@ -29,3 +29,13 @@ struct Exercise {
     let name: String
     let action: () -> Void
 }
+
+class Routine {
+    let name: String
+    var exercises: [Exercise]
+
+    init(name: String, exercises: [Exercise]) {
+        self.name = name
+        self.exercises = exercises
+    }
+}
