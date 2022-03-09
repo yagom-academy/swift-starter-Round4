@@ -50,3 +50,31 @@ func doRoutine(routine: Routine) {
     }
     print("--------------")
 }
+
+var bodycondition = BodyCondition()
+
+let 윗몸일으키기 = Exercise(name: "윗몸일으키기") {
+    bodycondition.sitUp()
+}
+let 스쿼트 = Exercise(name: "스쿼트") {
+    bodycondition.doSquat()
+}
+let 오래달리기 = Exercise(name: "오래달리기") {
+    bodycondition.runLongtime()
+}
+let 동적휴식 = Exercise(name: "동적휴식") {
+    bodycondition.doActiveRest()
+}
+let hellRoutine = Routine(name: "hellRoutine", exercises: [윗몸일으키기, 윗몸일으키기, 동적휴식, 스쿼트, 스쿼트, 동적휴식, 오래달리기, 오래달리기])
+let normalRoutine = Routine(name: "normalRoutine", exercises: [윗몸일으키기,스쿼트,동적휴식,오래달리기])
+
+doRoutine(routine: hellRoutine)
+
+print("""
+현재의 컨디션은 다음과 같습니다.
+상체근력: \(bodycondition.upperBodyStrength)
+하체근력: \(bodycondition.lowerBodyStrength)
+근지구력: \(bodycondition.muscularEndurance)
+피로도: \(bodycondition.fatigue)
+""")
+
