@@ -39,3 +39,14 @@ class Routine {
         self.exercises = exercises
     }
 }
+
+func doRoutine(routine: Routine) {
+    print("--------------")
+    print("\(routine.name)을 시작합니다.")
+
+    for i in 0...routine.exercises.count - 1 {
+        routine.exercises[i].action()
+        print(routine.exercises[i].name)
+    }
+    print("--------------")
+}
