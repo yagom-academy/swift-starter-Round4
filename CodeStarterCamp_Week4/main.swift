@@ -58,14 +58,9 @@ struct Routine {
               \(name)을 시작합니다.
               """)
         
-        var exercises = exercises
-        
-        while exercises.count > 0 {
-            if let nameOfExercise = exercises.first?.name {
-                print(nameOfExercise)
-            }
-            exercises.first?.action(person)
-            exercises.removeFirst()
+        for number in 0..<exercises.count {
+            print(exercises[number].name)
+            exercises[number].action(person)
         }
         
         printPresentCondition(person)
