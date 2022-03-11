@@ -1,10 +1,10 @@
 import Foundation
 
 struct BodyCondition {
-    var upperBodyStrength: Int = 0
-    var lowerBodyStrength: Int = 0
-    var muscularEndurance: Int = 0
-    var fatigue: Int = 0
+    var upperBodyStrength: Int = 10
+    var lowerBodyStrength: Int = 10
+    var muscularEndurance: Int = 10
+    var fatigue: Int = 5
     func checkBodyCondition() {
         print("""
               --------------
@@ -21,23 +21,23 @@ struct Exercise {
     let action: () -> Void
 }
 var myBodyCondition: BodyCondition = BodyCondition()
-let sitUp: Exercise = Exercise(name: "윗몸일으키기", action: {
+let sitUp: Exercise = Exercise(name: "윗몸일으키기") {
     myBodyCondition.upperBodyStrength += Int.random(in: 10...20)
     myBodyCondition.fatigue += Int.random(in: 10...20)
-})
-let squat: Exercise = Exercise(name: "스쿼트", action: {
+}
+let squat: Exercise = Exercise(name: "스쿼트") {
     myBodyCondition.lowerBodyStrength += Int.random(in: 20...30)
     myBodyCondition.fatigue += Int.random(in: 10...20)
-})
-let longRun: Exercise = Exercise(name: "오래달리기", action: {
+}
+let longRun: Exercise = Exercise(name: "오래달리기") {
     myBodyCondition.muscularEndurance += Int.random(in: 20...30)
     myBodyCondition.upperBodyStrength += Int.random(in: 5...10)
     myBodyCondition.lowerBodyStrength += Int.random(in: 5...10)
     myBodyCondition.fatigue += Int.random(in: 20...30)
-})
-let activeRest: Exercise = Exercise(name: "동적휴식", action: {
+}
+let activeRest: Exercise = Exercise(name: "동적휴식") {
     myBodyCondition.fatigue -= Int.random(in: 5...10)
-})
+}
 struct Routine {
     var routineName: String
     var routineArray = Array<Exercise>()
