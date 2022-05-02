@@ -15,18 +15,16 @@ struct Exercise {
 struct Routine {
     let name: String
     let exercises: [Exercise]
-    var bodyCondition = BodyCondition()
     
-    mutating func doExercises() -> BodyCondition {
+    func doExercises(_ bodyCondition: inout BodyCondition) {
         print("-------------------------")
         print("\(name)을 시작합니다.")
 
         for exercise in exercises {
             print("\(exercise.name)")
-            exercise.action(&self.bodyCondition)
+            exercise.action(&bodyCondition)
         }
         print("-------------------------")
-        return bodyCondition
     }
 }
 
@@ -51,9 +49,10 @@ let 동적휴식: Exercise = Exercise(name: "동적휴식") {
     $0.피로도 -= Int.random(in: 5...10)
 }
 
+var myCondition = BodyCondition()
 let myExercises: [Exercise] = [윗몸일으키기, 윗몸일으키기, 동적휴식, 스쿼드, 스쿼드, 동적휴식, 오래달리기, 오래달리기]
-var myRoutine = Routine(name: "hellRoutine", exercises: myExercises)
-let myCondition: BodyCondition = myRoutine.doExercises()
+let myRoutine = Routine(name: "hellRoutine", exercises: myExercises)
+myRoutine.doExercises(&myCondition)
 
 print("""
 현재의 컨디션은 다음과 같습니다.
