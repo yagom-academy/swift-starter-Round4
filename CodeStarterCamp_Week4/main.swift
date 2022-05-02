@@ -8,6 +8,6 @@ struct BodyCondition {
 }
 
 struct Exercise {
-        let name: String
-        let action: () -> Void
+    let name: String
+    let action: (inout BodyCondition) -> Void
 }
