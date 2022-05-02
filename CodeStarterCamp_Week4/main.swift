@@ -28,6 +28,12 @@ let 오래달리기: Exercise = Exercise(name: "오래달리기") {
     $0.하체근력 += Int.random(in: 5...10)
     $0.피로도 += Int.random(in: 10...20)
 }
+
 let 동적휴식: Exercise = Exercise(name: "동적휴식") {
     $0.피로도 -= Int.random(in: 5...10)
+}
+
+struct Routine {
+    let name: String
+    let exercises: [Exercise]
 }
