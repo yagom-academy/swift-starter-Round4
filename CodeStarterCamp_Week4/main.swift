@@ -21,9 +21,9 @@ struct Routine {
         print("-------------------------")
         print("\(name)을 시작합니다.")
 
-        for exerciseName in exercises {
-            print("\(exerciseName.name)")
-            exerciseName.action(&self.bodyCondition)
+        for exercise in exercises {
+            print("\(exercise.name)")
+            exercise.action(&self.bodyCondition)
         }
         print("-------------------------")
         return bodyCondition
