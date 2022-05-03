@@ -24,11 +24,65 @@ struct BodyCondition {
         self.lowerBodyStrength = lowerBodyStrength
         self.muscleEndurance = muscleEndurance
     }
+    
+    func informBodyCondition(){
+        let informationOfBodyCondition = """
+----------------------------------
+현재의 컨디션은 다음과 같습니다.
+상체근력 : \(upperBodyStrength)
+하체근력 : \(lowerBodyStrength)
+근지구력 : \(muscleEndurance)
+피로도  : \(tiredness)
+"""
+        print(informationOfBodyCondition)
+    }
 }
 
 struct Exercise {
     let name: String
     let action: (BodyCondition) -> BodyCondition
+}
+
+struct Routine {
+    let name: String
+    var exercises = [Exercise]()
+    
+    init(name: String) {
+        self.name = name
+    }
+    init(name: String, exercises: Exercise...) {
+        self.name = name
+        self.exercises = exercises
+    }
+    
+    mutating func appendExercise(_ exercise: Exercise) {
+        exercises.append(exercise)
+    }
+    
+    mutating func insertExercise(_ exercise: Exercise, at point: Int) {
+        if point < exercises.count {
+            exercises.insert(exercise, at: point)
+        }
+    }
+    
+    mutating func removeExercise(at point: Int) {
+        if point < exercises.count {
+            exercises.remove(at: point)
+        }
+    }
+    
+    func startRoutine(bodyCondition: BodyCondition) -> BodyCondition {
+        var exerciserBodyCondition = bodyCondition
+        print("----------------------------------")
+        print("\(name) Routine Start")
+        print("----------------------------------")
+        for exercise in exercises {
+            print("\(exercise.name)")
+            exerciserBodyCondition = exercise.action(exerciserBodyCondition)
+        }
+        exerciserBodyCondition.informBodyCondition()
+        return exerciserBodyCondition
+    }
 }
 
 let pushUp = Exercise(name: "팔굽혀펴기") { (bodyCondition: BodyCondition) in
