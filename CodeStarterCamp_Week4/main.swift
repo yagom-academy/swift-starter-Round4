@@ -8,5 +8,9 @@
 
 import Foundation
 
-print("Hello, World!")
-
+struct BodyCondition {
+    var upperBodyStrength: Int
+    var lowerBodyStrength: Int
+    var muscularEndurance: Int
+    var fatigueLevel : Int
+}
