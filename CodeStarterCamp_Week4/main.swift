@@ -38,11 +38,6 @@ struct BodyCondition {
     }
 }
 
-struct Exercise {
-    let name: String
-    let action: (BodyCondition) -> BodyCondition
-}
-
 struct Routine {
     let name: String
     var exercises = [Exercise]()
@@ -88,6 +83,11 @@ struct Routine {
         exerciserBodyCondition.informBodyCondition()
         return exerciserBodyCondition
     }
+}
+
+struct Exercise {
+    let name: String
+    let action: (BodyCondition) -> BodyCondition
 }
 
 let pushUp = Exercise(name: "팔굽혀펴기") { (bodyCondition: BodyCondition) in
@@ -155,5 +155,6 @@ let emptyRoutine = Routine(name: "Empty")
 let upperBodyRoutine = Routine(name: "Upper Body", exercises: pushUp, dip, chinUp, activeRest, chinUp, dip, pushUp)
 let lowerBodyRoutine = Routine(name: "Lower Body", exercises: squatting, squatting, squatting, activeRest, lunge, lunge, lunge)
 let wholeBodyRoutine = Routine(name: "Whole Body", exercises: longRun, activeRest, pushUp, dip, chinUp, activeRest, squatting, lunge, activeRest, sitUp)
+
 myBodyCondition = emptyRoutine.startRoutine(bodyCondition: myBodyCondition)
 myBodyCondition = upperBodyRoutine.startRoutine(bodyCondition: myBodyCondition)
