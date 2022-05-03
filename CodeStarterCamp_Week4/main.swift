@@ -41,5 +41,5 @@ let pushUp = Exercise(name: "푸시업") {
 
 let routine = Routine(name: "hellRoutine", exercises: [sitUp, sitUp, dynamicalRest, squat, squat, dynamicalRest, longRun, longRun, dynamicalRest, pushUp, pushUp])
 
-routine.runRoutine()
-bodyCondition.statusPrint()
+routine.run()
+bodyCondition.printStatus()
