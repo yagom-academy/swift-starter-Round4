@@ -11,7 +11,7 @@ struct Routine {
     var name: String
     var exercises: [Exercise]
     
-    func runRoutine() {
+    func run() {
         print("--------------")
         print("\(name)을 시작합니다.")
         exercises.forEach { exercise in
