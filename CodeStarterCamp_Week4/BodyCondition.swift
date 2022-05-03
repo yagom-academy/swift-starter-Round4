@@ -13,12 +13,15 @@ struct BodyCondition {
     var muscularEndurance: Int
     var fatigue: Int
     
-    func statusPrint() {
-        print("현재의 컨디션은 다음과 같습니다.")
-        print("상체근력: \(upperBody)")
-        print("하체근력: \(lowerBody)")
-        print("근지구력: \(muscularEndurance)")
-        print("피로도: \(fatigue)")
+    func printStatus() {
+        let status = """
+        현재의 컨디션은 다음과 같습니다.
+        상체근력: \(upperBody)
+        하체근력: \(lowerBody)
+        근지구력: \(muscularEndurance)
+        피로도: \(fatigue)
+        """
+        print(status)
     }
     
 }
