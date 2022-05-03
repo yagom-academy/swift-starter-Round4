@@ -44,29 +44,29 @@ struct Routine {
     }
 }
 
-let 윗몸일으키기: Exercise = Exercise(name: "윗몸일으키기") {
+let sitUp: Exercise = Exercise(name: "윗몸일으키기") {
     $0.changeUpperBodyStrength(by: Int.random(in: 10...20))
     $0.changeFatigue(by: Int.random(in: 10...20))
 }
 
-let 스쿼드: Exercise = Exercise(name: "스쿼드") {
+let squad: Exercise = Exercise(name: "스쿼드") {
     $0.changeLowerBodyStrength(by: Int.random(in: 20...30))
     $0.changeFatigue(by: Int.random(in: 10...20))
 }
 
-let 오래달리기: Exercise = Exercise(name: "오래달리기") {
+let longDistanceRunning: Exercise = Exercise(name: "오래달리기") {
     $0.changeMuscularEndurance(by: Int.random(in: 20...30))
     $0.changeUpperBodyStrength(by: Int.random(in: 5...10))
     $0.changeLowerBodyStrength(by: Int.random(in: 5...10))
     $0.changeFatigue(by: Int.random(in: 20...30))
 }
 
-let 동적휴식: Exercise = Exercise(name: "동적휴식") {
+let activeRest: Exercise = Exercise(name: "동적휴식") {
     $0.changeFatigue(by: Int.random(in: -10 ... -5))
 }
 
 var myCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
-let myExercises: [Exercise] = [윗몸일으키기, 윗몸일으키기, 동적휴식, 스쿼드, 스쿼드, 동적휴식, 오래달리기, 오래달리기]
+let myExercises: [Exercise] = [sitUp, sitUp, activeRest, squad, squad, activeRest, longDistanceRunning, longDistanceRunning]
 let myRoutine = Routine(name: "hellRoutine", exercises: myExercises)
 myRoutine.doExercises(&myCondition)
 
