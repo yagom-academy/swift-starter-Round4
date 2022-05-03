@@ -9,8 +9,8 @@
 import Foundation
 
 struct BodyCondition {
-    var upperBodyStrength: Int
-    var lowerBodyStrength: Int
-    var muscularEndurance: Int
-    var fatigueLevel : Int
+    var upperBodyStrength: Int = 0
+    var lowerBodyStrength: Int = 0
+    var muscularEndurance: Int = 0
+    var fatigueLevel : Int = 0
 }
