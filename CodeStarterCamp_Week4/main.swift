@@ -5,6 +5,22 @@ struct BodyCondition {
     var lowerBodyStrength: Int
     var muscularEndurance: Int
     var fatigue: Int
+    
+    mutating func changeUpperBodyStrength(by number: Int) {
+        self.upperBodyStrength += number
+    }
+    
+    mutating func changeLowerBodyStrength(by number: Int) {
+        self.lowerBodyStrength += number
+    }
+    
+    mutating func changeMuscularEndurance(by number: Int) {
+        self.muscularEndurance += number
+    }
+    
+    mutating func changeFatigue(by number: Int) {
+        self.fatigue += number
+    }
 }
 
 struct Exercise {
@@ -49,7 +65,7 @@ let 동적휴식: Exercise = Exercise(name: "동적휴식") {
     $0.fatigue -= Int.random(in: 5...10)
 }
 
-var myCondition = BodyCondition()
+var myCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
 let myExercises: [Exercise] = [윗몸일으키기, 윗몸일으키기, 동적휴식, 스쿼드, 스쿼드, 동적휴식, 오래달리기, 오래달리기]
 let myRoutine = Routine(name: "hellRoutine", exercises: myExercises)
 myRoutine.doExercises(&myCondition)
