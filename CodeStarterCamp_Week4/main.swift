@@ -21,6 +21,16 @@ struct BodyCondition {
     mutating func changeFatigue(by number: Int) {
         self.fatigue += number
     }
+    
+    func printBodyCondition() {
+        print("""
+            현재의 컨디션은 다음과 같습니다.
+            상체근력 : \(self.upperBodyStrength)
+            하체근력 : \(self.lowerBodyStrength)
+            근지구력 : \(self.muscularEndurance)
+            피로도 : \(self.fatigue)
+            """)
+    }
 }
 
 struct Exercise {
@@ -69,11 +79,4 @@ var myCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, musc
 let myExercises: [Exercise] = [sitUp, sitUp, activeRest, squad, squad, activeRest, longDistanceRunning, longDistanceRunning]
 let myRoutine = Routine(name: "hellRoutine", exercises: myExercises)
 myRoutine.doExercises(&myCondition)
-
-print("""
-    현재의 컨디션은 다음과 같습니다.
-    상체근력 : \(myCondition.upperBodyStrength)
-    하체근력 : \(myCondition.lowerBodyStrength)
-    근지구력 : \(myCondition.muscularEndurance)
-    피로도 : \(myCondition.fatigue)
-    """)
+myCondition.printBodyCondition()
