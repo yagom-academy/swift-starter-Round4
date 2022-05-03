@@ -74,7 +74,12 @@ struct Routine {
     func startRoutine(bodyCondition: BodyCondition) -> BodyCondition {
         var exerciserBodyCondition = bodyCondition
         print("----------------------------------")
-        print("\(name) Routine Start")
+        if exercises.isEmpty {
+            print("Don't start \(name) Routine because \(name) Routine is empty")
+            return exerciserBodyCondition
+        } else {
+            print("\(name) Routine Start")
+        }
         print("----------------------------------")
         for exercise in exercises {
             print("\(exercise.name)")
