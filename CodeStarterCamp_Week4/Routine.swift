@@ -13,6 +13,7 @@ struct Routine {
     
     func runRoutine() {
         print("--------------")
+        print("\(name)을 시작합니다.")
         exercises.forEach { exercise in
             print(exercise.name)
             exercise.action()
