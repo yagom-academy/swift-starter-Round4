@@ -134,10 +134,10 @@ let lunge = Exercise(name: "런지") { (bodyCondition: BodyCondition) in
 
 let longRun = Exercise(name: "오래달리기") { (bodyCondition: BodyCondition) in
     var exerciserBodyCondition = bodyCondition
-    exerciserBodyCondition.muscleEndurance += Int.random(in: 10...20)
+    exerciserBodyCondition.muscleEndurance += Int.random(in: 20...30)
     exerciserBodyCondition.upperBodyStrength += Int.random(in: 5...10)
     exerciserBodyCondition.lowerBodyStrength += Int.random(in: 5...10)
-    exerciserBodyCondition.tiredness += Int.random(in: 10...20)
+    exerciserBodyCondition.tiredness += Int.random(in: 20...30)
     return exerciserBodyCondition
 }
 
@@ -149,3 +149,11 @@ let activeRest = Exercise(name: "동적휴식") { (bodyCondition: BodyCondition)
     }
     return exerciserBodyCondition
 }
+
+var myBodyCondition = BodyCondition()
+let emptyRoutine = Routine(name: "Empty")
+let upperBodyRoutine = Routine(name: "Upper Body", exercises: pushUp, dip, chinUp, activeRest, chinUp, dip, pushUp)
+let lowerBodyRoutine = Routine(name: "Lower Body", exercises: squatting, squatting, squatting, activeRest, lunge, lunge, lunge)
+let wholeBodyRoutine = Routine(name: "Whole Body", exercises: longRun, activeRest, pushUp, dip, chinUp, activeRest, squatting, lunge, activeRest, sitUp)
+myBodyCondition = emptyRoutine.startRoutine(bodyCondition: myBodyCondition)
+myBodyCondition = upperBodyRoutine.startRoutine(bodyCondition: myBodyCondition)
