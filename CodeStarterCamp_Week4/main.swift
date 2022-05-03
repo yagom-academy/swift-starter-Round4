@@ -1,10 +1,10 @@
 import Foundation
 
 struct BodyCondition {
-    var 상체근력: Int = 0
-    var 하체근력: Int = 0
-    var 근지구력: Int = 0
-    var 피로도: Int = 0
+    var upperBodyStrength: Int
+    var lowerBodyStrength: Int
+    var muscularEndurance: Int
+    var fatigue: Int
 }
 
 struct Exercise {
@@ -29,24 +29,24 @@ struct Routine {
 }
 
 let 윗몸일으키기: Exercise = Exercise(name: "윗몸일으키기") {
-    $0.상체근력 += Int.random(in: 10...20)
-    $0.피로도 += Int.random(in: 10...20)
+    $0.upperBodyStrength += Int.random(in: 10...20)
+    $0.fatigue += Int.random(in: 10...20)
 }
 
 let 스쿼드: Exercise = Exercise(name: "스쿼드") {
-    $0.하체근력 += Int.random(in: 20...30)
-    $0.피로도 += Int.random(in: 10...20)
+    $0.lowerBodyStrength += Int.random(in: 20...30)
+    $0.fatigue += Int.random(in: 10...20)
 }
 
 let 오래달리기: Exercise = Exercise(name: "오래달리기") {
-    $0.근지구력 += Int.random(in: 20...30)
-    $0.상체근력 += Int.random(in: 5...10)
-    $0.하체근력 += Int.random(in: 5...10)
-    $0.피로도 += Int.random(in: 20...30)
+    $0.muscularEndurance += Int.random(in: 20...30)
+    $0.upperBodyStrength += Int.random(in: 5...10)
+    $0.lowerBodyStrength += Int.random(in: 5...10)
+    $0.fatigue += Int.random(in: 20...30)
 }
 
 let 동적휴식: Exercise = Exercise(name: "동적휴식") {
-    $0.피로도 -= Int.random(in: 5...10)
+    $0.fatigue -= Int.random(in: 5...10)
 }
 
 var myCondition = BodyCondition()
@@ -56,8 +56,8 @@ myRoutine.doExercises(&myCondition)
 
 print("""
     현재의 컨디션은 다음과 같습니다.
-    상체근력 : \(myCondition.상체근력)
-    하체근력 : \(myCondition.하체근력)
-    근지구력 : \(myCondition.근지구력)
-    피로도 : \(myCondition.피로도)
+    상체근력 : \(myCondition.upperBodyStrength)
+    하체근력 : \(myCondition.lowerBodyStrength)
+    근지구력 : \(myCondition.muscularEndurance)
+    피로도 : \(myCondition.fatigue)
     """)
