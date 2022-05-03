@@ -55,9 +55,9 @@ let myRoutine = Routine(name: "hellRoutine", exercises: myExercises)
 myRoutine.doExercises(&myCondition)
 
 print("""
-현재의 컨디션은 다음과 같습니다.
-상체근력 : \(myCondition.상체근력)
-하체근력 : \(myCondition.하체근력)
-근지구력 : \(myCondition.근지구력)
-피로도 : \(myCondition.피로도)
-""")
+    현재의 컨디션은 다음과 같습니다.
+    상체근력 : \(myCondition.상체근력)
+    하체근력 : \(myCondition.하체근력)
+    근지구력 : \(myCondition.근지구력)
+    피로도 : \(myCondition.피로도)
+    """)
