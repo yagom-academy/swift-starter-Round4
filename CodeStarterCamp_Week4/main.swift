@@ -42,7 +42,7 @@ let 오래달리기: Exercise = Exercise(name: "오래달리기") {
     $0.근지구력 += Int.random(in: 20...30)
     $0.상체근력 += Int.random(in: 5...10)
     $0.하체근력 += Int.random(in: 5...10)
-    $0.피로도 += Int.random(in: 10...20)
+    $0.피로도 += Int.random(in: 20...30)
 }
 
 let 동적휴식: Exercise = Exercise(name: "동적휴식") {
