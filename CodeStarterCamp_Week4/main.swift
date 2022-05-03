@@ -29,8 +29,10 @@ let longRun = Exercise(name: "오래달리기") {
 
 let dynamicalRest = Exercise(name: "동적휴식") {
     let decreaseFatigue = Int.random(in: 5...10)
-    if bodyCondition.fatigue >= decreaseFatigue {
+    if bodyCondition.fatigue > decreaseFatigue {
         bodyCondition.fatigue -= decreaseFatigue
+    } else {
+        bodyCondition.fatigue = 0
     }
 }
 
