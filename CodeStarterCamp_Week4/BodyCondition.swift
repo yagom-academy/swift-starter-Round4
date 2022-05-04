@@ -13,3 +13,13 @@ struct BodyCondition {
     var endurancePower: Int = 0
     var fatigue: Int = 0
 }
+
+extension Int {
+    mutating func increaseWeights(from start: Int, to end: Int) {
+        self = self + Int.random(in: start...end)
+    }
+    
+    mutating func decreaseWeights(from start: Int, to end: Int) {
+        self = self - Int.random(in: start...end)
+    }
+}
