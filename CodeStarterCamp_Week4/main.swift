@@ -66,7 +66,7 @@ struct Routine {
         }
     }
     
-    func startRoutine(bodyCondition: BodyCondition) -> BodyCondition {
+    func startRoutine(based bodyCondition: BodyCondition) -> BodyCondition {
         var exerciserBodyCondition = bodyCondition
         print("----------------------------------")
         if exercises.isEmpty {
@@ -156,5 +156,5 @@ let upperBodyRoutine = Routine(name: "Upper Body", exercises: pushUp, dip, chinU
 let lowerBodyRoutine = Routine(name: "Lower Body", exercises: squatting, squatting, squatting, activeRest, lunge, lunge, lunge)
 let wholeBodyRoutine = Routine(name: "Whole Body", exercises: longRun, activeRest, pushUp, dip, chinUp, activeRest, squatting, lunge, activeRest, sitUp)
 
-myBodyCondition = emptyRoutine.startRoutine(bodyCondition: myBodyCondition)
-myBodyCondition = upperBodyRoutine.startRoutine(bodyCondition: myBodyCondition)
+myBodyCondition = emptyRoutine.startRoutine(based: myBodyCondition)
+myBodyCondition = upperBodyRoutine.startRoutine(based: myBodyCondition)
