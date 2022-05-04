@@ -8,7 +8,7 @@
 
 import Foundation
 
-let exercises: [Exercise] = [윗몸일으키기, 스쿼트, 동적휴식, 스쿼트, 벤치프레스, 동적휴식, 오래달리기, 오래달리기]
+let exercises: [Exercise] = [sitUp, squat, activeRest, squat, benchPress, activeRest, miniMarathon, miniMarathon]
 let hellRoutine: Routine = Routine(called: "HellRoutine", exercises: exercises)
 let misterLee: Person = Person(name: "이정민", routine: hellRoutine)
 
