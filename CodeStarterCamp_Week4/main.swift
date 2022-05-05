@@ -14,5 +14,5 @@ let upperBodyRoutine = Routine(name: "Upper Body", exercises: pushUp, dip, chinU
 let lowerBodyRoutine = Routine(name: "Lower Body", exercises: squatting, squatting, squatting, activeRest, lunge, lunge, lunge)
 let wholeBodyRoutine = Routine(name: "Whole Body", exercises: longRun, activeRest, pushUp, dip, chinUp, activeRest, squatting, lunge, activeRest, sitUp)
 
-myBodyCondition = emptyRoutine.startRoutine(based: myBodyCondition)
-myBodyCondition = upperBodyRoutine.startRoutine(based: myBodyCondition)
+emptyRoutine.startRoutine(based: &myBodyCondition)
+upperBodyRoutine.startRoutine(based: &myBodyCondition)

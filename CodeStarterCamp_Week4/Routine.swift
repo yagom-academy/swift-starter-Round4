@@ -40,21 +40,19 @@ struct Routine {
         }
     }
     
-    func startRoutine(based bodyCondition: BodyCondition) -> BodyCondition {
-        var exerciserBodyCondition = bodyCondition
+    func startRoutine(based bodyCondition: inout BodyCondition){
         print("----------------------------------")
         if exercises.isEmpty {
             print("Don't start \(name) Routine because \(name) Routine is empty")
-            return exerciserBodyCondition
+            return
         } else {
             print("\(name) Routine Start")
         }
         print("----------------------------------")
         for exercise in exercises {
             print("\(exercise.name)")
-            exerciserBodyCondition = exercise.action(exerciserBodyCondition)
+            exercise.action(&bodyCondition)
         }
-        exerciserBodyCondition.informBodyCondition()
-        return exerciserBodyCondition
+        bodyCondition.informBodyCondition()
     }
 }
