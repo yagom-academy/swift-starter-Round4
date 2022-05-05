@@ -14,3 +14,10 @@ struct BodyCondition {
     var muscularEndurance: Int = 0
     var fatigueLevel: Int = 0
 }
+
+struct Exercise {
+    let name: String
+    let exerciseTime: Int
+    let bodyContitionLevel: BodyCondition
+    let coditionLevelUpdate: (BodyCondition) -> BodyCondition
+}
