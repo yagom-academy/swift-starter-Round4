@@ -9,11 +9,8 @@ import Foundation
 
 struct Routine {
     let name: String
-    var exercises = [Exercise]()
+    var exercises: [Exercise]
     
-    init(name: String) {
-        self.name = name
-    }
     init(name: String, exercises: Exercise...) {
         self.name = name
         self.exercises = exercises
@@ -32,6 +29,14 @@ struct Routine {
     mutating func removeExercise(at point: Int) {
         if point < exercises.count {
             exercises.remove(at: point)
+        }
+    }
+    
+    func introduceRoutine() {
+        print("\(name)의 순서를 소개합니다.")
+        print("----------------------------------")
+        for exercise in exercises {
+            print(exercise)
         }
     }
     
