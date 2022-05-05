@@ -8,5 +8,9 @@
 
 import Foundation
 
-print("Hello, World!")
+let exercises: [Exercise] = [sitUp, squat, activeRest, squat, benchPress, activeRest, miniMarathon, miniMarathon]
+let hellRoutine: Routine = Routine(called: "HellRoutine", exercises: exercises)
+let misterLee: Person = Person(name: "이정민", routine: hellRoutine)
 
+misterLee.workOut()
+misterLee.showCondition()
