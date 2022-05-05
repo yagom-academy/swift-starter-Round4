@@ -21,3 +21,7 @@ struct Exercise {
     let bodyContitionLevel: BodyCondition
     let coditionLevelUpdate: (BodyCondition) -> BodyCondition
 }
+
+func rangeLevel(min: Int, max: Int) -> Int {
+    return Int.random(in: min...max)
+}
