@@ -12,6 +12,7 @@
 		ACA559222822175200F5D8EB /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA559212822175200F5D8EB /* Exercise.swift */; };
 		ACA5592428221A5C00F5D8EB /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA5592328221A5C00F5D8EB /* Routine.swift */; };
 		ACA559262822209600F5D8EB /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA559252822209600F5D8EB /* Person.swift */; };
+		ACA559282824651F00F5D8EB /* FitnessCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA559272824651F00F5D8EB /* FitnessCenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +34,7 @@
 		ACA559212822175200F5D8EB /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		ACA5592328221A5C00F5D8EB /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
 		ACA559252822209600F5D8EB /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		ACA559272824651F00F5D8EB /* FitnessCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessCenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				ACA5592328221A5C00F5D8EB /* Routine.swift */,
 				ACA5591D2822150700F5D8EB /* BodyCondition.swift */,
 				ACA559252822209600F5D8EB /* Person.swift */,
+				ACA559272824651F00F5D8EB /* FitnessCenter.swift */,
 			);
 			path = CodeStarterCamp_Week4;
 			sourceTree = "<group>";
@@ -132,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACA559262822209600F5D8EB /* Person.swift in Sources */,
+				ACA559282824651F00F5D8EB /* FitnessCenter.swift in Sources */,
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
 				ACA5591E2822150700F5D8EB /* BodyCondition.swift in Sources */,
 				ACA5592428221A5C00F5D8EB /* Routine.swift in Sources */,
