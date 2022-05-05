@@ -4,9 +4,16 @@ struct Person {
     let name: String
     var bodyCondition: BodyCondition
     
-    func exercise(for set: Int, routine: Routine) {
+    func exercise(for set: Int, _ routine: Routine) {
         
     }
+}
+
+struct FitnessCenter {
+    let centerName: String
+    let bodyGoals: BodyCondition
+    let memberName: String?
+    let routineList: [Int]
 }
 
 struct BodyCondition {
@@ -84,8 +91,11 @@ let activeRest: Exercise = Exercise(name: "동적휴식") {
     $0.changeFatigue(by: Int.random(in: -10 ... -5))
 }
 
+// step1 실행코드
+/*
 var myCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
 let myExercises: [Exercise] = [sitUp, sitUp, activeRest, squad, squad, activeRest, longDistanceRunning, longDistanceRunning]
 let myRoutine = Routine(name: "hellRoutine", exercises: myExercises)
 myRoutine.doExercises(&myCondition)
 myCondition.printBodyCondition()
+*/
