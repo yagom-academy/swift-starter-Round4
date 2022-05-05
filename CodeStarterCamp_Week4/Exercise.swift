@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+struct Exercise {
+    let name: String
+    let action: () -> Void
+    
+    func approveStatusRandomlyBetween(_ rangeA: Int, _ rangeB: Int) -> Int {
+        let status: Int = Int.random(in: rangeA...rangeB)
+        return status
+    }
+}
