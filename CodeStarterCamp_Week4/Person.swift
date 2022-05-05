@@ -9,24 +9,22 @@ import Foundation
 
 class Person {
     let name: String
-    let routine: Routine
-    var condition: BodyCondition
+    var bodyCondition: BodyCondition
     
-    init(name: String, routine: Routine) {
+    init(name: String) {
         self.name = name
-        self.routine = routine
-        self.condition = BodyCondition()
+        self.bodyCondition = BodyCondition()
     }
     
-    func workOut() {
+    func exercise(for set: Int, routine: Routine) {
         print("""
         --------------
-        \(self.routine.routineName)을 시작합니다.
+        \(routine.routineName)을 시작합니다.
         """)
         
         for exercise in routine.exercises {
             print(exercise.name)
-            exercise.action(&condition)
+            exercise.action(&bodyCondition)
         }
     }
 
@@ -34,10 +32,10 @@ class Person {
         print("""
         --------------
         현재의 컨디션은 다음과 같습니다.
-        상체근력: \(self.condition.upperBodyStrength)
-        하체근력: \(self.condition.lowerBodyStrength)
-        근지구력: \(self.condition.endurancePower)
-        피로도: \(self.condition.fatigue)
+        상체근력: \(self.bodyCondition.upperBodyStrength)
+        하체근력: \(self.bodyCondition.lowerBodyStrength)
+        근지구력: \(self.bodyCondition.endurancePower)
+        피로도: \(self.bodyCondition.fatigue)
         """)
     }
 }
