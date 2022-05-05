@@ -1,5 +1,14 @@
 import Foundation
 
+struct Person {
+    let name: String
+    var bodyCondition: BodyCondition
+    
+    func exercise(for set: Int, routine: Routine) {
+        
+    }
+}
+
 struct BodyCondition {
     var upperBodyStrength: Int
     var lowerBodyStrength: Int
