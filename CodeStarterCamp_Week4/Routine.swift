@@ -1,8 +1,9 @@
 //
-//  Routine.swift
+//  main.swift
 //  CodeStarterCamp_Week4
 //
-//  Created by 윤일성 on 2022/05/05.
+//  Created by yagom.
+//  Copyright © yagom academy. All rights reserved.
 //
 
 import Foundation
