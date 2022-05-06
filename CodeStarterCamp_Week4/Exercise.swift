@@ -17,7 +17,6 @@ let sitUp = Exercise(name: "윗몸일으키기") {
     $0.changeCondition(of: "fatigue", about: Int.random(in: 10...20))
 }
 
-
 let pullUp = Exercise(name: "풀업") {
     $0.changeCondition(of: "upperBodyStrength", about: Int.random(in: 20...30))
     $0.changeCondition(of: "fatigue", about: Int.random(in: 15...25))

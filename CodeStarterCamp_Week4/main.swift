@@ -14,5 +14,3 @@ let lowerBodyRoutine = Routine(routineName: "하체루틴", exercises: [squat, s
 
 upperBodyRoutine.runRoutine(with: &myBodyCondition)
 myBodyCondition.showCondition()
-
-
