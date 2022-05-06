@@ -29,6 +29,7 @@ struct FitnessCenter {
     mutating func trainMember() {
         joinMember()
         setBodyGoal()
+        doRoutine(from: routineList)
     }
     
     mutating func joinMember() {
@@ -50,6 +51,19 @@ struct FitnessCenter {
             print("피로도 : ", terminator: "")
             self.bodyGoal.fatigue = Int(readLine()!)!
         }
+    
+    mutating func doRoutine(from routineList: [Routine]) {
+        print("몇 번째 루틴으로 운동하시겠어요?")
+        for (index, routine) in routineList.enumerated() {
+            print("\(index+1). \(routine.name)")
+        }
+        let routineNumber = Int(readLine()!)! - 1
+        
+        print("몇 세트 반복하시겠어요?")
+        let numberOfSets = Int(readLine()!)!
+        
+        self.member?.exercise(for: numberOfSets, routineList[routineNumber])
+    }
 }
 
 struct BodyCondition {
@@ -96,13 +110,11 @@ struct Routine {
     
     func doExercises(_ bodyCondition: inout BodyCondition) {
         print("-------------------------")
-        print("\(name)을 시작합니다.")
 
         for exercise in exercises {
             print("\(exercise.name)")
             exercise.action(&bodyCondition)
         }
-        print("-------------------------")
     }
 }
 
