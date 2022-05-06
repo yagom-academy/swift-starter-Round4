@@ -43,7 +43,6 @@ class FitnessCenter {
             throw FitnessCenterContingency.unRecognizedInputError
         }
 
-        print(deFramentation(memberName))
         self.member = Person(name: deFramentation(memberName))
     }
     
