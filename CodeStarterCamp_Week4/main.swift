@@ -1,5 +1,13 @@
 import Foundation
 
+enum FitnessCenterError: Error {
+    case Overfatigue
+    case UnreachedGoal
+    case InvaildInputValue
+    case NoMember
+    case OtherExeption
+}
+
 struct Person {
     let name: String
     var bodyCondition: BodyCondition
