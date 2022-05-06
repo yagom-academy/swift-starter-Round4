@@ -53,13 +53,13 @@ class FitnessCenter {
         }
         
         let receivedTargetCondition = inputValue.split(separator: " ").map({ Int($0) ?? ErrorValue.stringToIntConvertErrorValue })
+                
+        guard !receivedTargetCondition.contains(ErrorValue.stringToIntConvertErrorValue) else {
+            throw FitnessCenterContingency.stringToIntConvertError
+        }
         
         guard receivedTargetCondition.count == 3 else {
             throw FitnessCenterContingency.invalidNumberOfValuesError
-        }
-        
-        guard !receivedTargetCondition.contains(ErrorValue.stringToIntConvertErrorValue) else {
-            throw FitnessCenterContingency.stringToIntConvertError
         }
         
         self.targetBodyCondition.upperBodyStrength = receivedTargetCondition[0]
