@@ -29,6 +29,7 @@ func rangeLevel(min: Int, max: Int) -> Int {
 struct Routine {
     let name: String
     var order: Array<Exercise>
+    var recordedBodyCondition: BodyCondition
     
     func playRoutine() {
         print("--------------")
@@ -39,6 +40,9 @@ struct Routine {
         
         print("--------------")
         print("현재의 컨디션은 다음과 같습니다.")
-        //근력 및 피로도 구현
+        print("상체근력 : \(recordedBodyCondition.upperBodyStrength)")
+        print("하체근력 : \(recordedBodyCondition.lowerBodyStrength)")
+        print("근지구력 : \(recordedBodyCondition.muscularEndurance)")
+        print("피로도 : \(recordedBodyCondition.fatigueLevel)")
     }
 }
