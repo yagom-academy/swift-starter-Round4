@@ -34,6 +34,7 @@ class FitnessCenter {
             
         } catch {
             print("\(error)")
+            exit(1)
         }
     }
     
@@ -107,6 +108,7 @@ class FitnessCenter {
             """)
             
             self.member = nil
+            exit(1)
             
         } catch FitnessCenterContingency.notEnoughToTargetError {
             print("""
@@ -118,6 +120,7 @@ class FitnessCenter {
             workOut()
         } catch {
             print("\(error)")
+            exit(1)
         }
     }
     
