@@ -1,12 +1,8 @@
-//
-//  main.swift
-//  CodeStarterCamp_Week4
-//
-//  Created by yagom.
-//  Copyright © yagom academy. All rights reserved.
-//
-
 import Foundation
 
-print("Hello, World!")
-
+struct BodyCondition {
+    var upperBodyStrength: Int
+    var lowerBodyStrength: Int
+    var muscleEndurance: Int
+    var fatigue: Int
+}
