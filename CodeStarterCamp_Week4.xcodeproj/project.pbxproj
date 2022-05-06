@@ -14,6 +14,7 @@
 		ACA559262822209600F5D8EB /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA559252822209600F5D8EB /* Person.swift */; };
 		ACA559282824651F00F5D8EB /* FitnessCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA559272824651F00F5D8EB /* FitnessCenter.swift */; };
 		ACA5592A282471A200F5D8EB /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA55929282471A200F5D8EB /* Error.swift */; };
+		ACA5592E2824E86500F5D8EB /* Hangeul.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA5592D2824E86500F5D8EB /* Hangeul.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +38,7 @@
 		ACA559252822209600F5D8EB /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		ACA559272824651F00F5D8EB /* FitnessCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessCenter.swift; sourceTree = "<group>"; };
 		ACA55929282471A200F5D8EB /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		ACA5592D2824E86500F5D8EB /* Hangeul.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hangeul.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				ACA559252822209600F5D8EB /* Person.swift */,
 				ACA559272824651F00F5D8EB /* FitnessCenter.swift */,
 				ACA55929282471A200F5D8EB /* Error.swift */,
+				ACA5592D2824E86500F5D8EB /* Hangeul.swift */,
 			);
 			path = CodeStarterCamp_Week4;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 				ACA559282824651F00F5D8EB /* FitnessCenter.swift in Sources */,
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
 				ACA5591E2822150700F5D8EB /* BodyCondition.swift in Sources */,
+				ACA5592E2824E86500F5D8EB /* Hangeul.swift in Sources */,
 				ACA5592428221A5C00F5D8EB /* Routine.swift in Sources */,
 				ACA559222822175200F5D8EB /* Exercise.swift in Sources */,
 				ACA5592A282471A200F5D8EB /* Error.swift in Sources */,
