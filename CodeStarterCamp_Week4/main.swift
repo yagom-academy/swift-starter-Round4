@@ -126,3 +126,15 @@ let myRoutine = Routine(name: "hellRoutine", exercises: myExercises)
 myRoutine.doExercises(&myCondition)
 myCondition.printBodyCondition()
 */
+
+let initBodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
+
+let hellRoutineExercises: [Exercise] = [sitUp, sitUp, activeRest, legRaise, legRaise, activeRest, burpee, burpee]
+let ohMyGodRoutineExercises: [Exercise] = [sitUp, squad, legRaise, burpee, activeRest]
+
+let hellRoutine = Routine(name: "hellRoutine", exercises: hellRoutineExercises)
+let ohMyGodRoutine = Routine(name: "ohMyGodRoutine", exercises: ohMyGodRoutineExercises)
+
+let routineList: [Routine] = [hellRoutine, ohMyGodRoutine]
+
+var yagomFitnessCenter = FitnessCenter(centerName: "야곰 피트니스 센터", bodyGoal: initBodyCondition, member: nil, routineList: routineList)
