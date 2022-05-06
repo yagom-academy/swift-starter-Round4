@@ -30,11 +30,19 @@ struct FitnessCenter {
         do {
             try joinMember()
         } catch FitnessCenterError.InvaildInputValue {
-            print("이름을 정확하게 입력해 주세요.")
+            print("이름을 문자로만 입력해 주세요.")
         } catch {
             print("예상치 못한 오류 발생.")
         }
-        //setBodyGoal()
+        
+        do {
+            try setBodyGoal()
+        } catch FitnessCenterError.InvaildInputValue {
+            print("목표치를 숫자로만 입력해 주세요.")
+        } catch {
+            print("예상치 못한 오류 발생.")
+        }
+        
         //doRoutine(from: routineList)
         //compareRoutine(bodyGoal, with: member!.bodyCondition)
     }
@@ -48,17 +56,44 @@ struct FitnessCenter {
         member = Person(name: memberName, bodyCondition: initBodyCondition)
     }
     
-    mutating func setBodyGoal() {
-            print("운동 목표치를 순서대로 알려주세요.")
-            print("상체근력 : ", terminator: "")
-            self.bodyGoal.upperBodyStrength = Int(readLine()!)!
-            print("하체근력 : ", terminator: "")
-            self.bodyGoal.lowerBodyStrength = Int(readLine()!)!
-            print("근지구력 : ", terminator: "")
-            self.bodyGoal.muscularEndurance = Int(readLine()!)!
-            print("피로도 : ", terminator: "")
-            self.bodyGoal.fatigue = Int(readLine()!)!
+    mutating func setBodyGoal() throws {
+        print("운동 목표치를 순서대로 알려주세요.")
+        print("상체근력 : ", terminator: "")
+        if let input = readLine() {
+            if let goalScore = Int(input) {
+                bodyGoal.upperBodyStrength = goalScore
+            }
+        } else {
+            throw FitnessCenterError.InvaildInputValue
         }
+        
+        print("하체근력 : ", terminator: "")
+        if let input = readLine() {
+            if let goalScore = Int(input) {
+                bodyGoal.lowerBodyStrength = goalScore
+            }
+        } else {
+            throw FitnessCenterError.InvaildInputValue
+        }
+        
+        print("근지구력 : ", terminator: "")
+        if let input = readLine() {
+            if let goalScore = Int(input) {
+                bodyGoal.muscularEndurance = goalScore
+            }
+        } else {
+            throw FitnessCenterError.InvaildInputValue
+        }
+        
+        print("피로도 : ", terminator: "")
+        if let input = readLine() {
+            if let goalScore = Int(input) {
+                bodyGoal.fatigue = goalScore
+            }
+        } else {
+            throw FitnessCenterError.InvaildInputValue
+        }
+    }
     
     mutating func doRoutine(from routineList: [Routine]) {
         print("몇 번째 루틴으로 운동하시겠어요?")
