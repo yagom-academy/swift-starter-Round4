@@ -29,14 +29,10 @@ class Person {
             }
             print("set End")
         }
-        
-        showCondition()
     }
 
     func showCondition() {
         print("""
-        --------------
-        현재의 컨디션은 다음과 같습니다.
         상체근력: \(self.bodyCondition.upperBodyStrength)
         하체근력: \(self.bodyCondition.lowerBodyStrength)
         근지구력: \(self.bodyCondition.endurancePower)
