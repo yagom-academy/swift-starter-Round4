@@ -28,10 +28,10 @@ struct Routine {
         print("""
     --------------
     현재의 컨디션은 다음과 같습니다.
-    상체근력: \(body.상체근력)
-    하체근력: \(body.하체근력)
-    근지구력: \(body.근지구력)
-    피로도: \(body.피로도)
+    상체근력: \(body.upperBodyStrength)
+    하체근력: \(body.lowerBodyStrength)
+    근지구력: \(body.muscularEndurance)
+    피로도: \(body.fatigueLevel)
     """)
     }
 }

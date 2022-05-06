@@ -8,8 +8,8 @@
 import Foundation
 
 struct BodyCondition {
-    var 상체근력: Int = 0
-    var 하체근력: Int = 0
-    var 근지구력: Int = 0
-    var 피로도: Int = 0
+    var upperBodyStrength: Int = 0
+    var lowerBodyStrength: Int = 0
+    var muscularEndurance: Int = 0
+    var fatigueLevel: Int = 0
 }
