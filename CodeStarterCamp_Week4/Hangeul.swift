@@ -9,7 +9,7 @@ import Foundation
 
 
 func deFramentation(_ pieces: String) -> String {
-    var collect: [String] = [String(pieces[pieces.startIndex]), String(pieces[pieces.index(pieces.startIndex, offsetBy: 1)]) ]
+    var collect: [String] = [String(pieces[pieces.startIndex]), String(pieces[pieces.index(pieces.startIndex, offsetBy: 1)])]
     var storage: [[String]] = []
     var preCharacter: String = String(pieces[pieces.index(pieces.startIndex, offsetBy: 2)])
     
