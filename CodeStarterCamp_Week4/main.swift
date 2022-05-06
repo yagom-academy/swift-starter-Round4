@@ -11,13 +11,11 @@ struct Person {
 
 struct FitnessCenter {
     let centerName: String
-    var bodyGoals: BodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
-    var memberName: String?
-    let routineList: [Int]
+    var bodyGoal: BodyCondition
+    var member: Person?
+    let routineList: [Routine]
     
     mutating func trainMember() {
-        
-        
     }
 }
 
