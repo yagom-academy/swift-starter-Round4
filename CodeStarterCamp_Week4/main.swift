@@ -4,16 +4,21 @@ struct Person {
     let name: String
     var bodyCondition: BodyCondition
     
-    func exercise(for set: Int, _ routine: Routine) {
+    mutating func exercise(for set: Int, _ routine: Routine) {
         
     }
 }
 
 struct FitnessCenter {
     let centerName: String
-    let bodyGoals: BodyCondition
-    let memberName: String?
+    var bodyGoals: BodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
+    var memberName: String?
     let routineList: [Int]
+    
+    mutating func trainMember() {
+        
+        
+    }
 }
 
 struct BodyCondition {
@@ -89,6 +94,19 @@ let longDistanceRunning: Exercise = Exercise(name: "오래달리기") {
 
 let activeRest: Exercise = Exercise(name: "동적휴식") {
     $0.changeFatigue(by: Int.random(in: -10 ... -5))
+}
+
+let legRaise: Exercise = Exercise(name: "레그레이즈") {
+    $0.changeUpperBodyStrength(by: Int.random(in: 20...30))
+    $0.changeLowerBodyStrength(by: Int.random(in: 20...30))
+    $0.changeFatigue(by: Int.random(in: 10...20))
+}
+
+let burpee: Exercise = Exercise(name: "버피테스트") {
+    $0.changeMuscularEndurance(by: Int.random(in: 20...30))
+    $0.changeUpperBodyStrength(by: Int.random(in: 5...10))
+    $0.changeLowerBodyStrength(by: Int.random(in: 5...10))
+    $0.changeFatigue(by: Int.random(in: 20...30))
 }
 
 // step1 실행코드
