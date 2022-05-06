@@ -25,3 +25,20 @@ struct Exercise {
 func rangeLevel(min: Int, max: Int) -> Int {
     return Int.random(in: min...max)
 }
+
+struct Routine {
+    let name: String
+    var order: Array<Exercise>
+    
+    func playRoutine() {
+        print("--------------")
+        print("\(name)을 시작합니다.")
+        for exercise in order {
+            print(exercise.name)
+        }
+        
+        print("--------------")
+        print("현재의 컨디션은 다음과 같습니다.")
+        //근력 및 피로도 구현
+    }
+}
