@@ -28,6 +28,7 @@ struct FitnessCenter {
     
     mutating func trainMember() {
         joinMember()
+        setBodyGoal()
     }
     
     mutating func joinMember() {
@@ -37,6 +38,18 @@ struct FitnessCenter {
         }
         member = Person(name: memberName, bodyCondition: initBodyCondition)
     }
+    
+    mutating func setBodyGoal() {
+            print("운동 목표치를 순서대로 알려주세요.")
+            print("상체근력 : ", terminator: "")
+            self.bodyGoal.upperBodyStrength = Int(readLine()!)!
+            print("하체근력 : ", terminator: "")
+            self.bodyGoal.lowerBodyStrength = Int(readLine()!)!
+            print("근지구력 : ", terminator: "")
+            self.bodyGoal.muscularEndurance = Int(readLine()!)!
+            print("피로도 : ", terminator: "")
+            self.bodyGoal.fatigue = Int(readLine()!)!
+        }
 }
 
 struct BodyCondition {
