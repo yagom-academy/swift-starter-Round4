@@ -8,9 +8,14 @@
 
 import Foundation
 
-let exercises: [Exercise] = [sitUp, squat, activeRest, squat, benchPress, activeRest, miniMarathon, miniMarathon]
-let hellRoutine: Routine = Routine(called: "HellRoutine", exercises: exercises)
-let misterLee: Person = Person(name: "이정민", routine: hellRoutine)
+let buildinglowerRoutine: Routine = Routine(called: "HellRoutine", exercises: [squat, squat, activeRest, miniMarathon, activeRest])
+let buildingUpperRoutine: Routine = Routine(called: "Build upper", exercises: [benchPress, activeRest, benchPress, activeRest, miniMarathon])
 
-misterLee.workOut()
-misterLee.showCondition()
+let fitnessPrograms: [Routine] = [buildingUpperRoutine, buildinglowerRoutine]
+let yagomFitnessCenter = FitnessCenter(routineList: fitnessPrograms)
+
+func startExercise(at fitnessCenter: FitnessCenter) {
+    fitnessCenter.register()
+}
+
+startExercise(at: yagomFitnessCenter)
