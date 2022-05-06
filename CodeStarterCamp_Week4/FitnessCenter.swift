@@ -51,11 +51,11 @@ class FitnessCenter {
         
         let receivedTargetCondition = inputValue.split(separator: " ").map({ Int($0) ?? ErrorValue.stringToIntConvertErrorValue })
         
-        guard receivedTargetCondition.count > 3 else {
+        guard receivedTargetCondition.count == 3 else {
             throw FitnessCenterContingency.spillOverIndexError
         }
         
-        guard receivedTargetCondition.contains(ErrorValue.stringToIntConvertErrorValue) else {
+        guard !receivedTargetCondition.contains(ErrorValue.stringToIntConvertErrorValue) else {
             throw FitnessCenterContingency.stringToIntConvertError
         }
         
@@ -64,21 +64,27 @@ class FitnessCenter {
         self.targetBodyCondition.endurancePower = receivedTargetCondition[2]
     }
     
-    func workOut() throws {
-        guard let member = member else {
-            throw FitnessCenterContingency.notExistMemberError
-        }
-        
+    func workOut() {
         do {
+            try isExistMember()
             let indexOfRoutine = try selectRoutine()
             let setsOfExercise = try selectRepeat()
-            member.exercise(for: setsOfExercise, routine: routineList[indexOfRoutine])
+            member?.exercise(for: setsOfExercise, routine: routineList[indexOfRoutine])
+            
+        } catch FitnessCenterContingency.notExistMemberError{
+            ErrorMessage.notExistMemberErrorMessage()
         } catch FitnessCenterContingency.unrecognizedInputError {
             ErrorMessage.unrecognizedInputErrorMessage()
         } catch FitnessCenterContingency.stringToIntConvertError {
             ErrorMessage.stringToIntConvertErrorMessage()
         } catch {
             print("Error: \(error)")
+        }
+    }
+    
+    private func isExistMember() throws {
+        guard member != nil else {
+            throw FitnessCenterContingency.notExistMemberError
         }
     }
     
@@ -94,7 +100,7 @@ class FitnessCenter {
         
         let selectRoutineIndex = Int(inputValue) ?? ErrorValue.stringToIntConvertErrorValue
         
-        guard selectRoutineIndex == ErrorValue.stringToIntConvertErrorValue else {
+        guard selectRoutineIndex != ErrorValue.stringToIntConvertErrorValue else {
             throw FitnessCenterContingency.stringToIntConvertError
         }
         

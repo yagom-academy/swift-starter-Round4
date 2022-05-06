@@ -27,6 +27,7 @@ class Person {
                 print(exercise.name)
                 exercise.action(&bodyCondition)
             }
+            print("set End")
         }
         
         showCondition()
