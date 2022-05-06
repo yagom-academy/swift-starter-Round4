@@ -27,17 +27,24 @@ struct FitnessCenter {
     let routineList: [Routine]
     
     mutating func trainMember() {
-        joinMember()
-        setBodyGoal()
-        doRoutine(from: routineList)
-        compareRoutine(bodyGoal, with: member!.bodyCondition)
+        do {
+            try joinMember()
+        } catch FitnessCenterError.InvaildInputValue {
+            print("이름을 정확하게 입력해 주세요.")
+        } catch {
+            print("예상치 못한 오류 발생.")
+        }
+        //setBodyGoal()
+        //doRoutine(from: routineList)
+        //compareRoutine(bodyGoal, with: member!.bodyCondition)
     }
     
-    mutating func joinMember() {
+    mutating func joinMember() throws {
         print("안녕하세요. \(self.centerName)입니다. 회원님의 이름은 무엇인가요?")
         guard let memberName = readLine() else {
-            return
+            throw FitnessCenterError.InvaildInputValue
         }
+        if memberName.isEmpty { throw FitnessCenterError.InvaildInputValue }
         member = Person(name: memberName, bodyCondition: initBodyCondition)
     }
     
