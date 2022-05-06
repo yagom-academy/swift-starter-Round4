@@ -8,14 +8,15 @@
 
 import Foundation
 
-let buildinglowerRoutine: Routine = Routine(called: "HellRoutine", exercises: [squat, squat, activeRest, miniMarathon, activeRest])
-let buildingUpperRoutine: Routine = Routine(called: "Build upper", exercises: [benchPress, activeRest, benchPress, activeRest, miniMarathon])
+let buildinglowerRoutine: Routine = Routine(called: "Build Lower Routine", exercises: [squat, squat, activeRest, miniMarathon, activeRest])
+let buildingUpperRoutine: Routine = Routine(called: "Build Upper Routine", exercises: [benchPress, activeRest, benchPress, activeRest, miniMarathon])
 
 let fitnessPrograms: [Routine] = [buildingUpperRoutine, buildinglowerRoutine]
 let yagomFitnessCenter = FitnessCenter(routineList: fitnessPrograms)
 
 func startExercise(at fitnessCenter: FitnessCenter) {
     fitnessCenter.register()
+    fitnessCenter.workOut()
 }
 
 startExercise(at: yagomFitnessCenter)

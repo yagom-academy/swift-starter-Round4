@@ -8,13 +8,14 @@
 import Foundation
 
 enum FitnessCenterContingency: Error {
-    case unexpectedInputError
+    case unrecognizedInputError
     case stringToIntConvertError
     case spillOverIndexError
+    case notExistMemberError
 }
 
 enum ErrorMessage {
-    static let unexpectedInputErrorMessage = {
+    static let unrecognizedInputErrorMessage = {
         print("Error: 인식할 수 없는 값입니다.")
     }
     
@@ -24,6 +25,10 @@ enum ErrorMessage {
     
     static let spillOverIndexErrorMessage = {
         print("Error: 너무 많은 값을 입력했습니다.")
+    }
+    
+    static let notExistMemberErrorMessage = {
+        print("Error: 회원이 존재하지 않습니다.")
     }
 }
 

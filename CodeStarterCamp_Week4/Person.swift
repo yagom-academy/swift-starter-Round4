@@ -19,13 +19,17 @@ class Person {
     func exercise(for set: Int, routine: Routine) {
         print("""
         --------------
-        \(routine.routineName)을 시작합니다.
+        \(routine.routineName)을 \(set)set 시작합니다.
         """)
         
-        for exercise in routine.exercises {
-            print(exercise.name)
-            exercise.action(&bodyCondition)
+        for _ in 1...set {
+            for exercise in routine.exercises {
+                print(exercise.name)
+                exercise.action(&bodyCondition)
+            }
         }
+        
+        showCondition()
     }
 
     func showCondition() {
