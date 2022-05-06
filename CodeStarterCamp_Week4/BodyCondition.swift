@@ -21,4 +21,25 @@ class BodyCondition {
         self.muscularEndurance = muscularEndurance
         self.fatigue = fatigue
     }
+    
+    func exercise(routine: Routine) {
+        print("\(self.name)님이 \(routine.name)을 시작합니다.")
+        print("--------------")
+        routine.exercises.forEach {
+            $0.action(self)
+            print($0.name)
+        }
+        currentCondition()
+    }
+    
+    func currentCondition() {
+        print("""
+                  --------------
+                  현재의 컨디션은 다음과 같습니다.
+                  상체근력: \(self.upperBodyStrength)
+                  하체근력: \(self.lowerBodyStrength)
+                  근지구력: \(self.muscularEndurance)
+                  피로도: \(self.fatigue)
+                  """)
+    }
 }
