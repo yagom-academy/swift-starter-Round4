@@ -27,6 +27,15 @@ struct FitnessCenter {
     let routineList: [Routine]
     
     mutating func trainMember() {
+        joinMember()
+    }
+    
+    mutating func joinMember() {
+        print("안녕하세요. \(self.centerName)입니다. 회원님의 이름은 무엇인가요?")
+        guard let memberName = readLine() else {
+            return
+        }
+        member = Person(name: memberName, bodyCondition: initBodyCondition)
     }
 }
 
@@ -138,3 +147,5 @@ let ohMyGodRoutine = Routine(name: "ohMyGodRoutine", exercises: ohMyGodRoutineEx
 let routineList: [Routine] = [hellRoutine, ohMyGodRoutine]
 
 var yagomFitnessCenter = FitnessCenter(centerName: "야곰 피트니스 센터", bodyGoal: initBodyCondition, member: nil, routineList: routineList)
+
+yagomFitnessCenter.trainMember()
