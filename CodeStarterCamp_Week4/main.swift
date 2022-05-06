@@ -30,6 +30,7 @@ struct FitnessCenter {
         joinMember()
         setBodyGoal()
         doRoutine(from: routineList)
+        compareRoutine(bodyGoal, with: member!.bodyCondition)
     }
     
     mutating func joinMember() {
@@ -63,6 +64,23 @@ struct FitnessCenter {
         let numberOfSets = Int(readLine()!)!
         
         self.member?.exercise(for: numberOfSets, routineList[routineNumber])
+    }
+    
+    mutating func compareRoutine(_ bodyGoal: BodyCondition, with memberCondition: BodyCondition) {
+        if (memberCondition.upperBodyStrength >= bodyGoal.upperBodyStrength),
+           (memberCondition.lowerBodyStrength >= bodyGoal.lowerBodyStrength),
+           (memberCondition.muscularEndurance >= bodyGoal.muscularEndurance) {
+            print("-------------------------")
+            print("성공입니다! 현재 \(member?.name)의 컨디션은 다음과 같습니다.")
+            member?.bodyCondition.printBodyCondition()
+           }
+        else {
+            print("-------------------------")
+            print("목표치에 도달하지 못했습니다. 현재 \(member?.name)의 컨디션은 다음과 같습니다.")
+            member?.bodyCondition.printBodyCondition()
+            doRoutine(from: routineList)
+        }
+           
     }
 }
 
@@ -110,7 +128,6 @@ struct Routine {
     
     func doExercises(_ bodyCondition: inout BodyCondition) {
         print("-------------------------")
-
         for exercise in exercises {
             print("\(exercise.name)")
             exercise.action(&bodyCondition)
