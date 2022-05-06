@@ -5,7 +5,10 @@ struct Person {
     var bodyCondition: BodyCondition
     
     mutating func exercise(for set: Int, _ routine: Routine) {
-        
+        print("\(routine.name)을 \(set)set 시작합니다.")
+        for _ in 1...set {
+            routine.doExercises(&bodyCondition)
+        }
     }
 }
 
