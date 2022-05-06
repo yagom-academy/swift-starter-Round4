@@ -27,11 +27,14 @@ struct BodyCondition {
     }
     
     func showCondition() {
-        print("--------------")
-        print("현재의 컨디션은 다음과 같습니다.")
-        print("상체근력: \(upperBodyStrength)")
-        print("하체근력: \(lowerBodyStrength)")
-        print("근지구력: \(muscularEndurance)")
-        print("피로도: \(fatigue)")
+        let conditionInformation = """
+--------------
+현재의 컨디션은 다음과 같습니다.
+상체근력: \(upperBodyStrength)
+하체근력: \(lowerBodyStrength)
+근지구력: \(muscularEndurance)
+피로도: \(fatigue)
+"""
+        print(conditionInformation)
     }
 }
