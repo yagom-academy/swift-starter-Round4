@@ -51,3 +51,25 @@ struct Routine {
         return tempBodyCondition
     }
 }
+
+
+var beam2 = BodyCondition()
+let pushup = Exercise(name: "푸쉬업") {
+    var bodyCondtion = BodyCondition()
+    bodyCondtion.upperBodyStrength = rangeLevel(min: 20, max: 30)
+    bodyCondtion.lowerBodyStrength = rangeLevel(min: 0, max: 0)
+    bodyCondtion.muscularEndurance = rangeLevel(min: 10, max: 20)
+    bodyCondtion.fatigueLevel = rangeLevel(min: 10, max: 20)
+    return bodyCondtion
+}
+let squrt = Exercise(name: "스쿼트") {
+    var bodyCondtion = BodyCondition()
+    bodyCondtion.upperBodyStrength = rangeLevel(min: 0, max: 0)
+    bodyCondtion.lowerBodyStrength = rangeLevel(min: 20, max: 30)
+    bodyCondtion.muscularEndurance = rangeLevel(min: 0, max: 0)
+    bodyCondtion.fatigueLevel = rangeLevel(min: 10, max: 20)
+    return bodyCondtion
+}
+
+var hellRoutine = Routine(name: "hellRoutine", order: [pushup, squrt])
+beam2 = hellRoutine.playRoutine()
