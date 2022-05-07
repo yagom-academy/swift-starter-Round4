@@ -52,7 +52,6 @@ struct Routine {
     }
 }
 
-
 var beam2 = BodyCondition()
 let pushup = Exercise(name: "푸쉬업") {
     var bodyCondtion = BodyCondition()
@@ -70,6 +69,5 @@ let squrt = Exercise(name: "스쿼트") {
     bodyCondtion.fatigueLevel = rangeLevel(min: 10, max: 20)
     return bodyCondtion
 }
-
 var hellRoutine = Routine(name: "hellRoutine", order: [pushup, squrt])
 beam2 = hellRoutine.playRoutine()
