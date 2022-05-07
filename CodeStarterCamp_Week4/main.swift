@@ -16,7 +16,7 @@ class BodyCondition {
 }
 
 class Routine {
-    var routineName: String
+    let routineName: String
     let routineArray: [Exercise]
     
     init(routineName: String, routineArray: [Exercise]) {
@@ -27,40 +27,40 @@ class Routine {
 
 //운동 타입
 struct Exercise {
-        let name: String
-        let action: (BodyCondition) -> Void
+    let name: String
+    let action: (BodyCondition) -> Void
 }
 
 //예시 운동
 let sitUp: Exercise = Exercise(name: "sitUp",
-   action: { (bodyCondition: BodyCondition) in
-    bodyCondition.upperStrength +=  Int.random(in: 10...20)
-    bodyCondition.fatigability += Int.random(in: 10...20)
+        action: { (bodyCondition: BodyCondition) in
+            bodyCondition.upperStrength += Int.random(in: 10...20)
+            bodyCondition.fatigability += Int.random(in: 10...20)
 })
 
 let squat: Exercise = Exercise(name: "squat",
-     action: { (bodyCondition: BodyCondition) in
-    bodyCondition.lowerStrength += Int.random(in: 20...30)
-    bodyCondition.fatigability += Int.random(in: 10...20)
+        action: { (bodyCondition: BodyCondition) in
+            bodyCondition.lowerStrength += Int.random(in: 20...30)
+            bodyCondition.fatigability += Int.random(in: 10...20)
 })
 
 
 let longRunning: Exercise = Exercise(name: "longRunning",
-     action: { (bodyCondition: BodyCondition) in
-    bodyCondition.muscularEndurance += Int.random(in: 20...30)
-    bodyCondition.upperStrength +=  Int.random(in: 5...10)
-    bodyCondition.lowerStrength += Int.random(in: 5...10)
-    bodyCondition.fatigability += Int.random(in: 20...30)
+        action: { (bodyCondition: BodyCondition) in
+            bodyCondition.muscularEndurance += Int.random(in: 20...30)
+            bodyCondition.upperStrength += Int.random(in: 5...10)
+            bodyCondition.lowerStrength += Int.random(in: 5...10)
+            bodyCondition.fatigability += Int.random(in: 20...30)
 })
 
 
-let dynamicBreak: Exercise = Exercise(name: "dynamicBreak  ",
-     action: { (bodyCondition: BodyCondition) in
-    bodyCondition.fatigability -= Int.random(in: 5...10)
+let dynamicBreak: Exercise = Exercise(name: "dynamicBreak",
+        action: { (bodyCondition: BodyCondition) in
+            bodyCondition.fatigability -= Int.random(in: 5...10)
     
-    if bodyCondition.fatigability < 0 {
-        bodyCondition.fatigability = 0
-    }
+            if bodyCondition.fatigability < 0 {
+                bodyCondition.fatigability = 0
+            }
 })
 
 
