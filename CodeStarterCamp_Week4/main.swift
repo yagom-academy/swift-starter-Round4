@@ -34,7 +34,11 @@ struct Routine {
         print("\(name)을 시작합니다.")
         
         for exercise in order {
-            tempBodyCondition = exercise.upperLevel()
+            let condition = exercise.upperLevel()
+            tempBodyCondition.upperBodyStrength += condition.upperBodyStrength
+            tempBodyCondition.lowerBodyStrength += condition.lowerBodyStrength
+            tempBodyCondition.muscularEndurance += condition.muscularEndurance
+            tempBodyCondition.fatigueLevel += condition.fatigueLevel
         }
         
         print("--------------")
