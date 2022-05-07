@@ -11,6 +11,7 @@
 		7B782E58281FF40000240417 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B782E57281FF40000240417 /* Exercise.swift */; };
 		7B782E5A281FF4AA00240417 /* BodyCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B782E59281FF4AA00240417 /* BodyCondition.swift */; };
 		7B782E5C281FFC6F00240417 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B782E5B281FFC6F00240417 /* Routine.swift */; };
+		7B9D79AB2824159300F92A01 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9D79AA2824159300F92A01 /* Person.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,7 @@
 		7B782E57281FF40000240417 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		7B782E59281FF4AA00240417 /* BodyCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyCondition.swift; sourceTree = "<group>"; };
 		7B782E5B281FFC6F00240417 /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
+		7B9D79AA2824159300F92A01 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				7B782E57281FF40000240417 /* Exercise.swift */,
 				7B782E59281FF4AA00240417 /* BodyCondition.swift */,
 				7B782E5B281FFC6F00240417 /* Routine.swift */,
+				7B9D79AA2824159300F92A01 /* Person.swift */,
 			);
 			path = CodeStarterCamp_Week4;
 			sourceTree = "<group>";
@@ -128,6 +131,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B9D79AB2824159300F92A01 /* Person.swift in Sources */,
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
 				7B782E5A281FF4AA00240417 /* BodyCondition.swift in Sources */,
 				7B782E5C281FFC6F00240417 /* Routine.swift in Sources */,
