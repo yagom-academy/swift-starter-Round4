@@ -5,18 +5,53 @@ enum FitnessCenterError: Error {
     case UnreachedGoal
     case InvaildInputValue
     case NoMember
-    case OtherExeption
+}
+
+func inputToString() throws -> String {
+    guard let input = readLine() else {
+        throw FitnessCenterError.InvaildInputValue
+    }
+    guard input.isEmpty == false, input.contains(" ") == false else {
+        throw FitnessCenterError.InvaildInputValue
+    }
+    for character in input {
+        guard character.isLetter else {
+            throw FitnessCenterError.InvaildInputValue
+        }
+    }
+    return input
+}
+
+func inputToInt() throws -> Int {
+    guard let input = readLine() else {
+        throw FitnessCenterError.InvaildInputValue
+    }
+    guard let input = Int(input) else {
+        throw FitnessCenterError.InvaildInputValue
+    }
+    return input
 }
 
 struct Person {
     let name: String
     var bodyCondition: BodyCondition
     
-    mutating func exercise(for set: Int, _ routine: Routine) {
+    mutating func exercise(for set: Int, _ routine: Routine, _ fatigueLimit: Int) throws {
         print("\(routine.name)을 \(set)set 시작합니다.")
         for _ in 1...set {
-            routine.doExercises(&bodyCondition)
+            print("-------------------------")
+            for exercise in routine.exercises {
+                print("\(exercise.name)")
+                exercise.action(&bodyCondition)
+                if self.bodyCondition.fatigue > fatigueLimit {
+                    try runAway()
+                }
+            }
         }
+    }
+    
+    func runAway() throws {
+        throw FitnessCenterError.Overfatigue
     }
 }
 
@@ -28,137 +63,90 @@ struct FitnessCenter {
     
     mutating func runFitnessCenter() {
         do {
-            let memberName = try joinMember()
-            self.member = Person(name: memberName, bodyCondition: initBodyCondition)
-            
-            let bodyCondition = try setBodyConditionGoal()
-            self.bodyConditionGoal = bodyCondition
-            
-            let routineNumber = try chooseRoutine(from: routineList)
-            let countOfSets = try setCountOfSets()
-            
-            
-            
-            
+            if self.member == nil {
+                try joinMember()
+                try setBodyConditionGoal()
+            }
+            try doRoutine(try chooseRoutine(from: routineList), for: try setCountOfSets())
+            try printRoutineResult()
         } catch FitnessCenterError.InvaildInputValue {
             print("입력값 오류.")
         } catch FitnessCenterError.NoMember {
             print("센터에 회원이 없습니다.")
-        }
-        catch {
-            print("예상치 못한 오류.")
+        } catch FitnessCenterError.UnreachedGoal {
+            print("-------------------------")
+            print("목표치에 도달하지 못했습니다. 현재 \(member!.name)님의 컨디션은 다음과 같습니다.")
+            self.member?.bodyCondition.printBodyCondition()
+            self.runFitnessCenter()
+        } catch FitnessCenterError.Overfatigue {
+            print("-------------------------")
+            print("\(member!.name)님의 피로도가 \(member!.bodyCondition.fatigue)입니다. 회원님이 도망갔습니다.")
+        } catch {
+            print("예상치 못한 에러 \(error)")
         }
     }
-    
 
-    func joinMember() throws -> String {
+    mutating func joinMember() throws {
         print("안녕하세요. \(self.centerName)입니다. 회원님의 이름은 무엇인가요?")
-        guard let memberName = readLine() else {
-            throw FitnessCenterError.InvaildInputValue
-        }
-        guard memberName.isEmpty == false, memberName.contains(" ") == false else {
-            throw FitnessCenterError.InvaildInputValue
-        }
-        for character in memberName {
-            guard character.isLetter else {
-                throw FitnessCenterError.InvaildInputValue
-            }
-        }
-        return memberName
+        self.member = Person(name: try inputToString(), bodyCondition: initBodyCondition)
     }
-    
-    func setBodyConditionGoal() throws -> BodyCondition {
-        var bodyCondition = initBodyCondition
-        
+
+    mutating func setBodyConditionGoal() throws {
         print("운동 목표치를 순서대로 알려주세요.")
         print("상체근력 : ", terminator: "")
-        guard let input = readLine() else {
-            throw FitnessCenterError.InvaildInputValue
-        }
-        guard let inputNumber = Int(input) else {
-            throw FitnessCenterError.InvaildInputValue
-        }
-        bodyCondition.upperBodyStrength = inputNumber
-                
+        self.bodyConditionGoal.upperBodyStrength = try inputToInt()
+        
         print("하체근력 : ", terminator: "")
-        guard let input = readLine() else {
-            throw FitnessCenterError.InvaildInputValue
-        }
-        guard let inputNumber = Int(input) else {
-            throw FitnessCenterError.InvaildInputValue
-        }
-        bodyCondition.lowerBodyStrength = inputNumber
+        self.bodyConditionGoal.lowerBodyStrength = try inputToInt()
         
         print("근지구력 : ", terminator: "")
-        guard let input = readLine() else {
-            throw FitnessCenterError.InvaildInputValue
-        }
-        guard let inputNumber = Int(input) else {
-            throw FitnessCenterError.InvaildInputValue
-        }
-        bodyCondition.muscularEndurance = inputNumber
+        self.bodyConditionGoal.muscularEndurance = try inputToInt()
         
-        print("피로도 : ", terminator: "")
-        guard let input = readLine() else {
-            throw FitnessCenterError.InvaildInputValue
-        }
-        guard let inputNumber = Int(input) else {
-            throw FitnessCenterError.InvaildInputValue
-        }
-        bodyCondition.fatigue = inputNumber
-        
-        return bodyCondition
+        print("피로도 한계 : ", terminator: "")
+        self.bodyConditionGoal.fatigue = try inputToInt()
     }
     
-    func chooseRoutine(from routineList: [Routine]) throws -> Int {
+    func chooseRoutine(from routineList: [Routine]) throws -> Routine {
         print("몇 번째 루틴으로 운동하시겠어요?")
         for (index, routine) in routineList.enumerated() {
             print("\(index + 1). \(routine.name)")
         }
-        guard let input = readLine() else {
-            throw FitnessCenterError.InvaildInputValue
-        }
-        guard let inputNumber = Int(input) else {
-            throw FitnessCenterError.InvaildInputValue
-        }
-
-        let index = inputNumber - 1
+        let index = try inputToInt() - 1
 
         guard routineList.indices.contains(index) else {
             throw FitnessCenterError.InvaildInputValue
         }
 
-        return index
+        return routineList[index]
     }
     
     func setCountOfSets() throws -> Int {
         print("몇 세트 반복하시겠어요?")
-        guard let input = readLine() else {
-            throw FitnessCenterError.InvaildInputValue
-        }
-        guard let inputNumber = Int(input) else {
-            throw FitnessCenterError.InvaildInputValue
-        }
+        let countOfSets = try inputToInt()
         
-        return inputNumber
+        return countOfSets
+    }
+    
+    mutating func doRoutine( _ routine: Routine, for set: Int) throws {
+        guard member != nil else {
+            throw FitnessCenterError.NoMember
+        }
+        try self.member?.exercise(for: set, routine, bodyConditionGoal.fatigue)
     }
 
-//    mutating func compareRoutine(_ bodyGoal: BodyCondition, with memberCondition: BodyCondition) {
-//        if (memberCondition.upperBodyStrength >= bodyGoal.upperBodyStrength),
-//           (memberCondition.lowerBodyStrength >= bodyGoal.lowerBodyStrength),
-//           (memberCondition.muscularEndurance >= bodyGoal.muscularEndurance) {
-//            print("-------------------------")
-//            print("성공입니다! 현재 \(member?.name)의 컨디션은 다음과 같습니다.")
-//            member?.bodyCondition.printBodyCondition()
-//           }
-//        else {
-//            print("-------------------------")
-//            print("목표치에 도달하지 못했습니다. 현재 \(member?.name)의 컨디션은 다음과 같습니다.")
-//            member?.bodyCondition.printBodyCondition()
-//            //doRoutine(from: routineList)
-//        }
-//
-//    }
+    func printRoutineResult() throws {
+        guard let member = self.member else {
+            throw FitnessCenterError.NoMember
+        }
+        guard (member.bodyCondition.upperBodyStrength) >= (bodyConditionGoal.upperBodyStrength),
+              (member.bodyCondition.lowerBodyStrength) >= (bodyConditionGoal.lowerBodyStrength),
+              (member.bodyCondition.muscularEndurance) >= (bodyConditionGoal.muscularEndurance) else {
+            throw FitnessCenterError.UnreachedGoal
+        }
+        print("-------------------------")
+        print("성공입니다! 현재 \(member.name)님의 컨디션은 다음과 같습니다.")
+        member.bodyCondition.printBodyCondition()
+    }
 }
 
 struct BodyCondition {
@@ -256,15 +244,11 @@ myCondition.printBodyCondition()
 */
 
 let initBodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
-
 let hellRoutineExercises: [Exercise] = [sitUp, sitUp, activeRest, legRaise, legRaise, activeRest, burpee, burpee]
 let ohMyGodRoutineExercises: [Exercise] = [sitUp, squad, legRaise, burpee, activeRest]
-
 let hellRoutine = Routine(name: "hellRoutine", exercises: hellRoutineExercises)
 let ohMyGodRoutine = Routine(name: "ohMyGodRoutine", exercises: ohMyGodRoutineExercises)
-
 let routineList: [Routine] = [hellRoutine, ohMyGodRoutine]
-
 var yagomFitnessCenter = FitnessCenter(centerName: "야곰 피트니스 센터", bodyConditionGoal: initBodyCondition, member: nil, routineList: routineList)
 
 yagomFitnessCenter.runFitnessCenter()
