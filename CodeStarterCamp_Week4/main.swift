@@ -21,26 +21,29 @@ func rangeLevel(min: Int, max: Int) -> Int {
 
 struct Exercise {
     let name: String
-    let upperLevel: () -> Void
+    let upperLevel: () -> BodyCondition
 }
 
 struct Routine {
     let name: String
     var order: Array<Exercise>
-    var recordedBodyCondition: BodyCondition
     
-    func playRoutine() {
+    func playRoutine() -> BodyCondition {
+        var tempBodyCondition = BodyCondition()
         print("--------------")
         print("\(name)을 시작합니다.")
+        
         for exercise in order {
-            print(exercise.name)
+            tempBodyCondition = exercise.upperLevel()
         }
         
         print("--------------")
         print("현재의 컨디션은 다음과 같습니다.")
-        print("상체근력 : \(recordedBodyCondition.upperBodyStrength)")
-        print("하체근력 : \(recordedBodyCondition.lowerBodyStrength)")
-        print("근지구력 : \(recordedBodyCondition.muscularEndurance)")
-        print("피로도 : \(recordedBodyCondition.fatigueLevel)")
+        print("상체근력 : \(tempBodyCondition.upperBodyStrength)")
+        print("하체근력 : \(tempBodyCondition.lowerBodyStrength)")
+        print("근지구력 : \(tempBodyCondition.muscularEndurance)")
+        print("피로도 : \(tempBodyCondition.fatigueLevel)")
+        
+        return tempBodyCondition
     }
 }
