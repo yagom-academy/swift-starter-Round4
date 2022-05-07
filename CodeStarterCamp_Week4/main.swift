@@ -74,5 +74,10 @@ let squrt = Exercise(name: "스쿼트") {
     bodyCondtion.fatigueLevel = rangeLevelUp(min: 10, max: 20)
     return bodyCondtion
 }
-var hellRoutine = Routine(name: "hellRoutine", order: [pushup, squrt])
+let relaxtion = Exercise(name: "동적휴식") {
+    var bodyCondtion = BodyCondition()
+    bodyCondtion.fatigueLevel = rangeLevelDown(min: 5, max: 10)
+    return bodyCondtion
+}
+var hellRoutine = Routine(name: "hellRoutine", order: [pushup, squrt, relaxtion, relaxtion, squrt])
 beam2 = hellRoutine.playRoutine()
