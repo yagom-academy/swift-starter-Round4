@@ -22,7 +22,7 @@ struct Person {
 
 struct FitnessCenter {
     let centerName: String
-    var bodyGoal: BodyCondition
+    var bodyConditionGoal: BodyCondition
     var member: Person?
     let routineList: [Routine]
     
@@ -30,19 +30,18 @@ struct FitnessCenter {
         do {
             let memberName = try joinMember()
             self.member = Person(name: memberName, bodyCondition: initBodyCondition)
+            
+            let bodyCondition = try setBodyGoal()
+            self.bodyConditionGoal = bodyCondition
+            
         } catch FitnessCenterError.InvaildInputValue {
-            print("이름을 정확히 입력해 주세요.")
-        } catch {
-            print("예상치 못한 오류 발생.")
+            print("입력값 오류.")
+        } catch FitnessCenterError.NoMember {
+            print("센터에 회원이 없습니다.")
         }
-        
-//        do {
-//            try setBodyGoal()
-//        } catch FitnessCenterError.InvaildInputValue {
-//            print("목표치를 숫자로 입력해 주세요.")
-//        } catch {
-//            print("예상치 못한 오류 발생.")
-//        }
+        catch {
+            print("예상치 못한 오류.")
+        }
 //
 //        do {
 //            try doRoutine(from: routineList)
@@ -73,7 +72,9 @@ struct FitnessCenter {
         return memberName
     }
     
-    mutating func setBodyGoal() throws {
+    mutating func setBodyGoal() throws -> BodyCondition {
+        var bodyCondition = initBodyCondition
+        
         print("운동 목표치를 순서대로 알려주세요.")
         print("상체근력 : ", terminator: "")
         guard let input = readLine() else {
@@ -82,7 +83,7 @@ struct FitnessCenter {
         guard let inputNumber = Int(input) else {
             throw FitnessCenterError.InvaildInputValue
         }
-        bodyGoal.upperBodyStrength = inputNumber
+        bodyCondition.upperBodyStrength = inputNumber
                 
         print("하체근력 : ", terminator: "")
         guard let input = readLine() else {
@@ -91,7 +92,7 @@ struct FitnessCenter {
         guard let inputNumber = Int(input) else {
             throw FitnessCenterError.InvaildInputValue
         }
-        bodyGoal.lowerBodyStrength = inputNumber
+        bodyCondition.lowerBodyStrength = inputNumber
         
         print("근지구력 : ", terminator: "")
         guard let input = readLine() else {
@@ -100,7 +101,7 @@ struct FitnessCenter {
         guard let inputNumber = Int(input) else {
             throw FitnessCenterError.InvaildInputValue
         }
-        bodyGoal.muscularEndurance = inputNumber
+        bodyCondition.muscularEndurance = inputNumber
         
         print("피로도 : ", terminator: "")
         guard let input = readLine() else {
@@ -109,7 +110,9 @@ struct FitnessCenter {
         guard let inputNumber = Int(input) else {
             throw FitnessCenterError.InvaildInputValue
         }
-        bodyGoal.fatigue = inputNumber
+        bodyCondition.fatigue = inputNumber
+        
+        return bodyCondition
     }
     
     mutating func doRoutine(from routineList: [Routine]) throws {
@@ -266,6 +269,6 @@ let ohMyGodRoutine = Routine(name: "ohMyGodRoutine", exercises: ohMyGodRoutineEx
 
 let routineList: [Routine] = [hellRoutine, ohMyGodRoutine]
 
-var yagomFitnessCenter = FitnessCenter(centerName: "야곰 피트니스 센터", bodyGoal: initBodyCondition, member: nil, routineList: routineList)
+var yagomFitnessCenter = FitnessCenter(centerName: "야곰 피트니스 센터", bodyConditionGoal: initBodyCondition, member: nil, routineList: routineList)
 
 yagomFitnessCenter.runFitnessCenter()
