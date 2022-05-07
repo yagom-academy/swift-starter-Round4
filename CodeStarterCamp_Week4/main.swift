@@ -26,42 +26,51 @@ struct FitnessCenter {
     var member: Person?
     let routineList: [Routine]
     
-    mutating func trainMember() {
+    mutating func runFitnessCenter() {
         do {
-            try joinMember()
+            let memberName = try joinMember()
+            self.member = Person(name: memberName, bodyCondition: initBodyCondition)
         } catch FitnessCenterError.InvaildInputValue {
-            print("이름을 문자로 입력해 주세요.")
+            print("이름을 정확히 입력해 주세요.")
         } catch {
             print("예상치 못한 오류 발생.")
         }
         
-        do {
-            try setBodyGoal()
-        } catch FitnessCenterError.InvaildInputValue {
-            print("목표치를 숫자로 입력해 주세요.")
-        } catch {
-            print("예상치 못한 오류 발생.")
-        }
-        
-        do {
-            try doRoutine(from: routineList)
-        } catch FitnessCenterError.InvaildInputValue {
-            print("루틴 목록에 있는 숫자를 입력해 주세요")
-        } catch FitnessCenterError.NoMember {
-            print("센터에 회원님이 없습니다.")
-        } catch {
-            print("예상치 못한 오류 발생.")
-        }
+//        do {
+//            try setBodyGoal()
+//        } catch FitnessCenterError.InvaildInputValue {
+//            print("목표치를 숫자로 입력해 주세요.")
+//        } catch {
+//            print("예상치 못한 오류 발생.")
+//        }
+//
+//        do {
+//            try doRoutine(from: routineList)
+//        } catch FitnessCenterError.InvaildInputValue {
+//            print("루틴 목록에 있는 숫자를 입력해 주세요")
+//        } catch FitnessCenterError.NoMember {
+//            print("센터에 회원님이 없습니다.")
+//        } catch {
+//            print("예상치 못한 오류 발생.")
+//        }
         //compareRoutine(bodyGoal, with: member!.bodyCondition)
     }
     
-    mutating func joinMember() throws {
+
+    mutating func joinMember() throws -> String {
         print("안녕하세요. \(self.centerName)입니다. 회원님의 이름은 무엇인가요?")
         guard let memberName = readLine() else {
             throw FitnessCenterError.InvaildInputValue
         }
-        if memberName.isEmpty { throw FitnessCenterError.InvaildInputValue }
-        member = Person(name: memberName, bodyCondition: initBodyCondition)
+        guard memberName.isEmpty == false, memberName.contains(" ") == false else {
+            throw FitnessCenterError.InvaildInputValue
+        }
+        for character in memberName {
+            guard character.isLetter else {
+                throw FitnessCenterError.InvaildInputValue
+            }
+        }
+        return memberName
     }
     
     mutating func setBodyGoal() throws {
@@ -259,4 +268,4 @@ let routineList: [Routine] = [hellRoutine, ohMyGodRoutine]
 
 var yagomFitnessCenter = FitnessCenter(centerName: "야곰 피트니스 센터", bodyGoal: initBodyCondition, member: nil, routineList: routineList)
 
-yagomFitnessCenter.trainMember()
+yagomFitnessCenter.runFitnessCenter()
