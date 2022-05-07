@@ -31,8 +31,14 @@ struct FitnessCenter {
             let memberName = try joinMember()
             self.member = Person(name: memberName, bodyCondition: initBodyCondition)
             
-            let bodyCondition = try setBodyGoal()
+            let bodyCondition = try setBodyConditionGoal()
             self.bodyConditionGoal = bodyCondition
+            
+            let routineNumber = try chooseRoutine(from: routineList)
+            let countOfSets = try setCountOfSets()
+            
+            
+            
             
         } catch FitnessCenterError.InvaildInputValue {
             print("입력값 오류.")
@@ -42,21 +48,10 @@ struct FitnessCenter {
         catch {
             print("예상치 못한 오류.")
         }
-//
-//        do {
-//            try doRoutine(from: routineList)
-//        } catch FitnessCenterError.InvaildInputValue {
-//            print("루틴 목록에 있는 숫자를 입력해 주세요")
-//        } catch FitnessCenterError.NoMember {
-//            print("센터에 회원님이 없습니다.")
-//        } catch {
-//            print("예상치 못한 오류 발생.")
-//        }
-        //compareRoutine(bodyGoal, with: member!.bodyCondition)
     }
     
 
-    mutating func joinMember() throws -> String {
+    func joinMember() throws -> String {
         print("안녕하세요. \(self.centerName)입니다. 회원님의 이름은 무엇인가요?")
         guard let memberName = readLine() else {
             throw FitnessCenterError.InvaildInputValue
@@ -72,7 +67,7 @@ struct FitnessCenter {
         return memberName
     }
     
-    mutating func setBodyGoal() throws -> BodyCondition {
+    func setBodyConditionGoal() throws -> BodyCondition {
         var bodyCondition = initBodyCondition
         
         print("운동 목표치를 순서대로 알려주세요.")
@@ -115,24 +110,28 @@ struct FitnessCenter {
         return bodyCondition
     }
     
-    mutating func doRoutine(from routineList: [Routine]) throws {
+    func chooseRoutine(from routineList: [Routine]) throws -> Int {
         print("몇 번째 루틴으로 운동하시겠어요?")
         for (index, routine) in routineList.enumerated() {
-            print("\(index+1). \(routine.name)")
+            print("\(index + 1). \(routine.name)")
         }
         guard let input = readLine() else {
             throw FitnessCenterError.InvaildInputValue
         }
-        guard var routineNumber = Int(input) else {
+        guard let inputNumber = Int(input) else {
             throw FitnessCenterError.InvaildInputValue
         }
-        
-        if routineList.indices.contains(routineNumber - 1) {
-            routineNumber = routineNumber - 1
-        } else {
+
+        let index = inputNumber - 1
+
+        guard routineList.indices.contains(index) else {
             throw FitnessCenterError.InvaildInputValue
         }
-        
+
+        return index
+    }
+    
+    func setCountOfSets() throws -> Int {
         print("몇 세트 반복하시겠어요?")
         guard let input = readLine() else {
             throw FitnessCenterError.InvaildInputValue
@@ -141,28 +140,25 @@ struct FitnessCenter {
             throw FitnessCenterError.InvaildInputValue
         }
         
-        guard var member = self.member else {
-            throw FitnessCenterError.NoMember
-        }
-        member.exercise(for: inputNumber, routineList[routineNumber])
+        return inputNumber
     }
-    
-    mutating func compareRoutine(_ bodyGoal: BodyCondition, with memberCondition: BodyCondition) {
-        if (memberCondition.upperBodyStrength >= bodyGoal.upperBodyStrength),
-           (memberCondition.lowerBodyStrength >= bodyGoal.lowerBodyStrength),
-           (memberCondition.muscularEndurance >= bodyGoal.muscularEndurance) {
-            print("-------------------------")
-            print("성공입니다! 현재 \(member?.name)의 컨디션은 다음과 같습니다.")
-            member?.bodyCondition.printBodyCondition()
-           }
-        else {
-            print("-------------------------")
-            print("목표치에 도달하지 못했습니다. 현재 \(member?.name)의 컨디션은 다음과 같습니다.")
-            member?.bodyCondition.printBodyCondition()
-            //doRoutine(from: routineList)
-        }
-           
-    }
+
+//    mutating func compareRoutine(_ bodyGoal: BodyCondition, with memberCondition: BodyCondition) {
+//        if (memberCondition.upperBodyStrength >= bodyGoal.upperBodyStrength),
+//           (memberCondition.lowerBodyStrength >= bodyGoal.lowerBodyStrength),
+//           (memberCondition.muscularEndurance >= bodyGoal.muscularEndurance) {
+//            print("-------------------------")
+//            print("성공입니다! 현재 \(member?.name)의 컨디션은 다음과 같습니다.")
+//            member?.bodyCondition.printBodyCondition()
+//           }
+//        else {
+//            print("-------------------------")
+//            print("목표치에 도달하지 못했습니다. 현재 \(member?.name)의 컨디션은 다음과 같습니다.")
+//            member?.bodyCondition.printBodyCondition()
+//            //doRoutine(from: routineList)
+//        }
+//
+//    }
 }
 
 struct BodyCondition {
