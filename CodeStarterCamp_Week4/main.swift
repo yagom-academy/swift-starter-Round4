@@ -21,8 +21,7 @@ func rangeLevel(min: Int, max: Int) -> Int {
 
 struct Exercise {
     let name: String
-    let bodyContitionLevel: BodyCondition
-    let conditionLevelUpdate: (BodyCondition) -> BodyCondition
+    let upperLevel: () -> Void
 }
 
 struct Routine {
