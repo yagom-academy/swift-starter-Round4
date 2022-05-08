@@ -104,6 +104,3 @@ let relaxtion = Exercise(name: "동적휴식") {
     return bodyCondtion
 }
 
-var beam2 = BodyCondition()
-var hellRoutine = Routine(name: "hellRoutine", order: [pushup, squat, relaxtion, relaxtion, squat])
-beam2 = hellRoutine.playRoutine()
