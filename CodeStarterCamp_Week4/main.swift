@@ -8,12 +8,12 @@ enum FitnessCenterError: Error {
 }
 
 func inputToString() throws -> String {
-    guard let input = readLine() else {
+    guard let input = readLine(),
+              input.isEmpty == false,
+              input.contains(" ") else {
         throw FitnessCenterError.InvaildInputValue
     }
-    guard input.isEmpty == false, input.contains(" ") == false else {
-        throw FitnessCenterError.InvaildInputValue
-    }
+    
     for character in input {
         guard character.isLetter else {
             throw FitnessCenterError.InvaildInputValue
