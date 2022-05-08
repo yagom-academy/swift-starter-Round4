@@ -47,10 +47,14 @@ struct FitnessCenter {
             return
         }
         
-        exerciseToGuest(guest: guest, setInput: setInput, routineNumber: routineNumber)
+        exerciseToGuest(guest: guest,
+                        setInput: setInput,
+                        routineNumber: routineNumber)
     }
     
-    func exerciseToGuest(guest: Person, setInput: Int, routineNumber: Int) {
+    func exerciseToGuest(guest: Person,
+                         setInput: Int,
+                         routineNumber: Int) {
         let setRange = 1...setInput
         for setNumber in setRange {
             guest.exercise(for: setNumber, routine: routine[routineNumber])
