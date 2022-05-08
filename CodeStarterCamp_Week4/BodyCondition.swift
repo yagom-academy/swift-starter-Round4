@@ -6,13 +6,18 @@ class BodyCondtion {
     var muscleEndurance: Int // 근지구력
     var tiredness: Int // 피로도
     
-    init(upperBodyStrength: Int, lowerBodyStrength: Int, muscleEndurance: Int, tiredness: Int) {
-        self.upperBodyStrength = upperBodyStrength
+    init(upperBodyStrengh: Int, lowerBodyStrength: Int, muscleEndurance: Int, tiredness: Int){
+        self.upperBodyStrength = upperBodyStrengh
         self.lowerBodyStrength = lowerBodyStrength
         self.muscleEndurance = muscleEndurance
         self.tiredness = tiredness
     }
-
+    
+    // 이니셜라이저의 모든 값에 0을 대입
+    convenience init() {
+        self.init(upperBodyStrengh: 0, lowerBodyStrength: 0, muscleEndurance: 0, tiredness: 0)
+    }
+    
     func checkCondition() {
         print("현재의 컨디션은 다음과 같습니다.")
         print("상체근력: \(upperBodyStrength)")
