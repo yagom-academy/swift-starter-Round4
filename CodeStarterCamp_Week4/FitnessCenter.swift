@@ -9,7 +9,7 @@ import Foundation
 
 class FitnessCenter {
     var targetBodyCondition: BodyCondition = BodyCondition()
-    var member: Person? = nil
+    var member: Person?
     var routineList: [Routine]
     
     init(routineList: [Routine]) {
