@@ -113,6 +113,13 @@ struct Person {
     }
 }
 
+enum FitnessErrorCase: Error {
+    case overFatigueLevel
+    case failAim
+    case incongruityInput
+    case noMembers
+}
+
 struct FitnessCenter {
     let name: String
     let aimBodyCondtion: BodyCondition
