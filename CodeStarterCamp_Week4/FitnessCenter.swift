@@ -8,7 +8,7 @@
 import Foundation
 
 class FitnessCenter {
-    var targetBodyCondition: BodyCondition = BodyCondition()
+    var targetBodyCondition = BodyCondition()
     var member: Person?
     var routineList: [Routine]
     
@@ -149,7 +149,6 @@ class FitnessCenter {
         }
         
         return selectRoutineIndex - 1
-        
     }
     
     private func selectRepeat() throws -> Int {
