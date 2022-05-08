@@ -83,9 +83,9 @@ class FitnessCenter {
             try checkEnoughForTarget()
             
             print("""
-            --------------
-            성공입니다! 현재 \(member.name)님의 컨디션은 다음과 같습니다.
-            """)
+                  --------------
+                  성공입니다! 현재 \(member.name)님의 컨디션은 다음과 같습니다.
+                  """)
             
             member.showCondition()
             
@@ -103,19 +103,18 @@ class FitnessCenter {
             
         } catch FitnessCenterContingency.exhaustedMemberError {
             print("""
-            --------------
-            \(member.name)님의 피로도가 \(member.bodyCondition.fatigue)입니다. 회원님이 도망갔습니다.
-            """)
+                  --------------
+                  \(member.name)님의 피로도가 \(member.bodyCondition.fatigue)입니다. 회원님이 도망갔습니다.
+                  """)
             
             self.member = nil
             exit(1)
             
         } catch FitnessCenterContingency.notEnoughToTargetError {
             print("""
-            --------------
-            목표치에 도달하지 못했습니다 현재 \(member.name)님의 컨디션은 다음과 같습니다.
-            """)
-            
+                  --------------
+                  목표치에 도달하지 못했습니다 현재 \(member.name)님의 컨디션은 다음과 같습니다.
+                  """)
             member.showCondition()
             workOut()
         } catch {
@@ -132,9 +131,9 @@ class FitnessCenter {
     
     private func selectRoutine() throws -> Int {
         print("""
-        --------------
-        몇 번째 루틴으로 운동하시겠어요?
-        """)
+              --------------
+              몇 번째 루틴으로 운동하시겠어요?
+              """)
         for (idx, routine) in routineList.enumerated() {
             print("\(idx + 1). \(routine.routineName)")
         }
