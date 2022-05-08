@@ -10,7 +10,7 @@ enum FitnessCenterError: Error {
 func inputToString() throws -> String {
     guard let input = readLine(),
               input.isEmpty == false,
-              input.contains(" ") else {
+              input.contains(" ") == false else {
         throw FitnessCenterError.InvaildInputValue
     }
     
@@ -23,12 +23,9 @@ func inputToString() throws -> String {
 }
 
 func inputToInt() throws -> Int {
-    guard let input = readLine() else {
+    guard let input = readLine(), let input  = Int(input) else {
         throw FitnessCenterError.InvaildInputValue
-    }
-    guard let input = Int(input) else {
-        throw FitnessCenterError.InvaildInputValue
-    }
+    }    
     return input
 }
 
