@@ -114,11 +114,25 @@ struct Person {
 }
 
 struct FitnessCenter {
+    let name: String
     let aimBodyCondtion: BodyCondition
     var members: Array<Person>?
     var routineList: [Routine]
     
     func runProgram(){
+        print("안녕하세요. \(name) 피트니스 센터입니다. 회원님의 이름은 무엇인가요?", separator: "")
+        let memberName: String? = readLine()
+        
+        print("운동 목표치를 순서대로 알려주세요. 예시) 상체근력:130,하체근력:120,근지구력:150 \n상체근력 :", terminator: " ")
+        let upperStrength: String? = readLine()
+        let lowerStrength: String? = readLine()
+        let muscularEndurance: String? = readLine()
+        
+        print("몇 번째 루틴으로 운동하시겠어요?")
+        let routineNumber: String? = readLine()
+        
+        print("몇 세트 반복하시겠어요? ",terminator: "")
+        let routineCount: String? = readLine()
         
     }
 }
