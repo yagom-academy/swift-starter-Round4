@@ -104,3 +104,11 @@ let relaxtion = Exercise(name: "동적휴식") {
     return bodyCondtion
 }
 
+struct Person {
+    var name: String
+    var bodyCondition: BodyCondition
+    
+    func exercise(for set: Int, routine: Routine){
+        
+    }
+}
