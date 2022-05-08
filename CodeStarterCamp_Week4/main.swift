@@ -25,7 +25,7 @@ func inputToString() throws -> String {
 func inputToInt() throws -> Int {
     guard let input = readLine(), let input  = Int(input) else {
         throw FitnessCenterError.InvaildInputValue
-    }    
+    }
     return input
 }
 
@@ -36,19 +36,8 @@ struct Person {
     mutating func exercise(for set: Int, _ routine: Routine, _ fatigueLimit: Int) throws {
         print("\(routine.name)을 \(set)set 시작합니다.")
         for _ in 1...set {
-            print("-------------------------")
-            for exercise in routine.exercises {
-                print("\(exercise.name)")
-                exercise.action(&bodyCondition)
-                if self.bodyCondition.fatigue > fatigueLimit {
-                    try runAway()
-                }
-            }
+            try routine.doExercises(&bodyCondition, fatigueLimit)
         }
-    }
-    
-    func runAway() throws {
-        throw FitnessCenterError.Overfatigue
     }
 }
 
@@ -188,11 +177,14 @@ struct Routine {
     let name: String
     let exercises: [Exercise]
     
-    func doExercises(_ bodyCondition: inout BodyCondition) {
+    func doExercises(_ bodyCondition: inout BodyCondition, _ fatigueLimit: Int) throws {
         print("-------------------------")
         for exercise in exercises {
             print("\(exercise.name)")
             exercise.action(&bodyCondition)
+            if bodyCondition.fatigue > fatigueLimit {
+                throw FitnessCenterError.Overfatigue
+            }
         }
     }
 }
