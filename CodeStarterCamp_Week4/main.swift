@@ -65,10 +65,11 @@ let pushup = Exercise(name: "푸쉬업") {
     bodyCondtion.fatigueLevel = limitsRangeLevelUp(min: 10, max: 20)
     return bodyCondtion
 }
+
 let squat = Exercise(name: "스쿼트") {
     var bodyCondtion = BodyCondition()
     bodyCondtion.upperBodyStrength = limitsRangeLevelUp(min: 0, max: 0)
-    bodyCondtion.lowerBodyStrength = limitsRangeLevelUp(min: 20, max: 30)
+        bodyCondtion.lowerBodyStrength = limitsRangeLevelUp(min: 20, max: 30)
     bodyCondtion.muscularEndurance = limitsRangeLevelUp(min: 0, max: 0)
     bodyCondtion.fatigueLevel = limitsRangeLevelUp(min: 10, max: 20)
     return bodyCondtion
@@ -82,6 +83,7 @@ let sitUp = Exercise(name: "윗몸일으키기") {
     bodyCondtion.fatigueLevel = limitsRangeLevelUp(min: 10, max: 20)
     return bodyCondtion
 }
+
 let running = Exercise(name: "오래달리기") {
     var bodyCondtion = BodyCondition()
     bodyCondtion.upperBodyStrength = limitsRangeLevelUp(min: 5, max: 10)
@@ -90,7 +92,17 @@ let running = Exercise(name: "오래달리기") {
     bodyCondtion.fatigueLevel = limitsRangeLevelUp(min: 20, max: 30)
     return bodyCondtion
 }
+
 let buffyTest = Exercise(name: "버피테스트") {
+    var bodyCondtion = BodyCondition()
+    bodyCondtion.upperBodyStrength = limitsRangeLevelUp(min: 20, max: 30)
+    bodyCondtion.lowerBodyStrength = limitsRangeLevelUp(min: 20, max: 30)
+    bodyCondtion.muscularEndurance = limitsRangeLevelUp(min: 0, max: 0)
+    bodyCondtion.fatigueLevel = limitsRangeLevelUp(min: 10, max: 20)
+    return bodyCondtion
+}
+
+let legRaise = Exercise(name: "레그레이즈") {
     var bodyCondtion = BodyCondition()
     bodyCondtion.upperBodyStrength = limitsRangeLevelUp(min: 0, max: 0)
     bodyCondtion.lowerBodyStrength = limitsRangeLevelUp(min: 20, max: 30)
@@ -98,15 +110,43 @@ let buffyTest = Exercise(name: "버피테스트") {
     bodyCondtion.fatigueLevel = limitsRangeLevelUp(min: 10, max: 20)
     return bodyCondtion
 }
+
 let relaxtion = Exercise(name: "동적휴식") {
     var bodyCondtion = BodyCondition()
     bodyCondtion.fatigueLevel = limitsRangeLevelDown(min: 5, max: 10)
     return bodyCondtion
 }
 
+let hellRoutine = Routine(
+    name: "hellRoutine",
+    order: [
+        sitUp,
+        sitUp,
+        relaxtion,
+        legRaise,
+        legRaise,
+        relaxtion,
+        buffyTest,
+        buffyTest
+    ])
+
+let omgRoutine = Routine(
+    name: "omgRoutine",
+    order: [
+        sitUp,
+        legRaise,
+        squat,
+        pushup,
+        relaxtion,
+        sitUp,
+        legRaise,
+        squat,
+        pushup
+    ])
+
 struct Person {
     var name: String
-    var bodyCondition: BodyCondition
+    var bodyCondition = BodyCondition()
     
     func exercise(for set: Int, routine: Routine){
         
