@@ -11,12 +11,12 @@ struct Routine {
     var name: String
     var exercises: [Exercise]
     
-    func run() {
+    func run(person: Person, for set: Int) {
         print("--------------")
-        print("\(name)을 시작합니다.")
+        print("\(name)을 \(set)set시작합니다.")
         exercises.forEach { exercise in
             print(exercise.name)
-            exercise.action()
+            exercise.action(person)
         }
         print("--------------")
     }
