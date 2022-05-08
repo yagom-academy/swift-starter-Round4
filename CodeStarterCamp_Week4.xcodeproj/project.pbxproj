@@ -20,6 +20,7 @@
 		7BB7C302282865C900FC4BD1 /* RoutineSelectError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB7C301282865C900FC4BD1 /* RoutineSelectError.swift */; };
 		7BB7C304282865E100FC4BD1 /* CountOfSetSelectError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB7C303282865E100FC4BD1 /* CountOfSetSelectError.swift */; };
 		7BB7C30728286B1D00FC4BD1 /* ResrOrTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB7C30628286B1D00FC4BD1 /* ResrOrTraining.swift */; };
+		7BFDBED7282871B700CF453C /* Int_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDBED6282871B700CF453C /* Int_Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,6 +50,7 @@
 		7BB7C301282865C900FC4BD1 /* RoutineSelectError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineSelectError.swift; sourceTree = "<group>"; };
 		7BB7C303282865E100FC4BD1 /* CountOfSetSelectError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountOfSetSelectError.swift; sourceTree = "<group>"; };
 		7BB7C30628286B1D00FC4BD1 /* ResrOrTraining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResrOrTraining.swift; sourceTree = "<group>"; };
+		7BFDBED6282871B700CF453C /* Int_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int_Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 		34811DE6274B93FB00A1E994 /* CodeStarterCamp_Week4 */ = {
 			isa = PBXGroup;
 			children = (
+				7BB7C3092828713000FC4BD1 /* Extension */,
 				34811DE7274B93FB00A1E994 /* main.swift */,
 				7B782E57281FF40000240417 /* Exercise.swift */,
 				7B782E59281FF4AA00240417 /* BodyCondition.swift */,
@@ -112,6 +115,14 @@
 				7BB7C30628286B1D00FC4BD1 /* ResrOrTraining.swift */,
 			);
 			path = ExerciseSet;
+			sourceTree = "<group>";
+		};
+		7BB7C3092828713000FC4BD1 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				7BFDBED6282871B700CF453C /* Int_Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +193,7 @@
 				7B782E5A281FF4AA00240417 /* BodyCondition.swift in Sources */,
 				7BB7C2FA282863A500FC4BD1 /* GuestRegister.swift in Sources */,
 				7B782E5C281FFC6F00240417 /* Routine.swift in Sources */,
+				7BFDBED7282871B700CF453C /* Int_Extension.swift in Sources */,
 				7BB7C2FC2828658A00FC4BD1 /* BodyPart.swift in Sources */,
 				7B782E58281FF40000240417 /* Exercise.swift in Sources */,
 			);
