@@ -112,3 +112,13 @@ struct Person {
         
     }
 }
+
+struct FitnessCenter {
+    let aimBodyCondtion: BodyCondition
+    var members: Array<Person>?
+    var routineList: [Routine]
+    
+    func runProgram(){
+        
+    }
+}
