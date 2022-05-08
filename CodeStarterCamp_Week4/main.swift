@@ -9,7 +9,6 @@
 import Foundation
 
 let myBodyCondition: BodyCondition = BodyCondition(upperBodyMuscleStrength: 0, lowerBodyMuscleStrength: 0, muscularEndurance: 0, tiredness: 0)
-var todayRoutine: Routine = Routine(name: "전신 근육 박살내기 루틴", routineArray: [])
 
 let sitUp: Exercise = Exercise(name: "윗몸일으키기", action: {
     (bodyCondition: BodyCondition) in
@@ -33,7 +32,7 @@ let activeRest: Exercise = Exercise(name: "동적휴식", action: { (bodyConditi
     bodyCondition.tiredness -= bodyCondition.selectRandomStatusIndex(min: 5, max: 10)
 })
 
-todayRoutine.routineArray = [sitUp, sitUp, activeRest, squat, squat, activeRest, longRunning, longRunning]
+var todayRoutine: Routine = Routine(name: "전신 근육 박살내기 루틴", routineArray: [sitUp, sitUp, activeRest, squat, squat, activeRest, longRunning, longRunning])
 
 todayRoutine.startExerciseRoutine()
 myBodyCondition.printMucleStatus()
