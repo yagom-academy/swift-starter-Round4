@@ -57,7 +57,6 @@ struct Routine {
     }
 }
 
-var beam2 = BodyCondition()
 let pushup = Exercise(name: "푸쉬업") {
     var bodyCondtion = BodyCondition()
     bodyCondtion.upperBodyStrength = rangeLevelUp(min: 20, max: 30)
@@ -66,7 +65,32 @@ let pushup = Exercise(name: "푸쉬업") {
     bodyCondtion.fatigueLevel = rangeLevelUp(min: 10, max: 20)
     return bodyCondtion
 }
-let squrt = Exercise(name: "스쿼트") {
+let squat = Exercise(name: "스쿼트") {
+    var bodyCondtion = BodyCondition()
+    bodyCondtion.upperBodyStrength = rangeLevelUp(min: 0, max: 0)
+    bodyCondtion.lowerBodyStrength = rangeLevelUp(min: 20, max: 30)
+    bodyCondtion.muscularEndurance = rangeLevelUp(min: 0, max: 0)
+    bodyCondtion.fatigueLevel = rangeLevelUp(min: 10, max: 20)
+    return bodyCondtion
+}
+
+let sitUp = Exercise(name: "윗몸일으키기") {
+    var bodyCondtion = BodyCondition()
+    bodyCondtion.upperBodyStrength = rangeLevelUp(min: 10, max: 20)
+    bodyCondtion.lowerBodyStrength = rangeLevelUp(min: 0, max: 0)
+    bodyCondtion.muscularEndurance = rangeLevelUp(min: 0, max: 0)
+    bodyCondtion.fatigueLevel = rangeLevelUp(min: 10, max: 20)
+    return bodyCondtion
+}
+let running = Exercise(name: "오래달리기") {
+    var bodyCondtion = BodyCondition()
+    bodyCondtion.upperBodyStrength = rangeLevelUp(min: 5, max: 10)
+    bodyCondtion.lowerBodyStrength = rangeLevelUp(min: 5, max: 10)
+    bodyCondtion.muscularEndurance = rangeLevelUp(min: 20, max: 30)
+    bodyCondtion.fatigueLevel = rangeLevelUp(min: 20, max: 30)
+    return bodyCondtion
+}
+let buffyTest = Exercise(name: "버피테스트") {
     var bodyCondtion = BodyCondition()
     bodyCondtion.upperBodyStrength = rangeLevelUp(min: 0, max: 0)
     bodyCondtion.lowerBodyStrength = rangeLevelUp(min: 20, max: 30)
@@ -79,5 +103,7 @@ let relaxtion = Exercise(name: "동적휴식") {
     bodyCondtion.fatigueLevel = rangeLevelDown(min: 5, max: 10)
     return bodyCondtion
 }
-var hellRoutine = Routine(name: "hellRoutine", order: [pushup, squrt, relaxtion, relaxtion, squrt])
+
+var beam2 = BodyCondition()
+var hellRoutine = Routine(name: "hellRoutine", order: [pushup, squat, relaxtion, relaxtion, squat])
 beam2 = hellRoutine.playRoutine()
