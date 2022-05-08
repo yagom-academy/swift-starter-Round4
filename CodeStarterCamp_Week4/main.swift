@@ -15,11 +15,11 @@ struct BodyCondition {
     var fatigueLevel: Int = 0
 }
 
-func rangeLevelUp(min: Int, max: Int) -> Int {
+func limitsRangeLevelUp(min: Int, max: Int) -> Int {
     return Int.random(in: min...max)
 }
 
-func rangeLevelDown(min: Int, max: Int) -> Int {
+func limitsRangeLevelDown(min: Int, max: Int) -> Int {
     return -Int.random(in: min...max)
 }
 
@@ -59,48 +59,48 @@ struct Routine {
 
 let pushup = Exercise(name: "푸쉬업") {
     var bodyCondtion = BodyCondition()
-    bodyCondtion.upperBodyStrength = rangeLevelUp(min: 20, max: 30)
-    bodyCondtion.lowerBodyStrength = rangeLevelUp(min: 0, max: 0)
-    bodyCondtion.muscularEndurance = rangeLevelUp(min: 10, max: 20)
-    bodyCondtion.fatigueLevel = rangeLevelUp(min: 10, max: 20)
+    bodyCondtion.upperBodyStrength = limitsRangeLevelUp(min: 20, max: 30)
+    bodyCondtion.lowerBodyStrength = limitsRangeLevelUp(min: 0, max: 0)
+    bodyCondtion.muscularEndurance = limitsRangeLevelUp(min: 10, max: 20)
+    bodyCondtion.fatigueLevel = limitsRangeLevelUp(min: 10, max: 20)
     return bodyCondtion
 }
 let squat = Exercise(name: "스쿼트") {
     var bodyCondtion = BodyCondition()
-    bodyCondtion.upperBodyStrength = rangeLevelUp(min: 0, max: 0)
-    bodyCondtion.lowerBodyStrength = rangeLevelUp(min: 20, max: 30)
-    bodyCondtion.muscularEndurance = rangeLevelUp(min: 0, max: 0)
-    bodyCondtion.fatigueLevel = rangeLevelUp(min: 10, max: 20)
+    bodyCondtion.upperBodyStrength = limitsRangeLevelUp(min: 0, max: 0)
+    bodyCondtion.lowerBodyStrength = limitsRangeLevelUp(min: 20, max: 30)
+    bodyCondtion.muscularEndurance = limitsRangeLevelUp(min: 0, max: 0)
+    bodyCondtion.fatigueLevel = limitsRangeLevelUp(min: 10, max: 20)
     return bodyCondtion
 }
 
 let sitUp = Exercise(name: "윗몸일으키기") {
     var bodyCondtion = BodyCondition()
-    bodyCondtion.upperBodyStrength = rangeLevelUp(min: 10, max: 20)
-    bodyCondtion.lowerBodyStrength = rangeLevelUp(min: 0, max: 0)
-    bodyCondtion.muscularEndurance = rangeLevelUp(min: 0, max: 0)
-    bodyCondtion.fatigueLevel = rangeLevelUp(min: 10, max: 20)
+    bodyCondtion.upperBodyStrength = limitsRangeLevelUp(min: 10, max: 20)
+    bodyCondtion.lowerBodyStrength = limitsRangeLevelUp(min: 0, max: 0)
+    bodyCondtion.muscularEndurance = limitsRangeLevelUp(min: 0, max: 0)
+    bodyCondtion.fatigueLevel = limitsRangeLevelUp(min: 10, max: 20)
     return bodyCondtion
 }
 let running = Exercise(name: "오래달리기") {
     var bodyCondtion = BodyCondition()
-    bodyCondtion.upperBodyStrength = rangeLevelUp(min: 5, max: 10)
-    bodyCondtion.lowerBodyStrength = rangeLevelUp(min: 5, max: 10)
-    bodyCondtion.muscularEndurance = rangeLevelUp(min: 20, max: 30)
-    bodyCondtion.fatigueLevel = rangeLevelUp(min: 20, max: 30)
+    bodyCondtion.upperBodyStrength = limitsRangeLevelUp(min: 5, max: 10)
+    bodyCondtion.lowerBodyStrength = limitsRangeLevelUp(min: 5, max: 10)
+    bodyCondtion.muscularEndurance = limitsRangeLevelUp(min: 20, max: 30)
+    bodyCondtion.fatigueLevel = limitsRangeLevelUp(min: 20, max: 30)
     return bodyCondtion
 }
 let buffyTest = Exercise(name: "버피테스트") {
     var bodyCondtion = BodyCondition()
-    bodyCondtion.upperBodyStrength = rangeLevelUp(min: 0, max: 0)
-    bodyCondtion.lowerBodyStrength = rangeLevelUp(min: 20, max: 30)
-    bodyCondtion.muscularEndurance = rangeLevelUp(min: 0, max: 0)
-    bodyCondtion.fatigueLevel = rangeLevelUp(min: 10, max: 20)
+    bodyCondtion.upperBodyStrength = limitsRangeLevelUp(min: 0, max: 0)
+    bodyCondtion.lowerBodyStrength = limitsRangeLevelUp(min: 20, max: 30)
+    bodyCondtion.muscularEndurance = limitsRangeLevelUp(min: 0, max: 0)
+    bodyCondtion.fatigueLevel = limitsRangeLevelUp(min: 10, max: 20)
     return bodyCondtion
 }
 let relaxtion = Exercise(name: "동적휴식") {
     var bodyCondtion = BodyCondition()
-    bodyCondtion.fatigueLevel = rangeLevelDown(min: 5, max: 10)
+    bodyCondtion.fatigueLevel = limitsRangeLevelDown(min: 5, max: 10)
     return bodyCondtion
 }
 
