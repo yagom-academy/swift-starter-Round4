@@ -7,11 +7,21 @@
 
 import Foundation
 
-struct BodyCondition {
+class BodyCondition {
     var upperBody: Int
     var lowerBody: Int
     var muscularEndurance: Int
     var fatigue: Int
+    
+    init(upperBody: Int,
+         lowerBody: Int,
+         muscularEndurance: Int,
+         fatigue: Int) {
+        self.upperBody = upperBody
+        self.lowerBody = lowerBody
+        self.muscularEndurance = muscularEndurance
+        self.fatigue = fatigue
+    }
     
     func printStatus() {
         let status = """
