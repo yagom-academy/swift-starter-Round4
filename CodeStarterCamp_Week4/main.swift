@@ -1,12 +1,8 @@
-//
-//  main.swift
-//  CodeStarterCamp_Week4
-//
-//  Created by yagom.
-//  Copyright © yagom academy. All rights reserved.
-//
-
 import Foundation
 
-print("Hello, World!")
+let player = BodyCondtion()
+let exercises = [sitUP, sitUP, activeRest, squat, squat, activeRest, longRun, longRun]
+let hellRoutine = Routine(name: "hellRoutine", exercises: exercises)
 
+hellRoutine.start()
+player.checkCondition()
