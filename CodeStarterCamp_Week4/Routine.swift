@@ -1,8 +1,18 @@
-//
-//  Routine.swift
-//  CodeStarterCamp_Week4
-//
-//  Created by SH.Jung on 2022/05/08.
-//
-
 import Foundation
+
+struct Routine {
+	let routineName: String
+	let exercises: [Exercise]
+	
+	mutating func playMyRoutine(condition: BodyCondition) {
+		print("""
+		--------------
+		hellRoutine을 시작합니다.
+		""")
+		for exercise in exercises {
+			print("\(exercise.name)")
+			exercise.action()
+		}
+		condition.yourConsition()
+	}
+}
