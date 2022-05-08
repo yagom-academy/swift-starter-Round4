@@ -12,6 +12,13 @@
 		7B782E5A281FF4AA00240417 /* BodyCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B782E59281FF4AA00240417 /* BodyCondition.swift */; };
 		7B782E5C281FFC6F00240417 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B782E5B281FFC6F00240417 /* Routine.swift */; };
 		7B9D79AB2824159300F92A01 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9D79AA2824159300F92A01 /* Person.swift */; };
+		7BB7C2F82826A83100FC4BD1 /* FitnessCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB7C2F72826A83100FC4BD1 /* FitnessCenter.swift */; };
+		7BB7C2FA282863A500FC4BD1 /* GuestRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB7C2F9282863A500FC4BD1 /* GuestRegister.swift */; };
+		7BB7C2FC2828658A00FC4BD1 /* BodyPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB7C2FB2828658A00FC4BD1 /* BodyPart.swift */; };
+		7BB7C2FE282865A500FC4BD1 /* NamingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB7C2FD282865A500FC4BD1 /* NamingError.swift */; };
+		7BB7C300282865B600FC4BD1 /* BodyConditionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB7C2FF282865B600FC4BD1 /* BodyConditionError.swift */; };
+		7BB7C302282865C900FC4BD1 /* RoutineSelectError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB7C301282865C900FC4BD1 /* RoutineSelectError.swift */; };
+		7BB7C304282865E100FC4BD1 /* CountOfSetSelectError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB7C303282865E100FC4BD1 /* CountOfSetSelectError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +40,13 @@
 		7B782E59281FF4AA00240417 /* BodyCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyCondition.swift; sourceTree = "<group>"; };
 		7B782E5B281FFC6F00240417 /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
 		7B9D79AA2824159300F92A01 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		7BB7C2F72826A83100FC4BD1 /* FitnessCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessCenter.swift; sourceTree = "<group>"; };
+		7BB7C2F9282863A500FC4BD1 /* GuestRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestRegister.swift; sourceTree = "<group>"; };
+		7BB7C2FB2828658A00FC4BD1 /* BodyPart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyPart.swift; sourceTree = "<group>"; };
+		7BB7C2FD282865A500FC4BD1 /* NamingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamingError.swift; sourceTree = "<group>"; };
+		7BB7C2FF282865B600FC4BD1 /* BodyConditionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyConditionError.swift; sourceTree = "<group>"; };
+		7BB7C301282865C900FC4BD1 /* RoutineSelectError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineSelectError.swift; sourceTree = "<group>"; };
+		7BB7C303282865E100FC4BD1 /* CountOfSetSelectError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountOfSetSelectError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,8 +84,23 @@
 				7B782E59281FF4AA00240417 /* BodyCondition.swift */,
 				7B782E5B281FFC6F00240417 /* Routine.swift */,
 				7B9D79AA2824159300F92A01 /* Person.swift */,
+				7BB7C2F72826A83100FC4BD1 /* FitnessCenter.swift */,
+				7BB7C2F9282863A500FC4BD1 /* GuestRegister.swift */,
+				7BB7C2FB2828658A00FC4BD1 /* BodyPart.swift */,
+				7BB7C305282865F100FC4BD1 /* InputError */,
 			);
 			path = CodeStarterCamp_Week4;
+			sourceTree = "<group>";
+		};
+		7BB7C305282865F100FC4BD1 /* InputError */ = {
+			isa = PBXGroup;
+			children = (
+				7BB7C2FD282865A500FC4BD1 /* NamingError.swift */,
+				7BB7C2FF282865B600FC4BD1 /* BodyConditionError.swift */,
+				7BB7C301282865C900FC4BD1 /* RoutineSelectError.swift */,
+				7BB7C303282865E100FC4BD1 /* CountOfSetSelectError.swift */,
+			);
+			path = InputError;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,9 +161,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B9D79AB2824159300F92A01 /* Person.swift in Sources */,
+				7BB7C2FE282865A500FC4BD1 /* NamingError.swift in Sources */,
+				7BB7C304282865E100FC4BD1 /* CountOfSetSelectError.swift in Sources */,
+				7BB7C300282865B600FC4BD1 /* BodyConditionError.swift in Sources */,
+				7BB7C302282865C900FC4BD1 /* RoutineSelectError.swift in Sources */,
+				7BB7C2F82826A83100FC4BD1 /* FitnessCenter.swift in Sources */,
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
 				7B782E5A281FF4AA00240417 /* BodyCondition.swift in Sources */,
+				7BB7C2FA282863A500FC4BD1 /* GuestRegister.swift in Sources */,
 				7B782E5C281FFC6F00240417 /* Routine.swift in Sources */,
+				7BB7C2FC2828658A00FC4BD1 /* BodyPart.swift in Sources */,
 				7B782E58281FF40000240417 /* Exercise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
