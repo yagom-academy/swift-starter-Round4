@@ -10,5 +10,5 @@ import Foundation
 //운동 타입
 struct Exercise {
     let name: String
-    let action: () -> Void
+    let action: (_ person: Person) -> Void
 }
