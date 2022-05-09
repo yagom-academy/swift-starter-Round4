@@ -4,6 +4,7 @@ enum FitnessCenterError: Error {
     case Overfatigue
     case UnreachedGoal
     case InvaildInputValue
+    case InvaildRoutine
     case NoMember
 }
 
@@ -129,10 +130,13 @@ struct FitnessCenter {
     }
     
     mutating func doRoutine( _ routine: Routine, for set: Int) throws {
-        guard member != nil else {
-            throw FitnessCenterError.NoMember
+        do {
+            try self.member?.exercise(for: set, routine, bodyConditionGoal.fatigue)
+        } catch FitnessCenterError.InvaildInputValue {
+            print("입력값 오류")
+        } catch {
+            print("에상치 못한 오류 \(error)")
         }
-        try self.member?.exercise(for: set, routine, bodyConditionGoal.fatigue)
     }
 
     func printRoutineResult() throws {
