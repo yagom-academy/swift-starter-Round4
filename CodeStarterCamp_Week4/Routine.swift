@@ -41,7 +41,7 @@ struct Routine {
         }
     }
     
-    func startRoutine(based bodyCondition: inout BodyCondition){
+    func startRoutine(based bodyCondition: BodyCondition){
         print("----------------------------------")
         if exercises.isEmpty {
             print("Don't start \(name) Routine because \(name) Routine is empty")
@@ -52,7 +52,7 @@ struct Routine {
         print("----------------------------------")
         for exercise in exercises {
             print("\(exercise.name)")
-            exercise.action(&bodyCondition)
+            exercise.action(bodyCondition)
         }
         bodyCondition.informBodyCondition()
     }
