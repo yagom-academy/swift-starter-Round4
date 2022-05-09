@@ -49,18 +49,10 @@ struct FitnessCenter {
     let routineList: [Routine]
     
     mutating func runFitnessCenter() {
+        joinMember()
+        setBodyConditionGoal()
         do {
-            while(self.member == nil) {
-                joinMember()
-            }
-            
-            while setBodyConditionGoal() == false {
-                if setBodyConditionGoal() {
-                    break
-                }
-            }
-            
-            try doRoutine(try chooseRoutine(from: routineList), for: try setCountOfSets())
+            try doRoutine(chooseRoutine(from: routineList), for: setCountOfSets())
             try printRoutineResult()
         } catch FitnessCenterError.NoMember {
             print("센터에 회원이 없습니다.")
@@ -78,64 +70,113 @@ struct FitnessCenter {
     }
 
     mutating func joinMember() {
-        print("안녕하세요. \(self.centerName)입니다. 회원님의 이름은 무엇인가요?")
-        do {
-            self.member = Person(name: try inputToString(), bodyCondition: initBodyCondition)
-        } catch FitnessCenterError.InvaildInputValue {
-            print("입력값 오류")
-        } catch {
-            print("에상치 못한 오류 \(error)")
+        while true {
+            do {
+                print("안녕하세요. \(self.centerName)입니다. 회원님의 이름은 무엇인가요?")
+                self.member = Person(name: try inputToString(), bodyCondition: initBodyCondition)
+                break
+            } catch FitnessCenterError.InvaildInputValue {
+                print("입력값 오류. 문자로 입력해 주세요.")
+            } catch {
+                print("에상치 못한 오류 \(error)")
+            }
         }
     }
 
-    mutating func setBodyConditionGoal() -> Bool {
+    mutating func setBodyConditionGoal() {
         print("운동 목표치를 순서대로 알려주세요.")
-        do {
-            print("상체근력 : ", terminator: "")
-            self.bodyConditionGoal.changeUpperBodyStrength(by: try inputToInt())
-            print("하체근력 : ", terminator: "")
-            bodyConditionGoal.changeLowerBodyStrength(by: try inputToInt())
-            print("근지구력 : ", terminator: "")
-            bodyConditionGoal.changeMuscularEndurance(by: try inputToInt())
-            print("피로도 한계 : ", terminator: "")
-            bodyConditionGoal.changeFatigue(by: try inputToInt())
-            return true
-        } catch FitnessCenterError.InvaildInputValue {
-            print("입력값 오류")
-        } catch {
-            print("에상치 못한 오류 \(error)")
+        while true {
+            do {
+                print("상체근력 : ", terminator: "")
+                self.bodyConditionGoal.changeUpperBodyStrength(by: try inputToInt())
+                break
+            } catch FitnessCenterError.InvaildInputValue {
+                print("입력값 오류. 숫자로 입력해 주세요.")
+            } catch {
+                print("에상치 못한 오류 \(error)")
+            }
         }
-        return false
+        while true {
+            do {
+                print("하체근력 : ", terminator: "")
+                self.bodyConditionGoal.changeLowerBodyStrength(by: try inputToInt())
+                break
+            } catch FitnessCenterError.InvaildInputValue {
+                print("입력값 오류. 숫자로 입력해 주세요.")
+            } catch {
+                print("에상치 못한 오류 \(error)")
+            }
+        }
+        while true {
+            do {
+                print("근지구력 : ", terminator: "")
+                self.bodyConditionGoal.changeMuscularEndurance(by: try inputToInt())
+                break
+            } catch FitnessCenterError.InvaildInputValue {
+                print("입력값 오류. 숫자로 입력해 주세요.")
+            } catch {
+                print("에상치 못한 오류 \(error)")
+            }
+        }
+        while true {
+            do {
+                print("한계 피로도 : ", terminator: "")
+                self.bodyConditionGoal.changeFatigue(by: try inputToInt())
+                break
+            } catch FitnessCenterError.InvaildInputValue {
+                print("입력값 오류. 숫자로 입력해 주세요.")
+            } catch {
+                print("에상치 못한 오류 \(error)")
+            }
+        }
     }
     
-    func chooseRoutine(from routineList: [Routine]) throws -> Routine {
-        print("몇 번째 루틴으로 운동하시겠어요?")
-        for (index, routine) in routineList.enumerated() {
-            print("\(index + 1). \(routine.name)")
+    func chooseRoutine(from routineList: [Routine]) -> Routine {
+        while true {
+            do {
+                print("몇 번째 루틴으로 운동하시겠어요?")
+                for (index, routine) in routineList.enumerated() {
+                    print("\(index + 1). \(routine.name)")
+                }
+                let index = try inputToInt() - 1
+                
+                guard routineList.indices.contains(index) else {
+                    throw FitnessCenterError.InvaildRoutine
+                }
+                return routineList[index]
+            } catch FitnessCenterError.InvaildRoutine {
+                    print("선택한 루틴이 없습니다. 다시 입력해 주세요.")
+            } catch FitnessCenterError.InvaildInputValue {
+                print("입력값 오류. 숫자로 입력해 주세요.")
+            } catch {
+                    print("에상치 못한 오류 \(error)")
+            }
         }
-        let index = try inputToInt() - 1
-
-        guard routineList.indices.contains(index) else {
-            throw FitnessCenterError.InvaildInputValue
-        }
-
-        return routineList[index]
     }
     
-    func setCountOfSets() throws -> Int {
-        print("몇 세트 반복하시겠어요?")
-        let countOfSets = try inputToInt()
-        
-        return countOfSets
+    func setCountOfSets() -> Int {
+        while true {
+            do {
+                print("몇 세트 반복하시겠어요?")
+                let countOfSets = try inputToInt()
+                return countOfSets
+            } catch FitnessCenterError.InvaildInputValue {
+                print("입력값 오류. 숫자로 입력해 주세요.")
+            } catch {
+                print("에상치 못한 오류 \(error)")
+            }
+        }
     }
     
     mutating func doRoutine( _ routine: Routine, for set: Int) throws {
-        do {
-            try self.member?.exercise(for: set, routine, bodyConditionGoal.fatigue)
-        } catch FitnessCenterError.InvaildInputValue {
-            print("입력값 오류")
-        } catch {
-            print("에상치 못한 오류 \(error)")
+        while true {
+            do {
+                try self.member?.exercise(for: set, routine, bodyConditionGoal.fatigue)
+            } catch FitnessCenterError.InvaildInputValue {
+                print("입력값 오류")
+            } catch {
+                print("에상치 못한 오류 \(error)")
+            }
         }
     }
 
