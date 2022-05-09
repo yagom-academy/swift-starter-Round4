@@ -20,7 +20,7 @@ let activeRest: Exercise = Exercise(name: "동적휴식") { $0.changeStatusAfter
 
 let todayRoutine: Routine = Routine(name: "전신 근육 박살내기 루틴", routineArray: [sitUp, sitUp, activeRest, squat, squat, activeRest, longRunning, longRunning])
 
-todayRoutine.startExerciseRoutine(changeOf: myBodyCondition)
+todayRoutine.startExercise(with: myBodyCondition)
 myBodyCondition.printMucleStatus()
 
 

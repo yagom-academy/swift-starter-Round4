@@ -11,7 +11,7 @@ struct Routine {
     let name: String
     var routineArray: Array<Exercise>
     
-    func startExerciseRoutine(changeOf bodyConditon: BodyCondition) {
+    func startExercise(with bodyConditon: BodyCondition) {
         print("--------------------")
         print("\(self.name)을(를) 시작합니다.")
 
