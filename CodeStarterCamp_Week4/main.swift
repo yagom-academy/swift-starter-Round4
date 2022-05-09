@@ -49,14 +49,18 @@ struct FitnessCenter {
     
     mutating func runFitnessCenter() {
         do {
-            if self.member == nil {
-                try joinMember()
-                try setBodyConditionGoal()
+            while(self.member == nil) {
+                joinMember()
             }
+            
+            while setBodyConditionGoal() == false {
+                if setBodyConditionGoal() {
+                    break
+                }
+            }
+            
             try doRoutine(try chooseRoutine(from: routineList), for: try setCountOfSets())
             try printRoutineResult()
-        } catch FitnessCenterError.InvaildInputValue {
-            print("입력값 오류.")
         } catch FitnessCenterError.NoMember {
             print("센터에 회원이 없습니다.")
         } catch FitnessCenterError.UnreachedGoal {
@@ -72,24 +76,35 @@ struct FitnessCenter {
         }
     }
 
-    mutating func joinMember() throws {
+    mutating func joinMember() {
         print("안녕하세요. \(self.centerName)입니다. 회원님의 이름은 무엇인가요?")
-        self.member = Person(name: try inputToString(), bodyCondition: initBodyCondition)
+        do {
+            self.member = Person(name: try inputToString(), bodyCondition: initBodyCondition)
+        } catch FitnessCenterError.InvaildInputValue {
+            print("입력값 오류")
+        } catch {
+            print("에상치 못한 오류 \(error)")
+        }
     }
 
-    mutating func setBodyConditionGoal() throws {
+    mutating func setBodyConditionGoal() -> Bool {
         print("운동 목표치를 순서대로 알려주세요.")
-        print("상체근력 : ", terminator: "")
-        self.bodyConditionGoal.upperBodyStrength = try inputToInt()
-        
-        print("하체근력 : ", terminator: "")
-        self.bodyConditionGoal.lowerBodyStrength = try inputToInt()
-        
-        print("근지구력 : ", terminator: "")
-        self.bodyConditionGoal.muscularEndurance = try inputToInt()
-        
-        print("피로도 한계 : ", terminator: "")
-        self.bodyConditionGoal.fatigue = try inputToInt()
+        do {
+            print("상체근력 : ", terminator: "")
+            self.bodyConditionGoal.changeUpperBodyStrength(by: try inputToInt())
+            print("하체근력 : ", terminator: "")
+            bodyConditionGoal.changeLowerBodyStrength(by: try inputToInt())
+            print("근지구력 : ", terminator: "")
+            bodyConditionGoal.changeMuscularEndurance(by: try inputToInt())
+            print("피로도 한계 : ", terminator: "")
+            bodyConditionGoal.changeFatigue(by: try inputToInt())
+            return true
+        } catch FitnessCenterError.InvaildInputValue {
+            print("입력값 오류")
+        } catch {
+            print("에상치 못한 오류 \(error)")
+        }
+        return false
     }
     
     func chooseRoutine(from routineList: [Routine]) throws -> Routine {
