@@ -51,7 +51,7 @@ struct Routine {
         print("----------------------------------")
         for exercise in exercises {
             print("\(exercise.name)")
-            exercise.action()
+            exercise.action(bodyCondition)
         }
     }
 }
