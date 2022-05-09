@@ -45,9 +45,7 @@ struct Routine {
         if exercises.isEmpty {
             print("Don't start \(name) Routine because \(name) Routine is empty")
             return
-        } else {
-            print("\(name) Routine Start")
-        }
+        } 
         print("----------------------------------")
         for exercise in exercises {
             print("\(exercise.name)")

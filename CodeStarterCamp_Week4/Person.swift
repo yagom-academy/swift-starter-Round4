@@ -17,8 +17,15 @@ struct Person {
         self.bodyCondition = bodyCondition
     }
     
-    func exercise(for set: Int, routine: Routine) {
-        routine.startRoutine(based: bodyCondition)
+    func exercise(for set: Int, routine: Routine) throws {
+        print("\(routine.name) Routine \(set)Set Start!")
+        for setCount in 1...set {
+            print("\(setCount)Set")
+            routine.startRoutine(based: bodyCondition)
+            if bodyCondition.tiredness > 100 {
+                throw PersonError.beDrained
+            }
+        }
     }
     
     func printMyBodyCondition() {

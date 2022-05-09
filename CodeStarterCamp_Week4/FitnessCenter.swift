@@ -22,13 +22,13 @@ struct FitnessCenter {
     
     func repeatRoutine(_ routine: Routine, times: Int) -> Bool {
         if let member = member {
-            for count in 1...times {
-                print("총 \(times)Set 중 \(count)번째 Set")
-                member.exercise(for: count, routine: routine)
-                if member.bodyCondition.tiredness > 100 {
-                    print("\(member.name)님이 너무 힘들어서 도망갔습니다...")
-                    return true
-                }
+            do {
+                try member.exercise(for: times, routine: routine)
+            } catch PersonError.beDrained {
+                print("\(member.name)회원이 탈진하여 도망갔습니다!")
+                return true
+            } catch {
+                print("Unexpected Error : \(error)")
             }
             if checkGoals(bodyCondition: member.bodyCondition) {
                 print("성공입니다!", terminator: "")

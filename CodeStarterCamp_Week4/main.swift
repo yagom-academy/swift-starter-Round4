@@ -8,6 +8,10 @@
 
 import Foundation
 
+enum PersonError: Error {
+    case beDrained
+}
+
 let pushUp = Exercise(name: "팔굽혀펴기") {
     $0.increaseUpperBodyStrength(by: Int.random(in: 5...15))
     $0.increaseTiredness(by: Int.random(in: 5...10))
