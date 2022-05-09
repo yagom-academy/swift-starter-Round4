@@ -11,12 +11,12 @@ struct Routine {
     let name: String
     var routineArray: Array<Exercise>
     
-    func startExerciseRoutine() {
+    func startExerciseRoutine(changeOf bodyConditon: BodyCondition) {
         print("--------------------")
         print("\(self.name)을(를) 시작합니다.")
 
         for exercise in routineArray {
-            exercise.action(myBodyCondition)
+            exercise.action(bodyConditon)
             print(exercise.name)
         }
     }
