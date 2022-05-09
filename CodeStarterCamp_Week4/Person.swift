@@ -12,13 +12,17 @@ struct Person {
     let name: String
     var bodyCondition: BodyCondition
     
-    init (name: String, bodyCondition: BodyCondition) {
+    init(name: String, bodyCondition: BodyCondition) {
         self.name = name
         self.bodyCondition = bodyCondition
     }
     
     func exercise(for set: Int, routine: Routine) {
-        print("\(set)Set ", terminator: "")
         routine.startRoutine(based: bodyCondition)
+    }
+    
+    func printMyBodyCondition() {
+        print("현재 \(name)님의 컨디션입니다.")
+        bodyCondition.informBodyCondition()
     }
 }

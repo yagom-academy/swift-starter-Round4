@@ -9,6 +9,7 @@
 import Foundation
 
 var myBodyCondition = BodyCondition(upperBodyStrength: 30, lowerBodyStrength: 30, muscleEndurance: 10)
+
 let pushUp = Exercise(name: "팔굽혀펴기") {
     myBodyCondition.increaseUpperBodyStrength(by: Int.random(in: 5...15))
     myBodyCondition.increaseTiredness(by: Int.random(in: 5...10))
@@ -55,5 +56,6 @@ let upperBodyRoutine = Routine(name: "Upper Body", exercises: pushUp, dip, chinU
 let lowerBodyRoutine = Routine(name: "Lower Body", exercises: squatting, squatting, squatting, activeRest, lunge, lunge, lunge)
 let wholeBodyRoutine = Routine(name: "Whole Body", exercises: longRun, activeRest, pushUp, dip, chinUp, activeRest, squatting, lunge, activeRest, sitUp)
 
-emptyRoutine.startRoutine(based: myBodyCondition)
-upperBodyRoutine.startRoutine(based: myBodyCondition)
+var yagomFitnessCenter = FitnessCenter(name: "야곰", routines: upperBodyRoutine, lowerBodyRoutine)
+
+yagomFitnessCenter.startFitnessProgram()
