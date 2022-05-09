@@ -13,12 +13,13 @@ struct BodyCondition {
     var muscularEndurance: Int
     var fatigue: Int
     
-    init(upperBodyStrength: Int, lowerBodyStrength: Int, muscularEndurance: Int, fatigue: Int) {
-        self.upperBodyStrength = upperBodyStrength
-        self.lowerBodyStrength = lowerBodyStrength
-        self.muscularEndurance = muscularEndurance
-        self.fatigue = fatigue
+    init(startingPoint: Int) {
+        self.upperBodyStrength = startingPoint
+        self.lowerBodyStrength = startingPoint
+        self.muscularEndurance = startingPoint
+        self.fatigue = startingPoint
     }
+    
     func checkYourCondition() {
         print("🏃‍♀️🏃‍♀️🏃‍♀️🏃‍♀️🏃‍♀️🏃‍♀️🏃‍♀️🏃‍♀️🏃‍♀️🏃‍♀️🏃‍♀️🏃‍♀️🏃‍♀️🏃‍♀️")
         print("현재의 컨디션은 다음과 같습니다.")
