@@ -34,7 +34,7 @@ struct Person {
     let name: String
     var bodyCondition: BodyCondition
     
-    mutating func exercise(for set: Int, _ routine: Routine, _ fatigueLimit: Int) throws {
+    mutating func exercise(_ routine: Routine, for set: Int, _ fatigueLimit: Int) throws {
         print("\(routine.name)을 \(set)set 시작합니다.")
         for _ in 1...set {
             try routine.doExercises(&bodyCondition, fatigueLimit)
@@ -52,15 +52,7 @@ struct FitnessCenter {
         joinMember()
         setBodyConditionGoal()
         do {
-            try doRoutine(chooseRoutine(from: routineList), for: setCountOfSets())
-            try printRoutineResult()
-        } catch FitnessCenterError.NoMember {
-            print("센터에 회원이 없습니다.")
-        } catch FitnessCenterError.UnreachedGoal {
-            print("-------------------------")
-            print("목표치에 도달하지 못했습니다. 현재 \(member!.name)님의 컨디션은 다음과 같습니다.")
-            self.member?.bodyCondition.printBodyCondition()
-            self.runFitnessCenter()
+            try doRoutine()
         } catch FitnessCenterError.Overfatigue {
             print("-------------------------")
             print("\(member!.name)님의 피로도가 \(member!.bodyCondition.fatigue)입니다. 회원님이 도망갔습니다.")
@@ -134,6 +126,7 @@ struct FitnessCenter {
     func chooseRoutine(from routineList: [Routine]) -> Routine {
         while true {
             do {
+                print("-------------------------")
                 print("몇 번째 루틴으로 운동하시겠어요?")
                 for (index, routine) in routineList.enumerated() {
                     print("\(index + 1). \(routine.name)")
@@ -168,30 +161,34 @@ struct FitnessCenter {
         }
     }
     
-    mutating func doRoutine( _ routine: Routine, for set: Int) throws {
+    mutating func doRoutine() throws {
         while true {
             do {
-                try self.member?.exercise(for: set, routine, bodyConditionGoal.fatigue)
-            } catch FitnessCenterError.InvaildInputValue {
-                print("입력값 오류")
+                try self.member!.exercise(chooseRoutine(from: routineList), for: setCountOfSets(), bodyConditionGoal.fatigue)
+                try printRoutineResult()
+                break
+            } catch FitnessCenterError.UnreachedGoal {
+                print("-------------------------")
+                print("목표치에 도달하지 못했습니다. 현재 \(member!.name)님의 컨디션은 다음과 같습니다.")
+                self.member!.bodyCondition.printBodyCondition()
+            } catch FitnessCenterError.Overfatigue {
+                throw FitnessCenterError.Overfatigue
             } catch {
                 print("에상치 못한 오류 \(error)")
+                break
             }
         }
     }
 
     func printRoutineResult() throws {
-        guard let member = self.member else {
-            throw FitnessCenterError.NoMember
-        }
-        guard (member.bodyCondition.upperBodyStrength) >= (bodyConditionGoal.upperBodyStrength),
-              (member.bodyCondition.lowerBodyStrength) >= (bodyConditionGoal.lowerBodyStrength),
-              (member.bodyCondition.muscularEndurance) >= (bodyConditionGoal.muscularEndurance) else {
+        guard (self.member!.bodyCondition.upperBodyStrength) >= (bodyConditionGoal.upperBodyStrength),
+              (self.member!.bodyCondition.lowerBodyStrength) >= (bodyConditionGoal.lowerBodyStrength),
+              (self.member!.bodyCondition.muscularEndurance) >= (bodyConditionGoal.muscularEndurance) else {
             throw FitnessCenterError.UnreachedGoal
         }
         print("-------------------------")
-        print("성공입니다! 현재 \(member.name)님의 컨디션은 다음과 같습니다.")
-        member.bodyCondition.printBodyCondition()
+        print("성공입니다! 현재 \(self.member!.name)님의 컨디션은 다음과 같습니다.")
+        self.member!.bodyCondition.printBodyCondition()
     }
 }
 
