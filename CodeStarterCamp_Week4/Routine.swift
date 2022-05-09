@@ -35,7 +35,7 @@ struct Routine {
     
     func introduceRoutine() {
         print("\(name)의 순서를 소개합니다.")
-        print("----------------------------------")
+        print(newLineString)
         for exercise in exercises {
             print(exercise)
         }
@@ -46,7 +46,7 @@ struct Routine {
             print("Don't start \(name) Routine because \(name) Routine is empty")
             return
         } 
-        print("----------------------------------")
+        print(newLineString)
         for exercise in exercises {
             print("\(exercise.name)")
             exercise.action(bodyCondition)

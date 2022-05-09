@@ -71,6 +71,7 @@ class BodyCondition {
 근지구력 : \(muscleEndurance)
 피로도  : \(tiredness)
 """
+        print(newLineString)
         print(informationOfBodyCondition)
     }
 }

@@ -22,6 +22,7 @@ struct Person {
     }
     
     func exercise(for set: Int, routine: Routine) throws {
+        print(newLineString)
         print("\(routine.name) Routine \(set)Set Start!")
         for setCount in 1...set {
             print("\(setCount)Set")
