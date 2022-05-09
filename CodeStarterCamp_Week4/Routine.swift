@@ -9,7 +9,7 @@ import Foundation
 
 struct Routine {
     let routineName: String
-    var exercises: Array<Exercise>
+    let exercises: [Exercise]
     
     func startRoutine() {
         print("🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥")
@@ -19,6 +19,5 @@ struct Routine {
             exercise.action()
         }
         print("🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥\n")
-
     }
 }
