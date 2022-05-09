@@ -8,7 +8,7 @@
 
 import Foundation
 
-var myBodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, musclarEndurance: 0, fatigue: 0)
+var myBodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
 var hellRoutine = Routine(name: "hellRoutine")
 
 hellRoutine.addExercise(exercise: sitUp)
@@ -20,5 +20,5 @@ hellRoutine.addExercise(exercise: activeRest)
 hellRoutine.addExercise(exercise: longDistance)
 hellRoutine.addExercise(exercise: longDistance)
 
-hellRoutine.run(whose: myBodyCondition, do: hellRoutine.exercises)
+hellRoutine.run()
 myBodyCondition.showStatus()

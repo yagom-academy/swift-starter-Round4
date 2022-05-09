@@ -19,7 +19,7 @@ struct Routine {
         self.exercises.append(exercise)
     }
     
-    func run(whose bodyCondition: BodyCondition, do exercises: Array<Exercise>) {
+    func run() {
         print("--------------")
         print("\(name)을 시작합니다.")
         exercises.forEach { exercise in
