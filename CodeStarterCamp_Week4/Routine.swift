@@ -11,7 +11,7 @@ struct Routine {
     let routineName: String
     var exercises: Array<Exercise>
     
-    func startRoutine() {
+    func printRoutine() {
         print("--------------")
         print("hellRoutine을 시작합니다.")
         for exercise in exercises {
