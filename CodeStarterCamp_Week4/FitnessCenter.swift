@@ -10,7 +10,7 @@ import Foundation
 class FitnessCenter {
     var targetBodyCondition = BodyCondition()
     var member: Person?
-    var routineList: [Routine]
+    let routineList: [Routine]
     
     init(routineList: [Routine]) {
         self.routineList = routineList
