@@ -5,7 +5,6 @@ enum FitnessCenterError: Error {
     case UnreachedGoal
     case InvaildInputValue
     case InvaildRoutine
-    case NoMember
 }
 
 func inputToString() throws -> String {
@@ -65,7 +64,8 @@ struct FitnessCenter {
         while true {
             do {
                 print("안녕하세요. \(self.centerName)입니다. 회원님의 이름은 무엇인가요?")
-                self.member = Person(name: try inputToString(), bodyCondition: initBodyCondition)
+                self.member = Person(name: try inputToString(),
+                                     bodyCondition: BodyCondition.init(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0))
                 break
             } catch FitnessCenterError.InvaildInputValue {
                 print("입력값 오류. 문자로 입력해 주세요.")
@@ -289,12 +289,20 @@ myRoutine.doExercises(&myCondition)
 myCondition.printBodyCondition()
 */
 
-let initBodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
-let hellRoutineExercises: [Exercise] = [sitUp, sitUp, activeRest, legRaise, legRaise, activeRest, burpee, burpee]
-let ohMyGodRoutineExercises: [Exercise] = [sitUp, squad, legRaise, burpee, activeRest]
-let hellRoutine = Routine(name: "hellRoutine", exercises: hellRoutineExercises)
-let ohMyGodRoutine = Routine(name: "ohMyGodRoutine", exercises: ohMyGodRoutineExercises)
-let routineList: [Routine] = [hellRoutine, ohMyGodRoutine]
-var yagomFitnessCenter = FitnessCenter(centerName: "야곰 피트니스 센터", bodyConditionGoal: initBodyCondition, member: nil, routineList: routineList)
+func runStep2() {
+    let hellRoutineExercises: [Exercise] = [sitUp, sitUp, activeRest, legRaise, legRaise, activeRest, burpee, burpee]
+    let ohMyGodRoutineExercises: [Exercise] = [sitUp, squad, legRaise, burpee, activeRest]
+    let hellRoutine = Routine(name: "hellRoutine", exercises: hellRoutineExercises)
+    let ohMyGodRoutine = Routine(name: "ohMyGodRoutine", exercises: ohMyGodRoutineExercises)
+    let routineList: [Routine] = [hellRoutine, ohMyGodRoutine]
+    var yagomFitnessCenter = FitnessCenter(centerName: "야곰 피트니스 센터",
+                                           bodyConditionGoal: BodyCondition.init(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0),
+                                           member: nil,
+                                           routineList: routineList)
+    yagomFitnessCenter.runFitnessCenter()
+}
 
-yagomFitnessCenter.runFitnessCenter()
+runStep2()
+
+
+
