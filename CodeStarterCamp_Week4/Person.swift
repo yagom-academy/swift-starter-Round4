@@ -8,6 +8,10 @@
 
 import Foundation
 
+enum PersonError: Error {
+    case beDrained
+}
+
 struct Person {
     let name: String
     var bodyCondition: BodyCondition
