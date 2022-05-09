@@ -13,28 +13,30 @@ struct BodyCondition {
     var muscularEndurance: Int
     var fatigue: Int
     
-    mutating func changeCondition(of bodyPart: String, about intensity: Int) {
+    mutating func changeCondition(of bodyPart: Int, about intensity: Int) {
         switch bodyPart {
-        case "upperBodyStrength":
+        case upperBodyStrength:
             upperBodyStrength += intensity
-        case "lowerBodyStrength":
+        case lowerBodyStrength:
             lowerBodyStrength += intensity
-        case "muscularEndurance":
+        case muscularEndurance:
             muscularEndurance += intensity
-        default:
+        case fatigue:
             fatigue += intensity
+        default:
+            return
         }
     }
     
     func showCondition() {
         let conditionInformation = """
---------------
-현재의 컨디션은 다음과 같습니다.
-상체근력: \(upperBodyStrength)
-하체근력: \(lowerBodyStrength)
-근지구력: \(muscularEndurance)
-피로도: \(fatigue)
-"""
+            --------------
+            현재의 컨디션은 다음과 같습니다.
+            상체근력: \(upperBodyStrength)
+            하체근력: \(lowerBodyStrength)
+            근지구력: \(muscularEndurance)
+            피로도: \(fatigue)
+            """
         print(conditionInformation)
     }
 }
