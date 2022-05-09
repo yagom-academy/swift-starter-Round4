@@ -13,6 +13,6 @@ struct Routine {
 			print("\(exercise.name)")
 			exercise.action()
 		}
-		condition.yourConsition()
+		condition.printCondition()
 	}
 }
