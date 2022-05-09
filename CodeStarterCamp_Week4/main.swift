@@ -7,7 +7,6 @@
 //
 
 import Foundation
-
 enum PersonError: Error {
     case beDrained
 }

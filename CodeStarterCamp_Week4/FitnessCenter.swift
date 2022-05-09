@@ -8,6 +8,13 @@
 
 import Foundation
 
+enum FitnessCenterError: Error {
+    case forcedTermination
+    case nonEnglish
+    case failedToAchieveGoal
+    case emptyMember
+}
+
 struct FitnessCenter {
     let name: String
     var goalsBodyCondition: BodyCondition
@@ -20,27 +27,23 @@ struct FitnessCenter {
         goalsBodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscleEndurance: 0)
     }
     
-    func repeatRoutine(_ routine: Routine, times: Int) -> Bool {
+    func repeatRoutine(_ routine: Routine, times: Int) throws {
         if let member = member {
             do {
                 try member.exercise(for: times, routine: routine)
             } catch PersonError.beDrained {
-                print("\(member.name)회원이 탈진하여 도망갔습니다!")
-                return true
+                throw PersonError.beDrained
             } catch {
                 print("Unexpected Error : \(error)")
             }
             if checkGoals(bodyCondition: member.bodyCondition) {
                 print("성공입니다!", terminator: "")
                 member.printMyBodyCondition()
-                return true
             } else {
-                print("목표치에 도달하지 못했습니다.", terminator: "")
-                member.printMyBodyCondition()
-                return false
+                throw FitnessCenterError.failedToAchieveGoal
             }
         } else {
-            return true
+            throw FitnessCenterError.emptyMember
         }
     }
     
@@ -53,84 +56,94 @@ struct FitnessCenter {
     }
     
     mutating func startFitnessProgram() {
-        var stops = false
         var isAchieved = false
+        print("안녕하세요. \(name) 피티니스 센터입니다.")
+        do {
+            try enterName()
+            try enterGoalsBodyCondition()
+        } catch FitnessCenterError.forcedTermination {
+            print("프로그램이 강제 종료됩니다!!")
+            return
+        } catch {
+            print("Unexpected Error : \(error)")
+            return
+        }
 
-        let welcomeComments = "안녕하세요. \(name) 피티니스 센터입니다."
-        print(welcomeComments)
-        
-        stops = enterName()
-        if stops {
-            return
-        }
-        stops = enterGoalsBodyCondition()
-        if stops {
-            return
-        }
         while !isAchieved {
-            if let selectedRoutine = selectRoutine() {
-                if let decidedSet = decideSet() {
-                    if repeatRoutine(selectedRoutine, times: decidedSet) {
+            do {
+                if let selectedRoutine = try selectRoutine() {
+                    if let decidedSet = try decideSet() {
+                        try repeatRoutine(selectedRoutine, times: decidedSet)
                         isAchieved = !isAchieved
                     }
-                } else {
-                    return
                 }
-            } else {
+            } catch FitnessCenterError.forcedTermination {
+                print("프로그램이 강제 종료됩니다!!")
+                return
+            } catch FitnessCenterError.failedToAchieveGoal {
+                print("목표치에 도달하지 못했습니다. ", terminator: "")
+                member?.printMyBodyCondition() ?? print("member is nil")
+            } catch PersonError.beDrained {
+                print("\(member?.name ?? "")회원이 탈진하여 도망갔습니다!")
+                return
+            } catch FitnessCenterError.emptyMember {
+                print("member is nil")
+                return
+            } catch {
+                print("Unexpected Error : \(error)")
                 return
             }
         }
     }
     
-    mutating func enterName() -> Bool{
+    mutating func enterName() throws {
         var isCorrect = false
         while !isCorrect {
             print("회원님의 이름(영어)을 입력해주세요.")
-            print("(공백, 특수문자, 한글 입력금지)(종료:q!)")
+            print("(공백, 특수문자, 한글 입력금지)(강제종료:q!)")
             print("입력란 : ", terminator: "")
             if let inputName = readLine() {
                 if inputName == "q!" {
-                    return true
+                    throw FitnessCenterError.forcedTermination
                 }
-                if checkNonEnglish(target: inputName) {
+                do {
+                    try checkNonEnglish(target: inputName)
                     setMember(name: inputName)
                     isCorrect = true
-                } else {
+                } catch FitnessCenterError.nonEnglish {
                     print("잘못된 입력값 입니다. 영어만 입력해 주세요.", terminator: "\n\n")
+                } catch {
+                    print("Unexpected Error : \(error)")
                 }
+                
             } else {
                 print("입력값이 없습니다. 다시 입력해 주세요.", terminator: "\n\n")
             }
         }
-        return false
     }
     
-    func checkNonEnglish(target: String) -> Bool {
-        if target.isEmpty {
-            return false
-        }
+    func checkNonEnglish(target: String) throws {
         for character in target.unicodeScalars {
             if !((character.value >= 65 && character.value <= 90) || (character.value >= 97 && character.value <= 122)) {
-                return false
+                throw FitnessCenterError.nonEnglish
             }
         }
-        return true
     }
     
     mutating func setMember(name: String) {
         member = Person(name: name, bodyCondition: BodyCondition(upperBodyStrength: 30, lowerBodyStrength: 30, muscleEndurance: 10))
     }
     
-    mutating func enterGoalsBodyCondition() -> Bool{
+    mutating func enterGoalsBodyCondition() throws {
         let bodyConditionProperty = ["upperBodyStrength", "lowerBodyStrength", "muscleEndurance"]
         var propertyPoint = 0
         print("운동 목표를 입력해 주세요.")
         while propertyPoint < 3{
-            print("\(bodyConditionProperty[propertyPoint]) 목표(0보다 큰 자연수)(종료:q!)")
+            print("\(bodyConditionProperty[propertyPoint]) 목표(0보다 큰 자연수)(강제종료:q!)")
             print("입력란 : ", terminator: "")
             if let inputData = readLine() {
                 if inputData == "q!" {
-                    return true
+                    throw FitnessCenterError.forcedTermination
                 }
                 if let inputInt = Int(inputData) {
                     if inputInt <= 0 {
@@ -147,7 +160,6 @@ struct FitnessCenter {
             }
             propertyPoint += 1
         }
-        return false
     }
     
     mutating func setGoalsBodyConditionProperty(_ propertyPoint: Int, golas: Int) {
@@ -161,17 +173,17 @@ struct FitnessCenter {
         }
     }
     
-    func selectRoutine() -> Routine? {
+    func selectRoutine() throws -> Routine? {
         var selectedRoutine: Routine?
         var isSelected = false
         print("루틴을 선택하세요!!!")
         printRoutine()
         while !isSelected {
-            print("원하는 루틴의 번호를 입력하세요.(종료:q!)(루틴정보 다시보기:i!)")
+            print("원하는 루틴의 번호를 입력하세요.(강제종료:q!)(루틴정보 다시보기:i!)")
             print("입력란 : ", terminator: "")
             if let inputData = readLine() {
                 if inputData == "q!" {
-                    return selectedRoutine
+                    throw FitnessCenterError.forcedTermination
                 } else if inputData == "i!" {
                     printRoutine()
                     continue
@@ -201,15 +213,15 @@ struct FitnessCenter {
         }
     }
     
-    func decideSet() -> Int? {
+    func decideSet() throws -> Int? {
         var isdecided = false
         var set: Int?
         while !isdecided {
-            print("몇 세트 반복하시겠어요?(최소 1회 이상)")
+            print("몇 세트 반복하시겠어요?(최소 1회 이상)(강제종료:q!)")
             print("입력란 : ", terminator: "")
             if let inputData = readLine() {
                 if inputData == "q!" {
-                    return set
+                    throw FitnessCenterError.forcedTermination
                 }
                 if let inputInt = Int(inputData) {
                     if inputInt > 0 {
