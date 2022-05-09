@@ -52,7 +52,7 @@ struct Routine {
         print("----------------------------------")
         for exercise in exercises {
             print("\(exercise.name)")
-            exercise.action(bodyCondition)
+            exercise.action()
         }
         bodyCondition.informBodyCondition()
     }
