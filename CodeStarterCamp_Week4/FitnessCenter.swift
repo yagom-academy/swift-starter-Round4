@@ -21,17 +21,20 @@ class FitnessCenter {
             try enterName()
             try setTargetCondition()
         } catch FitnessCenterContingency.unRecognizedInputError {
-            print("인식할 수 없는 값입니다.")
-            exit(1)
-            
+            if let errorDescription = FitnessCenterContingency.unRecognizedInputError.errorDescription {
+                print(errorDescription)
+            }
+            register()
         } catch FitnessCenterContingency.stringToIntConvertError {
-            print("정수로 변환할 수 없습니다.")
-            exit(1)
-            
+            if let errorDescription = FitnessCenterContingency.stringToIntConvertError.errorDescription {
+                print(errorDescription)
+            }
+            register()
         } catch FitnessCenterContingency.invalidNumberOfValuesError {
-            print("너무 적거나 많은 값을 입력했습니다.")
-            exit(1)
-            
+            if let errorDescription = FitnessCenterContingency.invalidNumberOfValuesError.errorDescription {
+                print(errorDescription)
+            }
+            register()
         } catch {
             print("\(error)")
             exit(1)
@@ -43,8 +46,8 @@ class FitnessCenter {
         guard let memberName = readLine() else {
             throw FitnessCenterContingency.unRecognizedInputError
         }
-
-        self.member = Person(name: deFramentation(memberName))
+        
+        self.member = Person(name: memberName)
     }
     
     private func setTargetCondition() throws {
@@ -54,7 +57,7 @@ class FitnessCenter {
         }
         
         let receivedTargetCondition = inputValue.split(separator: " ").map({ Int($0) ?? ErrorValue.stringToIntConvertErrorValue })
-                
+        
         guard !receivedTargetCondition.contains(ErrorValue.stringToIntConvertErrorValue) else {
             throw FitnessCenterContingency.stringToIntConvertError
         }
@@ -69,53 +72,55 @@ class FitnessCenter {
     }
     
     func workOut() {
-        guard let member = member else {
-            return
-        }
         do {
             try checkExistMember()
             let indexOfRoutine = try selectRoutine()
             let setsOfExercise = try selectRepeat()
             
-            member.exercise(for: setsOfExercise, routine: routineList[indexOfRoutine])
+            member!.exercise(for: setsOfExercise, routine: routineList[indexOfRoutine])
             
             try checkMemberExhausted()
             try checkEnoughForTarget()
             
             print("""
                   --------------
-                  성공입니다! 현재 \(member.name)님의 컨디션은 다음과 같습니다.
+                  성공입니다! 현재 \(member!.name)님의 컨디션은 다음과 같습니다.
                   """)
+            member!.showCondition()
             
-            member.showCondition()
-            
-        } catch FitnessCenterContingency.notExistMemberError{
-            print("회원이 존재하지 않습니다.")
-            exit(1)
-            
+        } catch FitnessCenterContingency.notExistMemberError {
+            if let errorDescription = FitnessCenterContingency.notExistMemberError.errorDescription {
+                print(errorDescription)
+            }
+            register()
         } catch FitnessCenterContingency.unRecognizedInputError {
-            print("인식할 수 없는 값입니다.")
-            exit(1)
-            
+            if let errorDescription = FitnessCenterContingency.unRecognizedInputError.errorDescription {
+                print(errorDescription)
+            }
+            workOut()
         } catch FitnessCenterContingency.stringToIntConvertError {
-            print("정수로 변환할 수 없습니다.")
-            exit(1)
-            
+            if let errorDescription = FitnessCenterContingency.stringToIntConvertError.errorDescription {
+                print(errorDescription)
+            }
+            workOut()
         } catch FitnessCenterContingency.exhaustedMemberError {
-            print("""
-                  --------------
-                  \(member.name)님의 피로도가 \(member.bodyCondition.fatigue)입니다. 회원님이 도망갔습니다.
-                  """)
-            
+            if let errorDescription = FitnessCenterContingency.exhaustedMemberError.errorDescription {
+                print("""
+                      --------------
+                      \(errorDescription)
+                      \(member!.name) 님의 피로도가 \(member!.bodyCondition.fatigue)입니다. 회원님이 도망갔습니다.
+                      """)
+            }
             self.member = nil
-            exit(1)
-            
+            workOut()
         } catch FitnessCenterContingency.notEnoughToTargetError {
-            print("""
-                  --------------
-                  목표치에 도달하지 못했습니다 현재 \(member.name)님의 컨디션은 다음과 같습니다.
-                  """)
-            member.showCondition()
+            if let errorDescription = FitnessCenterContingency.notEnoughToTargetError.errorDescription {
+                print("""
+                      --------------
+                      \(errorDescription) 현재 \(member!.name)님의 컨디션은 다음과 같습니다.
+                      """)
+            }
+            member!.showCondition()
             workOut()
         } catch {
             print("\(error)")
