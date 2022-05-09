@@ -35,7 +35,7 @@ class BodyCondition {
         tiredness += selectRandomStatusIndex(min: 10, max: 20)
     }
     
-    func changeStatusAfterlongRunning() {
+    func changeStatusAfterLongRunning() {
         upperBodyMuscleStrength += selectRandomStatusIndex(min: 5, max: 10)
         lowerBodyMuscleStrength += selectRandomStatusIndex(min: 5, max: 10)
         muscularEndurance += selectRandomStatusIndex(min: 20, max: 30)

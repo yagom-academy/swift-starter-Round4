@@ -14,7 +14,7 @@ let sitUp: Exercise = Exercise(name: "윗몸일으키기", action: { $0.changeSt
 
 let squat: Exercise = Exercise(name: "스쿼트", action: { $0.changeStatusAfterSquat() })
 
-let longRunning: Exercise = Exercise(name: "오래달리기", action: { $0.changeStatusAfterlongRunning() })
+let longRunning: Exercise = Exercise(name: "오래달리기", action: { $0.changeStatusAfterLongRunning() })
 
 let activeRest: Exercise = Exercise(name: "동적휴식", action: { $0.changeStatusAfterActiveRest() })
 
