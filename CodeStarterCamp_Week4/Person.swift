@@ -10,6 +10,7 @@ import Foundation
 class Person {
     let name: String
     var bodyCondition: BodyCondition
+    static let MaxFatigue = 100
     
     init(name: String) {
         self.name = name

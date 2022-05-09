@@ -172,7 +172,7 @@ class FitnessCenter {
     
     private func checkMemberExhausted() throws {
         if let fatigue = member?.bodyCondition.fatigue {
-            if fatigue > 100 {
+            if fatigue > Person.MaxFatigue {
                 throw FitnessCenterContingency.exhaustedMemberError
             }
         }
