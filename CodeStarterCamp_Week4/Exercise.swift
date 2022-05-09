@@ -28,6 +28,9 @@ let run: Exercise = Exercise(name: "오래달리기") {
 }
 let activeRest: Exercise = Exercise(name: "동적휴식") {
     person.fatigue -= Int.random(in: 5...10)
+    if person.fatigue < 0 {
+        person.fatigue = 0
+    }
 }
 // 추가 동작
 let yoga: Exercise = Exercise(name: "요가") {
