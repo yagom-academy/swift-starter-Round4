@@ -25,6 +25,27 @@ class BodyCondition {
         return status
     }
     
+    func changeStatusAfterSitup() {
+        upperBodyMuscleStrength += selectRandomStatusIndex(min: 10, max: 20)
+        tiredness += selectRandomStatusIndex(min: 10, max: 20)
+    }
+    
+    func changeStatusAfterSquat() {
+        lowerBodyMuscleStrength += selectRandomStatusIndex(min: 20, max: 30)
+        tiredness += selectRandomStatusIndex(min: 10, max: 20)
+    }
+    
+    func changeStatusAfterlongRunning() {
+        upperBodyMuscleStrength += selectRandomStatusIndex(min: 5, max: 10)
+        lowerBodyMuscleStrength += selectRandomStatusIndex(min: 5, max: 10)
+        muscularEndurance += selectRandomStatusIndex(min: 20, max: 30)
+        tiredness += selectRandomStatusIndex(min: 20, max: 30)
+    }
+    
+    func changeStatusAfterActiveRest() {
+        tiredness -= selectRandomStatusIndex(min: 5, max: 10)
+    }
+    
     func printMucleStatus() {
         print("--------------------")
         print("현재의 컨디션은 다음과 같습니다.")
