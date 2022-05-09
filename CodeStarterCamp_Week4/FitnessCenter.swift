@@ -92,7 +92,7 @@ class FitnessCenter {
             if let errorDescription = FitnessCenterContingency.notExistMemberError.errorDescription {
                 print(errorDescription)
             }
-            register()
+            exit(1)
         } catch FitnessCenterContingency.unRecognizedInputError {
             if let errorDescription = FitnessCenterContingency.unRecognizedInputError.errorDescription {
                 print(errorDescription)
