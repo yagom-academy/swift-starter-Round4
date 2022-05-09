@@ -162,17 +162,22 @@ enum FitnessErrorCase: Error {
 
 struct FitnessCenter {
     let name: String
-    let aimBodyCondtion: BodyCondition
+    let aimBodyCondtion = BodyCondition()
     var members: Array<Person>?
     var routineList: [Routine]
     
-    func runProgram(){
-        print("안녕하세요. \(name) 피트니스 센터입니다. 회원님의 이름은 무엇인가요?", separator: "")
-        let memberName: String? = readLine()
+    func runProgram() throws -> Void {
+        print("안녕하세요. \(name) 피트니스 센터입니다. 회원님의 이름은 무엇인가요?", terminator: " ")
+        let _: String? = readLine()
+        guard let _ = members else {
+            throw FitnessErrorCase.noMembers
+        }
         
         print("운동 목표치를 순서대로 알려주세요. 예시) 상체근력:130,하체근력:120,근지구력:150 \n상체근력 :", terminator: " ")
         let upperStrength: String? = readLine()
+        print("하체근력 :", terminator: " ")
         let lowerStrength: String? = readLine()
+        print("근지구력 :", terminator: " ")
         let muscularEndurance: String? = readLine()
         
         print("몇 번째 루틴으로 운동하시겠어요?")
@@ -183,3 +188,13 @@ struct FitnessCenter {
         
     }
 }
+var beam2 = Person(name: "beam2")
+var beam3 = Person(name: "beam3")
+var beam4 = Person(name: "beam4")
+var beam2Fit = FitnessCenter(name: "뱀이피트", members: [beam2, beam3, beam4], routineList: [hellRoutine, omgRoutine])
+try beam2Fit.runProgram()
+//do {
+//    try beam2Fit.runProgram()
+//} catch FitnessErrorCase.noMembers {
+//    print("인원 없음")
+//}
