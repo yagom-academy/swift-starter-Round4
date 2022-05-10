@@ -135,25 +135,35 @@ class FitnessCenter {
     }
     
     private func selectRoutine() throws -> Int {
-        print("""
-              --------------
-              몇 번째 루틴으로 운동하시겠어요?
-              """)
-        for (idx, routine) in routineList.enumerated() {
-            print("\(idx + 1). \(routine.routineName)")
-        }
+        var result = 0
+        let routineListLength = routineList.count
         
-        guard let inputValue = readLine() else {
-            throw FitnessCenterContingency.unRecognizedInputError
-        }
-        
-        let selectRoutineIndex = Int(inputValue) ?? ErrorValue.stringToIntConvertErrorValue
-        
-        guard selectRoutineIndex != ErrorValue.stringToIntConvertErrorValue else {
-            throw FitnessCenterContingency.stringToIntConvertError
-        }
-        
-        return selectRoutineIndex - 1
+        repeat {
+            print("""
+                  --------------
+                  몇 번째 루틴으로 운동하시겠어요?
+                  """)
+            for (idx, routine) in routineList.enumerated() {
+                print("\(idx + 1). \(routine.routineName)")
+            }
+            
+            guard let inputValue = readLine() else {
+                throw FitnessCenterContingency.unRecognizedInputError
+            }
+            
+            let selectRoutineIndex = Int(inputValue) ?? ErrorValue.stringToIntConvertErrorValue
+            
+            guard selectRoutineIndex != ErrorValue.stringToIntConvertErrorValue else {
+                throw FitnessCenterContingency.stringToIntConvertError
+            }
+            
+            result = selectRoutineIndex
+            if result > routineListLength {
+                print("\(routineListLength) 이하의 값을 입력해 주세요.")
+            }
+        } while result > routineListLength
+
+        return result - 1
     }
     
     private func selectRepeat() throws -> Int {
