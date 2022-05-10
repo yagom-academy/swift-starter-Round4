@@ -6,7 +6,7 @@ struct Exercise {
 }
 
 let sitUp: Exercise = Exercise(name: "윗몸일으키기") {
-    bodyCondition.upperBodyStrength += Int.random(in: 10...20)
+    yagom.bodyCondition.upperBodyStrength += Int.random(in: 10...20)
     bodyCondition.fatigue += Int.random(in: 10...20)
 }
 
