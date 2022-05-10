@@ -37,6 +37,8 @@ class FitnessCenter {
         } catch {
             
         }
+        
+        executeRoutine()
     }
     
     func inputName() throws -> String {
@@ -66,5 +68,48 @@ class FitnessCenter {
         let bodyCondition: BodyCondition = .init(upperBodyStrength: goalBodyConditionArray[0], lowerBodyStrength: goalBodyConditionArray[1], muscularEndurance: goalBodyConditionArray[2], fatigue: 0)
         
         return bodyCondition
+    }
+    
+    func inputRoutineSet() throws -> Void {
+        print("몇 번째 루틴으로 운동하시겠어요?")
+        var routineNumber = 1
+        self.routine.forEach {
+            print("\(routineNumber). \($0.name)")
+            routineNumber += 1
+        }
+        let inputRoutine: String = readLine()!
+        guard let _inputRoutine = Int(inputRoutine) else {
+            throw InputError.invaildValue
+        }
+        
+        switch _inputRoutine {
+        case 1..<routineNumber:
+            routineNumber = _inputRoutine - 1
+        default:
+            throw InputError.invaildValue
+        }
+        
+        print("몇 세트 반복하시겠어요?")
+        let inputSetNumber: String = readLine()!
+        guard let setNumber = Int(inputSetNumber) else {
+            throw InputError.invaildValue
+        }
+        
+        member?.exercise(for: setNumber, routine: self.routine[routineNumber])
+        routineNumber = 1
+    }
+    
+    func executeRoutine() {
+        do {
+            try inputRoutineSet()
+        } catch InputError.empty {
+            print("값을 입력하지않았습니다. 값을 입력해주세요")
+        } catch InputError.invaildValue {
+            print("입력할 수 없는 값입니다.")
+        } catch InputError.outOfValue {
+            print("값의 갯수가 적거나 큽니다.")
+        } catch {
+            
+        }
     }
 }
