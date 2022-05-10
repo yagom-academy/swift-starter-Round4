@@ -84,33 +84,56 @@ class FitnessCenter {
             return
         }
         
-        do {
-            repeat {
-                let indexOfRoutine = try selectRoutine()
-                let setsOfExercise = try selectRepeat()
-                
-                for count in 1...setsOfExercise {
-                    member.exercise(for: count, routine: routineList[indexOfRoutine])
-                    if member.bodyCondition.fatigue > Person.maxFatigue {
-                        runAway(member)
-                        return
+        repeat {
+            var isRetry = true
+            var indexOfRoutine = 0
+            var setsOfExercise = 0
+            
+            while isRetry {
+                do {
+                    indexOfRoutine = try selectRoutine()
+                    isRetry = false
+                } catch FitnessCenterContingency.unRecognizedInputError {
+                    if let errorDescription = FitnessCenterContingency.unRecognizedInputError.errorDescription {
+                        print(errorDescription)
                     }
+                } catch FitnessCenterContingency.stringToIntConvertError {
+                    if let errorDescription = FitnessCenterContingency.stringToIntConvertError.errorDescription {
+                        print(errorDescription)
+                    }
+                } catch {
+                    print("\(error)")
+                    exit(1)
                 }
-            } while !isEnoughConditionFor(member)
-        } catch FitnessCenterContingency.unRecognizedInputError {
-            if let errorDescription = FitnessCenterContingency.unRecognizedInputError.errorDescription {
-                print(errorDescription)
             }
-            workOut()
-        } catch FitnessCenterContingency.stringToIntConvertError {
-            if let errorDescription = FitnessCenterContingency.stringToIntConvertError.errorDescription {
-                print(errorDescription)
+            
+            isRetry = true
+            while isRetry {
+                do {
+                    setsOfExercise = try selectRepeat()
+                    isRetry = false
+                } catch FitnessCenterContingency.unRecognizedInputError {
+                    if let errorDescription = FitnessCenterContingency.unRecognizedInputError.errorDescription {
+                        print(errorDescription)
+                    }
+                } catch FitnessCenterContingency.stringToIntConvertError {
+                    if let errorDescription = FitnessCenterContingency.stringToIntConvertError.errorDescription {
+                        print(errorDescription)
+                    }
+                } catch {
+                    print("\(error)")
+                    exit(1)
+                }
             }
-            workOut()
-        } catch {
-            print("\(error)")
-            exit(1)
-        }
+            
+            for count in 1...setsOfExercise {
+                member.exercise(for: count, routine: routineList[indexOfRoutine])
+                if member.bodyCondition.fatigue > Person.maxFatigue {
+                    runAway(member)
+                    return
+                }
+            }
+        } while !isEnoughConditionFor(member)
     }
     
     private func selectRoutine() throws -> Int {
