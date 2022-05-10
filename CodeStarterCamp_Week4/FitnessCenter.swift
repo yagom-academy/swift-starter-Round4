@@ -72,27 +72,26 @@ class FitnessCenter {
     }
     
     func workOut() {
+        guard let member = member else {
+            print("회원이 존재하지 않습니다.")
+            return
+        }
+
         do {
-            try checkExistMember()
             let indexOfRoutine = try selectRoutine()
             let setsOfExercise = try selectRepeat()
             
-            member!.exercise(for: setsOfExercise, routine: routineList[indexOfRoutine])
+            member.exercise(for: setsOfExercise, routine: routineList[indexOfRoutine])
             
             try checkMemberExhausted()
             try checkEnoughForTarget()
             
             print("""
                   --------------
-                  성공입니다! 현재 \(member!.name)님의 컨디션은 다음과 같습니다.
+                  성공입니다! 현재 \(member.name)님의 컨디션은 다음과 같습니다.
                   """)
-            member!.showCondition()
+            member.showCondition()
             
-        } catch FitnessCenterContingency.notExistMemberError {
-            if let errorDescription = FitnessCenterContingency.notExistMemberError.errorDescription {
-                print(errorDescription)
-            }
-            exit(1)
         } catch FitnessCenterContingency.unRecognizedInputError {
             if let errorDescription = FitnessCenterContingency.unRecognizedInputError.errorDescription {
                 print(errorDescription)
@@ -108,7 +107,7 @@ class FitnessCenter {
                 print("""
                       --------------
                       \(errorDescription)
-                      \(member!.name) 님의 피로도가 \(member!.bodyCondition.fatigue)입니다. 회원님이 도망갔습니다.
+                      \(member.name) 님의 피로도가 \(member.bodyCondition.fatigue)입니다. 회원님이 도망갔습니다.
                       """)
             }
             self.member = nil
@@ -117,20 +116,14 @@ class FitnessCenter {
             if let errorDescription = FitnessCenterContingency.notEnoughToTargetError.errorDescription {
                 print("""
                       --------------
-                      \(errorDescription) 현재 \(member!.name)님의 컨디션은 다음과 같습니다.
+                      \(errorDescription) 현재 \(member.name)님의 컨디션은 다음과 같습니다.
                       """)
             }
-            member!.showCondition()
+            member.showCondition()
             workOut()
         } catch {
             print("\(error)")
             exit(1)
-        }
-    }
-    
-    private func checkExistMember() throws {
-        guard self.member != nil else {
-            throw FitnessCenterContingency.notExistMemberError
         }
     }
     
@@ -162,7 +155,7 @@ class FitnessCenter {
                 print("\(routineListLength) 이하의 값을 입력해 주세요.")
             }
         } while result > routineListLength
-
+        
         return result - 1
     }
     
