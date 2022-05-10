@@ -6,3 +6,7 @@ var myRoutine = Routine(name: "My Routine", routineOrder: myExerciseRoutine)
 
 myRoutine.startRoutine()
 myRoutine.printCurrentBodyCondition(with: myInitialBodyCondition)
+
+var myFitness = FitnessCenter(name: "myFitness", targetBodyCondition: myInitialBodyCondition, routineList: [myRoutine])
+myFitness.greeting()
+print(myFitness.member)

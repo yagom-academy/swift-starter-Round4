@@ -11,6 +11,8 @@
 		8E6A3EF32824EB1A0075D443 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A3EF22824EB1A0075D443 /* Exercise.swift */; };
 		8E6A3EF52824EB440075D443 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A3EF42824EB440075D443 /* Routine.swift */; };
 		8E6A3EF72824EBA10075D443 /* BodyCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A3EF62824EBA10075D443 /* BodyCondition.swift */; };
+		8EE7BAE6282A738600079203 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE7BAE5282A738600079203 /* Person.swift */; };
+		8EE7BAE8282A740800079203 /* FitnessCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE7BAE7282A740800079203 /* FitnessCenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +33,8 @@
 		8E6A3EF22824EB1A0075D443 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		8E6A3EF42824EB440075D443 /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
 		8E6A3EF62824EBA10075D443 /* BodyCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyCondition.swift; sourceTree = "<group>"; };
+		8EE7BAE5282A738600079203 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		8EE7BAE7282A740800079203 /* FitnessCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessCenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,8 @@
 				8E6A3EF62824EBA10075D443 /* BodyCondition.swift */,
 				8E6A3EF22824EB1A0075D443 /* Exercise.swift */,
 				8E6A3EF42824EB440075D443 /* Routine.swift */,
+				8EE7BAE5282A738600079203 /* Person.swift */,
+				8EE7BAE7282A740800079203 /* FitnessCenter.swift */,
 			);
 			path = CodeStarterCamp_Week4;
 			sourceTree = "<group>";
@@ -128,6 +134,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EE7BAE6282A738600079203 /* Person.swift in Sources */,
+				8EE7BAE8282A740800079203 /* FitnessCenter.swift in Sources */,
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
 				8E6A3EF32824EB1A0075D443 /* Exercise.swift in Sources */,
 				8E6A3EF52824EB440075D443 /* Routine.swift in Sources */,
