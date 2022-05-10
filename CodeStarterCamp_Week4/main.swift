@@ -198,6 +198,12 @@ struct FitnessCenter {
         
         print("몇 세트 반복하시겠어요? ",terminator: "")
         let routineSetCount: String? = readLine()
+        guard let routineNumber = routineSetCount else {
+            throw FitnessErrorCase.incongruityInput
+        }
+        guard let choicedSetCount = Int(routineNumber) else {
+            return print("TYPE ERROR(NOT Int)")
+        }
     }
     
     mutating func checkMember() throws {
