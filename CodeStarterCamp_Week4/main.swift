@@ -158,6 +158,7 @@ enum FitnessErrorCase: Error {
     case failAim
     case incongruityInput
     case noMembers
+    case typeErrorNotInt
 }
 
 struct FitnessCenter {
@@ -192,7 +193,7 @@ struct FitnessCenter {
             throw FitnessErrorCase.incongruityInput
         }
         guard let choicedRoutineCount = Int(routines) else {
-            return print("TYPE ERROR(NOT Int)")
+            throw FitnessErrorCase.typeErrorNotInt
         }
         print(choicedRoutineCount)
         
@@ -202,7 +203,7 @@ struct FitnessCenter {
             throw FitnessErrorCase.incongruityInput
         }
         guard let choicedSetCount = Int(routineNumber) else {
-            return print("TYPE ERROR(NOT Int)")
+            throw FitnessErrorCase.typeErrorNotInt
         }
     }
     
