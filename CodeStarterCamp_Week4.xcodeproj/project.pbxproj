@@ -10,6 +10,7 @@
 		34811DE8274B93FB00A1E994 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34811DE7274B93FB00A1E994 /* main.swift */; };
 		F7A8CA47282A6B37000E31A8 /* FitnessCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A8CA46282A6B37000E31A8 /* FitnessCenter.swift */; };
 		F7A8CA49282A6B60000E31A8 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A8CA48282A6B60000E31A8 /* Person.swift */; };
+		F7A8CA4B282A6C5C000E31A8 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A8CA4A282A6C5C000E31A8 /* Error.swift */; };
 		F7F6707C282525DE008ECB39 /* BodyCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F6707B282525DE008ECB39 /* BodyCondition.swift */; };
 		F7F6707E28252624008ECB39 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F6707D28252624008ECB39 /* Exercise.swift */; };
 /* End PBXBuildFile section */
@@ -31,6 +32,7 @@
 		34811DE7274B93FB00A1E994 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		F7A8CA46282A6B37000E31A8 /* FitnessCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessCenter.swift; sourceTree = "<group>"; };
 		F7A8CA48282A6B60000E31A8 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		F7A8CA4A282A6C5C000E31A8 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		F7F6707B282525DE008ECB39 /* BodyCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyCondition.swift; sourceTree = "<group>"; };
 		F7F6707D28252624008ECB39 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,6 +72,7 @@
 				F7F6707D28252624008ECB39 /* Exercise.swift */,
 				F7A8CA46282A6B37000E31A8 /* FitnessCenter.swift */,
 				F7A8CA48282A6B60000E31A8 /* Person.swift */,
+				F7A8CA4A282A6C5C000E31A8 /* Error.swift */,
 			);
 			path = CodeStarterCamp_Week4;
 			sourceTree = "<group>";
@@ -135,6 +138,7 @@
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
 				F7F6707C282525DE008ECB39 /* BodyCondition.swift in Sources */,
 				F7F6707E28252624008ECB39 /* Exercise.swift in Sources */,
+				F7A8CA4B282A6C5C000E31A8 /* Error.swift in Sources */,
 				F7A8CA47282A6B37000E31A8 /* FitnessCenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
