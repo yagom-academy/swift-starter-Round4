@@ -19,7 +19,7 @@
 		7BB7C300282865B600FC4BD1 /* BodyConditionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB7C2FF282865B600FC4BD1 /* BodyConditionError.swift */; };
 		7BB7C302282865C900FC4BD1 /* RoutineSelectError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB7C301282865C900FC4BD1 /* RoutineSelectError.swift */; };
 		7BB7C304282865E100FC4BD1 /* CountOfSetSelectError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB7C303282865E100FC4BD1 /* CountOfSetSelectError.swift */; };
-		7BB7C30728286B1D00FC4BD1 /* ResrOrTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB7C30628286B1D00FC4BD1 /* ResrOrTraining.swift */; };
+		7BB7C30728286B1D00FC4BD1 /* ExerciseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB7C30628286B1D00FC4BD1 /* ExerciseState.swift */; };
 		7BFDBED7282871B700CF453C /* Int_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDBED6282871B700CF453C /* Int_Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,7 +49,7 @@
 		7BB7C2FF282865B600FC4BD1 /* BodyConditionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyConditionError.swift; sourceTree = "<group>"; };
 		7BB7C301282865C900FC4BD1 /* RoutineSelectError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineSelectError.swift; sourceTree = "<group>"; };
 		7BB7C303282865E100FC4BD1 /* CountOfSetSelectError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountOfSetSelectError.swift; sourceTree = "<group>"; };
-		7BB7C30628286B1D00FC4BD1 /* ResrOrTraining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResrOrTraining.swift; sourceTree = "<group>"; };
+		7BB7C30628286B1D00FC4BD1 /* ExerciseState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseState.swift; sourceTree = "<group>"; };
 		7BFDBED6282871B700CF453C /* Int_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int_Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,7 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				7BB7C2FB2828658A00FC4BD1 /* BodyPart.swift */,
-				7BB7C30628286B1D00FC4BD1 /* ResrOrTraining.swift */,
+				7BB7C30628286B1D00FC4BD1 /* ExerciseState.swift */,
 			);
 			path = ExerciseSet;
 			sourceTree = "<group>";
@@ -187,7 +187,7 @@
 				7BB7C304282865E100FC4BD1 /* CountOfSetSelectError.swift in Sources */,
 				7BB7C300282865B600FC4BD1 /* BodyConditionError.swift in Sources */,
 				7BB7C302282865C900FC4BD1 /* RoutineSelectError.swift in Sources */,
-				7BB7C30728286B1D00FC4BD1 /* ResrOrTraining.swift in Sources */,
+				7BB7C30728286B1D00FC4BD1 /* ExerciseState.swift in Sources */,
 				7BB7C2F82826A83100FC4BD1 /* FitnessCenter.swift in Sources */,
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
 				7B782E5A281FF4AA00240417 /* BodyCondition.swift in Sources */,

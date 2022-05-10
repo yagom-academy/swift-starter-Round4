@@ -51,7 +51,7 @@ struct BodyCondition {
     
     mutating func manageFatigue(overLimitValue: Int,
                        underLimitValue: Int,
-                       restOfTraining: RestOrTraining) {
+                       restOfTraining: ExerciseState) {
         let amountOfChange = Int.random(in: overLimitValue...underLimitValue)
         switch restOfTraining {
         case .rest:

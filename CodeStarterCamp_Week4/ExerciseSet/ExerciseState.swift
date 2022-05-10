@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum RestOrTraining {
+enum ExerciseState {
     case rest
     case training
 }

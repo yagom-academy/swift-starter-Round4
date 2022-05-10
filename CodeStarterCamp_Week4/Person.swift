@@ -36,7 +36,7 @@ class Person {
                                  underLimitValue: underLimitValue)
     }
     
-    func manageFatigue(overLimitValue: Int, underLimitValue: Int, restOfTraining: RestOrTraining) {
+    func manageFatigue(overLimitValue: Int, underLimitValue: Int, restOfTraining: ExerciseState) {
         bodyCondition.manageFatigue(overLimitValue: overLimitValue,
                                     underLimitValue: underLimitValue,
                                     restOfTraining: restOfTraining)
