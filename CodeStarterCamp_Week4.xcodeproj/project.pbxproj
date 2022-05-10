@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		34811DE8274B93FB00A1E994 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34811DE7274B93FB00A1E994 /* main.swift */; };
+		AEC5CCC4282A86B100E15B11 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC5CCC3282A86B100E15B11 /* Person.swift */; };
 		AECFB7122827823600CC0597 /* BodyCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECFB7112827823600CC0597 /* BodyCondition.swift */; };
 		AECFB714282782F500CC0597 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECFB713282782F500CC0597 /* Exercise.swift */; };
 		AECFB7162827841B00CC0597 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECFB7152827841B00CC0597 /* Routine.swift */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		34811DE4274B93FB00A1E994 /* CodeStarterCamp_Week4 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CodeStarterCamp_Week4; sourceTree = BUILT_PRODUCTS_DIR; };
 		34811DE7274B93FB00A1E994 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		AEC5CCC3282A86B100E15B11 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		AECFB7112827823600CC0597 /* BodyCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyCondition.swift; sourceTree = "<group>"; };
 		AECFB713282782F500CC0597 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		AECFB7152827841B00CC0597 /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				34811DE7274B93FB00A1E994 /* main.swift */,
+				AEC5CCC3282A86B100E15B11 /* Person.swift */,
 				AECFB7112827823600CC0597 /* BodyCondition.swift */,
 				AECFB713282782F500CC0597 /* Exercise.swift */,
 				AECFB7152827841B00CC0597 /* Routine.swift */,
@@ -128,6 +131,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEC5CCC4282A86B100E15B11 /* Person.swift in Sources */,
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
 				AECFB7122827823600CC0597 /* BodyCondition.swift in Sources */,
 				AECFB7162827841B00CC0597 /* Routine.swift in Sources */,
