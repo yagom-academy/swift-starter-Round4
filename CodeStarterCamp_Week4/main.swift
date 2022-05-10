@@ -175,12 +175,29 @@ struct FitnessCenter {
         let lowerStrength: String? = readLine()
         print("근지구력 :", terminator: " ")
         let muscularEndurance: String? = readLine()
+        print("운동 목표치는 \(upperStrength!) \(lowerStrength!) \(muscularEndurance!)")
         
+        //루틴생성
+        let totalRoutines = self.routineList.map {
+            $0.name
+        }
         print("몇 번째 루틴으로 운동하시겠어요?")
-        let routineNumber: String? = readLine()
+        var routineCount = 0
+        for routine in totalRoutines{
+            routineCount += 1
+            print("\(routineCount). \(routine)")
+        }
+        let routineNumber: String? = readLine() // Int로 받기.
+        guard let routines = routineNumber else {
+            throw FitnessErrorCase.incongruityInput
+        }
+        guard let choicedRoutineCount = Int(routines) else {
+            return print("TYPE ERROR(NOT Int)")
+        }
+        print(choicedRoutineCount)
         
         print("몇 세트 반복하시겠어요? ",terminator: "")
-        let routineCount: String? = readLine()
+        let routineSetCount: String? = readLine()
     }
     
     mutating func checkMember() throws {
@@ -198,6 +215,11 @@ struct FitnessCenter {
         if personsMemberName.contains(inputName) == false {
             throw FitnessErrorCase.noMembers
         }
+    }
+    
+    func targetLevel() {
+
+
     }
 }
 
