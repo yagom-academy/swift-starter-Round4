@@ -166,12 +166,8 @@ struct FitnessCenter {
     var members: Array<Person>?
     var routineList: [Routine]
     
-    func runProgram() throws -> Void {
-        print("안녕하세요. \(name) 피트니스 센터입니다. 회원님의 이름은 무엇인가요?", terminator: " ")
-        let _: String? = readLine()
-        guard let _ = members else {
-            throw FitnessErrorCase.noMembers
-        }
+    mutating func runProgram() throws -> Void {
+        try checkMember()
         
         print("운동 목표치를 순서대로 알려주세요. 예시) 상체근력:130,하체근력:120,근지구력:150 \n상체근력 :", terminator: " ")
         let upperStrength: String? = readLine()
@@ -185,16 +181,37 @@ struct FitnessCenter {
         
         print("몇 세트 반복하시겠어요? ",terminator: "")
         let routineCount: String? = readLine()
-        
+    }
+    
+    mutating func checkMember() throws {
+        print("안녕하세요. \(name) 피트니스 센터입니다. 회원님의 이름은 무엇인가요?", terminator: " ")
+        let inputName: String? = readLine()
+        guard let inputName = inputName else {
+            throw FitnessErrorCase.incongruityInput
+        }
+        guard let findingMembers = self.members else {
+            return print("cannot use Array")
+        }
+        let personsMemberName = findingMembers.map{
+            $0.name
+        }
+        if personsMemberName.contains(inputName) == false {
+            throw FitnessErrorCase.noMembers
+        }
     }
 }
+
 var beam2 = Person(name: "beam2")
 var beam3 = Person(name: "beam3")
 var beam4 = Person(name: "beam4")
 var beam2Fit = FitnessCenter(name: "뱀이피트", members: [beam2, beam3, beam4], routineList: [hellRoutine, omgRoutine])
-try beam2Fit.runProgram()
-//do {
-//    try beam2Fit.runProgram()
-//} catch FitnessErrorCase.noMembers {
-//    print("인원 없음")
-//}
+//try beam2Fit.runProgram()
+
+
+do {
+    try beam2Fit.runProgram()
+} catch FitnessErrorCase.noMembers {
+    print("인원 없음")
+} catch FitnessErrorCase.incongruityInput {
+    print("zzzzz")
+}
