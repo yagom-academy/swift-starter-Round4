@@ -12,7 +12,7 @@ struct GuestRegister {
         var guestName: String = ""
         while true {
             let inputResult = inputName()
-            if isValidPersonalInfo(inputResult: inputResult, guestName: &guestName) {
+            if isValidStringInput(inputResult: inputResult, guestName: &guestName) {
                 break
             }
         }
@@ -20,7 +20,7 @@ struct GuestRegister {
         return Person(name: guestName)
     }
     
-    func inputName() -> Result<String, NamingError> {
+    func inputName() -> Result<String, StringInputError> {
         guard let guestName = readLine() else {
             return .failure(.nilName)
         }
@@ -32,24 +32,21 @@ struct GuestRegister {
         return .success(guestName)
     }
     
-    func isValidPersonalInfo(inputResult: Result<String, NamingError>, guestName: inout String) -> Bool {
+    func isValidStringInput(inputResult: Result<String, StringInputError>,
+                            guestName: inout String) -> Bool {
         switch inputResult {
         case .success(let name):
             guestName = name
             return true
         case .failure(let namingError):
-            if namingError == .emptyName {
-                print("이름이 비어있습니다! 다시 입력해 주세요!")
-            } else {
-                print("잘못된 입력이 있던 모양이에요. 다시 입력해 주세요!")
-            }
+            print(namingError.errorDescription)            
             return false
         }
     }
     
-    func inputCondition() -> Result<Int, BodyConditionError> {
+    func inputCondition() -> Result<Int, IntegerInputError> {
         guard let condition = readLine() else {
-            return .failure(.nilCondition)
+            return .failure(.nilCount)
         }
         
         if condition.isEmpty {
@@ -67,22 +64,14 @@ struct GuestRegister {
         return .success(conditionValue)
     }
     
-    func isValidConditionInfo(conditionResult: Result<Int, BodyConditionError>, conditionValue: inout Int) -> Bool {
-        switch conditionResult {
-        case .success(let conditionInput):
-            conditionValue = conditionInput
+    func isValidIntegerInput(inputResult: Result<Int, IntegerInputError>,
+                             inputValueReceiptor: inout Int) -> Bool {
+        switch inputResult {
+        case .success(let inputValue):
+            inputValueReceiptor = inputValue
             return true
-        case .failure(.nilCondition):
-            print("값을 입력해 주세요!")
-            return false
-        case .failure(.emptyInput):
-            print("값이 비어있어요 다시 입력해주세요!")
-            return false
-        case .failure(.stringInput):
-            print("숫자만 입력해주세요")
-            return false
-        case .failure(.negativeValue):
-            print("양수만 입력해주세요! 음수는 안됩니다")
+        case .failure(let error):
+            print(error.errorDescription)
             return false
         }
     }
@@ -91,7 +80,7 @@ struct GuestRegister {
         var conditionValue: Int = 0
         while true {
             let conditionResult = inputCondition()
-            if isValidConditionInfo(conditionResult: conditionResult, conditionValue: &conditionValue) {
+            if isValidIntegerInput(inputResult: conditionResult, inputValueReceiptor: &conditionValue) {
                 break
             }
             print("\(bodyPart.rawValue): ", terminator: "")
@@ -115,7 +104,7 @@ struct GuestRegister {
                              fatigue: 0)
     }
     
-    func inputRoutine(routineLength: Int) -> Result<Int, RoutineSelectError> {
+    func inputRoutine(routineLength: Int) -> Result<Int, IntegerInputError> {
         guard let routeInputResult = readLine() else {
             return .failure(.nilCount)
         }
@@ -139,35 +128,11 @@ struct GuestRegister {
         return .success(routeInputValue)
     }
     
-    func isValidRoutineCount(routeInputResult: Result<Int, RoutineSelectError>,
-                             routeCountResult: inout Int) -> Bool {
-        switch routeInputResult {
-        case .success(let routeCnt):
-            routeCountResult = routeCnt
-            return true
-        case .failure(.overIndex):
-            print("우리 피트니스 센터에서 할수 있는 운동 루틴이 아니에요")
-            return false
-        case .failure(.negativeValue):
-            print("양수를 입력해주세요!")
-            return false
-        case .failure(.stringInput):
-            print("숫자로 입력해주세요")
-            return false
-        case .failure(.nilCount):
-            print("숫자를 입력해 주세요!")
-            return false
-        case .failure(.emptyInput):
-            print("값이 비어있습니다. 다시 입력해주세요")
-            return false
-        }
-    }
-    
     func assignRoutineCount(routineLength: Int) -> Int {
         var routeCountResult = 0
         while true {
             let routeInputResult = inputRoutine(routineLength: routineLength)
-            if isValidRoutineCount(routeInputResult: routeInputResult, routeCountResult: &routeCountResult) {
+            if isValidIntegerInput(inputResult: routeInputResult, inputValueReceiptor: &routeCountResult) {
                 break
             }
             print("""
@@ -179,7 +144,7 @@ struct GuestRegister {
         return routeCountResult
     }
     
-    func inputSet() -> Result<Int, CountOfSetSelectError> {
+    func inputSet() -> Result<Int, IntegerInputError> {
         guard let setInput = readLine() else {
             return .failure(.nilCount)
         }
@@ -195,33 +160,11 @@ struct GuestRegister {
         return .success(setValue)
     }
     
-    func isValidSetCount(setInputResult: Result<Int, CountOfSetSelectError>,
-                         setOfRoutineCountResult: inout Int) -> Bool {
-        switch setInputResult {
-        case .success(let setResult):
-            setOfRoutineCountResult = setResult
-            return true
-        case .failure(.nilCount):
-            print("값을 제대로 입력해주세요")
-            return false
-        case .failure(.negativeValue):
-            print("음수 말고 양수로 입력해주세요")
-            return false
-        case .failure(.stringInput):
-            print("숫자만 입력해주십쇼")
-            return false
-        case .failure(.emptyInput):
-            print("값이 비어있습니다. 다시 입력해주세요")
-            return false
-        }
-    }
-    
     func assignSetOfRoutineCount() -> Int {
         var setOfRoutineCountResult = 0
         while true {
             let setInputResult = inputSet()
-            if isValidSetCount(setInputResult: setInputResult,
-                                   setOfRoutineCountResult: &setOfRoutineCountResult) {
+            if isValidIntegerInput(inputResult: setInputResult, inputValueReceiptor: &setOfRoutineCountResult) {
                 break
             }
             print("몇 세트 루틴을 운동하시겠어요?")

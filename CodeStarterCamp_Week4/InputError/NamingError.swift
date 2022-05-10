@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum NamingError: Error {
+enum StringInputError: Error, LocalizedError {
     case nilName
     case emptyName
 }
