@@ -47,7 +47,7 @@ class Person {
     }
     
     func checkGoal(goal: BodyCondition) -> Bool {
-        return bodyCondition.isGetGoal(goal: goal)
+        return bodyCondition.isReachedGoal(goal: goal)
     }
     
     func exercise(for set: Int, routine: Routine) {
