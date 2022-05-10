@@ -76,26 +76,20 @@ class FitnessCenter {
             print("회원이 존재하지 않습니다.")
             return
         }
-
+        
         do {
-            let indexOfRoutine = try selectRoutine()
-            let setsOfExercise = try selectRepeat()
-            
-            for count in 1...setsOfExercise {
-                member.exercise(for: count, routine: routineList[indexOfRoutine])
-                if member.bodyCondition.fatigue > Person.MaxFatigue {
-                    runAway(member)
-                    return
+            repeat {
+                let indexOfRoutine = try selectRoutine()
+                let setsOfExercise = try selectRepeat()
+                
+                for count in 1...setsOfExercise {
+                    member.exercise(for: count, routine: routineList[indexOfRoutine])
+                    if member.bodyCondition.fatigue > Person.maxFatigue {
+                        runAway(member)
+                        return
+                    }
                 }
-            }
-            
-            try checkEnoughForTarget()
-            
-            print("""
-                  --------------
-                  성공입니다! 현재 \(member.name)님의 컨디션은 다음과 같습니다.
-                  """)
-            member.showCondition()
+            } while !isEnoughConditionFor(member)
             
         } catch FitnessCenterContingency.unRecognizedInputError {
             if let errorDescription = FitnessCenterContingency.unRecognizedInputError.errorDescription {
@@ -106,15 +100,6 @@ class FitnessCenter {
             if let errorDescription = FitnessCenterContingency.stringToIntConvertError.errorDescription {
                 print(errorDescription)
             }
-            workOut()
-        } catch FitnessCenterContingency.notEnoughToTargetError {
-            if let errorDescription = FitnessCenterContingency.notEnoughToTargetError.errorDescription {
-                print("""
-                      --------------
-                      \(errorDescription) 현재 \(member.name)님의 컨디션은 다음과 같습니다.
-                      """)
-            }
-            member.showCondition()
             workOut()
         } catch {
             print("\(error)")
@@ -177,16 +162,27 @@ class FitnessCenter {
         workOut()
     }
     
-    private func checkEnoughForTarget() throws {
-        if let member = member {
-            let memberCondition = member.bodyCondition
-            let target = targetBodyCondition
-            
-            if target.upperBodyStrength > memberCondition.upperBodyStrength &&
-                target.lowerBodyStrength > memberCondition.lowerBodyStrength &&
-                target.endurancePower > memberCondition.endurancePower {
-                throw FitnessCenterContingency.notEnoughToTargetError
-            }
+    private func isEnoughConditionFor(_ member: Person) -> Bool{
+        let memberCondition = member.bodyCondition
+        let target = targetBodyCondition
+        
+        if target.upperBodyStrength > memberCondition.upperBodyStrength &&
+            target.lowerBodyStrength > memberCondition.lowerBodyStrength &&
+            target.endurancePower > memberCondition.endurancePower {
+            print("""
+                  --------------
+                  목표치에 도달하지 못했습니다. 현재 \(member.name)님의 컨디션은 다음과 같습니다.
+                  """)
+            member.showCondition()
+            return false
+        } else {
+            print("""
+                  --------------
+                  성공입니다! 현재 \(member.name)님의 컨디션은 다음과 같습니다.
+                  """)
+            member.showCondition()
+            return true
         }
+        
     }
 }

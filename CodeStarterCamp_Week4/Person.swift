@@ -10,7 +10,7 @@ import Foundation
 class Person {
     let name: String
     var bodyCondition: BodyCondition
-    static let MaxFatigue = 100
+    static let maxFatigue = 100
     
     init(name: String) {
         self.name = name
@@ -22,16 +22,13 @@ class Person {
               --------------
               \(routine.routineName)을 \(set)set 시작합니다.
               """)
-        
-        for _ in 1...set {
-            for exercise in routine.exercises {
-                print(exercise.name)
-                exercise.action(&bodyCondition)
-            }
-            print("set End")
+        for exercise in routine.exercises {
+            print(exercise.name)
+            exercise.action(&bodyCondition)
         }
+        print("set End")
     }
-
+    
     func showCondition() {
         print("""
               상체근력: \(self.bodyCondition.upperBodyStrength)

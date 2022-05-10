@@ -11,7 +11,6 @@ enum FitnessCenterContingency: Error {
     case unRecognizedInputError
     case stringToIntConvertError
     case invalidNumberOfValuesError
-    case notEnoughToTargetError
 }
 
 extension FitnessCenterContingency: LocalizedError {
@@ -23,8 +22,6 @@ extension FitnessCenterContingency: LocalizedError {
             return "정수로 변환할 수 없습니다."
         case .invalidNumberOfValuesError:
             return "너무 적거나 많은 값을 입력했습니다."
-        case .notEnoughToTargetError:
-            return "목표치에 도달하지 못했습니다"
         }
     }
 }
