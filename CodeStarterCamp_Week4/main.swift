@@ -1,12 +1,8 @@
-//
-//  main.swift
-//  CodeStarterCamp_Week4
-//
-//  Created by yagom.
-//  Copyright © yagom academy. All rights reserved.
-//
-
 import Foundation
 
-print("Hello, World!")
+var myInitialBodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscleEndurance: 0, fatigue: 0)
+let myExerciseRoutine = [sitUp, sitUp, squat, squat, activeRest, deadLift, deadLift, runningLongTime, runningLongTime, activeRest]
+var myRoutine = Routine(name: "My Routine", routineOrder: myExerciseRoutine)
 
+myRoutine.startRoutine()
+myRoutine.printCurrentBodyCondition(with: myInitialBodyCondition)
