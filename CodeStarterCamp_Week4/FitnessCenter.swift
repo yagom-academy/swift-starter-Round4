@@ -111,5 +111,29 @@ class FitnessCenter {
         } catch {
             
         }
+        
+        if achieveGoalBodyCondition() {
+            print("--------------")
+            print("성공입니다!")
+            member?.bodyCondition.currentCondition()
+        } else {
+            print("--------------")
+            print("목표치에 도달하지 못했습니다.")
+            member?.bodyCondition.currentCondition()
+            executeRoutine()
+        }
+    }
+    
+    func achieveGoalBodyCondition() -> Bool {
+        let currentBodyCondition = self.member?.bodyCondition
+        if currentBodyCondition?.upperBodyStrength ?? 0 < goalBodyCondition?.upperBodyStrength ?? 0 {
+            return false
+        } else if currentBodyCondition?.lowerBodyStrength ?? 0 < goalBodyCondition?.lowerBodyStrength ?? 0 {
+            return false
+        } else if currentBodyCondition?.muscularEndurance ?? 0 < goalBodyCondition?.muscularEndurance ?? 0 {
+            return false
+        } else {
+            return true
+        }
     }
 }
