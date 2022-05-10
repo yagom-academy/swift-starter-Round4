@@ -3,17 +3,16 @@ import Foundation
 struct Routine {
     let name: String
     let routineOrder: [Exercise]
-    var currentBodyCondition: BodyCondition
 
     func startRoutine() {
         print("--------------")
         print("\(name)을 시작합니다.")
-        calculateBodyConditionStrength(from: currentBodyCondition)
+        calculateBodyConditionStrength()
         printRoutineNames()
         print("--------------")
     }
 
-    func printCurrentBodyCondition(from bodyCondition: BodyCondition) {
+    func printCurrentBodyCondition(with bodyCondition: BodyCondition) {
         var bodyConditionStrength: [Int] = []
         bodyConditionStrength.append(contentsOf:
                                         [bodyCondition.upperBodyStrength, bodyCondition.lowerBodyStrength, bodyCondition.muscleEndurance, bodyCondition.fatigue]
@@ -24,9 +23,9 @@ struct Routine {
         }
     }
 
-    func calculateBodyConditionStrength(from bodyCondition: BodyCondition) {
+    func calculateBodyConditionStrength() {
         for index in 0..<routineOrder.count {
-            routineOrder[index].action(bodyCondition)
+            routineOrder[index].action()
         }
     }
 
