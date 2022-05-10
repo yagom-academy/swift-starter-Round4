@@ -1,6 +1,6 @@
 import Foundation
 
-class BodyCondition {
+struct BodyCondition {
     var upperBodyStrength: Int
     var lowerBodyStrength: Int
     var muscleEndurance: Int
