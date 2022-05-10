@@ -27,6 +27,7 @@ class FitnessCenter {
     func exercise() {
         do {
             self.member?.name = try inputName()
+            self.goalBodyCondition = try inputGoalBodyCondition()
         } catch InputError.empty {
             print("값을 입력하지않았습니다. 값을 입력해주세요")
         } catch InputError.invaildValue {
@@ -46,5 +47,24 @@ class FitnessCenter {
         }
         
         return inputName
+    }
+    
+    func inputGoalBodyCondition() throws -> BodyCondition {
+        print("운동 목표치를 순서대로 알려주세요. 상체근력, 하체근력, 근지구력. (예시: 100 120 130)")
+        let inputGoalBodyCondition = readLine()!
+        let goalBodyConditionArray: [Int] = try inputGoalBodyCondition.split(separator: " ").map {
+            guard let value = Int($0) else {
+                throw InputError.invaildValue
+            }
+            return value
+        }
+        
+        if goalBodyConditionArray.count != 3 {
+            throw InputError.outOfValue
+        }
+        
+        let bodyCondition: BodyCondition = .init(upperBodyStrength: goalBodyConditionArray[0], lowerBodyStrength: goalBodyConditionArray[1], muscularEndurance: goalBodyConditionArray[2], fatigue: 0)
+        
+        return bodyCondition
     }
 }
