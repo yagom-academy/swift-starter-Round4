@@ -1,10 +1,3 @@
-//
-//  Person.swift
-//  CodeStarterCamp_Week4
-//
-//  Created by Jiyoung Lee on 2022/05/10.
-//
-
 import Foundation
 
 class Person {
@@ -17,6 +10,18 @@ class Person {
     }
     
     func exercise(for set: Int, routine: Routine) {
-        
+        print("--------------")
+        print("\(routine.name)을 \(set)set 시작합니다.")
+        for _ in 1...set {
+            for i in 0..<routine.exercises.count {
+                if self.bodyCondition.fatigue >= 100 {
+                    break
+                }
+                print(routine.exercises[i].name)
+                routine.exercises[i].action()
+                print(bodyCondition)
+            }
+        }
     }
+    
 }

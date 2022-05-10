@@ -1,15 +1,8 @@
-//
-//  FitnessCenter.swift
-//  CodeStarterCamp_Week4
-//
-//  Created by Jiyoung Lee on 2022/05/10.
-//
-
 import Foundation
 
 struct FitnessCenter {
     let name: String
-    var targetBodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
+    var targetBodyCondition: BodyCondition?
     var member: Person?
     var routines = [Routine]()
     var chosenRoutine: Routine?
@@ -46,42 +39,39 @@ struct FitnessCenter {
         guard let targetUpperBodyStrength = Int(readLine()!) else {
             throw FitnessProgramError.inappropriateInput
         }
-        self.targetBodyCondition.upperBodyStrength = targetUpperBodyStrength
+        self.targetBodyCondition?.upperBodyStrength = targetUpperBodyStrength
         print("\(targetUpperBodyStrength)")
         print("하체근력", terminator: ": ")
         guard let targetLowerBodyStrength = Int(readLine()!) else {
             throw FitnessProgramError.inappropriateInput
         }
-        self.targetBodyCondition.lowerBodyStrength = targetLowerBodyStrength
+        self.targetBodyCondition?.lowerBodyStrength = targetLowerBodyStrength
         print("\(targetLowerBodyStrength)")
         print("근지구력", terminator: ": ")
         guard let targetMuscularEndurance = Int(readLine()!) else {
             throw FitnessProgramError.inappropriateInput
         }
-        self.targetBodyCondition.muscularEndurance = targetMuscularEndurance
+        self.targetBodyCondition?.muscularEndurance = targetMuscularEndurance
         print("\(targetMuscularEndurance)")
-        print("한계 피로도를 알려주세요.")
-        print("한계 피로도", terminator: ": ")
-        guard let targetFatigue = Int(readLine()!) else {
-            throw FitnessProgramError.inappropriateInput
-        }
-        self.targetBodyCondition.fatigue = targetFatigue
-        print("\(targetFatigue)")
+        self.targetBodyCondition?.fatigue = 100
     }
     
     func chooseRoutine() throws -> Routine{
         print("몇 번째 루틴으로 운동하시겠어요?")
         for i in 1...routines.count {
-            print("\(i). \(routines[i-1].name)")
+            print("\(i). \(routines[i - 1].name)")
         }
         guard let routineNo = Int(readLine()!) else {
             throw FitnessProgramError.inappropriateInput
         }
 //        routines[routineNo-1].run()
+        if (routineNo) > routines.count {
+            throw FitnessProgramError.inappropriateInput
+        }
         return routines[routineNo - 1]
     }
     
-    func setRepetition() throws -> Int{
+    func setRepetition() throws -> Int {
         print("몇 세트 반복하시겠어요?")
         guard let repetition = Int(readLine()!) else {
             throw FitnessProgramError.inappropriateInput
@@ -117,52 +107,47 @@ struct FitnessCenter {
         
         do {
             let repetition = try setRepetition()
-            chosenRoutine?.run(repetition: repetition)
+            if let chosenRoutine = chosenRoutine {
+                member.exercise(for: repetition, routine: chosenRoutine)
+            }
         } catch FitnessProgramError.inappropriateInput {
             print("입력값이 잘못되었습니다. 정수로 입력해주세요")
             let repetition = try setRepetition()
-            chosenRoutine?.run(repetition: repetition)
-
+            if let chosenRoutine = chosenRoutine {
+                member.exercise(for: repetition, routine: chosenRoutine)
+            }
         }
         
-        if (member.bodyCondition.fatigue >= targetBodyCondition.fatigue) {
-            programFailRun(member: member)
-        } else if (
-            member.bodyCondition.upperBodyStrength >= targetBodyCondition.upperBodyStrength && member.bodyCondition.lowerBodyStrength >= targetBodyCondition.lowerBodyStrength && member.bodyCondition.muscularEndurance >= targetBodyCondition.muscularEndurance){
-            programSuccess(member: member)
-        } else {
-            programFailUnderscore(member: member)
-            try chooseRoutine()
-        }
+//
+//        if (member.bodyCondition.upperBodyStrength >= targetBodyCondition.upperBodyStrength && member.bodyCondition.lowerBodyStrength >= targetBodyCondition.lowerBodyStrength && member.bodyCondition.muscularEndurance >= targetBodyCondition.muscularEndurance){
+//            programSuccess(member: member)
+//        } else {
+//            programFailUnderscore(member: member)
+//            try chooseRoutine()
+//        }
     }
+}
 
-    func programSuccess(member: Person) {
-        print("""
-            ----------
-            성공입니다! 현재 \(member.name)님의 컨디션은 다음과 같습니다.
-            상체근력: \(member.bodyCondition.upperBodyStrength)
-            하체근력: \(member.bodyCondition.lowerBodyStrength)
-            근지구력: \(member.bodyCondition.muscularEndurance)
-            피로도: \(member.bodyCondition.fatigue)
-            """
-        )
-    }
-    
-    func programFailRun(member: Person) {
-        print("""
-            ----------
-            \(member.name)님의 피로도가 \(member.bodyCondition.fatigue)입니다. 회원님이 도망갔습니다.
-            """)
-    }
-    
-    func programFailUnderscore(member: Person) {
-        print("""
-            ----------
-            목표치에 도달하지 못했습니다. 현재 \(member.name)님의 컨디션은 다음과 같습니다.
-            상체근력: \(member.bodyCondition.upperBodyStrength)
-            하체근력: \(member.bodyCondition.lowerBodyStrength)
-            근지구력: \(member.bodyCondition.muscularEndurance)
-            피로도: \(member.bodyCondition.fatigue)
-            """)
-    }
+func programSuccess(member: Person) {
+    print("""
+        ----------
+        성공입니다! 현재 \(member.name)님의 컨디션은 다음과 같습니다.
+        상체근력: \(member.bodyCondition.upperBodyStrength)
+        하체근력: \(member.bodyCondition.lowerBodyStrength)
+        근지구력: \(member.bodyCondition.muscularEndurance)
+        피로도: \(member.bodyCondition.fatigue)
+        """
+    )
+}
+
+
+func programFailUnderscore(member: Person) {
+    print("""
+        ----------
+        목표치에 도달하지 못했습니다. 현재 \(member.name)님의 컨디션은 다음과 같습니다.
+        상체근력: \(member.bodyCondition.upperBodyStrength)
+        하체근력: \(member.bodyCondition.lowerBodyStrength)
+        근지구력: \(member.bodyCondition.muscularEndurance)
+        피로도: \(member.bodyCondition.fatigue)
+        """)
 }

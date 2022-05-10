@@ -8,7 +8,9 @@
 
 import Foundation
 
-var myBodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
+// deprecated: for STEP 1
+//var myBodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
+
 var hellRoutine = Routine(name: "hellRoutine")
 
 hellRoutine.addExercise(exercise: sitUp)
@@ -20,6 +22,7 @@ hellRoutine.addExercise(exercise: activeRest)
 hellRoutine.addExercise(exercise: longDistance)
 hellRoutine.addExercise(exercise: longDistance)
 
+// deperecated: for STEP 1
 //hellRoutine.run()
 //myBodyCondition.showStatus()
 
@@ -32,14 +35,20 @@ ohMyGodRoutine.addExercise(exercise: activeRest)
 ohMyGodRoutine.addExercise(exercise: squat)
 ohMyGodRoutine.addExercise(exercise: squat)
 ohMyGodRoutine.addExercise(exercise: squat)
+ohMyGodRoutine.addExercise(exercise: activeRest)
+hellRoutine.addExercise(exercise: sitUp)
+hellRoutine.addExercise(exercise: sitUp)
+hellRoutine.addExercise(exercise: sitUp)
+
 
 var yagomFitness = FitnessCenter(name: "야곰")
 yagomFitness.addRoutine(routine: hellRoutine)
 yagomFitness.addRoutine(routine: ohMyGodRoutine)
 
-var yagomBodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
+var bodyCondition = BodyCondition(upperBodyStrength: 10, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
 
-let yagom = Person(name: "yagom", bodyCondition: yagomBodyCondition)
+let yagom = Person(name: "yagom", bodyCondition: bodyCondition)
 yagomFitness.register(member: yagom)
 
 try yagomFitness.runFitnessProgram(member: yagom)
+bodyCondition.showStatus()

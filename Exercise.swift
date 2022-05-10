@@ -1,18 +1,9 @@
-//
-//  step1.swift
-//  CodeStarterCamp_Week4
-//
-//  Created by Jiyoung Lee on 2022/05/04.
-//
-
 import Foundation
 
 struct Exercise {
     let name: String
     let action: () -> Void
 }
-
-var bodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
 
 let sitUp: Exercise = Exercise(name: "윗몸일으키기") {
     bodyCondition.upperBodyStrength += Int.random(in: 10...20)
