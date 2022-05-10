@@ -81,9 +81,14 @@ class FitnessCenter {
             let indexOfRoutine = try selectRoutine()
             let setsOfExercise = try selectRepeat()
             
-            member.exercise(for: setsOfExercise, routine: routineList[indexOfRoutine])
+            for count in 1...setsOfExercise {
+                member.exercise(for: count, routine: routineList[indexOfRoutine])
+                if member.bodyCondition.fatigue > Person.MaxFatigue {
+                    runAway(member)
+                    return
+                }
+            }
             
-            try checkMemberExhausted()
             try checkEnoughForTarget()
             
             print("""
@@ -101,16 +106,6 @@ class FitnessCenter {
             if let errorDescription = FitnessCenterContingency.stringToIntConvertError.errorDescription {
                 print(errorDescription)
             }
-            workOut()
-        } catch FitnessCenterContingency.exhaustedMemberError {
-            if let errorDescription = FitnessCenterContingency.exhaustedMemberError.errorDescription {
-                print("""
-                      --------------
-                      \(errorDescription)
-                      \(member.name) 님의 피로도가 \(member.bodyCondition.fatigue)입니다. 회원님이 도망갔습니다.
-                      """)
-            }
-            self.member = nil
             workOut()
         } catch FitnessCenterContingency.notEnoughToTargetError {
             if let errorDescription = FitnessCenterContingency.notEnoughToTargetError.errorDescription {
@@ -173,12 +168,13 @@ class FitnessCenter {
         return repeatCount
     }
     
-    private func checkMemberExhausted() throws {
-        if let fatigue = member?.bodyCondition.fatigue {
-            if fatigue > Person.MaxFatigue {
-                throw FitnessCenterContingency.exhaustedMemberError
-            }
-        }
+    private func runAway(_ member: Person) {
+        print("""
+              --------------
+              \(member.name) 님의 피로도가 \(member.bodyCondition.fatigue)입니다. 회원님이 도망갔습니다.
+              """)
+        self.member = nil
+        workOut()
     }
     
     private func checkEnoughForTarget() throws {
