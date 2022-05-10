@@ -30,13 +30,17 @@ class Person {
         self.name = name
     }
     
-    func growthBody(bodyPart: BodyPart, overLimitValue: Int, underLimitValue: Int) {
-        bodyCondition.growthBody(bodyPart: bodyPart,
+    func growthMuscles(bodyPart: BodyPart,
+                    overLimitValue: Int,
+                    underLimitValue: Int) {
+        bodyCondition.growMuscles(bodyPart: bodyPart,
                                  overLimitValue: overLimitValue,
                                  underLimitValue: underLimitValue)
     }
     
-    func manageFatigue(overLimitValue: Int, underLimitValue: Int, restOfTraining: ExerciseState) {
+    func manageFatigue(overLimitValue: Int,
+                       underLimitValue: Int,
+                       restOfTraining: ExerciseState) {
         bodyCondition.manageFatigue(overLimitValue: overLimitValue,
                                     underLimitValue: underLimitValue,
                                     restOfTraining: restOfTraining)

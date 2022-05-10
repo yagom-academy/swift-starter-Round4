@@ -9,7 +9,7 @@
 import Foundation
 
 let sitUp = Exercise(name: "윗몸일으키기") { person in
-    person.growthBody(bodyPart: .upperBody,
+    person.growthMuscles(bodyPart: .upperBody,
                       overLimitValue: 10,
                       underLimitValue: 20)
     person.manageFatigue(overLimitValue: 10,
@@ -18,7 +18,7 @@ let sitUp = Exercise(name: "윗몸일으키기") { person in
 }
 
 let squat = Exercise(name: "스쿼트") { person in
-    person.growthBody(bodyPart: .lowerBody,
+    person.growthMuscles(bodyPart: .lowerBody,
                       overLimitValue: 20,
                       underLimitValue: 30)
     person.manageFatigue(overLimitValue: 10,
@@ -27,15 +27,15 @@ let squat = Exercise(name: "스쿼트") { person in
 }
 
 let longRun = Exercise(name: "오래달리기") { person in
-    person.growthBody(bodyPart: .muscularEndurance,
+    person.growthMuscles(bodyPart: .muscularEndurance,
                       overLimitValue: 20,
                       underLimitValue: 30)
     
-    person.growthBody(bodyPart: .lowerBody,
+    person.growthMuscles(bodyPart: .lowerBody,
                       overLimitValue: 5,
                       underLimitValue: 10)
     
-    person.growthBody(bodyPart: .upperBody,
+    person.growthMuscles(bodyPart: .upperBody,
                       overLimitValue: 5,
                       underLimitValue: 10)
     
@@ -51,7 +51,7 @@ let dynamicalRest = Exercise(name: "동적휴식") { person in
 }
 
 let pushUp = Exercise(name: "푸시업") { person in
-    person.growthBody(bodyPart: .upperBody,
+    person.growthMuscles(bodyPart: .upperBody,
                       overLimitValue: 10,
                       underLimitValue: 20)
     
@@ -59,7 +59,7 @@ let pushUp = Exercise(name: "푸시업") { person in
                          underLimitValue: 20,
                          restOfTraining: .training)
     
-    person.growthBody(bodyPart: .muscularEndurance,
+    person.growthMuscles(bodyPart: .muscularEndurance,
                       overLimitValue: 10,
                       underLimitValue: 15)
 }

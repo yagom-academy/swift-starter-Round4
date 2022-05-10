@@ -35,7 +35,7 @@ struct BodyCondition {
         self.fatigue = fatigue
     }
     
-    mutating func growthBody(bodyPart: BodyPart,
+    mutating func growMuscles(bodyPart: BodyPart,
                     overLimitValue: Int,
                     underLimitValue: Int) {
         let incrementValue = Int.random(in: overLimitValue...underLimitValue)
