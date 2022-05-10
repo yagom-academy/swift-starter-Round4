@@ -45,5 +45,9 @@ let lightRoutine = Routine(name: "가벼운 루틴", exercises: [sitUp, dynamicB
 let kimYuna = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
 let songGain = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
 
-kimYuna.exercise(routine: hellRoutine)
-songGain.exercise(routine: lightRoutine)
+//kimYuna.exercise(routine: hellRoutine)
+//songGain.exercise(routine: lightRoutine)
+
+// MARK: - step 2
+var fitness = FitnessCenter(routine: [hellRoutine, lightRoutine])
+fitness.exercise()
