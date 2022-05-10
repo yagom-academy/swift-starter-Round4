@@ -17,27 +17,34 @@ class FitnessCenter {
     }
     
     func register() {
-        do {
-            try enterName()
-            try setTargetCondition()
-        } catch FitnessCenterContingency.unRecognizedInputError {
+        if (try? enterName()) != nil {
+            var isRetry = true
+            while isRetry {
+                do {
+                    try setTargetCondition()
+                    isRetry = false
+                } catch FitnessCenterContingency.unRecognizedInputError {
+                    if let errorDescription = FitnessCenterContingency.unRecognizedInputError.errorDescription {
+                        print(errorDescription)
+                    }
+                } catch FitnessCenterContingency.stringToIntConvertError {
+                    if let errorDescription = FitnessCenterContingency.stringToIntConvertError.errorDescription {
+                        print(errorDescription)
+                    }
+                } catch FitnessCenterContingency.invalidNumberOfValuesError {
+                    if let errorDescription = FitnessCenterContingency.invalidNumberOfValuesError.errorDescription {
+                        print(errorDescription)
+                    }
+                } catch {
+                    print("\(error)")
+                    exit(1)
+                }
+            }
+        } else {
             if let errorDescription = FitnessCenterContingency.unRecognizedInputError.errorDescription {
                 print(errorDescription)
             }
             register()
-        } catch FitnessCenterContingency.stringToIntConvertError {
-            if let errorDescription = FitnessCenterContingency.stringToIntConvertError.errorDescription {
-                print(errorDescription)
-            }
-            register()
-        } catch FitnessCenterContingency.invalidNumberOfValuesError {
-            if let errorDescription = FitnessCenterContingency.invalidNumberOfValuesError.errorDescription {
-                print(errorDescription)
-            }
-            register()
-        } catch {
-            print("\(error)")
-            exit(1)
         }
     }
     
@@ -90,7 +97,6 @@ class FitnessCenter {
                     }
                 }
             } while !isEnoughConditionFor(member)
-            
         } catch FitnessCenterContingency.unRecognizedInputError {
             if let errorDescription = FitnessCenterContingency.unRecognizedInputError.errorDescription {
                 print(errorDescription)
@@ -149,7 +155,6 @@ class FitnessCenter {
         if repeatCount == ErrorValue.stringToIntConvertErrorValue {
             throw FitnessCenterContingency.stringToIntConvertError
         }
-        
         return repeatCount
     }
     
@@ -183,6 +188,5 @@ class FitnessCenter {
             member.showCondition()
             return true
         }
-        
     }
 }
