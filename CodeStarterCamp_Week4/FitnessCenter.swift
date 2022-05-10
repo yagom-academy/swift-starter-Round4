@@ -35,7 +35,7 @@ class FitnessCenter {
         } catch InputError.outOfValue {
             print("값의 갯수가 적거나 큽니다.")
         } catch {
-            
+            print("알 수 없는 오류입니다. 확인 바랍니다.")
         }
         
         executeRoutine()
@@ -109,7 +109,7 @@ class FitnessCenter {
         } catch InputError.outOfValue {
             print("값의 갯수가 적거나 큽니다.")
         } catch {
-            
+            print("알 수 없는 오류입니다. 확인 바랍니다.")
         }
         
         if achieveGoalBodyCondition() {
@@ -126,11 +126,11 @@ class FitnessCenter {
     
     func achieveGoalBodyCondition() -> Bool {
         let currentBodyCondition = self.member?.bodyCondition
-        if currentBodyCondition?.upperBodyStrength ?? 0 < goalBodyCondition?.upperBodyStrength ?? 0 {
+        if (currentBodyCondition?.upperBodyStrength)! < (goalBodyCondition?.upperBodyStrength)! {
             return false
-        } else if currentBodyCondition?.lowerBodyStrength ?? 0 < goalBodyCondition?.lowerBodyStrength ?? 0 {
+        } else if (currentBodyCondition?.lowerBodyStrength)! < (goalBodyCondition?.lowerBodyStrength)! {
             return false
-        } else if currentBodyCondition?.muscularEndurance ?? 0 < goalBodyCondition?.muscularEndurance ?? 0 {
+        } else if (currentBodyCondition?.muscularEndurance)! < (goalBodyCondition?.muscularEndurance)! {
             return false
         } else {
             return true
