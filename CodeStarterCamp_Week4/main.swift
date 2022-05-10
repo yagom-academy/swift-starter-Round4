@@ -20,8 +20,8 @@ hellRoutine.addExercise(exercise: activeRest)
 hellRoutine.addExercise(exercise: longDistance)
 hellRoutine.addExercise(exercise: longDistance)
 
-hellRoutine.run()
-myBodyCondition.showStatus()
+//hellRoutine.run()
+//myBodyCondition.showStatus()
 
 var ohMyGodRoutine = Routine(name: "ohMyGodRoutine")
 
@@ -39,6 +39,7 @@ yagomFitness.addRoutine(routine: ohMyGodRoutine)
 
 var yagomBodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
 
-let yagom = Person(name: "야곰", bodyCondition: myBodyCondition)
+let yagom = Person(name: "yagom", bodyCondition: yagomBodyCondition)
+yagomFitness.register(member: yagom)
 
-
+try yagomFitness.runFitnessProgram(member: yagom)

@@ -9,9 +9,10 @@ import Foundation
 
 struct FitnessCenter {
     let name: String
-    var targetBodyCondition: BodyCondition
+    var targetBodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
     var member: Person?
     var routines = [Routine]()
+    var chosenRoutine: Routine?
     
     init(name: String) {
         self.name = name
@@ -26,10 +27,16 @@ struct FitnessCenter {
     }
     
     func checkMember(member: Person) throws {
-        print("안녕하세요. \(self.name) 피트니스 센터입니다. 회원님의 이름은 무엇인가요?")
-        let name: String? = readLine()
-        guard name == member.name else {
-            throw FitnessProgramError.noMember
+        print("안녕하세요. \(name) 피트니스 센터입니다. 회원님의 이름은 무엇인가요?")
+        
+        if let inputName: String = readLine() {
+            if inputName == member.name {
+                print("\(inputName) 회원님, 환영합니다!")
+            } else {
+                throw FitnessProgramError.noMember
+            }
+        } else {
+            throw FitnessProgramError.inappropriateInput
         }
     }
     
@@ -62,61 +69,100 @@ struct FitnessCenter {
         print("\(targetFatigue)")
     }
     
-    func chooseRoutine() throws {
+    func chooseRoutine() throws -> Routine{
         print("몇 번째 루틴으로 운동하시겠어요?")
-        routines.forEach { routine in
-            var i = 0
-            print("\(i + 1). \(routines[i])")
-            i += 1
+        for i in 1...routines.count {
+            print("\(i). \(routines[i-1].name)")
         }
         guard let routineNo = Int(readLine()!) else {
             throw FitnessProgramError.inappropriateInput
         }
-        routines[routineNo-1].run()
+//        routines[routineNo-1].run()
+        return routines[routineNo - 1]
     }
     
-    func setRepetition() {
-        
+    func setRepetition() throws -> Int{
+        print("몇 세트 반복하시겠어요?")
+        guard let repetition = Int(readLine()!) else {
+            throw FitnessProgramError.inappropriateInput
+        }
+        return repetition
     }
     
 
-    mutating func runFitnessProgram(member: Person) {
-        
+    mutating func runFitnessProgram(member: Person) throws {
         do {
             try checkMember(member: member)
         } catch FitnessProgramError.noMember {
             print("회원 이름이 일치하지 않습니다.")
+            try checkMember(member: member)
+        } catch FitnessProgramError.inappropriateInput {
+            print("이름을 다시 입력해주세요.")
+            try checkMember(member: member)
         }
+        
         do {
             try setGoals()
         } catch FitnessProgramError.inappropriateInput {
             print("입력값이 잘못되었습니다. 정수로 입력해주세요")
+            try setGoals()
         }
+        
         do {
-            try chooseRoutine()
+            chosenRoutine = try chooseRoutine()
         } catch FitnessProgramError.inappropriateInput {
             print("루틴을 다시 골라주세요.")
+            chosenRoutine = try chooseRoutine()
         }
-        do {
-            try setRepetition()
-        } catch FitnessProgramError.inappropriateInput {
-            
-        }
-        do
-    }
-//
-//    func programSuccess() {
-//        print("""
-//            성공입니다! 현재 \()님의 컨디션은 다음과 같습니다.
-//            상체근력: \(.upperBodyStrength)
-//            하체근력: \(.lowerBodyStrength)
-//            근지구력: \(.muscularEndurance)
-//            피로도: \(.fatigue)
-//            """
-//        )
-//    }
-    
-    func programFail() {
         
+        do {
+            let repetition = try setRepetition()
+            chosenRoutine?.run(repetition: repetition)
+        } catch FitnessProgramError.inappropriateInput {
+            print("입력값이 잘못되었습니다. 정수로 입력해주세요")
+            let repetition = try setRepetition()
+            chosenRoutine?.run(repetition: repetition)
+
+        }
+        
+        if (member.bodyCondition.fatigue >= targetBodyCondition.fatigue) {
+            programFailRun(member: member)
+        } else if (
+            member.bodyCondition.upperBodyStrength >= targetBodyCondition.upperBodyStrength && member.bodyCondition.lowerBodyStrength >= targetBodyCondition.lowerBodyStrength && member.bodyCondition.muscularEndurance >= targetBodyCondition.muscularEndurance){
+            programSuccess(member: member)
+        } else {
+            programFailUnderscore(member: member)
+            try chooseRoutine()
+        }
+    }
+
+    func programSuccess(member: Person) {
+        print("""
+            ----------
+            성공입니다! 현재 \(member.name)님의 컨디션은 다음과 같습니다.
+            상체근력: \(member.bodyCondition.upperBodyStrength)
+            하체근력: \(member.bodyCondition.lowerBodyStrength)
+            근지구력: \(member.bodyCondition.muscularEndurance)
+            피로도: \(member.bodyCondition.fatigue)
+            """
+        )
+    }
+    
+    func programFailRun(member: Person) {
+        print("""
+            ----------
+            \(member.name)님의 피로도가 \(member.bodyCondition.fatigue)입니다. 회원님이 도망갔습니다.
+            """)
+    }
+    
+    func programFailUnderscore(member: Person) {
+        print("""
+            ----------
+            목표치에 도달하지 못했습니다. 현재 \(member.name)님의 컨디션은 다음과 같습니다.
+            상체근력: \(member.bodyCondition.upperBodyStrength)
+            하체근력: \(member.bodyCondition.lowerBodyStrength)
+            근지구력: \(member.bodyCondition.muscularEndurance)
+            피로도: \(member.bodyCondition.fatigue)
+            """)
     }
 }

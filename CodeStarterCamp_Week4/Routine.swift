@@ -19,12 +19,14 @@ struct Routine {
         self.exercises.append(exercise)
     }
     
-    func run() {
+    func run(repetition: Int) {
         print("--------------")
-        print("\(name)을 시작합니다.")
-        exercises.forEach { exercise in
-            print(exercise.name)
-            exercise.action()
+        print("\(name)을 \(repetition)set 시작합니다.")
+        for _ in 1...repetition {
+            exercises.forEach { exercise in
+                print(exercise.name)
+                exercise.action()
+            }
         }
     }
 }
