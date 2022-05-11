@@ -39,7 +39,7 @@ struct GuestRegister {
             guestName = name
             return true
         case .failure(let namingError):
-            print(namingError.errorDescription)            
+            print(namingError.localizedDescription)            
             return false
         }
     }
@@ -71,7 +71,7 @@ struct GuestRegister {
             inputValueReceiptor = inputValue
             return true
         case .failure(let error):
-            print(error.errorDescription)
+            print(error.localizedDescription)
             return false
         }
     }
