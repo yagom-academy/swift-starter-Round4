@@ -18,4 +18,8 @@ class FitnessCenter {
         self.listOfRoutine = listOfRoutine
         self.targetBodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
     }
+    
+    convenience init(name: String, listOfRoutine: [Routine]) {
+        self.init(name: name, targetBodyCondition: BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0), listOfRoutine: listOfRoutine)
+    }
 }
