@@ -8,7 +8,7 @@
 import Foundation
 
 struct GuestRegister {
-    func assignPersonalInfo() -> Person {
+    func assignPersonalInformation() -> Person {
         var guestName: String = ""
         while true {
             let inputResult = inputName()

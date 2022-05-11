@@ -24,7 +24,7 @@ struct FitnessCenter {
     
     mutating func assignFitnessCenter() {
         print("안녕하세요. 야곰 피트니스 센터입니다. 회원님의 이름은 무엇인가요?")
-        fitnessGuest = guestRegister.assignPersonalInfo()
+        fitnessGuest = guestRegister.assignPersonalInformation()
         
         print("운동 목표치를 순서대로 알려주세요. 예시) 상체근력:130,하체근력:120,근지구력:150")
         goalBodyCondition = guestRegister.assignGoalBodyCondition()
