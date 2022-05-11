@@ -44,4 +44,21 @@ class FitnessCenter {
         guard inputName.isEmpty == false else { throw InputError.empty }
         return inputName
     }
+    
+    func inputBodyCondition() throws -> BodyCondition {
+        print("운동 목표치를 순서대로 알려주세요. [상체근력:  하체근력:  근지구력: ]")
+        let inputTargetBodyCondition = readLine()!
+        let targetBodyConditionArray: [Int] = try inputTargetBodyCondition.split(separator: " ").map{
+            guard let number = Int($0) else { throw InputError.invaildValue }
+            return number
+        }
+        
+        if targetBodyConditionArray.count != 3 {
+            throw InputError.outOfValue
+        }
+        
+        let bodtCondition = BodyCondition(upperBodyStrength: targetBodyConditionArray[0], lowerBodyStrength: targetBodyConditionArray[1], muscularEndurance: targetBodyConditionArray[2], fatigue: 0)
+        
+        return bodtCondition
+    }
 }
