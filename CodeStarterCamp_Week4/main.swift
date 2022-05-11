@@ -8,40 +8,71 @@
 
 import Foundation
 
-var bodyCondition: BodyCondition = BodyCondition(upperBody: 0, lowerBody: 0, muscularEndurance: 0, fatigue: 0)
-let sitUp = Exercise(name: "윗몸일으키기") {
-    bodyCondition.upperBody += Int.random(in: 10...20)
-    bodyCondition.fatigue += Int.random(in: 10...20)
-
+let sitUp = Exercise(name: "윗몸일으키기") { person in
+    person.growthMuscles(bodyPart: .upperBody,
+                      overLimitValue: 10,
+                      underLimitValue: 20)
+    person.manageFatigue(overLimitValue: 10,
+                         underLimitValue: 20,
+                         restOfTraining: .training)
 }
 
-let squat = Exercise(name: "스쿼트") {
-    bodyCondition.lowerBody += Int.random(in: 20...30)
-    bodyCondition.fatigue += Int.random(in: 10...20)
+let squat = Exercise(name: "스쿼트") { person in
+    person.growthMuscles(bodyPart: .lowerBody,
+                      overLimitValue: 20,
+                      underLimitValue: 30)
+    person.manageFatigue(overLimitValue: 10,
+                         underLimitValue: 20,
+                         restOfTraining: .training)
 }
 
-let longRun = Exercise(name: "오래달리기") {
-    bodyCondition.muscularEndurance += Int.random(in: 20...30)
-    bodyCondition.upperBody += Int.random(in: 5...10)
-    bodyCondition.lowerBody += Int.random(in: 5...10)
-    bodyCondition.fatigue += Int.random(in: 20...30)
+let longRun = Exercise(name: "오래달리기") { person in
+    person.growthMuscles(bodyPart: .muscularEndurance,
+                      overLimitValue: 20,
+                      underLimitValue: 30)
+    
+    person.growthMuscles(bodyPart: .lowerBody,
+                      overLimitValue: 5,
+                      underLimitValue: 10)
+    
+    person.growthMuscles(bodyPart: .upperBody,
+                      overLimitValue: 5,
+                      underLimitValue: 10)
+    
+    person.manageFatigue(overLimitValue: 20,
+                         underLimitValue: 30,
+                         restOfTraining: .training)
 }
 
-let dynamicalRest = Exercise(name: "동적휴식") {
-    let decreaseFatigue = Int.random(in: 5...10)
-    if bodyCondition.fatigue > decreaseFatigue {
-        bodyCondition.fatigue -= decreaseFatigue
-    } else {
-        bodyCondition.fatigue = 0
-    }
+let dynamicalRest = Exercise(name: "동적휴식") { person in
+    person.manageFatigue(overLimitValue: 30,
+                         underLimitValue: 50,
+                         restOfTraining: .rest)
 }
 
-let pushUp = Exercise(name: "푸시업") {
-    bodyCondition.upperBody += Int.random(in: 10...20)
-    bodyCondition.fatigue += Int.random(in: 10...20)
+let pushUp = Exercise(name: "푸시업") { person in
+    person.growthMuscles(bodyPart: .upperBody,
+                      overLimitValue: 10,
+                      underLimitValue: 20)
+    
+    person.manageFatigue(overLimitValue: 10,
+                         underLimitValue: 20,
+                         restOfTraining: .training)
+    
+    person.growthMuscles(bodyPart: .muscularEndurance,
+                      overLimitValue: 10,
+                      underLimitValue: 15)
 }
 
-let routine = Routine(name: "hellRoutine", exercises: [sitUp, sitUp, dynamicalRest, squat, squat, dynamicalRest, longRun, longRun, dynamicalRest, pushUp, pushUp])
+let helloRoutine = Routine(name: "helloRoutine",
+                           exercises: [sitUp, sitUp, dynamicalRest, squat, squat, dynamicalRest, longRun, longRun, dynamicalRest, pushUp, pushUp])
 
-routine.run()
-bodyCondition.printStatus()
+let ohMyGodRoutine = Routine(name: "ohMyGodRoutine",
+                             exercises: [sitUp, sitUp, dynamicalRest, dynamicalRest, dynamicalRest, squat, squat, dynamicalRest, dynamicalRest, pushUp, pushUp, pushUp, dynamicalRest, dynamicalRest, dynamicalRest])
+
+var fitnessCenter = FitnessCenter(goalBodyCondition: nil,
+                                                 fitnessGuest: nil,
+                                                 routine: [helloRoutine, ohMyGodRoutine])
+
+fitnessCenter.run()
+

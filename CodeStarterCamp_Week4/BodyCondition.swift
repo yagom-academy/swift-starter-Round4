@@ -8,10 +8,66 @@
 import Foundation
 
 struct BodyCondition {
-    var upperBody: Int
-    var lowerBody: Int
-    var muscularEndurance: Int
-    var fatigue: Int
+    static func <= (lhs: BodyCondition, rhs: BodyCondition) -> Bool {
+        return lhs.upperBody <= rhs.upperBody &&
+               lhs.lowerBody <= rhs.lowerBody &&
+               lhs.muscularEndurance <= rhs.muscularEndurance
+    }
+    
+    private var upperBody: Int
+    private var lowerBody: Int
+    private var muscularEndurance: Int
+    private var fatigue: Int
+    
+    var myFatigue: Int {
+        return fatigue
+    }
+    
+    init(upperBody: Int,
+         lowerBody: Int,
+         muscularEndurance: Int,
+         fatigue: Int) {
+        self.upperBody = upperBody
+        self.lowerBody = lowerBody
+        self.muscularEndurance = muscularEndurance
+        self.fatigue = fatigue
+    }
+    
+    mutating func growMuscles(bodyPart: BodyPart,
+                    overLimitValue: Int,
+                    underLimitValue: Int) {
+        let incrementValue = Int.random(in: overLimitValue...underLimitValue)
+        switch bodyPart {
+        case .upperBody:
+            upperBody += incrementValue
+        case .lowerBody:
+            lowerBody += incrementValue
+        case .muscularEndurance:
+            muscularEndurance += incrementValue
+        }
+    }
+    
+    mutating func manageFatigue(overLimitValue: Int,
+                       underLimitValue: Int,
+                       restOfTraining: ExerciseState) {
+        let amountOfChange = Int.random(in: overLimitValue...underLimitValue)
+        switch restOfTraining {
+        case .rest:
+            fatigue = fatigue + amountOfChange.negative
+            fatigue = fatigue.isNagative ? 0: fatigue
+        case .training:
+            fatigue = fatigue + amountOfChange
+        }
+    }
+    
+    func checkFatigue() -> Bool {
+        return fatigue >= 100
+    }
+    
+    func isReachedGoal(goal: BodyCondition?) -> Bool? {
+        guard let goal = goal else { return nil }
+        return goal <= self
+    }
     
     func printStatus() {
         let status = """
