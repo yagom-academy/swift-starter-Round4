@@ -37,4 +37,11 @@ class FitnessCenter {
 
             }
         }
+    
+    func writeName() throws -> String {
+        print("안녕하세요. \(name)피트니스 센터입니다. 회원님의 이름은 무엇인가요?")
+        let inputName: String = readLine()!
+        guard inputName.isEmpty == false else { throw InputError.empty }
+        return inputName
+    }
 }
