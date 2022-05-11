@@ -117,7 +117,7 @@ let relaxtion = Exercise(name: "동적휴식") {
     return bodyCondtion
 }
 
-let hellRoutine = Routine(
+let HellRoutine = Routine(
     name: "hellRoutine",
     order: [
         sitUp,
@@ -130,7 +130,7 @@ let hellRoutine = Routine(
         buffyTest
     ])
 
-let omgRoutine = Routine(
+let OmgRoutine = Routine(
     name: "omgRoutine",
     order: [
         sitUp,
@@ -169,7 +169,7 @@ struct FitnessCenter {
     var routineList: [Routine]
     
     mutating func runProgram() throws -> Void {
-        try checkMember()
+        var personMember = try checkMember()
         
         print("운동 목표치를 순서대로 알려주세요. 예시) 상체근력:130,하체근력:120,근지구력:150 \n상체근력 :", terminator: " ")
         let upperStrength: String? = readLine()
@@ -196,7 +196,8 @@ struct FitnessCenter {
         guard let choicedRoutineCount = Int(routines) else {
             throw FitnessErrorCase.typeErrorNotInt
         }
-        print(choicedRoutineCount)
+        let choiceRoutine = self.routineList[choicedRoutineCount - 1]
+        
         
         print("몇 세트 반복하시겠어요? ",terminator: "")
         let routineSetCount: String? = readLine()
@@ -205,6 +206,17 @@ struct FitnessCenter {
         }
         guard let choicedSetCount = Int(routineNumber) else {
             throw FitnessErrorCase.typeErrorNotInt
+        }
+        
+        var memberBodyCondtion = BodyCondition()
+        print("\(choiceRoutine.name)를(을) \(choicedSetCount)set시작합니다.")
+        
+        for _ in 1...choicedSetCount {
+            let condtions = choiceRoutine.playRoutine()
+            memberBodyCondtion.upperBodyStrength += condtions.upperBodyStrength
+            memberBodyCondtion.lowerBodyStrength += condtions.lowerBodyStrength
+            memberBodyCondtion.muscularEndurance += condtions.muscularEndurance
+            memberBodyCondtion.fatigueLevel += condtions.fatigueLevel
         }
     }
     
@@ -234,7 +246,7 @@ struct FitnessCenter {
 var beam2 = Person(name: "beam2")
 var beam3 = Person(name: "beam3")
 var beam4 = Person(name: "beam4")
-var beam2Fit = FitnessCenter(name: "뱀이피트", members: [beam2, beam3, beam4], routineList: [hellRoutine, omgRoutine])
+var beam2Fit = FitnessCenter(name: "뱀이피트", members: [beam2, beam3, beam4], routineList: [HellRoutine, OmgRoutine])
 //try beam2Fit.runProgram()
 
 
@@ -242,6 +254,4 @@ do {
     try beam2Fit.runProgram()
 } catch FitnessErrorCase.noMembers {
     print("인원 없음")
-} catch FitnessErrorCase.incongruityInput {
-    print("zzzzz")
 }
