@@ -64,7 +64,8 @@ struct BodyCondition {
         return fatigue >= 100
     }
     
-    func isReachedGoal(goal: BodyCondition) -> Bool {
+    func isReachedGoal(goal: BodyCondition?) -> Bool? {
+        guard let goal = goal else { return nil }
         return goal <= self
     }
     

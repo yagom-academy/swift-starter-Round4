@@ -8,7 +8,7 @@
 import Foundation
 
 struct FitnessCenter {
-    private var goalBodyCondition: BodyCondition
+    private var goalBodyCondition: BodyCondition?
     private var fitnessGuest: Person?
     private var routine: [Routine]
     
@@ -62,7 +62,11 @@ struct FitnessCenter {
                 print("\(guest.getName)님의 피로도가 \(guest.myFatigue)입니다. 회원이 도망갔습니다...")
                 return
             }
-            let successExercise = guest.checkGoal(goal: self.goalBodyCondition)
+            guard let successExercise = guest.checkGoal(goal: self.goalBodyCondition) else {
+                print("목표가 없습니다.")
+                return
+            }
+            
             if successExercise {
                 print("성공입니다! 현재 \(guest.getName)님의 컨디션은 다음과 같습니다.")
                 guest.printStatus()

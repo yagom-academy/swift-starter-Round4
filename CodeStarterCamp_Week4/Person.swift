@@ -46,7 +46,7 @@ class Person {
         return bodyCondition.checkFatigue()
     }
     
-    func checkGoal(goal: BodyCondition) -> Bool {
+    func checkGoal(goal: BodyCondition?) -> Bool? {
         return bodyCondition.isReachedGoal(goal: goal)
     }
     
