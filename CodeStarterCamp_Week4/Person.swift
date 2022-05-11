@@ -15,15 +15,11 @@ class Person {
                                                              fatigue: 0)
     
     var getName: String {
-        get {
-            return name
-        }
+        return name
     }
     
     var myFatigue: Int {
-        get {
-            return bodyCondition.myFatigue
-        }
+        return bodyCondition.myFatigue
     }
     
     init(name: String) {
