@@ -10,14 +10,14 @@ import Foundation
 struct Routine {
     let name: String
     var routineArray: Array<Exercise>
-    
-    func startExercise(with bodyConditon: BodyCondition) {
-        print("--------------------")
-        print("\(self.name)을(를) 시작합니다.")
-
+ 
+    func startExercise(with bodyConditon: BodyCondition, overTiredness: Int) throws {
         for exercise in routineArray {
+            print("\(exercise.name)")
             exercise.action(bodyConditon)
-            print(exercise.name)
+        }
+        if bodyConditon.tiredness > overTiredness {
+            throw FitnessCenterError.runAwayMember
         }
     }
 }
