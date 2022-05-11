@@ -20,9 +20,7 @@ struct BodyCondition {
     private var fatigue: Int
     
     var myFatigue: Int {
-        get {
-            return fatigue
-        }
+        return fatigue
     }
     
     init(upperBody: Int,
