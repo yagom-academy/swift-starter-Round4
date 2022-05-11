@@ -8,10 +8,10 @@
 import Foundation
 
 struct BodyCondition {
-    var upperBodyStrength: Int
-    var lowerBodyStrength: Int
-    var muscularEndurance: Int
-    var fatigue: Int
+    var upperBodyStrength = 0
+    var lowerBodyStrength = 0
+    var muscularEndurance = 0
+    var fatigue = 0
     
     mutating func changeCondition(of bodyPart: Int, about intensity: Int) {
         switch bodyPart {
@@ -30,8 +30,6 @@ struct BodyCondition {
     
     func showCondition() {
         let conditionInformation = """
-            --------------
-            현재의 컨디션은 다음과 같습니다.
             상체근력: \(upperBodyStrength)
             하체근력: \(lowerBodyStrength)
             근지구력: \(muscularEndurance)
