@@ -9,14 +9,10 @@ import Foundation
 
 extension Int {
     var isNagative: Bool {
-        get {
-            return self < 0
-        }
+        return self < 0
     }
     
     var negative: Int {
-        get {
-            return -self
-        }
+        return -self
     }
 }
