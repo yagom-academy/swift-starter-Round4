@@ -13,7 +13,7 @@ enum StringInputError: Error {
 }
 
 extension StringInputError: LocalizedError {
-    public var errorDescription: String {
+    public var errorDescription: String? {
         switch self {
         case .nilName:
             return "잘못된 접근입니다."

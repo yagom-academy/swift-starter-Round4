@@ -16,7 +16,7 @@ enum IntegerInputError: Error {
 }
 
 extension IntegerInputError: LocalizedError {
-    var errorDescription: String {
+    var errorDescription: String? {
         switch self {
         case .nilCount:
             return "잘못된 접근입니다."
