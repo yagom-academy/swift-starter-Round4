@@ -9,10 +9,10 @@ import Foundation
 
 class Person {
     private var name: String
-    private var bodyCondition: BodyCondition = BodyCondition(upperBody: 0,
-                                                             lowerBody: 0,
-                                                             muscularEndurance: 0,
-                                                             fatigue: 0)
+    private var bodyCondition = BodyCondition(upperBody: 0,
+                                              lowerBody: 0,
+                                              muscularEndurance: 0,
+                                              fatigue: 0)
     
     var getName: String {
         return name
