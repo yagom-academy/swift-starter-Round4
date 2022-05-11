@@ -22,4 +22,19 @@ class FitnessCenter {
     convenience init(name: String, listOfRoutine: [Routine]) {
         self.init(name: name, targetBodyCondition: BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0), listOfRoutine: listOfRoutine)
     }
+    
+    func error() {
+            do {
+                self.member?.name = try writeName()
+                self.targetBodyCondition = try inputBodyCondition()
+            } catch InputError.empty {
+                print("입력되지 않았습니다. 다시 입력해주세요.")
+            } catch InputError.invaildValue {
+                print("없는 번호입니다. 다시 입력해주세요.")
+            } catch InputError.outOfValue {
+                print("값의 갯수가 적거나 큽니다.")
+            } catch {
+
+            }
+        }
 }
