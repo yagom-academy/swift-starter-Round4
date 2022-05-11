@@ -159,6 +159,7 @@ enum FitnessErrorCase: Error {
     case incongruityInput
     case noMembers
     case typeErrorNotInt
+    case anotherERROR
 }
 
 struct FitnessCenter {
@@ -207,26 +208,26 @@ struct FitnessCenter {
         }
     }
     
-    mutating func checkMember() throws {
+    mutating func checkMember() throws -> Person {
         print("안녕하세요. \(name) 피트니스 센터입니다. 회원님의 이름은 무엇인가요?", terminator: " ")
         let inputName: String? = readLine()
         guard let inputName = inputName else {
             throw FitnessErrorCase.incongruityInput
         }
         guard let findingMembers = self.members else {
-            return print("cannot use Array")
+            print("cannot use Array")
+            throw FitnessErrorCase.anotherERROR
         }
-        let personsMemberName = findingMembers.map{
+        let personsMemberName = findingMembers.map {
             $0.name
         }
-        if personsMemberName.contains(inputName) == false {
+        guard personsMemberName.contains(inputName) else {
             throw FitnessErrorCase.noMembers
         }
-    }
-    
-    func targetLevel() {
-
-
+        guard let membersIndex = personsMemberName.firstIndex(of: inputName) else {
+            throw FitnessErrorCase.anotherERROR
+        }
+        return findingMembers[membersIndex]
     }
 }
 
