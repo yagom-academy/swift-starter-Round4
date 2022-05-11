@@ -13,5 +13,4 @@ let lowerBodyRoutine = Routine(routineName: "하체루틴", exercises: [squat, s
 let hellRoutine = Routine(routineName: "hellRoutine", exercises: [sitUp, sitUp, activeRest, squat, squat, activeRest, longRun, longRun])
 var yagomFitness = FitnessCenter(routineLists: [upperBodyRoutine, lowerBodyRoutine, hellRoutine])
 
-yagomFitness.startExercise()
-
+yagomFitness.beginTraining()

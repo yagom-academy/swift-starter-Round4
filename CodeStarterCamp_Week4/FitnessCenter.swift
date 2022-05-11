@@ -11,6 +11,15 @@ struct FitnessCenter {
     var bodyConditionGoal = BodyCondition()
     var member: Person?
     var routineLists: [Routine]
+    var selectedRoutineIndex = 0
+    var repeatCount = 0
+    
+    func changeInputToInt() throws -> Int {
+        guard let input = readLine(), let convertedInput = Int(input) else {
+            throw FitnessError.wrongInput
+        }
+        return convertedInput
+    }
     
     mutating func greeting() throws {
         print("안녕하세요. 야곰 피트니스 센터입니다. 회원님의 이름은 무엇인가요?")
@@ -20,43 +29,29 @@ struct FitnessCenter {
         self.member = Person(name: memberName)
     }
     
-    mutating func setExerciseGoal() throws {
+    mutating func setGoal(of bodyPart: Int) {
+        do {
+            bodyConditionGoal.changeCondition(of: bodyPart, about: try changeInputToInt())
+        } catch FitnessError.wrongInput {
+            print(FitnessError.wrongInput.rawValue)
+        } catch {
+            print(FitnessError.unexpectedError.rawValue)
+        }
+    }
+    
+    mutating func setExerciseGoal() {
         print("운동 목표치를 순서대로 알려주세요.")
-        do {
-            print("상체근력: ", terminator: "")
-            bodyConditionGoal.changeCondition(of: bodyConditionGoal.upperBodyStrength, about: try changeInputToInt())
-        } catch FitnessError.wrongInput {
-            print(FitnessError.wrongInput.rawValue)
-        } catch {
-            print(FitnessError.unexpectedError.rawValue)
-        }
+        print("상체근력: ", terminator: "")
+        setGoal(of: bodyConditionGoal.upperBodyStrength)
         
-        do {
-            print("하체근력: ", terminator: "")
-            bodyConditionGoal.changeCondition(of: bodyConditionGoal.lowerBodyStrength, about: try changeInputToInt())
-        } catch FitnessError.wrongInput {
-            print(FitnessError.wrongInput.rawValue)
-        } catch {
-            print(FitnessError.unexpectedError.rawValue)
-        }
+        print("하체근력: ", terminator: "")
+        setGoal(of: bodyConditionGoal.lowerBodyStrength)
         
-        do {
-            print("근지구력: ", terminator: "")
-            bodyConditionGoal.changeCondition(of: bodyConditionGoal.muscularEndurance, about: try changeInputToInt())
-        } catch FitnessError.wrongInput {
-            print(FitnessError.wrongInput.rawValue)
-        } catch {
-            print(FitnessError.unexpectedError.rawValue)
-        }
-        
-        do {
-            print("한계 피로도: ", terminator: "")
-            bodyConditionGoal.changeCondition(of: bodyConditionGoal.fatigue, about: try changeInputToInt())
-        } catch FitnessError.wrongInput {
-            print(FitnessError.wrongInput.rawValue)
-        } catch {
-            print(FitnessError.unexpectedError.rawValue)
-        }
+        print("근지구력: ", terminator: "")
+        setGoal(of: bodyConditionGoal.muscularEndurance)
+
+        print("한계 피로도: ", terminator: "")
+        setGoal(of: bodyConditionGoal.fatigue)
     }
     
     func showRoutine() {
@@ -66,28 +61,24 @@ struct FitnessCenter {
         }
     }
     
-    mutating func selectRoutine() throws -> Int {
+    mutating func selectRoutine() throws {
         showRoutine()
-        var selectedRoutineIndex: Int = 0
         do {
             selectedRoutineIndex = try changeInputToInt() - 1
         } catch FitnessError.wrongInput {
             print(FitnessError.wrongInput.rawValue)
         }
-        return selectedRoutineIndex
     }
     
-    mutating func repeatRoutine() throws -> Int {
-        var repeatCount = 0
+    mutating func repeatRoutine() throws {
         print("몇 세트 반복하시겠어요? ", terminator: "")
         do {
             repeatCount = try changeInputToInt()
         } catch FitnessError.wrongInput {
             print(FitnessError.wrongInput.rawValue)
         } catch {
-            print(FitnessError.unexpectedError.rawValue, error)
+            print(FitnessError.unexpectedError.rawValue)
         }
-        return repeatCount
     }
     
     func compareGoal(with bodyCondition: BodyCondition) throws {
@@ -96,37 +87,29 @@ struct FitnessCenter {
               bodyCondition.muscularEndurance >= bodyConditionGoal.muscularEndurance else {
                   throw FitnessError.underTarget
               }
-        if let member = member {
-            print("""
-                --------------
-                성공입니다! 현재 \(member.name)님의 컨디션은 다음과 같습니다.
-                """)
-            member.bodyCondition.showCondition()
-        }
+        print("""
+            --------------
+            성공입니다! 현재 \(member!.name)님의 컨디션은 다음과 같습니다.
+            """)
+        member!.bodyCondition.showCondition()
     }
     
-    mutating func startExercise() {
-        var selectedRoutineIndex = 0
-        var repeatCount = 0
-        
+    mutating func consultMember() {
         do {
             try greeting()
-            try setExerciseGoal()
-            selectedRoutineIndex = try selectRoutine()
-            repeatCount = try repeatRoutine()
+            setExerciseGoal()
+            try selectRoutine()
+            try repeatRoutine()
         } catch FitnessError.noMember {
             print(FitnessError.noMember.rawValue)
         } catch FitnessError.wrongInput {
             print(FitnessError.wrongInput.rawValue)
         } catch {
-            print(FitnessError.unexpectedError.rawValue, error)
+            print(FitnessError.unexpectedError.rawValue)
         }
-        
-        print("""
-                --------------
-                \(routineLists[selectedRoutineIndex].routineName)을 \(repeatCount)set시작합니다.
-                """)
-        
+    }
+    
+    func startExercise() {
         if let member = member {
             do {
                 try member.exercise(for: repeatCount, routine: routineLists[selectedRoutineIndex], until: bodyConditionGoal.fatigue)
@@ -145,15 +128,18 @@ struct FitnessCenter {
                 print("--------------")
                 showRoutine()
             } catch {
-                print(FitnessError.unexpectedError.rawValue, error)
+                print(FitnessError.unexpectedError.rawValue)
             }
         }
     }
+    
+    mutating func beginTraining() {
+        consultMember()
+        print("""
+                --------------
+                \(routineLists[selectedRoutineIndex].routineName)을 \(repeatCount)set시작합니다.
+                """)
+        startExercise()
+    }
 }
 
-func changeInputToInt() throws -> Int {
-    guard let input = readLine(), let integer = Int(input) else {
-        throw FitnessError.wrongInput
-    }
-    return integer
-}

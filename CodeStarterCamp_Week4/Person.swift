@@ -15,9 +15,9 @@ class Person {
         self.name = name
     }
     
-    func exercise(for set: Int, routine: Routine, until goal: Int) throws {
+    func exercise(for set: Int, routine: Routine, until fatigueLimit: Int) throws {
         for _ in 1...set {
-            try routine.runRoutine(with: &bodyCondition, until: goal)
+            try routine.runRoutine(with: &bodyCondition, until: fatigueLimit)
         }
     }
 }

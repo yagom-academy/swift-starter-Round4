@@ -11,13 +11,13 @@ struct Routine {
     let routineName: String
     let exercises: [Exercise]
     
-    func runRoutine(with bodyCondtion: inout BodyCondition, until goal: Int) throws {
+    func runRoutine(with bodyCondtion: inout BodyCondition, until fatigueLimit: Int) throws {
         print("--------------")
         print("\(routineName)을 시작합니다.")
         for exercise in exercises {
             print(exercise.name)
             exercise.action(&bodyCondtion)
-            if bodyCondtion.fatigue >= goal {
+            if bodyCondtion.fatigue >= fatigueLimit {
                 throw FitnessError.exhaustion
             }
         }
