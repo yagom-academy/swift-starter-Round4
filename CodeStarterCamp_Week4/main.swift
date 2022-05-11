@@ -9,6 +9,7 @@
 import Foundation
 
 let newLineString = "------------------------------------------"
+
 let emptyRoutine = Routine(name: "Empty")
 let upperBodyRoutine = Routine(name: "Upper Body", exercises: pushUp, activeRest, dip, activeRest, chinUp, activeRest, chinUp, dip, pushUp)
 let lowerBodyRoutine = Routine(name: "Lower Body", exercises: squatting, squatting,  activeRest, squatting, activeRest, lunge, lunge, activeRest, lunge)
@@ -16,4 +17,4 @@ let wholeBodyRoutine = Routine(name: "Whole Body", exercises: longRun, activeRes
 
 var yagomFitnessCenter = FitnessCenter(name: "야곰", routines: upperBodyRoutine, lowerBodyRoutine, wholeBodyRoutine)
 
-yagomFitnessCenter.startFitnessProgram()
+yagomFitnessCenter.startFitnessKiosk()

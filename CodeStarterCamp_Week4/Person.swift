@@ -8,11 +8,7 @@
 
 import Foundation
 
-enum PersonError: Error {
-    case beDrained
-}
-
-struct Person {
+class Person {
     let name: String
     var bodyCondition: BodyCondition
     
@@ -21,16 +17,18 @@ struct Person {
         self.bodyCondition = bodyCondition
     }
     
-    func exercise(for set: Int, routine: Routine) throws {
+    func exercise(for set: Int, _ routine: Routine) -> Bool {
         print(newLineString)
         print("\(routine.name) Routine \(set)Set Start!")
         for setCount in 1...set {
+            print(newLineString)
             print("\(setCount)Set")
             routine.startRoutine(based: bodyCondition)
             if bodyCondition.tiredness > 100 {
-                throw PersonError.beDrained
+                return false
             }
         }
+        return true
     }
     
     func printMyBodyCondition() {
