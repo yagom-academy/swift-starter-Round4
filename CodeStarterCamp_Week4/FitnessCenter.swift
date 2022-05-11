@@ -13,13 +13,7 @@ struct FitnessCenter {
     var routineLists: [Routine]
     var selectedRoutineIndex = 0
     var repeatCount = 0
-    
-    func changeInputToInt() throws -> Int {
-        guard let input = readLine(), let convertedInput = Int(input) else {
-            throw FitnessError.wrongInput
-        }
-        return convertedInput
-    }
+    let inputManager = InputManager()
     
     mutating func greeting() throws {
         print("안녕하세요. 야곰 피트니스 센터입니다. 회원님의 이름은 무엇인가요?")
@@ -31,7 +25,7 @@ struct FitnessCenter {
     
     mutating func setGoal(of bodyPart: Int) {
         do {
-            bodyConditionGoal.changeCondition(of: bodyPart, about: try changeInputToInt())
+            bodyConditionGoal.changeCondition(of: bodyPart, about: try inputManager.changeInputToInt())
         } catch FitnessError.wrongInput {
             print(FitnessError.wrongInput.rawValue)
         } catch {
@@ -64,7 +58,7 @@ struct FitnessCenter {
     mutating func selectRoutine() throws {
         showRoutine()
         do {
-            selectedRoutineIndex = try changeInputToInt() - 1
+            selectedRoutineIndex = try inputManager.changeInputToInt() - 1
         } catch FitnessError.wrongInput {
             print(FitnessError.wrongInput.rawValue)
         }
@@ -73,7 +67,7 @@ struct FitnessCenter {
     mutating func repeatRoutine() throws {
         print("몇 세트 반복하시겠어요? ", terminator: "")
         do {
-            repeatCount = try changeInputToInt()
+            repeatCount = try inputManager.changeInputToInt()
         } catch FitnessError.wrongInput {
             print(FitnessError.wrongInput.rawValue)
         } catch {
