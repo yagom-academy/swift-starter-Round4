@@ -46,13 +46,6 @@ struct Routine {
             tempBodyCondition.fatigueLevel += condition.fatigueLevel
         }
         
-        print("--------------")
-        print("현재의 컨디션은 다음과 같습니다.")
-        print("상체근력 : \(tempBodyCondition.upperBodyStrength)")
-        print("하체근력 : \(tempBodyCondition.lowerBodyStrength)")
-        print("근지구력 : \(tempBodyCondition.muscularEndurance)")
-        print("피로도 : \(tempBodyCondition.fatigueLevel)")
-        
         return tempBodyCondition
     }
 }
@@ -169,7 +162,7 @@ struct FitnessCenter {
     var routineList: [Routine]
     
     mutating func runProgram() throws -> Void {
-        var personMember = try checkMember()
+        let personMember = try checkMember()
         
         print("운동 목표치를 순서대로 알려주세요. 예시) 상체근력:130,하체근력:120,근지구력:150 \n상체근력 :", terminator: " ")
         let upperStrength: String? = readLine()
@@ -198,7 +191,6 @@ struct FitnessCenter {
         }
         let choiceRoutine = self.routineList[choicedRoutineCount - 1]
         
-        
         print("몇 세트 반복하시겠어요? ",terminator: "")
         let routineSetCount: String? = readLine()
         guard let routineNumber = routineSetCount else {
@@ -218,6 +210,13 @@ struct FitnessCenter {
             memberBodyCondtion.muscularEndurance += condtions.muscularEndurance
             memberBodyCondtion.fatigueLevel += condtions.fatigueLevel
         }
+        
+        print("--------------")
+        print("성공입니다! 현재 \(personMember.name)님의 컨디션은 다음과 같습니다.")
+        print("상체근력 : \(memberBodyCondtion.upperBodyStrength)")
+        print("하체근력 : \(memberBodyCondtion.lowerBodyStrength)")
+        print("근지구력 : \(memberBodyCondtion.muscularEndurance)")
+        print("피로도 : \(memberBodyCondtion.fatigueLevel)")
     }
     
     mutating func checkMember() throws -> Person {
