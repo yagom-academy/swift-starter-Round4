@@ -81,17 +81,13 @@ struct FitnessCenter {
         }
     }
     
-    func compareGoal(with bodyCondition: BodyCondition) throws {
+    func compareGoal(with bodyCondition: BodyCondition) throws -> Bool {
         guard bodyCondition.upperBodyStrength >= bodyConditionGoal.upperBodyStrength,
               bodyCondition.lowerBodyStrength >= bodyConditionGoal.lowerBodyStrength,
               bodyCondition.muscularEndurance >= bodyConditionGoal.muscularEndurance else {
                   throw FitnessError.underTarget
               }
-        print("""
-            --------------
-            성공입니다! 현재 \(member!.name)님의 컨디션은 다음과 같습니다.
-            """)
-        member!.bodyCondition.showCondition()
+        return true
     }
     
     mutating func consultMember() {
@@ -113,7 +109,13 @@ struct FitnessCenter {
         if let member = member {
             do {
                 try member.exercise(for: repeatCount, routine: routineLists[selectedRoutineIndex], until: bodyConditionGoal.fatigue)
-                try compareGoal(with: member.bodyCondition)
+                if try compareGoal(with: member.bodyCondition) == true {
+                    print("""
+                        --------------
+                        성공입니다! 현재 \(member.name)님의 컨디션은 다음과 같습니다.
+                        """)
+                    member.bodyCondition.showCondition()
+                }
             } catch FitnessError.exhaustion {
                 print("""
                     --------------
