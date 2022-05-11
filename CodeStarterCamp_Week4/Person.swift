@@ -14,12 +14,13 @@ class Person {
         print("\(routine.name)을 \(set)set 시작합니다.")
         for _ in 1...set {
             for i in 0..<routine.exercises.count {
-                if self.bodyCondition.fatigue >= 100 {
+                routine.exercises[i].action()
+                if bodyCondition.fatigue >= 100 {
+                    print("\(name)님의 피로도가 \(bodyCondition.fatigue)입니다. 회원님이 도망갔습니다.")
                     break
                 }
                 print(routine.exercises[i].name)
-                routine.exercises[i].action()
-                print(bodyCondition)
+//                routine.exercises[i].action()
             }
         }
     }

@@ -5,8 +5,11 @@ struct Exercise {
     let action: () -> Void
 }
 
+// bodyCondition은 메인 파일에 전역변수로 선언해서 해당 함수에서도 받아올 수 있음
+// to improve: 회원이 여러명일 경우, 회원별로 bodyCondition 생성&활용
+
 let sitUp: Exercise = Exercise(name: "윗몸일으키기") {
-    yagom.bodyCondition.upperBodyStrength += Int.random(in: 10...20)
+    bodyCondition.upperBodyStrength += Int.random(in: 10...20)
     bodyCondition.fatigue += Int.random(in: 10...20)
 }
 
