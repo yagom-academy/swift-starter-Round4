@@ -14,7 +14,7 @@ struct FitnessCenter {
     
     private var guestRegister: GuestRegister = GuestRegister()
     
-    init(goalBodyCondition: BodyCondition,
+    init(goalBodyCondition: BodyCondition?,
          fitnessGuest: Person?,
          routine: [Routine]) {
         self.goalBodyCondition = goalBodyCondition

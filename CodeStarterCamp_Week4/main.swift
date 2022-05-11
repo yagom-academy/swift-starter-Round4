@@ -70,13 +70,9 @@ let helloRoutine = Routine(name: "helloRoutine",
 let ohMyGodRoutine = Routine(name: "ohMyGodRoutine",
                              exercises: [sitUp, sitUp, dynamicalRest, dynamicalRest, dynamicalRest, squat, squat, dynamicalRest, dynamicalRest, pushUp, pushUp, pushUp, dynamicalRest, dynamicalRest, dynamicalRest])
 
-var bodyCondition: BodyCondition = BodyCondition(upperBody: 0,
-                                                 lowerBody: 0,
-                                                 muscularEndurance: 0,
-                                                 fatigue: 0)
-
-var fitnessCenter: FitnessCenter = FitnessCenter(goalBodyCondition: bodyCondition,
-                                                 fitnessGuest: nil, routine: [helloRoutine, ohMyGodRoutine])
+var fitnessCenter = FitnessCenter(goalBodyCondition: nil,
+                                                 fitnessGuest: nil,
+                                                 routine: [helloRoutine, ohMyGodRoutine])
 
 fitnessCenter.run()
 
