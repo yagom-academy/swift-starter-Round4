@@ -46,14 +46,13 @@ class FitnessCenter {
     
     func writeName() throws -> String {
         print("안녕하세요. \(name)피트니스 센터입니다. 회원님의 이름은 무엇인가요?")
-        let inputName: String = readLine()!
-        guard inputName.isEmpty == false else { throw InputError.empty }
+        guard let inputName = readLine() else { throw InputError.empty }
         return inputName
     }
     
     func inputBodyCondition() throws -> BodyCondition {
         print("운동 목표치를 순서대로 알려주세요. [상체근력:  하체근력:  근지구력: ]")
-        let inputTargetBodyCondition = readLine()!
+        guard let inputTargetBodyCondition = readLine() else { throw InputError.empty }
         let targetBodyConditionArray: [Int] = try inputTargetBodyCondition.split(separator: " ").map{
             guard let number = Int($0) else { throw InputError.invaildValue }
             return number
