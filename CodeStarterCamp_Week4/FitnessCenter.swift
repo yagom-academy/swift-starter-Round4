@@ -56,7 +56,6 @@ class FitnessCenter {
                 }
             }
         }
-        
     }
     
     func printAfterRoutineResult() throws {
@@ -190,6 +189,5 @@ class FitnessCenter {
             } catch {
                 print("에러메시지를 확인해주세요. \(error)")
             }
-        
     }
 }
