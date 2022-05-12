@@ -8,12 +8,12 @@
 
 import Foundation
 
-let sitUp:Exercise = .sitUp
-let squats:Exercise = .squats
-let deadLift:Exercise = .deadLift
-let benchPress:Exercise = .benchPress
-let runningLongTime:Exercise = .runningLongTime
-let activeRest:Exercise = .activeRest
+let sitUp: Exercise = .sitUp
+let squats: Exercise = .squats
+let deadLift: Exercise = .deadLift
+let benchPress: Exercise = .benchPress
+let runningLongTime: Exercise = .runningLongTime
+let activeRest: Exercise = .activeRest
 
 let hellRoutine = Routine(name: "지옥의루틴", routineArray: [squats, squats, activeRest, benchPress, benchPress, deadLift, deadLift, activeRest, sitUp, sitUp, activeRest, runningLongTime])
 
