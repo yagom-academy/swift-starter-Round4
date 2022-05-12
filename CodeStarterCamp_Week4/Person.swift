@@ -31,6 +31,7 @@ class Person {
             }
         }
     }
+    
     func printAfterBodyCondition() {
         print("--------------------")
         print("현재 \(name)님의 컨디션 입니다.")
