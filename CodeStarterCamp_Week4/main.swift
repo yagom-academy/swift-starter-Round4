@@ -16,3 +16,6 @@ let normalExercise: [Exercise] = [sitUp, activeRest, squat, activeRest, activeRe
 let hellRoutine = Routine(routineName: "지옥의 헬스루틴", exercises: hellExercise)
 let normalRoutine = Routine(routineName: "보통의 헬스루탄", exercises: normalExercise)
 
+var yagomFitnessCenter = FitnessCenter(name: "야곰", listOfRoutine: [hellRoutine, normalRoutine])
+yagomFitnessCenter.exerciseRoutine()
+
