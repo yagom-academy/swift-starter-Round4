@@ -64,7 +64,6 @@ class Routine {
         for didExercise in exercise {
             let exercised = didExercise.action
             exercised()
-            
         }
     }
 }
@@ -91,7 +90,6 @@ let longDistanceRunning: Exercise = Exercise(name: "오래달리기", action: {
 let activeRest: Exercise = Exercise(name: "동적휴식", action: {
     bodyCondition.fatigue -= Int.random(in: 5...10)
 })
-
 
 let hellRoutine: Routine = Routine(name: "Hell-Routine", exercise: [sitUp, sitUp, squatt, squatt, activeRest, longDistanceRunning, longDistanceRunning])
 
