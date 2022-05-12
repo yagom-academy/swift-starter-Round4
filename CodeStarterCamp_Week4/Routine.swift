@@ -15,9 +15,9 @@ struct Routine {
         for exercise in routineArray {
             print("\(exercise.name)")
             exercise.action(bodyConditon)
-        }
-        if bodyConditon.tiredness > overTiredness {
-            throw FitnessCenterError.runAwayMember
+            if bodyConditon.tiredness > overTiredness {
+                throw FitnessCenterError.runAwayMember
+            }
         }
     }
 }
