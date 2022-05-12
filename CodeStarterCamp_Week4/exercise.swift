@@ -8,8 +8,8 @@
 import Foundation
 
 struct Exercise {
-        let name: String
-        let action: () -> Void
+    let name: String
+    let action: () -> Void
 }
 
 let sitUp: Exercise = Exercise(name: "윗몸일으키기", action: {

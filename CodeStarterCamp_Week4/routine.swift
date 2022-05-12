@@ -9,7 +9,7 @@ import Foundation
 
 struct Routine {
     var name: String
-    var exercises: Array<Exercise>
+    var exercises: [Exercise]
         
     func routineStart() {
         print("--------------\n\(name)을 시작합니다.")
