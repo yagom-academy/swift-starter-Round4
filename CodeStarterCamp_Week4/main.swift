@@ -202,13 +202,18 @@ struct FitnessCenter {
         
         var memberBodyCondtion = BodyCondition()
         print("\(choiceRoutine.name)를(을) \(choicedSetCount)set시작합니다.")
-        
+    
         for _ in 1...choicedSetCount {
             let condtions = choiceRoutine.playRoutine()
             memberBodyCondtion.upperBodyStrength += condtions.upperBodyStrength
             memberBodyCondtion.lowerBodyStrength += condtions.lowerBodyStrength
             memberBodyCondtion.muscularEndurance += condtions.muscularEndurance
             memberBodyCondtion.fatigueLevel += condtions.fatigueLevel
+            
+            if memberBodyCondtion.fatigueLevel > 100 {
+                print("\(personMember.name)님의 피로도가 \(memberBodyCondtion.fatigueLevel) 입니다. 회원님이 도망갔습니다.")
+                throw FitnessErrorCase.overFatigueLevel
+            }
         }
         
         print("--------------")
@@ -253,4 +258,6 @@ do {
     try beam2Fit.runProgram()
 } catch FitnessErrorCase.noMembers {
     print("인원 없음")
+} catch FitnessErrorCase.overFatigueLevel{
+    print("")
 }
