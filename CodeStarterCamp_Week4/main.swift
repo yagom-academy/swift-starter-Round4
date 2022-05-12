@@ -1,12 +1,9 @@
 import Foundation
 
-var myInitialBodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscleEndurance: 0, fatigue: 0)
-let myExerciseRoutine = [sitUp, sitUp, squat, squat, activeRest, deadLift, deadLift, runningLongTime, runningLongTime, activeRest]
-var myRoutine = Routine(name: "My Routine", routineOrder: myExerciseRoutine)
+let hellRoutineExercise = [sitUp, sitUp, squat, squat, activeRest, deadLift, deadLift, runningLongTime, runningLongTime, activeRest]
+let ohohMyGodRoutineExercise = [sitUp, sitUp, squat, squat, sitUp, sitUp, activeRest, deadLift, deadLift, sitUp, sitUp, runningLongTime, runningLongTime, activeRest]
+var hellRoutine = Routine(name: "hellRoutine", routineOrder: hellRoutineExercise)
+var ohMyGodRoutine = Routine(name: "ohMyGodRoutine", routineOrder: ohohMyGodRoutineExercise)
 
-myRoutine.startRoutine()
-myRoutine.printCurrentBodyCondition(with: myInitialBodyCondition)
-
-var myFitness = FitnessCenter(name: "myFitness", targetBodyCondition: myInitialBodyCondition, routineList: [myRoutine])
-myFitness.greeting()
-print(myFitness.member)
+var yagomFitness = FitnessCenter(name: "Yagom", routineList: [hellRoutine, ohMyGodRoutine])
+yagomFitness.startExercise()
