@@ -20,7 +20,8 @@ class BodyCondition {
         self.fatigue = fatigue
     }
     
-    func yourCondition() {
+    func nowCondition(myRoutine: Routine) {
+        myRoutine.tellMyExerciseRoutine()
         print("""
             -----------------------
             현재의 컨디션은 다음과 같습니다.
@@ -29,6 +30,42 @@ class BodyCondition {
             근지구력: \(self.muscleEndurance)
             피로도: \(self.fatigue)
             """)
+    }
+}
+
+struct Exercise {
+    let name: String
+    var action: () -> Void
+}
+
+class Routine {
+    let name: String
+    var exercise = [Exercise]()
+    
+    init(name: String, exercise: [Exercise]) {
+        self.name = name
+        self.exercise = exercise
+    }
+    
+    func tellMyExerciseRoutine() {
+        self.doExercise()
+        print("""
+            -----------------------
+            \(self.name)을 시작합니다.
+            """)
+        for exerciseName in exercise {
+           let extractExerciseName = exerciseName.name.map { String($0) }
+           let exerciseName = extractExerciseName.joined(separator: "")
+           print("\(exerciseName)")
+        }
+    }
+    
+    func doExercise() {
+        for didExercise in exercise {
+            let exercised = didExercise.action
+            exercised()
+            
+        }
     }
 }
 
@@ -54,3 +91,8 @@ let longDistanceRunning: Exercise = Exercise(name: "오래달리기", action: {
 let activeRest: Exercise = Exercise(name: "동적휴식", action: {
     bodyCondition.fatigue -= Int.random(in: 5...10)
 })
+
+
+let hellRoutine: Routine = Routine(name: "Hell-Routine", exercise: [sitUp, sitUp, squatt, squatt, activeRest, longDistanceRunning, longDistanceRunning])
+
+bodyCondition.nowCondition(myRoutine: hellRoutine)
