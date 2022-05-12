@@ -16,11 +16,11 @@ class Person {
         self.bodyCondition = bodyCondition
     }
     
-    func exercise(routineArray: Routine, for set: Int, overTiredness: Int) throws {
+    func exercise(routine: Routine, for set: Int, overTiredness: Int) throws {
         print("--------------------")
-        print("\(routineArray.name)을(를) \(set)set 시작합니다.")
+        print("\(routine.name)을(를) \(set)set 시작합니다.")
         for _ in 1...set {
-            try routineArray.startExercise(with: bodyCondition, overTiredness: 100)
+            try routine.startExercise(with: bodyCondition, overTiredness: 100)
             }
         }
     

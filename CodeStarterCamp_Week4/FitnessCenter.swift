@@ -41,7 +41,7 @@ class FitnessCenter {
         if let member = member {
             while true {
                 do {
-                    try member.exercise(routineArray: chooseRountine(from: routineList), for: setCountOfRoutine(), overTiredness: goalBodyCondition.tiredness)
+                    try member.exercise(routine: chooseRountine(from: routineList), for: setCountOfRoutine())
                     try printAfterRoutineResult()
                     break
                 } catch FitnessCenterError.unreachedGoal {
