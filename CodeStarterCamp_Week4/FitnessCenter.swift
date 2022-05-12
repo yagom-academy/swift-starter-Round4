@@ -55,6 +55,7 @@ class FitnessCenter {
     
     func inputBodyCondition() throws -> BodyCondition {
         print("운동 목표치를 순서대로 알려주세요. [상체근력:  하체근력:  근지구력: ]")
+        print("목표치간 띄어쓰기는 필수입니다. ex) 100 100 100")
         guard let inputTargetBodyCondition = readLine() else { throw InputError.empty }
         let targetBodyConditionArray: [Int] = try inputTargetBodyCondition.split(separator: " ").map{
             guard let number = Int($0) else { throw InputError.invaildValue }
