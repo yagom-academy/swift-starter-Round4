@@ -26,8 +26,8 @@ class FitnessCenter {
     
     func exercise() {
         do {
-            self.member?.name = try inputName()
-            self.goalBodyCondition = try inputGoalBodyCondition()
+            self.member?.name = inputName()
+            self.goalBodyCondition = inputGoalBodyCondition()
         } catch InputError.empty {
             print("값을 입력하지않았습니다. 값을 입력해주세요")
         } catch InputError.invaildValue {
@@ -41,33 +41,76 @@ class FitnessCenter {
         executeRoutine()
     }
     
-    func inputName() throws -> String {
-        print("안녕하세요. 야곰 피트니스 센터입니다. 회원님의 이름은 무엇인가요?")
-        let inputName: String = readLine()!
-        guard inputName.isEmpty == false else {
-            throw InputError.empty
+    func inputText() -> String {
+        var inputText: String?
+        while let _inputText = readLine() {
+            if _inputText != "" {
+                inputText = _inputText
+                break
+            } else {
+                print(InputError.empty.localizedDescription)
+            }
         }
+        
+        return inputText ?? ""
+    }
+    
+    func inputName() -> String {
+        print("안녕하세요. 야곰 피트니스 센터입니다. 회원님의 이름은 무엇인가요?")
+        let inputName = inputText()
         
         return inputName
     }
     
-    func inputGoalBodyCondition() throws -> BodyCondition {
-        print("운동 목표치를 순서대로 알려주세요. 상체근력, 하체근력, 근지구력. (예시: 100 120 130)")
-        let inputGoalBodyCondition = readLine()!
-        let goalBodyConditionArray: [Int] = try inputGoalBodyCondition.split(separator: " ").map {
-            guard let value = Int($0) else {
-                throw InputError.invaildValue
+    func inputGoalBodyCondition() -> BodyCondition {
+        print("운동 목표치를 순서대로 알려주세요.")
+        let bodyConditionMenu = ["상체근력", "하체근력", "근지구력"]
+        var goalBodyConditionArray: [Int] = []
+        
+        for number in 0...2 {
+            print("\(bodyConditionMenu[number])을 입력하세요")
+            var isInputNumberInt = false
+            var inputNumber = inputText()
+            
+            while isInputNumberInt == false {
+                if let _inputNumber = Int(inputNumber) {
+                    goalBodyConditionArray.append(_inputNumber)
+                    isInputNumberInt = true
+                } else {
+                    print(InputError.invaildValue.localizedDescription)
+                    inputNumber = inputText()
+                }
             }
-            return value
         }
         
-        if goalBodyConditionArray.count != 3 {
-            throw InputError.outOfValue
-        }
-        
-        let bodyCondition: BodyCondition = .init(upperBodyStrength: goalBodyConditionArray[0], lowerBodyStrength: goalBodyConditionArray[1], muscularEndurance: goalBodyConditionArray[2], fatigue: 0)
+        let bodyCondition = BodyCondition(upperBodyStrength: goalBodyConditionArray[0], lowerBodyStrength: goalBodyConditionArray[1], muscularEndurance: goalBodyConditionArray[2], fatigue: 0)
         
         return bodyCondition
+    }
+    
+    func executeRoutine() {
+        do {
+            try inputRoutineSet()
+        } catch InputError.empty {
+            print("값을 입력하지않았습니다. 값을 입력해주세요")
+        } catch InputError.invaildValue {
+            print("입력할 수 없는 값입니다.")
+        } catch InputError.outOfValue {
+            print("값의 갯수가 적거나 큽니다.")
+        } catch {
+            print("알 수 없는 오류입니다. 확인 바랍니다.")
+        }
+        
+        if achieveGoalBodyCondition() {
+            print("--------------")
+            print("성공입니다!")
+            member?.bodyCondition.currentCondition()
+        } else {
+            print("--------------")
+            print("목표치에 도달하지 못했습니다.")
+            member?.bodyCondition.currentCondition()
+            executeRoutine()
+        }
     }
     
     func inputRoutineSet() throws -> Void {
@@ -97,31 +140,6 @@ class FitnessCenter {
         
         member?.exercise(for: setNumber, routine: self.routine[routineNumber])
         routineNumber = 1
-    }
-    
-    func executeRoutine() {
-        do {
-            try inputRoutineSet()
-        } catch InputError.empty {
-            print("값을 입력하지않았습니다. 값을 입력해주세요")
-        } catch InputError.invaildValue {
-            print("입력할 수 없는 값입니다.")
-        } catch InputError.outOfValue {
-            print("값의 갯수가 적거나 큽니다.")
-        } catch {
-            print("알 수 없는 오류입니다. 확인 바랍니다.")
-        }
-        
-        if achieveGoalBodyCondition() {
-            print("--------------")
-            print("성공입니다!")
-            member?.bodyCondition.currentCondition()
-        } else {
-            print("--------------")
-            print("목표치에 도달하지 못했습니다.")
-            member?.bodyCondition.currentCondition()
-            executeRoutine()
-        }
     }
     
     func achieveGoalBodyCondition() -> Bool {
