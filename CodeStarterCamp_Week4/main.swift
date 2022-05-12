@@ -8,9 +8,9 @@
 
 import Foundation
 
-var myBodyCondition = BodyCondition(upperBodyStrength: 60, lowerBodyStrength: 60, muscularEndurance: 60, fatigue: 30)
 let upperBodyRoutine = Routine(routineName: "상체루틴", exercises: [sitUp, pullUp, pullUp, activeRest, pullUp, pullUp, activeRest])
 let lowerBodyRoutine = Routine(routineName: "하체루틴", exercises: [squat, squat, activeRest, lunge, lunge, activeRest])
+let hellRoutine = Routine(routineName: "hellRoutine", exercises: [sitUp, sitUp, activeRest, squat, squat, activeRest, longRun, longRun])
+var yagomFitness = FitnessCenter(routineLists: [upperBodyRoutine, lowerBodyRoutine, hellRoutine])
 
-upperBodyRoutine.runRoutine(with: &myBodyCondition)
-myBodyCondition.showCondition()
+yagomFitness.beginTraining()
