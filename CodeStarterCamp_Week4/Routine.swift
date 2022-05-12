@@ -9,20 +9,25 @@ import Foundation
 
 struct Routine {
     let name: String
-    let routineArray: Array<Exercise>
+    let routineContents: Array<Exercise>
     
     func printRotineList() {
-        let routineList = routineArray.map{ $0.name }.joined(separator: "\n")
+        let routineList = routineContents.map{ $0.name }.joined(separator: "\n")
         print("""
               --------------
-              \(self.name)을 실행합니다.
+              🏋️\(self.name)🏋️
               \(routineList)
               """)
     }
     
     func startRoutine(affecting bodyCondition: BodyCondition) {
-        for routineIndex in routineArray {
-            routineIndex.action(bodyCondition)
+        print("""
+              --------------
+              \(self.name)을 실행합니다.
+              ...🏃🏻💦💦
+              """)
+        for exerciseEvent in routineContents {
+            exerciseEvent.action(bodyCondition)
         }
     }
 }

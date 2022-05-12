@@ -35,35 +35,35 @@ enum Exercise {
     var action: (BodyCondition) -> () {
         switch self {
         case .sitUp:
-            return {bodyCondition in
+            return { bodyCondition in
                 bodyCondition.upperBodyMuscleStrength += Int.random(in: 10...20)
                 bodyCondition.tiredness += Int.random(in: 10...20)
             }
         case .squats:
-            return {bodyCondition in
+            return { bodyCondition in
                 bodyCondition.lowerBodyMuscleStrength += Int.random(in: 20...30)
                 bodyCondition.tiredness += Int.random(in: 10...20)
             }
         case .deadLift:
-            return {bodyCondition in
+            return { bodyCondition in
                 bodyCondition.upperBodyMuscleStrength += Int.random(in: 10...20)
                 bodyCondition.lowerBodyMuscleStrength += Int.random(in: 10...20)
                 bodyCondition.tiredness += Int.random(in: 10...20)
             }
         case .benchPress:
-            return {bodyCondition in
+            return { bodyCondition in
                 bodyCondition.upperBodyMuscleStrength += Int.random(in: 20...30)
                 bodyCondition.tiredness += Int.random(in: 10...20)
             }
         case .runningLongTime:
-            return {bodyCondition in
+            return { bodyCondition in
                 bodyCondition.upperBodyMuscleStrength += Int.random(in: 5...10)
                 bodyCondition.lowerBodyMuscleStrength += Int.random(in: 10...20)
                 bodyCondition.musclerEndurance += Int.random(in: 20...30)
                 bodyCondition.tiredness += Int.random(in: 10...20)
             }
         case .activeRest:
-            return {bodyCondition in
+            return { bodyCondition in
                 bodyCondition.tiredness -= Int.random(in: 10...20)
             }
         }
