@@ -19,6 +19,6 @@ let slowLongRunning: Routine = Routine(name: "천천히 오래달리기", routin
 let routineList: [Routine] = [todayRoutine, hellOfSitup, deathOfSquat, slowLongRunning]
 let yagomFitnessCenter: FitnessCenter = FitnessCenter(centerName: "yagom", routineList: routineList)
 
-yagomFitnessCenter.startForTotalRoutine()
+yagomFitnessCenter.startForTotalProcess()
 
 

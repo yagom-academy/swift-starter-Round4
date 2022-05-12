@@ -18,14 +18,14 @@ class FitnessCenter {
         self.routineList = routineList
     }
     
-    func inputToInt() throws -> Int {
-        guard let inputInt = readLine(), let inputInt = Int(inputInt) else {
+    func receiveNumber() throws -> Int {
+        guard let inputNumber = readLine(), let inputNumber = Int(inputNumber) else {
             throw InputError.notInt
         }
-        return inputInt
+        return inputNumber
     }
     
-    func inputToString() throws -> String {
+    func receiveString() throws -> String {
         guard let inputName = readLine(), inputName.isEmpty == false, inputName.contains(" ") == false else {
             throw InputError.notString
             }
@@ -37,12 +37,12 @@ class FitnessCenter {
         return inputName
     }
     
-    func proceedExercise() throws {
+    func startProcess() throws {
         if let member = member {
             while true {
                 do {
-                    try member.exercise(routine: chooseRountine(from: routineList), for: setCountOfRoutine())
-                    try printAfterRoutineResult()
+                    try member.exercise(routines: chooseRoutine(from: routineList), for: countSetsReapeat())
+                    try printResultAfterRoutine()
                     break
                 } catch FitnessCenterError.unreachedGoal {
                     print("--------------------")
@@ -60,7 +60,7 @@ class FitnessCenter {
         }
     }
     
-    func printAfterRoutineResult() throws {
+    func printResultAfterRoutine() throws {
         if let member = member {
             guard member.bodyCondition.upperBodyMuscleStrength >= goalBodyCondition.upperBodyMuscleStrength,
                   member.bodyCondition.lowerBodyMuscleStrength >= goalBodyCondition.lowerBodyMuscleStrength,
@@ -77,7 +77,7 @@ class FitnessCenter {
         print("안녕하세요 \(centerName) 피트니스 센터 입니다. 회원님의 이름을 알려주세요.")
         while true {
             do {
-                member = Person(name: try inputToString(), bodyCondition: BodyCondition(upperBodyMuscleStrength: 0, lowerBodyMuscleStrength: 0, muscularEndurance: 0, tiredness: 0))
+                member = Person(name: try receiveString(), bodyCondition: BodyCondition(upperBodyMuscleStrength: 0, lowerBodyMuscleStrength: 0, muscularEndurance: 0, tiredness: 0))
                 break
             } catch InputError.notString {
                 print("한글 또는 영문으로 입력해주세요.")
@@ -108,11 +108,11 @@ class FitnessCenter {
         while true {
             do {
                 print("상체근력 : ", terminator: "")
-                changeGoalBodyCondition(GoalConditionPart: goalBodyCondition.upperBodyMuscleStrength, goalStatus: try inputToInt())
+                changeGoalBodyCondition(GoalConditionPart: goalBodyCondition.upperBodyMuscleStrength, goalStatus: try receiveNumber())
                 print("하체근력 : ", terminator: "")
-                changeGoalBodyCondition(GoalConditionPart: goalBodyCondition.lowerBodyMuscleStrength, goalStatus: try inputToInt())
+                changeGoalBodyCondition(GoalConditionPart: goalBodyCondition.lowerBodyMuscleStrength, goalStatus: try receiveNumber())
                 print("근지구력 : ", terminator: "")
-                changeGoalBodyCondition(GoalConditionPart: goalBodyCondition.muscularEndurance, goalStatus: try inputToInt())
+                changeGoalBodyCondition(GoalConditionPart: goalBodyCondition.muscularEndurance, goalStatus: try receiveNumber())
                 break
             } catch InputError.notInt {
                 print("숫자로 입력해주세요.")
@@ -125,7 +125,7 @@ class FitnessCenter {
             do {
                 print("현재 피로도 : ", terminator: "")
                 if let member = member {
-                    changeGoalBodyCondition(GoalConditionPart: member.bodyCondition.tiredness, goalStatus: try inputToInt())
+                    changeGoalBodyCondition(GoalConditionPart: member.bodyCondition.tiredness, goalStatus: try receiveNumber())
                     break
                 }
             } catch InputError.notInt {
@@ -136,7 +136,7 @@ class FitnessCenter {
         }
     }
     
-    func chooseRountine(from routineList: [Routine]) -> Routine {
+    func chooseRoutine(from routineList: [Routine]) -> Routine {
         while true {
             do {
                 print("--------------------")
@@ -144,7 +144,7 @@ class FitnessCenter {
                 for (index, routine) in routineList.enumerated() {
                     print("\(index + 1). \(routine.name)")
                 }
-                let index = try inputToInt() - 1
+                let index = try receiveNumber() - 1
                 
                 guard routineList.indices.contains(index) else {
                     throw FitnessCenterError.invaildRoutine
@@ -160,12 +160,12 @@ class FitnessCenter {
         }
     }
     
-    func setCountOfRoutine() -> Int {
+    func countSetsReapeat() -> Int {
         while true {
             do {
                 print("--------------------")
                 print("몇 세트 반복 하시겠어요?")
-                let setCounter = try inputToInt()
+                let setCounter = try receiveNumber()
                 return setCounter
             } catch InputError.notInt {
                 print("숫자로 입력해주세요.")
@@ -175,11 +175,11 @@ class FitnessCenter {
         }
     }
     
-    func startForTotalRoutine() {
+    func startForTotalProcess() {
         registerMember()
         selectGoalBodyCondition()
             do {
-                try proceedExercise()
+                try startProcess()
             } catch {
                 print("에러메시지를 확인해주세요. \(error)")
             }
