@@ -12,8 +12,9 @@ struct Routine {
     var exercises: Array<Exercise>
         
     func routineStart() {
-        print("--------------\n \(name)을 시작합니다.")
+        print("--------------\n\(name)을 시작합니다.")
         for exercise in exercises {
+            exercise.action()
             print(exercise.name)
         }
     }
