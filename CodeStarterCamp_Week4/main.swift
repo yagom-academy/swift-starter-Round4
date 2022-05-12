@@ -24,11 +24,11 @@ class BodyCondition {
 
 struct Exercise {
     let name: String
-    var action: (BodyCondition) -> Void
+    let action: (BodyCondition) -> Void
 }
 
 struct Routine {
-    var name: String
+    let name: String
     var exercise: Array<Exercise> = []
 }
 

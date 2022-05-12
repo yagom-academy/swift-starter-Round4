@@ -7,7 +7,7 @@
 
 import Foundation
 
-var sitUp: Exercise = Exercise(name: "윗몸일으키기", action: { (bodyCondition: BodyCondition) -> Void in
+let sitUp: Exercise = Exercise(name: "윗몸일으키기", action: { (bodyCondition: BodyCondition) -> Void in
     bodyCondition.upperBodyStrength += Int.random(in: 10...20)
     bodyCondition.fatigue += Int.random(in: 10...20)
 })
