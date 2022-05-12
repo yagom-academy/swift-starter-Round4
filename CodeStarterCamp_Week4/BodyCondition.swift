@@ -7,24 +7,20 @@
 
 import Foundation
 
-struct BodyCondition {
-    var upperBodyStrength: Int
-    var lowerBodyStrength: Int
-    var muscularEndurance: Int
-    var fatigue: Int
+class BodyCondition {
+    var upperBodyStrength = 0
+    var lowerBodyStrength = 0
+    var muscularEndurance = 0
+    var fatigue = 0
     
-    init(startingPoint: Int) {
-        self.upperBodyStrength = startingPoint
-        self.lowerBodyStrength = startingPoint
-        self.muscularEndurance = startingPoint
-        self.fatigue = startingPoint
-    }
-    
-    init(upperBodyStrength: Int, lowerBodyStrength: Int, muscularEndurance: Int, fatigue: Int) {
-        self.upperBodyStrength = upperBodyStrength
-        self.lowerBodyStrength = lowerBodyStrength
-        self.muscularEndurance = muscularEndurance
-        self.fatigue = fatigue
+    func exercise(routine: Routine) {
+        print("\(routine.routineName)을 시작합니다.")
+        print("--------------")
+        for exercise in routine.exercises {
+            print(exercise.name)
+            exercise.action(self)
+        }
+        checkYourCondition()
     }
     
     func checkYourCondition() {

@@ -19,17 +19,19 @@ class FitnessCenter {
     var member: Person?
     var listOfRoutine: [Routine]
     
-    init(name: String, targetBodyCondition: BodyCondition, listOfRoutine: [Routine]) {
+    init(name: String, targetBodyCondition: BodyCondition, member: Person, listOfRoutine: [Routine]) {
         self.name = name
+        self.targetBodyCondition = BodyCondition()
+        self.member = member
         self.listOfRoutine = listOfRoutine
-        self.targetBodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
+        
     }
     
     convenience init(name: String, listOfRoutine: [Routine]) {
-        self.init(name: name, targetBodyCondition: BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0), listOfRoutine: listOfRoutine)
+        self.init(name: name, targetBodyCondition: BodyCondition(), member: Person(name: "", bodyCondition: BodyCondition()), listOfRoutine: listOfRoutine)
     }
     
-    func error() {
+    func exerciseRoutine() {
             do {
                 self.member?.name = try writeName()
                 self.targetBodyCondition = try inputBodyCondition()
@@ -40,7 +42,7 @@ class FitnessCenter {
             } catch InputError.outOfValue {
                 print("값의 갯수가 적거나 큽니다.")
             } catch {
-
+                print("알 수 없는 오류입니다. 다시 시도해주세요.")
             }
         }
     
@@ -62,8 +64,8 @@ class FitnessCenter {
             throw InputError.outOfValue
         }
         
-        let bodtCondition = BodyCondition(upperBodyStrength: targetBodyConditionArray[0], lowerBodyStrength: targetBodyConditionArray[1], muscularEndurance: targetBodyConditionArray[2], fatigue: 0)
+        let bodyCondition = BodyCondition()
         
-        return bodtCondition
+        return bodyCondition
     }
 }

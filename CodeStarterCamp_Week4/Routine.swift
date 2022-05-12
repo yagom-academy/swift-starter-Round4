@@ -11,13 +11,8 @@ struct Routine {
     let routineName: String
     let exercises: [Exercise]
     
-    func startRoutine() {
-        print("🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥")
-        print("\(routineName)을 시작합니다.")
-        for exercise in exercises {
-            print(exercise.name)
-            exercise.action()
+    init(routineName: String, exercises: [Exercise]) {
+        self.routineName = routineName
+        self.exercises = exercises
         }
-        print("🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥\n")
-    }
 }
