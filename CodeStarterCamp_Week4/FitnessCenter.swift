@@ -49,7 +49,9 @@ class FitnessCenter {
                     print("목표치에 도달하지 못 했습니다. 현재 \(member.name)님의 컨디션은 다음과 같습니다.")
                     member.bodyCondition.printMucleStatus()
                 } catch FitnessCenterError.runAwayMember {
-                    throw FitnessCenterError.runAwayMember
+                    print("--------------------")
+                    print("\(member.name)님의 피로도가 \(member.bodyCondition.tiredness)입니다. 회원님이 도망갔습니다.")
+                    break
                 } catch {
                     print("에러메시지를 확인해주세요. \(error)")
                     break
@@ -181,13 +183,8 @@ class FitnessCenter {
         selectGoalBodyCondition()
             do {
                 try proceedExercise()
-            } catch FitnessCenterError.runAwayMember {
-                print("--------------------")
-                if let member = member {
-                print("\(member.name)님의 피로도가 \(member.bodyCondition.tiredness)입니다. 회원님이 도망갔습니다.")
-                }
             } catch {
                 print("에러메시지를 확인해주세요. \(error)")
             }
-    }
+        }
 }
