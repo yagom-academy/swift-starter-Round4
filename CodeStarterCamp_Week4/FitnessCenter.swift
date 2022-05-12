@@ -106,19 +106,19 @@ struct FitnessCenter {
                 if try compareGoal(with: member.bodyCondition) == true {
                     print("""
                         --------------
-                        성공입니다! 현재 \(member.name)님의 컨디션은 다음과 같습니다.
+                        성공입니다! 현재 \(member.sayName())님의 컨디션은 다음과 같습니다.
                         """)
                     member.bodyCondition.showCondition()
                 }
             } catch FitnessError.exhaustion {
                 print("""
                     --------------
-                    \(member.name)님의 피로도가 \(member.bodyCondition.fatigue)입니다. \(FitnessError.exhaustion.rawValue)
+                    \(member.sayName())님의 피로도가 \(member.bodyCondition.fatigue)입니다. \(FitnessError.exhaustion.rawValue)
                     """)
             } catch FitnessError.underTarget {
                 print("""
                     --------------
-                    \(FitnessError.underTarget.rawValue) 현재 \(member.name)님의 컨디션은 다음과 같습니다.
+                    \(FitnessError.underTarget.rawValue) 현재 \(member.sayName())님의 컨디션은 다음과 같습니다.
                     """)
                 member.bodyCondition.showCondition()
                 print("--------------")
@@ -138,4 +138,3 @@ struct FitnessCenter {
         startExercise()
     }
 }
-

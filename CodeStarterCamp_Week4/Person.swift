@@ -20,4 +20,8 @@ class Person {
             try routine.runRoutine(with: &bodyCondition, until: fatigueLimit)
         }
     }
+    
+    func sayName() -> String {
+        return name
+    }
 }
