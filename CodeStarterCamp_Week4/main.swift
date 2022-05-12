@@ -49,12 +49,9 @@ func printNowCondition(nowBodyCondition: BodyCondition) {
     print("상체근력: \(nowBodyCondition.upperBodyStrength)")
     print("하체근력: \(nowBodyCondition.lowerBodyStrength)")
     print("근지구력: \(nowBodyCondition.muscularEndurance)")
-    
     nowBodyCondition.fatigue < 0 ? print("피로도: 0") : print("피로도: \(nowBodyCondition.fatigue)")
 }
 
 var myBodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
-
 let myRoutine: Routine = Routine(name: "hellRoutine", exercise: [sitUp, sitUp, activeRest, squat, squat, activeRest, longRun, longRun])
-
 playExercise(routine: myRoutine, bodyCondition: myBodyCondition)
