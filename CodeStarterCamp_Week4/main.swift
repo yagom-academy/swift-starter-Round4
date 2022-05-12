@@ -15,8 +15,8 @@ let benchPress: Exercise = .benchPress
 let runningLongTime: Exercise = .runningLongTime
 let activeRest: Exercise = .activeRest
 let hellRoutine = Routine(name: "지옥의루틴", routineContents: [squats, squats, activeRest, benchPress, benchPress, deadLift, deadLift, activeRest, sitUp, sitUp, activeRest, runningLongTime])
-var wonbi = BodyCondition()
 
+var wonbi = BodyCondition()
 hellRoutine.printRotineList()
 hellRoutine.startRoutine(affecting: wonbi)
 wonbi.checkCondition()
