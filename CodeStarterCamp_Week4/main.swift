@@ -170,7 +170,6 @@ struct FitnessCenter {
         let lowerStrength: String? = readLine()
         print("근지구력 :", terminator: " ")
         let muscularEndurance: String? = readLine()
-        print("운동 목표치는 \(upperStrength!) \(lowerStrength!) \(muscularEndurance!)")
         
         //루틴생성
         let totalRoutines = self.routineList.map {
@@ -211,11 +210,41 @@ struct FitnessCenter {
             memberBodyCondtion.fatigueLevel += condtions.fatigueLevel
             
             if memberBodyCondtion.fatigueLevel > 100 {
-                print("\(personMember.name)님의 피로도가 \(memberBodyCondtion.fatigueLevel) 입니다. 회원님이 도망갔습니다.")
+                print("\(personMember.name)님의 피로도가 \(memberBodyCondtion.fatigueLevel)입니다. 회원님이 도망갔습니다.")
                 throw FitnessErrorCase.overFatigueLevel
             }
         }
         
+        guard let upperStrength = upperStrength else {
+            throw FitnessErrorCase.incongruityInput
+        }
+        guard let lowerStrength = lowerStrength else {
+            throw FitnessErrorCase.incongruityInput
+        }
+        guard let muscularEndurance = muscularEndurance else {
+            throw FitnessErrorCase.incongruityInput
+        }
+        
+        guard let convertedUpperStrength = Int(upperStrength) else {
+            throw FitnessErrorCase.typeErrorNotInt
+        }
+        guard let convertedLowerStrength = Int(lowerStrength) else {
+            throw FitnessErrorCase.typeErrorNotInt
+        }
+        guard let convertedMuscularEndurance = Int(muscularEndurance) else {
+            throw FitnessErrorCase.typeErrorNotInt
+        }
+        
+        if memberBodyCondtion.upperBodyStrength > convertedUpperStrength || memberBodyCondtion.lowerBodyStrength > convertedLowerStrength || memberBodyCondtion.muscularEndurance > convertedMuscularEndurance {
+            print("목표치에 도달하지 못했습니다 \(personMember.name)님의 현재 컨디션은")
+            print("상체근력 : \(memberBodyCondtion.upperBodyStrength)")
+            print("하체근력 : \(memberBodyCondtion.lowerBodyStrength)")
+            print("근지구력 : \(memberBodyCondtion.muscularEndurance)")
+            print("입니다.")
+            
+            throw FitnessErrorCase.failAim
+        }
+
         print("--------------")
         print("성공입니다! 현재 \(personMember.name)님의 컨디션은 다음과 같습니다.")
         print("상체근력 : \(memberBodyCondtion.upperBodyStrength)")
@@ -259,5 +288,7 @@ do {
 } catch FitnessErrorCase.noMembers {
     print("인원 없음")
 } catch FitnessErrorCase.overFatigueLevel{
+    print("")
+} catch FitnessErrorCase.failAim{
     print("")
 }
