@@ -142,7 +142,6 @@ struct Person {
     var bodyCondition = BodyCondition()
     
     func exercise(for set: Int, routine: Routine){
-        
     }
 }
 
@@ -171,7 +170,6 @@ struct FitnessCenter {
         print("근지구력 :", terminator: " ")
         let muscularEndurance: String? = readLine()
         
-        //루틴생성
         let totalRoutines = self.routineList.map {
             $0.name
         }
@@ -181,7 +179,7 @@ struct FitnessCenter {
             routineCount += 1
             print("\(routineCount). \(routine)")
         }
-        let routineNumber: String? = readLine() // Int로 받기.
+        let routineNumber: String? = readLine()
         guard let routines = routineNumber else {
             throw FitnessErrorCase.incongruityInput
         }
@@ -280,8 +278,6 @@ var beam2 = Person(name: "beam2")
 var beam3 = Person(name: "beam3")
 var beam4 = Person(name: "beam4")
 var beam2Fit = FitnessCenter(name: "뱀이피트", members: [beam2, beam3, beam4], routineList: [HellRoutine, OmgRoutine])
-//try beam2Fit.runProgram()
-
 
 do {
     try beam2Fit.runProgram()
