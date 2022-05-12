@@ -87,9 +87,7 @@ class FitnessCenter {
         }
     }
     
-    func selectGoalBodyCondition() {
-        print("--------------------")
-        print("운동 목표치를 순서대로 알려주세요. 예시) 상체근력: 130, 하체근력: 120, 근지구력: 150")
+    func selectGoalUpperBody() {
         while true {
             do {
                 print("상체근력 : ", terminator: "")
@@ -101,6 +99,9 @@ class FitnessCenter {
                 print("에러메시지를 확인해주세요. \(error)")
             }
         }
+    }
+    
+    func selectGoalLowerBody() {
         while true {
             do {
                 print("하체근력 : ", terminator: "")
@@ -112,6 +113,9 @@ class FitnessCenter {
                 print("에러메시지를 확인해주세요. \(error)")
             }
         }
+    }
+    
+    func selectGoalmuscularEndurance() {
         while true {
             do {
                 print("근지구력 : ", terminator: "")
@@ -123,8 +127,10 @@ class FitnessCenter {
                 print("에러메시지를 확인해주세요. \(error)")
             }
         }
+    }
+    
+    func selecNowTiredness() {
         while true {
-            print("현재 피로도를 0에서 100 사이의 숫자로 알려주세요!")
             do {
                 print("현재 피로도 : ", terminator: "")
                 if let member = member {
@@ -137,6 +143,16 @@ class FitnessCenter {
                 print("에러메시지를 확인해주세요. \(error)")
             }
         }
+    }
+    
+    func selectGoalBodyCondition() {
+        print("--------------------")
+        print("운동 목표치를 순서대로 알려주세요. 예시) 상체근력: 130, 하체근력: 120, 근지구력: 150")
+        selectGoalUpperBody()
+        selectGoalLowerBody()
+        selectGoalmuscularEndurance()
+        print("현재 피로도를 0에서 100 사이의 숫자로 알려주세요!")
+        selecNowTiredness()
     }
     
     func chooseRountine(from routineList: [Routine]) -> Routine {
