@@ -22,11 +22,12 @@ class Person {
             if self.bodyCondition.fatigue >= 100 {
                 print("\(self.name)님의 피로도가 \(self.bodyCondition.fatigue)입니다. 회원님이 도망갔습니다.")
                 break
+            } else {
+                print("--------------")
+                print("\(routine.name)을 \(currentNumber)set시작합니다.")
+                bodyCondition.exercise(routine: routine)
+                currentNumber += 1
             }
-            print("--------------")
-            print("\(routine.name)을 \(currentNumber)set시작합니다.")
-            bodyCondition.exercise(routine: routine)
-            currentNumber += 1
         }
     }
 }

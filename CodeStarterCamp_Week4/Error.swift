@@ -21,7 +21,7 @@ extension InputError: LocalizedError {
         case .invaildValue:
             return "입력할 수 없는 값입니다. 다시 입력하세요."
         case .outOfValue:
-            return "값의 갯수가 적거나 큽니다."
+            return "입력하신 값이 범위를 벗어났습니다. 다시 입력하세요."
         }
     }
 }
