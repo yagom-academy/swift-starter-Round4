@@ -23,16 +23,14 @@ class Person {
         for setCounter in 1...set {
             print("--------------------")
             print("\(setCounter)set 시작!")
-            for exercise in routine.routineArray {
-                    print("\(exercise.name)")
-                    exercise.action(bodyCondition)
-                    if bodyCondition.tiredness > overTiredness {
-                        throw FitnessCenterError.runAwayMember
-                    }
-                }
+            let routineName = routine.routineArray.map( { $0.name } ).joined(separator: "\n")
+            _ = routine.routineArray.map( { $0.action(bodyCondition) } )
+            print(routineName)
+            if bodyCondition.tiredness > overTiredness {
+                throw FitnessCenterError.runAwayMember
             }
         }
-    
+    }
     func printAfterBodyCondition() {
         print("--------------------")
         print("현재 \(name)님의 컨디션 입니다.")
