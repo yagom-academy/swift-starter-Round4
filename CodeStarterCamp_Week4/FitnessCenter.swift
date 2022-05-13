@@ -8,6 +8,26 @@
 
 import Foundation
 
+func printFitnessCenterErrorMessage(about error: FitnessCenterError) {
+    print(newLineString)
+    if error == .memberBeDrained {
+        print("회원이 너무 힘들어서 도망갔습니다!!")
+        exit(0)
+    } else if error == .emptyMember {
+        print("Error : empty member")
+        exit(0)
+    } else if error == .emptyGoalsBodyCondition {
+        print("Error : empty goalsBodyCondition")
+        exit(0)
+    } else if error == .emptyChosenRoutine {
+        print("Error : emptyChosenRoutine")
+        exit(0)
+    } else if error == .emptyDecidedSet {
+        print("Error : emptyDecidedSet")
+        exit(0)
+    }
+}
+
 class FitnessCenter {
     let name: String
     var goalsBodyCondition: BodyCondition?
@@ -22,7 +42,7 @@ class FitnessCenter {
         self.routines = routines
     }
     
-    func startFitnessKiosk() throws {
+    func startFitnessKiosk() {
         var isAchieveGoal = false
         var kioskStep = 1
         print(newLineString)
@@ -50,28 +70,25 @@ class FitnessCenter {
                 decidedSet = nil
                 dicideSet()
                 if decidedSet != nil {
-                    
-                }
-                guard let chosenRoutine = chosenRoutine else {
-                    throw FitnessCenterError.emptyChosenRoutine
-                }
-                guard let member = member else {
-                    throw FitnessCenterError.emptyMember
-                }
-                if let chosenNumberOfSet = fitnessCenterKiosk.receiveNaturalNumber() {
                     do {
-                        try member.exercise(for: chosenNumberOfSet, chosenRoutine)
-                        if try checkGoals(target: member.bodyCondition) {
+                        try startMemberExercise()
+                        if try checkAchieveGoal() {
                             isAchieveGoal = true
                         } else {
                             kioskStep = 3
                         }
-                        printRoutineAchieveMessage(isAchieveGoal)
-                        member.printMyBodyCondition()
-                    } catch PersonError.personBeDrained {
-                        throw FitnessCenterError.memberBeDrained
+                    } catch FitnessCenterError.emptyMember {
+                        printFitnessCenterErrorMessage(about: .emptyMember)
                     } catch FitnessCenterError.emptyGoalsBodyCondition {
-                        throw FitnessCenterError.emptyGoalsBodyCondition
+                        printFitnessCenterErrorMessage(about: .emptyGoalsBodyCondition)
+                    } catch FitnessCenterError.emptyChosenRoutine {
+                        printFitnessCenterErrorMessage(about: .emptyChosenRoutine)
+                    } catch FitnessCenterError.emptyDecidedSet {
+                        printFitnessCenterErrorMessage(about: .emptyDecidedSet)
+                    } catch FitnessCenterError.memberBeDrained {
+                        printFitnessCenterErrorMessage(about: .memberBeDrained)
+                    } catch {
+                        print("unkown Error")
                     }
                 }
             }
@@ -141,15 +158,23 @@ class FitnessCenter {
         }
     }
     
-    func checkGoals(target bodyCondition: BodyCondition) throws -> Bool {
-        if let goalsBodyCondition = goalsBodyCondition {
-            if goalsBodyCondition.upperBodyStrength <= bodyCondition.upperBodyStrength && goalsBodyCondition.lowerBodyStrength <= bodyCondition.lowerBodyStrength && goalsBodyCondition.muscleEndurance <= bodyCondition.muscleEndurance {
-                return true
-            } else {
-                return false
-            }
+    func checkAchieveGoal() throws -> Bool {
+        var isAchieve = false
+        guard let member = member else {
+            throw FitnessCenterError.emptyMember
         }
-        throw FitnessCenterError.emptyGoalsBodyCondition
+        let memberBodyCondition = member.bodyCondition
+        guard let goalsBodyCondition = goalsBodyCondition else {
+            throw FitnessCenterError.emptyGoalsBodyCondition
+        }
+        if goalsBodyCondition.upperBodyStrength <= memberBodyCondition.upperBodyStrength && goalsBodyCondition.lowerBodyStrength <= memberBodyCondition.lowerBodyStrength && goalsBodyCondition.muscleEndurance <= memberBodyCondition.muscleEndurance {
+            isAchieve = true
+        } else {
+            isAchieve = false
+        }
+        printRoutineAchieveMessage(isAchieve)
+        member.printMyBodyCondition()
+        return isAchieve
     }
     
     func printRoutineAchieveMessage(_ isAchieve: Bool) {
