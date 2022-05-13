@@ -43,6 +43,8 @@ struct FitnessCenterKiosk {
         if let name = readLine() {
             if name == "q!" {
                 return .failure(.forcedTermination)
+            } else if name == "" {
+                return .failure(.emptyData)
             }
             if checkIsEnglish(target: name) {
                 return .success(name)
@@ -81,6 +83,8 @@ struct FitnessCenterKiosk {
         if let inputString = readLine() {
             if inputString == "q!" {
                 return .failure(.forcedTermination)
+            } else if name == "" {
+                return .failure(.emptyData)
             }
             if let naturalNumber = Int(inputString) {
                 if naturalNumber > 0 {
