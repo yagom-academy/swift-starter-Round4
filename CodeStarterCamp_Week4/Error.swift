@@ -15,6 +15,7 @@ enum PersonError: Error {
 enum FitnessCenterError: Error {
     case emptyMember
     case emptyGoalsBodyCondition
+    case emptyChosenRoutine
     case memberBeDrained
 }
 

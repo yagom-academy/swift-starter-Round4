@@ -20,7 +20,7 @@ class FitnessCenter {
         self.routines = routines
     }
     
-    func startFitnessKiosk() {
+    func startFitnessKiosk() throws {
         var isAchieveGoal = false
         var kioskStep = 1
         var chosenRoutine: Routine?
@@ -40,7 +40,6 @@ class FitnessCenter {
                     if goals.count == 3 {
                         setGoalsBodyCondition(by: goals)
                         kioskStep += 1
-                        continue
                     }
                 }
             } else if kioskStep == 3 {
@@ -51,25 +50,21 @@ class FitnessCenter {
                     chosenRoutine = routines[chosenNumberOfRoutine-1]
                     if chosenRoutine != nil {
                         kioskStep += 1
-                        continue
                     }
                 }
             } else {
                 fitnessCenterKiosk.printMessageByStep(nowStep: kioskStep)
+                guard let chosenRoutine = chosenRoutine else {
+                    throw FitnessCenterError.emptyChosenRoutine
+                }
+                guard let member = member else {
+                    throw FitnessCenterError.emptyMember
+                }
                 if let chosenNumberOfSet = fitnessCenterKiosk.receiveNaturalNumber() {
-                    if let chosenRoutine = chosenRoutine {
-                        let routineResult = repeatRoutine(chosenRoutine, times: chosenNumberOfSet)
-                        switch routineResult {
-                        case .success(let isAchieve):
-                            printRoutineAchieveMessage(isAchieve)
-                            if isAchieve {
-                                isAchieveGoal = true
-                            } else {
-                                kioskStep = 3
-                            }
-                        case .failure(let error):
-                            printFitnessCenterErrorMessage(about: error)
-                        }
+                    do {
+                        try member.exercise(for: chosenNumberOfSet, chosenRoutine)
+                    } catch PersonError.personBeDrained {
+                        throw FitnessCenterError.memberBeDrained
                     }
                 }
             }
@@ -87,28 +82,6 @@ class FitnessCenter {
     func introduceRoutines() {
         for routineCount in 1...routines.count {
             print("\(routineCount). \(routines[routineCount-1].name)")
-        }
-    }
-
-    func repeatRoutine(_ routine: Routine, times: Int) -> Result<Bool, FitnessCenterError> {
-        if let member = member {
-            if member.exercise(for: times, routine) {
-                let checkGoalsResult = checkGoals(target: member.bodyCondition)
-                switch checkGoalsResult {
-                case .success(let isAchieve):
-                    if isAchieve {
-                        return .success(true)
-                    } else {
-                        return .success(false)
-                    }
-                case .failure(let error):
-                    return .failure(error)
-                }
-            } else {
-                return .failure(.memberBeDrained)
-            }
-        } else {
-            return .failure(.emptyMember)
         }
     }
     
