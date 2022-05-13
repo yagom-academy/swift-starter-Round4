@@ -33,6 +33,7 @@ class FitnessCenter {
                 if !memberName.isEmpty {
                     setMember(with: memberName)
                     kioskStep += 1
+                    continue
                 }
             } else if kioskStep == 2 {
                 var goals = [Int]()
@@ -46,14 +47,13 @@ class FitnessCenter {
                 if goals.count == 3 {
                     setGoalsBodyCondition(by: goals)
                     kioskStep += 1
+                    continue
                 }
             } else if kioskStep == 3 {
                 chosenRoutine = nil
                 print(newLineString)
                 print("운동하시고 싶은 Routine의 번호를 입력하세요.")
-                for routineCount in 1...routines.count {
-                    print("\(routineCount). \(routines[routineCount-1].name)")
-                }
+                introduceRoutines()
                 let chosenNumberOfRoutine = fitnessCenterKiosk.receiveNaturalNumber()
                 chosenRoutine = routines[chosenNumberOfRoutine-1]
                 if chosenRoutine != nil {
@@ -87,6 +87,12 @@ class FitnessCenter {
     
     func setGoalsBodyCondition(by goals: [Int]) {
         goalsBodyCondition = BodyCondition(upperBodyStrength: goals[0], lowerBodyStrength: goals[1], muscleEndurance: goals[2])
+    }
+    
+    func introduceRoutines() {
+        for routineCount in 1...routines.count {
+            print("\(routineCount). \(routines[routineCount-1].name)")
+        }
     }
     
     func repeatRoutine(_ routine: Routine, times: Int) -> Result<Bool, FitnessCenterError> {
