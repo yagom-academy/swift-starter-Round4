@@ -85,15 +85,15 @@ class FitnessCenter {
         }
     }
     
-    func checkGoals(target bodyCondition: BodyCondition) -> Result<Bool, FitnessCenterError> {
+    func checkGoals(target bodyCondition: BodyCondition) throws -> Bool {
         if let goalsBodyCondition = goalsBodyCondition {
             if goalsBodyCondition.upperBodyStrength <= bodyCondition.upperBodyStrength && goalsBodyCondition.lowerBodyStrength <= bodyCondition.lowerBodyStrength && goalsBodyCondition.muscleEndurance <= bodyCondition.muscleEndurance {
-                return .success(true)
+                return true
             } else {
-                return .success(false)
+                return false
             }
         }
-        return .failure(.emptyGoalsBodyCondition)
+        throw FitnessCenterError.emptyGoalsBodyCondition
     }
     
     func printRoutineAchieveMessage(_ isAchieve: Bool) {
