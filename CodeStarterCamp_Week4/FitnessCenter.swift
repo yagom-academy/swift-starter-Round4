@@ -37,29 +37,6 @@ class FitnessCenter {
         return inputName
     }
     
-    func startProcess() throws {
-        if let member = member {
-            while true {
-                do {
-                    try member.exercise(routines: chooseRoutine(from: routineList), for: countSetsReapeat())
-                    try printResultAfterRoutine()
-                    break
-                } catch FitnessCenterError.unreachedGoal {
-                    print("--------------------")
-                    print("목표치에 도달하지 못 했습니다. 현재 \(member.name)님의 컨디션은 다음과 같습니다.")
-                    member.bodyCondition.printMucleStatus()
-                } catch FitnessCenterError.runAwayMember {
-                    print("--------------------")
-                    print("\(member.name)님의 피로도가 \(member.bodyCondition.tiredness)입니다. 회원님이 도망갔습니다.")
-                    break
-                } catch {
-                    print("에러메시지를 확인해주세요. \(error)")
-                    break
-                }
-            }
-        }
-    }
-    
     func printResultAfterRoutine() throws {
         if let member = member {
             guard member.bodyCondition.upperBodyMuscleStrength >= goalBodyCondition.upperBodyMuscleStrength,
@@ -163,13 +140,32 @@ class FitnessCenter {
         }
     }
     
+    func startProcess() {
+        if let member = member {
+            while true {
+                do {
+                    try member.exercise(routines: chooseRoutine(from: routineList), for: countSetsReapeat())
+                    try printResultAfterRoutine()
+                    break
+                } catch FitnessCenterError.unreachedGoal {
+                    print("--------------------")
+                    print("목표치에 도달하지 못 했습니다. 현재 \(member.name)님의 컨디션은 다음과 같습니다.")
+                    member.bodyCondition.printMucleStatus()
+                } catch FitnessCenterError.runAwayMember {
+                    print("--------------------")
+                    print("\(member.name)님의 피로도가 \(member.bodyCondition.tiredness)입니다. 회원님이 도망갔습니다.")
+                    break
+                } catch {
+                    print("에러메시지를 확인해주세요. \(error)")
+                    break
+                }
+            }
+        }
+    }
+    
     func startForTotalProcess() {
         registerMember()
         selectGoalBodyCondition()
-            do {
-                try startProcess()
-            } catch {
-                print("에러메시지를 확인해주세요. \(error)")
-            }
+        startProcess()
         }
 }
