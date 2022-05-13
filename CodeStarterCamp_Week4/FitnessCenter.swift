@@ -35,11 +35,12 @@ class FitnessCenter {
     var chosenRoutine: Routine?
     var decidedSet: Int?
     var routines: [Routine]
-    let fitnessCenterKiosk = FitnessCenterKiosk()
+    let fitnessCenterKiosk: FitnessCenterKiosk
     
-    init(name: String, routines: Routine...) {
+    init(name: String, routines: Routine..., kiosk: FitnessCenterKiosk) {
         self.name = name
         self.routines = routines
+        fitnessCenterKiosk = kiosk
     }
     
     func startFitnessKiosk() {
