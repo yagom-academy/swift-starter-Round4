@@ -11,7 +11,6 @@ import Foundation
 class FitnessCenter {
     let name: String
     var goalsBodyCondition: BodyCondition?
-    let bodyConditionProperty = ["UpperBodyStrength", "LowerBodyStrength", "MuscleEndurance"]
     var member: Person?
     var routines: [Routine]
     let fitnessCenterKiosk = FitnessCenterKiosk()

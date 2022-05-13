@@ -8,6 +8,10 @@
 
 import Foundation
 
+enum PersonError: Error {
+    case personBeDrained
+}
+
 enum FitnessCenterError: Error {
     case emptyMember
     case emptyGoalsBodyCondition

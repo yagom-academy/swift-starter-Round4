@@ -17,7 +17,7 @@ class Person {
         self.bodyCondition = bodyCondition
     }
     
-    func exercise(for set: Int, _ routine: Routine) -> Bool {
+    func exercise(for set: Int, _ routine: Routine) throws {
         print(newLineString)
         print("\(routine.name) Routine \(set)Set Start!")
         for setCount in 1...set {
@@ -25,10 +25,9 @@ class Person {
             print("\(setCount)Set")
             routine.startRoutine(based: bodyCondition)
             if bodyCondition.tiredness > 100 {
-                return false
+                throw PersonError.personBeDrained
             }
         }
-        return true
     }
     
     func printMyBodyCondition() {
