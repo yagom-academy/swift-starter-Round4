@@ -16,5 +16,14 @@ let lowerBodyRoutine = Routine(name: "Lower Body", exercises: squatting, squatti
 let wholeBodyRoutine = Routine(name: "Whole Body", exercises: longRun, activeRest, pushUp, activeRest, dip, chinUp, activeRest, squatting, activeRest, lunge, activeRest, sitUp)
 
 var yagomFitnessCenter = FitnessCenter(name: "야곰", routines: upperBodyRoutine, lowerBodyRoutine, wholeBodyRoutine)
-
-yagomFitnessCenter.startFitnessKiosk()
+do {
+    try yagomFitnessCenter.startFitnessKiosk()
+} catch FitnessCenterError.memberBeDrained {
+    printFitnessCenterErrorMessage(about: .memberBeDrained)
+} catch FitnessCenterError.emptyGoalsBodyCondition {
+    printFitnessCenterErrorMessage(about: .emptyGoalsBodyCondition)
+} catch FitnessCenterError.emptyChosenRoutine {
+    printFitnessCenterErrorMessage(about: .emptyChosenRoutine)
+} catch FitnessCenterError.emptyMember {
+    printFitnessCenterErrorMessage(about: .emptyMember)
+}

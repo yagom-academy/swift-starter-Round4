@@ -63,8 +63,17 @@ class FitnessCenter {
                 if let chosenNumberOfSet = fitnessCenterKiosk.receiveNaturalNumber() {
                     do {
                         try member.exercise(for: chosenNumberOfSet, chosenRoutine)
+                        if try checkGoals(target: member.bodyCondition) {
+                            isAchieveGoal = true
+                        } else {
+                            kioskStep = 3
+                        }
+                        printRoutineAchieveMessage(isAchieveGoal)
+                        member.printMyBodyCondition()
                     } catch PersonError.personBeDrained {
                         throw FitnessCenterError.memberBeDrained
+                    } catch FitnessCenterError.emptyGoalsBodyCondition {
+                        throw FitnessCenterError.emptyGoalsBodyCondition
                     }
                 }
             }
@@ -103,6 +112,5 @@ class FitnessCenter {
         } else {
             print("목표치에 도달하지 못했습니다! ", terminator: "")
         }
-        member?.printMyBodyCondition() ?? printFitnessCenterErrorMessage(about: .emptyMember)
     }
 }
