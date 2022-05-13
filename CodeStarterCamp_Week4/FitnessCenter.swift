@@ -110,6 +110,23 @@ class FitnessCenter {
         }
     }
     
+    func startMemberExercise() throws {
+        guard let member = member else {
+            throw FitnessCenterError.emptyMember
+        }
+        guard let chosenRoutine = chosenRoutine else {
+            throw FitnessCenterError.emptyChosenRoutine
+        }
+        guard let decidedSet = decidedSet else {
+            throw FitnessCenterError.emptyDecidedSet
+        }
+        do {
+            try member.exercise(for: decidedSet, chosenRoutine)
+        } catch PersonError.personBeDrained {
+            throw FitnessCenterError.memberBeDrained
+        }
+    }
+    
     func setMember(with name: String) {
         member = Person(name: name, bodyCondition: BodyCondition(upperBodyStrength: 30, lowerBodyStrength: 30, muscleEndurance: 10))
     }

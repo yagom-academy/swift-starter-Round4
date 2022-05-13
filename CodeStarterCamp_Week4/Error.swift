@@ -16,6 +16,7 @@ enum FitnessCenterError: Error {
     case emptyMember
     case emptyGoalsBodyCondition
     case emptyChosenRoutine
+    case emptyDecidedSet
     case memberBeDrained
 }
 
