@@ -32,7 +32,6 @@ class FitnessCenter {
                 if let memberName = fitnessCenterKiosk.receiveEnglishName() {
                     setMember(with: memberName)
                     kioskStep += 1
-                    continue
                 }
             } else if kioskStep == 2 {
                 fitnessCenterKiosk.printMessageByStep(nowStep: kioskStep)

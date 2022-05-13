@@ -8,6 +8,22 @@
 
 import Foundation
 
+func printKioskErrorMessage(about error: KioskError) {
+    print(newLineString)
+    if error == .forcedTermination {
+        print("Kiosk를 종료합니다.")
+        exit(0)
+    } else if error == .notEnglish {
+        print("입력하신 값은 영어가 아닙니다. 영어만 입력해 주세요.")
+    } else if error == .notNumber {
+        print("입력하신 값은 숫자가 아닙니다. 숫자만 입력해 주세요.")
+    } else if error == .notNaturalNumber {
+        print("입력하신 숫자는 자연수가 아닙니다. 자연수만 입력해 주세요.")
+    } else {
+        print("입력된 데이터가 없습니다. 다시 입력해 주세요.")
+    }
+}
+
 struct FitnessCenterKiosk {
     func printMessageByStep(nowStep: Int) {
         switch nowStep {
@@ -126,3 +142,4 @@ struct FitnessCenterKiosk {
         }
     }
 }
+
