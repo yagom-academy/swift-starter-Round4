@@ -12,6 +12,7 @@ class FitnessCenter {
     let name: String
     var goalsBodyCondition: BodyCondition?
     var member: Person?
+    var chosenRoutine: Routine?
     var routines: [Routine]
     let fitnessCenterKiosk = FitnessCenterKiosk()
     
@@ -92,6 +93,15 @@ class FitnessCenter {
             if goals.count == 3 {
                 setGoalsBodyCondition(by: goals)
             }
+        }
+    }
+    
+    func choseRoutine() {
+        chosenRoutine = nil
+        fitnessCenterKiosk.printMessageByStep(nowStep: 3)
+        introduceRoutines()
+        if let chosenNumberOfRoutine = fitnessCenterKiosk.receiveNaturalNumber() {
+            chosenRoutine = routines[chosenNumberOfRoutine-1]
         }
     }
     
