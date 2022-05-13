@@ -69,6 +69,7 @@ struct FitnessCenterKiosk {
     func receiveGoals() -> [Int]? {
         var goals = [Int]()
         while goals.count < 3 {
+            printMessageCorresponds(to: goals.count)
             let enterResult = enterNaturalNumber()
             switch enterResult {
             case .success(let naturalNumber):
@@ -78,6 +79,17 @@ struct FitnessCenterKiosk {
             }
         }
         return goals
+    }
+    
+    func printMessageCorresponds(to goalsPoint: Int) {
+        print(newLineString)
+        if goalsPoint == 0 {
+            print("UpperBodyStrength 목표치.")
+        } else if goalsPoint == 1{
+            print("LowerBodyStrength 목표치.")
+        } else {
+            print("MuscleEndurance 목표치.")
+        }
     }
     
     func receiveNaturalNumber() -> Int? {

@@ -36,18 +36,13 @@ class FitnessCenter {
                     continue
                 }
             } else if kioskStep == 2 {
-                var goals = [Int]()
                 fitnessCenterKiosk.printMessageByStep(nowStep: kioskStep)
-                while goals.count < 3 {
-                    print("\(bodyConditionProperty[goals.count]) 목표치.")
-                    if let naturalNumber = fitnessCenterKiosk.receiveNaturalNumber() {
-                        goals.append(naturalNumber)
+                if let goals = fitnessCenterKiosk.receiveGoals() {
+                    if goals.count == 3 {
+                        setGoalsBodyCondition(by: goals)
+                        kioskStep += 1
+                        continue
                     }
-                }
-                if goals.count == 3 {
-                    setGoalsBodyCondition(by: goals)
-                    kioskStep += 1
-                    continue
                 }
             } else if kioskStep == 3 {
                 chosenRoutine = nil
