@@ -86,54 +86,42 @@ class FitnessCenter {
             }
         }
     }
-    
-    func changeGoalBodyCondition(GoalConditionPart: Int, goalStatus: Int) {
-        switch GoalConditionPart {
-        case goalBodyCondition.upperBodyMuscleStrength:
-            goalBodyCondition.upperBodyMuscleStrength += goalStatus
-        case goalBodyCondition.lowerBodyMuscleStrength:
-            goalBodyCondition.lowerBodyMuscleStrength += goalStatus
-        case goalBodyCondition.muscularEndurance:
-            goalBodyCondition.muscularEndurance += goalStatus
-        case member?.bodyCondition.tiredness:
-            member?.bodyCondition.tiredness += goalStatus
-        default:
-            return
-        }
-    }
-    
+
     func selectGoalBodyCondition() {
+        func changeGoalBodyCondition(GoalPart: String) {
+            while true {
+                do {
+                    print("\(GoalPart): ", terminator: "")
+                    let conditionValue = try receiveNumber()
+                    switch GoalPart {
+                    case "상체근력":
+                        goalBodyCondition.upperBodyMuscleStrength += conditionValue
+                    case "하체근력":
+                        goalBodyCondition.lowerBodyMuscleStrength += conditionValue
+                    case "근지구력":
+                        goalBodyCondition.muscularEndurance += conditionValue
+                    case "현재 피로도":
+                        if let member = member {
+                            member.bodyCondition.tiredness += conditionValue
+                        }
+                    default:
+                        break
+                    }
+                    break
+                } catch InputError.notInt {
+                    print("숫자로 입력해주세요.")
+                } catch {
+                    print("에러메시지를 확인해주세요. \(error)")
+                }
+            }
+        }
         print("--------------------")
         print("운동 목표치를 순서대로 알려주세요. 예시) 상체근력: 130, 하체근력: 120, 근지구력: 150")
-        while true {
-            do {
-                print("상체근력 : ", terminator: "")
-                changeGoalBodyCondition(GoalConditionPart: goalBodyCondition.upperBodyMuscleStrength, goalStatus: try receiveNumber())
-                print("하체근력 : ", terminator: "")
-                changeGoalBodyCondition(GoalConditionPart: goalBodyCondition.lowerBodyMuscleStrength, goalStatus: try receiveNumber())
-                print("근지구력 : ", terminator: "")
-                changeGoalBodyCondition(GoalConditionPart: goalBodyCondition.muscularEndurance, goalStatus: try receiveNumber())
-                break
-            } catch InputError.notInt {
-                print("숫자로 입력해주세요.")
-            } catch {
-                print("에러메시지를 확인해주세요. \(error)")
-            }
-        }
+        changeGoalBodyCondition(GoalPart: "상체근력")
+        changeGoalBodyCondition(GoalPart: "하체근력")
+        changeGoalBodyCondition(GoalPart: "근지구력")
         print("현재 피로도를 0에서 100 사이의 숫자로 알려주세요!")
-        while true {
-            do {
-                print("현재 피로도 : ", terminator: "")
-                if let member = member {
-                    changeGoalBodyCondition(GoalConditionPart: member.bodyCondition.tiredness, goalStatus: try receiveNumber())
-                    break
-                }
-            } catch InputError.notInt {
-                print("숫자로 입력해주세요.")
-            } catch {
-                print("에러메시지를 확인해주세요. \(error)")
-            }
-        }
+        changeGoalBodyCondition(GoalPart: "현재 피로도")
     }
     
     func chooseRoutine(from routineList: [Routine]) -> Routine {
