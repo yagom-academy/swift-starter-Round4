@@ -26,18 +26,14 @@ func printKioskErrorMessage(about error: KioskError) {
 
 struct FitnessCenterKiosk {
     func printMessageByStep(nowStep: Int) {
-        switch nowStep {
-        case 1:
-            print(newLineString)
+        print(newLineString)
+        if nowStep == 1 {
             print("회원님의 이름을 입력해 주세요. * 이름은 영어만 입력해주세요.(공백, 특수문자 사용금지)")
-        case 2:
-            print(newLineString)
+        } else if nowStep == 2 {
             print("운동 목표치를 입력하세요.")
-        case 3:
-            print(newLineString)
+        } else if nowStep == 3 {
             print("운동하시고 싶은 Routine의 번호를 입력하세요.")
-        default :
-            print(newLineString)
+        } else {
             print("몇 세트를 반복하시겠습니까?")
         }
     }
