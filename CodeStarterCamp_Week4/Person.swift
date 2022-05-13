@@ -10,6 +10,7 @@ import Foundation
 class Person {
     let name: String
     var bodyCondition: BodyCondition
+    var goalBodyCondition: BodyCondition = BodyCondition(upperBodyMuscleStrength: 0, lowerBodyMuscleStrength: 0, muscularEndurance: 0, tiredness: 0)
     
     init(name: String, bodyCondition: BodyCondition) {
         self.name = name

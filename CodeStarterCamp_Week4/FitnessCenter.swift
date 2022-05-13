@@ -9,7 +9,6 @@ import Foundation
 
 class FitnessCenter {
     let centerName: String
-    var goalBodyCondition: BodyCondition = BodyCondition(upperBodyMuscleStrength: 0, lowerBodyMuscleStrength: 0, muscularEndurance: 0, tiredness: 0)
     var member: Person?
     let routineList: [Routine]
     
@@ -37,11 +36,11 @@ class FitnessCenter {
         return inputName
     }
     
-    func printResultAfterRoutine() throws {
+    func printResultAfterRoutine(with goalBodyCondition: Person) throws {
         if let member = member {
-            guard member.bodyCondition.upperBodyMuscleStrength >= goalBodyCondition.upperBodyMuscleStrength,
-                  member.bodyCondition.lowerBodyMuscleStrength >= goalBodyCondition.lowerBodyMuscleStrength,
-                  member.bodyCondition.muscularEndurance >= goalBodyCondition.muscularEndurance else {
+            guard member.bodyCondition.upperBodyMuscleStrength >= goalBodyCondition.bodyCondition.upperBodyMuscleStrength,
+                  member.bodyCondition.lowerBodyMuscleStrength >= goalBodyCondition.bodyCondition.lowerBodyMuscleStrength,
+                  member.bodyCondition.muscularEndurance >= goalBodyCondition.bodyCondition.muscularEndurance else {
                 throw FitnessCenterError.unreachedGoal
             }
             print("--------------------")
@@ -64,7 +63,7 @@ class FitnessCenter {
         }
     }
 
-    func selectGoalBodyCondition() {
+    func selectGoalBodyCondition(with goalBodyCondition: Person) {
         func changeGoalBodyCondition(GoalPart: String) {
             while true {
                 do {
@@ -72,11 +71,11 @@ class FitnessCenter {
                     let conditionValue = try receiveNumber()
                     switch GoalPart {
                     case "상체근력":
-                        goalBodyCondition.upperBodyMuscleStrength += conditionValue
+                        goalBodyCondition.bodyCondition.upperBodyMuscleStrength += conditionValue
                     case "하체근력":
-                        goalBodyCondition.lowerBodyMuscleStrength += conditionValue
+                        goalBodyCondition.bodyCondition.lowerBodyMuscleStrength += conditionValue
                     case "근지구력":
-                        goalBodyCondition.muscularEndurance += conditionValue
+                        goalBodyCondition.bodyCondition.muscularEndurance += conditionValue
                     case "현재 피로도":
                         if let member = member {
                             member.bodyCondition.tiredness += conditionValue
@@ -145,7 +144,7 @@ class FitnessCenter {
             while true {
                 do {
                     try member.exercise(routines: chooseRoutine(from: routineList), for: countSetsReapeat())
-                    try printResultAfterRoutine()
+                    try printResultAfterRoutine(with: member )
                     break
                 } catch FitnessCenterError.unreachedGoal {
                     print("--------------------")
@@ -165,7 +164,9 @@ class FitnessCenter {
     
     func startForTotalProcess() {
         registerMember()
-        selectGoalBodyCondition()
+        if let member = member {
+            selectGoalBodyCondition(with: member)
+        }
         startProcess()
         }
 }
