@@ -28,14 +28,13 @@ class FitnessCenter {
         var kioskStep = 1
         var chosenRoutine: Routine?
         while !isAchieveGoal {
-            switch kioskStep {
-            case 1:
+            if kioskStep == 1 {
                 let memberName = fitnessCenterKiosk.receiveEnglishName()
                 if !memberName.isEmpty {
                     setMember(with: memberName)
                     kioskStep += 1
                 }
-            case 2:
+            } else if kioskStep == 2 {
                 var goals = [Int]()
                 print(newLineString)
                 print("운동 목표치를 입력하세요.")
@@ -48,7 +47,7 @@ class FitnessCenter {
                     setGoalsBodyCondition(by: goals)
                     kioskStep += 1
                 }
-            case 3:
+            } else if kioskStep == 3 {
                 chosenRoutine = nil
                 print(newLineString)
                 print("운동하시고 싶은 Routine의 번호를 입력하세요.")
@@ -60,7 +59,7 @@ class FitnessCenter {
                 if chosenRoutine != nil {
                     kioskStep += 1
                 }
-            default:
+            } else {
                 print(newLineString)
                 print("몇 세트를 반복하시겠습니까?")
                 let chosenNumberOfSet = fitnessCenterKiosk.receiveNaturalNumber()
