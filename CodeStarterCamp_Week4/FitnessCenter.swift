@@ -79,6 +79,13 @@ class FitnessCenter {
         }
     }
     
+    func registerMember() {
+        fitnessCenterKiosk.printMessageByStep(nowStep: 1)
+        if let memberName = fitnessCenterKiosk.receiveEnglishName() {
+            setMember(with: memberName)
+        }
+    }
+    
     func setMember(with name: String) {
         member = Person(name: name, bodyCondition: BodyCondition(upperBodyStrength: 30, lowerBodyStrength: 30, muscleEndurance: 10))
     }
