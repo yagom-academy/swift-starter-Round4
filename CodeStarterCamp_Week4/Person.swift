@@ -23,12 +23,13 @@ class Person {
         for setCounter in 1...set {
             print("--------------------")
             print("\(setCounter)set 시작!")
-            let routineName = routines.routineArray.map( { $0.name } ).joined(separator: "\n")
-            _ = routines.routineArray.map( { $0.action(bodyCondition) } )
-            print(routineName)
-            if bodyCondition.tiredness > limitTiredness {
-                throw FitnessCenterError.runAwayMember
-            }
+            try _ = routines.routineArray.map( {
+                print($0.name)
+                $0.action(bodyCondition)
+                if bodyCondition.tiredness > limitTiredness {
+                    throw FitnessCenterError.runAwayMember
+                }
+            } )
         }
     }
     
