@@ -64,12 +64,12 @@ class FitnessCenter {
     }
 
     func selectGoalBodyCondition(with goalBodyCondition: Person) {
-        func changeGoalBodyCondition(GoalPart: String) {
+        func changeGoalBodyCondition(goalPart: String) {
             while true {
                 do {
-                    print("\(GoalPart): ", terminator: "")
+                    print("\(goalPart): ", terminator: "")
                     let conditionValue = try receiveNumber()
-                    switch GoalPart {
+                    switch goalPart {
                     case "상체근력":
                         goalBodyCondition.bodyCondition.upperBodyMuscleStrength += conditionValue
                     case "하체근력":
@@ -93,11 +93,11 @@ class FitnessCenter {
         }
         print("--------------------")
         print("운동 목표치를 순서대로 알려주세요. 예시) 상체근력: 130, 하체근력: 120, 근지구력: 150")
-        changeGoalBodyCondition(GoalPart: "상체근력")
-        changeGoalBodyCondition(GoalPart: "하체근력")
-        changeGoalBodyCondition(GoalPart: "근지구력")
+        changeGoalBodyCondition(goalPart: "상체근력")
+        changeGoalBodyCondition(goalPart: "하체근력")
+        changeGoalBodyCondition(goalPart: "근지구력")
         print("현재 피로도를 0에서 100 사이의 숫자로 알려주세요!")
-        changeGoalBodyCondition(GoalPart: "현재 피로도")
+        changeGoalBodyCondition(goalPart: "현재 피로도")
     }
     
     func chooseRoutine(from routineList: [Routine]) -> Routine {
