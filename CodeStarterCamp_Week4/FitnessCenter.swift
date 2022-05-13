@@ -25,36 +25,33 @@ class FitnessCenter {
     func startFitnessKiosk() throws {
         var isAchieveGoal = false
         var kioskStep = 1
-        var chosenRoutine: Routine?
         print(newLineString)
         print("안녕하세요. \(name) Fitness Center 입니다.")
         while !isAchieveGoal {
             if kioskStep == 1 {
-                fitnessCenterKiosk.printMessageByStep(nowStep: kioskStep)
-                if let memberName = fitnessCenterKiosk.receiveEnglishName() {
-                    setMember(with: memberName)
+                member = nil
+                registerMember()
+                if member != nil {
                     kioskStep += 1
                 }
             } else if kioskStep == 2 {
-                fitnessCenterKiosk.printMessageByStep(nowStep: kioskStep)
-                if let goals = fitnessCenterKiosk.receiveGoals() {
-                    if goals.count == 3 {
-                        setGoalsBodyCondition(by: goals)
-                        kioskStep += 1
-                    }
+                goalsBodyCondition = nil
+                setGoals()
+                if goalsBodyCondition != nil {
+                    kioskStep += 1
                 }
             } else if kioskStep == 3 {
                 chosenRoutine = nil
-                fitnessCenterKiosk.printMessageByStep(nowStep: kioskStep)
-                introduceRoutines()
-                if let chosenNumberOfRoutine = fitnessCenterKiosk.receiveNaturalNumber() {
-                    chosenRoutine = routines[chosenNumberOfRoutine-1]
-                    if chosenRoutine != nil {
-                        kioskStep += 1
-                    }
+                choseRoutine()
+                if chosenRoutine != nil {
+                    kioskStep += 1
                 }
             } else {
-                fitnessCenterKiosk.printMessageByStep(nowStep: kioskStep)
+                decidedSet = nil
+                dicideSet()
+                if decidedSet != nil {
+                    
+                }
                 guard let chosenRoutine = chosenRoutine else {
                     throw FitnessCenterError.emptyChosenRoutine
                 }
