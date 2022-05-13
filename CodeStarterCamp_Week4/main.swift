@@ -170,9 +170,7 @@ struct FitnessCenter {
         print("근지구력 :", terminator: " ")
         let muscularEndurance: String? = readLine()
         
-        let totalRoutines = self.routineList.map {
-            $0.name
-        }
+        let totalRoutines = self.routineList.map { $0.name }
         print("몇 번째 루틴으로 운동하시겠어요?")
         var routineCount = 0
         for routine in totalRoutines{
@@ -261,9 +259,7 @@ struct FitnessCenter {
             print("cannot use Array")
             throw FitnessErrorCase.anotherERROR
         }
-        let personsMemberName = findingMembers.map {
-            $0.name
-        }
+        let personsMemberName = findingMembers.map { $0.name }
         guard personsMemberName.contains(inputName) else {
             throw FitnessErrorCase.noMembers
         }
