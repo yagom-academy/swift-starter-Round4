@@ -13,6 +13,7 @@ class FitnessCenter {
     var goalsBodyCondition: BodyCondition?
     var member: Person?
     var chosenRoutine: Routine?
+    var decidedSet: Int?
     var routines: [Routine]
     let fitnessCenterKiosk = FitnessCenterKiosk()
     
@@ -102,6 +103,13 @@ class FitnessCenter {
         introduceRoutines()
         if let chosenNumberOfRoutine = fitnessCenterKiosk.receiveNaturalNumber() {
             chosenRoutine = routines[chosenNumberOfRoutine-1]
+        }
+    }
+    
+    func dicideSet() {
+        fitnessCenterKiosk.printMessageByStep(nowStep: 4)
+        if let naturalNumber = fitnessCenterKiosk.receiveNaturalNumber() {
+            decidedSet = naturalNumber
         }
     }
     
