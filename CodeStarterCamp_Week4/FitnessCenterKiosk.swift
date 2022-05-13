@@ -66,6 +66,20 @@ struct FitnessCenterKiosk {
         return true
     }
     
+    func receiveGoals() -> [Int]? {
+        var goals = [Int]()
+        while goals.count < 3 {
+            let enterResult = enterNaturalNumber()
+            switch enterResult {
+            case .success(let naturalNumber):
+                goals.append(naturalNumber)
+            case .failure(let error):
+                printKioskErrorMessage(about: error)
+            }
+        }
+        return goals
+    }
+    
     func receiveNaturalNumber() -> Int? {
         var NaturalNumber: Int?
         let enterResult = enterNaturalNumber()
@@ -83,7 +97,7 @@ struct FitnessCenterKiosk {
         if let inputString = readLine() {
             if inputString == "q!" {
                 return .failure(.forcedTermination)
-            } else if name == "" {
+            } else if inputString == "" {
                 return .failure(.emptyData)
             }
             if let naturalNumber = Int(inputString) {
