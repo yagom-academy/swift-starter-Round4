@@ -42,8 +42,12 @@ let jumpRope: Exercise = Exercise(name: "줄넘기",
 let hellRoutine = Routine(name: "지옥 루틴", exercises: [sitUp, sitUp, dynamicBreak, squat, squat, dynamicBreak, longRun, longRun])
 let lightRoutine = Routine(name: "가벼운 루틴", exercises: [sitUp, dynamicBreak, jumpRope, squat, dynamicBreak])
 
-let kimYuna = BodyCondition(name: "김연아", upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
-let songGain = BodyCondition(name: "송가인", upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
+let kimYuna = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
+let songGain = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
 
-kimYuna.exercise(routine: hellRoutine)
-songGain.exercise(routine: lightRoutine)
+//kimYuna.exercise(routine: hellRoutine)
+//songGain.exercise(routine: lightRoutine)
+
+// MARK: - step 2
+var fitness = FitnessCenter(routine: [hellRoutine, lightRoutine])
+fitness.exercise()

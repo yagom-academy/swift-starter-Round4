@@ -8,14 +8,12 @@
 import Foundation
 
 class BodyCondition {
-    var name: String
     var upperBodyStrength: Int
     var lowerBodyStrength: Int
     var muscularEndurance: Int
     var fatigue: Int
     
-    init(name: String, upperBodyStrength: Int, lowerBodyStrength: Int, muscularEndurance: Int, fatigue: Int) {
-        self.name = name
+    init(upperBodyStrength: Int, lowerBodyStrength: Int, muscularEndurance: Int, fatigue: Int) {
         self.upperBodyStrength = upperBodyStrength
         self.lowerBodyStrength = lowerBodyStrength
         self.muscularEndurance = muscularEndurance
@@ -23,7 +21,7 @@ class BodyCondition {
     }
     
     func exercise(routine: Routine) {
-        print("\(self.name)님이 \(routine.name)을 시작합니다.")
+        print("\(routine.name)을 시작합니다.")
         print("--------------")
         routine.exercises.forEach {
             $0.action(self)
@@ -32,9 +30,8 @@ class BodyCondition {
         currentCondition()
     }
     
-    private func currentCondition() {
+    func currentCondition() {
         print("""
-                  --------------
                   현재의 컨디션은 다음과 같습니다.
                   상체근력: \(self.upperBodyStrength)
                   하체근력: \(self.lowerBodyStrength)
