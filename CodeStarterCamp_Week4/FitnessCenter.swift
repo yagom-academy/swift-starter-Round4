@@ -86,6 +86,15 @@ class FitnessCenter {
         }
     }
     
+    func setGoals() {
+        fitnessCenterKiosk.printMessageByStep(nowStep: 2)
+        if let goals = fitnessCenterKiosk.receiveGoals() {
+            if goals.count == 3 {
+                setGoalsBodyCondition(by: goals)
+            }
+        }
+    }
+    
     func setMember(with name: String) {
         member = Person(name: name, bodyCondition: BodyCondition(upperBodyStrength: 30, lowerBodyStrength: 30, muscleEndurance: 10))
     }
