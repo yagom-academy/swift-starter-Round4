@@ -29,8 +29,8 @@ class FitnessCenter {
         print("안녕하세요. \(name) Fitness Center 입니다.")
         while !isAchieveGoal {
             if kioskStep == 1 {
-                let memberName = fitnessCenterKiosk.receiveEnglishName()
-                if !memberName.isEmpty {
+                fitnessCenterKiosk.printMessageByStep(nowStep: kioskStep)
+                if let memberName = fitnessCenterKiosk.receiveEnglishName() {
                     setMember(with: memberName)
                     kioskStep += 1
                     continue

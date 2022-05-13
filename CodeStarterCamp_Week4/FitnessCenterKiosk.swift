@@ -26,25 +26,20 @@ struct FitnessCenterKiosk {
         }
     }
     
-    func receiveEnglishName() -> String {
-        var isCorrectData = false
-        var englishName = ""
-        while !isCorrectData {
-            printMessageByStep(nowStep: 1)
-            print("입력란(강제종료:q!) : ", terminator: "")
-            let enterResult = enterEnglishName()
-            switch enterResult {
-            case .success(let data):
-                englishName = data
-                isCorrectData = true
-            case .failure(let error):
-                printKioskErrorMessage(about: error)
-            }
+    func receiveEnglishName() -> String? {
+        var englishName: String?
+        let enterResult = enterEnglishName()
+        switch enterResult {
+        case .success(let data):
+            englishName = data
+        case .failure(let error):
+            printKioskErrorMessage(about: error)
         }
         return englishName
     }
     
     func enterEnglishName() -> Result<String, KioskError> {
+        print("입력란(강제종료:q!) : ", terminator: "")
         if let name = readLine() {
             if name == "q!" {
                 return .failure(.forcedTermination)
