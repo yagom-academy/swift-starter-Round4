@@ -40,8 +40,9 @@ class FitnessCenter {
                 fitnessCenterKiosk.printMessageByStep(nowStep: kioskStep)
                 while goals.count < 3 {
                     print("\(bodyConditionProperty[goals.count]) 목표치.")
-                    let naturalNumber = fitnessCenterKiosk.receiveNaturalNumber()
-                    goals.append(naturalNumber)
+                    if let naturalNumber = fitnessCenterKiosk.receiveNaturalNumber() {
+                        goals.append(naturalNumber)
+                    }
                 }
                 if goals.count == 3 {
                     setGoalsBodyCondition(by: goals)
@@ -52,27 +53,29 @@ class FitnessCenter {
                 chosenRoutine = nil
                 fitnessCenterKiosk.printMessageByStep(nowStep: kioskStep)
                 introduceRoutines()
-                let chosenNumberOfRoutine = fitnessCenterKiosk.receiveNaturalNumber()
-                chosenRoutine = routines[chosenNumberOfRoutine-1]
-                if chosenRoutine != nil {
-                    kioskStep += 1
-                    continue
+                if let chosenNumberOfRoutine = fitnessCenterKiosk.receiveNaturalNumber() {
+                    chosenRoutine = routines[chosenNumberOfRoutine-1]
+                    if chosenRoutine != nil {
+                        kioskStep += 1
+                        continue
+                    }
                 }
             } else {
                 fitnessCenterKiosk.printMessageByStep(nowStep: kioskStep)
-                let chosenNumberOfSet = fitnessCenterKiosk.receiveNaturalNumber()
-                if let chosenRoutine = chosenRoutine {
-                    let routineResult = repeatRoutine(chosenRoutine, times: chosenNumberOfSet)
-                    switch routineResult {
-                    case .success(let isAchieve):
-                        printRoutineAchieveMessage(isAchieve)
-                        if isAchieve {
-                            isAchieveGoal = true
-                        } else {
-                            kioskStep = 3
+                if let chosenNumberOfSet = fitnessCenterKiosk.receiveNaturalNumber() {
+                    if let chosenRoutine = chosenRoutine {
+                        let routineResult = repeatRoutine(chosenRoutine, times: chosenNumberOfSet)
+                        switch routineResult {
+                        case .success(let isAchieve):
+                            printRoutineAchieveMessage(isAchieve)
+                            if isAchieve {
+                                isAchieveGoal = true
+                            } else {
+                                kioskStep = 3
+                            }
+                        case .failure(let error):
+                            printFitnessCenterErrorMessage(about: error)
                         }
-                    case .failure(let error):
-                        printFitnessCenterErrorMessage(about: error)
                     }
                 }
             }

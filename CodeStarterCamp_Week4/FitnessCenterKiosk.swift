@@ -64,24 +64,20 @@ struct FitnessCenterKiosk {
         return true
     }
     
-    func receiveNaturalNumber() -> Int {
-        var isCorrectData = false
-        var NaturalNumber = 0
-        while !isCorrectData {
-            print("입력란 (자연수만 입력)(강제종료:q!) : ", terminator: "")
-            let enterResult = enterNaturalNumber()
-            switch enterResult {
-            case .success(let data):
-                NaturalNumber = data
-                isCorrectData = true
-            case .failure(let error):
-                printKioskErrorMessage(about: error)
-            }
+    func receiveNaturalNumber() -> Int? {
+        var NaturalNumber: Int?
+        let enterResult = enterNaturalNumber()
+        switch enterResult {
+        case .success(let data):
+            NaturalNumber = data
+        case .failure(let error):
+            printKioskErrorMessage(about: error)
         }
         return NaturalNumber
     }
     
     func enterNaturalNumber() -> Result<Int, KioskError> {
+        print("입력란 (자연수만 입력)(강제종료:q!) : ", terminator: "")
         if let inputString = readLine() {
             if inputString == "q!" {
                 return .failure(.forcedTermination)
