@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		34811DE8274B93FB00A1E994 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34811DE7274B93FB00A1E994 /* main.swift */; };
+		AE3F7D9C282FA71B00ED1548 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3F7D9B282FA71B00ED1548 /* Error.swift */; };
 		AEC5CCC4282A86B100E15B11 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC5CCC3282A86B100E15B11 /* Person.swift */; };
 		AEC5CCC8282A896400E15B11 /* FitnessCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC5CCC7282A896400E15B11 /* FitnessCenter.swift */; };
 		AECFB7122827823600CC0597 /* BodyCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECFB7112827823600CC0597 /* BodyCondition.swift */; };
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		34811DE4274B93FB00A1E994 /* CodeStarterCamp_Week4 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CodeStarterCamp_Week4; sourceTree = BUILT_PRODUCTS_DIR; };
 		34811DE7274B93FB00A1E994 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		AE3F7D9B282FA71B00ED1548 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		AEC5CCC3282A86B100E15B11 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		AEC5CCC7282A896400E15B11 /* FitnessCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessCenter.swift; sourceTree = "<group>"; };
 		AECFB7112827823600CC0597 /* BodyCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyCondition.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				AEC5CCC7282A896400E15B11 /* FitnessCenter.swift */,
 				AECFB7112827823600CC0597 /* BodyCondition.swift */,
 				AECFB713282782F500CC0597 /* Exercise.swift */,
+				AE3F7D9B282FA71B00ED1548 /* Error.swift */,
 				AECFB7152827841B00CC0597 /* Routine.swift */,
 			);
 			path = CodeStarterCamp_Week4;
@@ -139,6 +142,7 @@
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
 				AECFB7122827823600CC0597 /* BodyCondition.swift in Sources */,
 				AECFB7162827841B00CC0597 /* Routine.swift in Sources */,
+				AE3F7D9C282FA71B00ED1548 /* Error.swift in Sources */,
 				AECFB714282782F500CC0597 /* Exercise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

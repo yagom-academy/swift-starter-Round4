@@ -7,12 +7,6 @@
 
 import Foundation
 
-enum InputError: Error {
-    case empty
-    case outOfValue
-    case invaildValue
-}
-
 class FitnessCenter {
     let name: String
     var targetBodyCondition: BodyCondition
