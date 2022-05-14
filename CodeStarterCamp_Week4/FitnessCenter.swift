@@ -45,7 +45,7 @@ class FitnessCenter {
             }
             print("--------------------")
             print("성공입니다! 현재 \(member.name)님의 컨디션은 다음과 같습니다.")
-            member.bodyCondition.printMucleStatus()
+            member.printBodyConditionAfterExercise()
         }
     }
     
