@@ -9,20 +9,13 @@ import Foundation
 
 class FitnessCenter {
     let name: String
-    var targetBodyCondition: BodyCondition
+    var bodyGoal: [Int] = [0, 0, 0]
     var member: Person?
     var listOfRoutine: [Routine]
     
-    init(name: String, targetBodyCondition: BodyCondition, member: Person, listOfRoutine: [Routine]) {
+    init(name: String, listOfRoutine: [Routine]) {
         self.name = name
-        self.targetBodyCondition = BodyCondition()
-        self.member = member
         self.listOfRoutine = listOfRoutine
-        
-    }
-    
-    convenience init(name: String, listOfRoutine: [Routine]) {
-        self.init(name: name, targetBodyCondition: BodyCondition(), member: Person(name: "", bodyCondition: BodyCondition()), listOfRoutine: listOfRoutine)
     }
     
     func exerciseRoutine() {
