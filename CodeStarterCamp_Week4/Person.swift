@@ -25,11 +25,11 @@ class Person {
             print("--------------------")
             print("\(set)set 시작!")
             try _ = routine.exercises.map( {
+                $0.action(bodyCondition)
                 if bodyCondition.tiredness > limitTiredness {
                     throw FitnessCenterError.runAwayMember
                 }
-                $0.action(bodyCondition)
-                print($0.name)
+                print($0.name, bodyCondition.tiredness)
             } )
         }
     }
