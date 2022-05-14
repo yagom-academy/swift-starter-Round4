@@ -100,20 +100,20 @@ class FitnessCenter {
         changeGoalBodyCondition(goalPart: "현재 피로도")
     }
     
-    func chooseRoutine(from routineList: [Routine]) -> Routine {
+    func chooseRoutine(from routines: [Routine]) -> Routine {
         while true {
             do {
                 print("--------------------")
                 print("몇 번째 루틴으로 하시겠어요?")
-                for (index, routine) in routineList.enumerated() {
+                for (index, routine) in routines.enumerated() {
                     print("\(index + 1). \(routine.name)")
                 }
                 let index = try receiveNumber() - 1
                 
-                guard routineList.indices.contains(index) else {
+                guard routines.indices.contains(index) else {
                     throw FitnessCenterError.invaildRoutine
                 }
-                return routineList[index]
+                return routines[index]
             } catch FitnessCenterError.invaildRoutine {
                 print("선택한 루틴이 없습니다.")
             } catch InputError.notInt {
@@ -143,7 +143,7 @@ class FitnessCenter {
         if let member = member {
             while true {
                 do {
-                    try member.exercise(routines: chooseRoutine(from: routineList), sets: countSetsReapeat())
+                    try member.exercise(routines: chooseRoutine(from: routines), sets: countSetsReapeat())
                     try printResultAfterRoutine(with: member )
                     break
                 } catch FitnessCenterError.unreachedGoal {

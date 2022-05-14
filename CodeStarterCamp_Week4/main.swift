@@ -16,8 +16,8 @@ let todayRoutine: Routine = Routine(name: "전신 근육 박살내기 루틴", e
 let hellOfSitup: Routine = Routine(name: "지옥의 윗몸일으키기", exercises: [sitUp, sitUp, activeRest, sitUp, sitUp, activeRest])
 let deathOfSquat: Routine = Routine(name: "죽음의 스쿼트", exercises: [squat, squat, activeRest, squat, squat, activeRest])
 let slowLongRunning: Routine = Routine(name: "천천히 오래달리기", exercises: [longRunning, activeRest])
-let routineList: [Routine] = [todayRoutine, hellOfSitup, deathOfSquat, slowLongRunning]
-let yagomFitnessCenter: FitnessCenter = FitnessCenter(centerName: "yagom", routineList: routineList)
+let routines: [Routine] = [todayRoutine, hellOfSitup, deathOfSquat, slowLongRunning]
+let yagomFitnessCenter: FitnessCenter = FitnessCenter(centerName: "yagom", routineList: routines)
 
 yagomFitnessCenter.startForTotalProcess()
 
