@@ -24,7 +24,7 @@ class Person {
         for setCounter in 1...set {
             print("--------------------")
             print("\(setCounter)set 시작!")
-            try _ = routines.routineArray.map( {
+            try _ = routines.exercises.map( {
                 if bodyCondition.tiredness > limitTiredness {
                     throw FitnessCenterError.runAwayMember
                 }

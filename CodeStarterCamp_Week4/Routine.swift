@@ -9,5 +9,5 @@ import Foundation
 
 struct Routine {
     let name: String
-    var routineArray: Array<Exercise>
+    var exercises: Array<Exercise>
 }
