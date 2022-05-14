@@ -17,14 +17,14 @@ class Person {
         self.bodyCondition = bodyCondition
     }
     
-    func exercise(routines: Routine, sets: Int) throws {
+    func exercise(routine: Routine, sets: Int) throws {
         let limitTiredness = 100
         print("--------------------")
-        print("\(routines.name)을(를) \(sets)set 시작합니다.")
+        print("\(routine.name)을(를) \(sets)set 시작합니다.")
         for set in 1...sets {
             print("--------------------")
             print("\(set)set 시작!")
-            try _ = routines.exercises.map( {
+            try _ = routine.exercises.map( {
                 if bodyCondition.tiredness > limitTiredness {
                     throw FitnessCenterError.runAwayMember
                 }

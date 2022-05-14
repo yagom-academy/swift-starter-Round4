@@ -143,7 +143,7 @@ class FitnessCenter {
         if let member = member {
             while true {
                 do {
-                    try member.exercise(routines: chooseRoutine(from: routines), sets: countSetsReapeat())
+                    try member.exercise(routine: chooseRoutine(from: routines), sets: countSetsReapeat())
                     try printResultAfterRoutine(with: member )
                     break
                 } catch FitnessCenterError.unreachedGoal {
