@@ -14,5 +14,5 @@ struct Routine {
     init(routineName: String, exercises: [Exercise]) {
         self.routineName = routineName
         self.exercises = exercises
-        }
+    }
 }
