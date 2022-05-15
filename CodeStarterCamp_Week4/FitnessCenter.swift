@@ -19,20 +19,22 @@ class FitnessCenter {
     }
     
     func exerciseRoutine() {
-            do {
-                self.member?.name = try writeName()
-                self.targetBodyCondition = try inputBodyCondition()
-            } catch InputError.empty {
-                print("입력되지 않았습니다. 다시 입력해주세요.")
-            } catch InputError.invaildValue {
-                print("없는 번호입니다. 다시 입력해주세요.")
-            } catch InputError.outOfValue {
-                print("값의 갯수가 적거나 큽니다.")
-            } catch {
-                print("알 수 없는 오류입니다. 다시 시도해주세요.")
-            }
-        tryRoutine()
+        do {
+            let memberName = try writeName()
+            member = Person(name: memberName, bodyCondition: BodyCondition())
+            
+            bodyGoal = try inputbodyGoal()
+        } catch InputError.empty {
+            print("입력되지 않았습니다. 다시 입력해주세요.")
+        } catch InputError.invaildValue {
+            print("없는 번호입니다. 다시 입력해주세요.")
+        } catch InputError.outOfValue {
+            print("값의 갯수가 적거나 큽니다.")
+        } catch {
+            print("알 수 없는 오류입니다. 다시 시도해주세요.")
         }
+        tryRoutine()
+    }
     
     func writeName() throws -> String {
         print("안녕하세요. \(name)피트니스 센터입니다. 회원님의 이름은 무엇인가요?")
@@ -100,7 +102,7 @@ class FitnessCenter {
         if accomplishCondotion() {
             print("--------------")
             print("성공입니다!")
-                member?.bodyCondition.checkYourCondition()
+            member?.bodyCondition.checkYourCondition()
         } else {
             print("--------------")
             print("목표에 도달하지 못 했습니다. 현재 \(member?.name)님의 컨디션은 다음과 같습니다.")
