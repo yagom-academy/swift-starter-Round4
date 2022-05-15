@@ -96,7 +96,7 @@ class FitnessCenter {
             return
         }
         
-        if accomplishCondotion() {
+        if accomplishCondition() {
             print("--------------")
             print("성공입니다!")
             member?.bodyCondition.checkYourCondition()
@@ -109,11 +109,14 @@ class FitnessCenter {
         }
     }
     
-    func accomplishCondotion() -> Bool {
+    func accomplishCondition() -> Bool {
         let currentBodyCondition = member?.bodyCondition
-        guard currentBodyCondition?.upperBodyStrength ?? 0 < targetBodyCondition.upperBodyStrength  else { return false }
-        guard currentBodyCondition?.lowerBodyStrength ?? 0 < targetBodyCondition.lowerBodyStrength  else { return false }
-        guard currentBodyCondition?.muscularEndurance ?? 0 < targetBodyCondition.muscularEndurance else { return false }
+        
+        guard currentBodyCondition?.upperBodyStrength ?? 0 < bodyGoal[0],
+              currentBodyCondition?.lowerBodyStrength ?? 0 < bodyGoal[1],
+              currentBodyCondition?.muscularEndurance ?? 0 < bodyGoal[2] else {
+            return false
+        }
         return true
     }
 }
