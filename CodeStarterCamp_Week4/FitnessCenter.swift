@@ -43,22 +43,13 @@ class FitnessCenter {
         return inputName
     }
     
-    func inputBodyCondition() throws -> BodyCondition {
+    func inputbodyGoal() throws -> [Int] {
         print("운동 목표치를 순서대로 알려주세요. [상체근력:  하체근력:  근지구력: ]")
         print("목표치간 띄어쓰기는 필수입니다. ex) 100 100 100")
-        guard let inputTargetBodyCondition = readLine() else { throw InputError.empty }
-        let targetBodyConditionArray: [Int] = try inputTargetBodyCondition.split(separator: " ").map{
-            guard let number = Int($0) else { throw InputError.invaildValue }
-            return number
-        }
-        
-        if targetBodyConditionArray.count != 3 {
-            throw InputError.outOfValue
-        }
-        
-        let bodyCondition = BodyCondition()
-        
-        return bodyCondition
+        guard let inputbodyGoal = readLine(), inputbodyGoal.isEmpty == false else { throw InputError.empty }
+        let inputbodyGoalArray: [Int] = inputbodyGoal.split(separator: " ").compactMap{Int($0)}
+        guard inputbodyGoalArray.count == 3  else { throw InputError.outOfValue }
+        return inputbodyGoalArray
     }
     
     func tryRoutine() {
