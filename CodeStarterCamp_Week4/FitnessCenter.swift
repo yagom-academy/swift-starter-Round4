@@ -112,9 +112,9 @@ class FitnessCenter {
     func accomplishCondition() -> Bool {
         let currentBodyCondition = member?.bodyCondition
         
-        guard currentBodyCondition?.upperBodyStrength ?? 0 < bodyGoal[0],
-              currentBodyCondition?.lowerBodyStrength ?? 0 < bodyGoal[1],
-              currentBodyCondition?.muscularEndurance ?? 0 < bodyGoal[2] else {
+        guard currentBodyCondition?.upperBodyStrength ?? 0 >= bodyGoal[0],
+              currentBodyCondition?.lowerBodyStrength ?? 0 >= bodyGoal[1],
+              currentBodyCondition?.muscularEndurance ?? 0 >= bodyGoal[2] else {
             return false
         }
         return true
