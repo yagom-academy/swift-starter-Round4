@@ -91,13 +91,18 @@ class FitnessCenter {
         member?.doExercise(for: countNumber, routine: self.listOfRoutine[routineNumber])
         routineNumber = 1
         
+        guard member?.bodyCondition.fatigue ?? 0 < 100 else {
+            print("[알림] 운동을 할 회원이 없으므로, 프로그램이 종료됩니다.")
+            return
+        }
+        
         if accomplishCondotion() {
             print("--------------")
             print("성공입니다!")
             member?.bodyCondition.checkYourCondition()
         } else {
             print("--------------")
-            print("목표에 도달하지 못 했습니다. 현재 \(member?.name)님의 컨디션은 다음과 같습니다.")
+            print("목표에 도달하지 못 했습니다. 현재 '\(member?.name ?? "이름없음")'님의 컨디션은 다음과 같습니다.")
             member?.bodyCondition.checkYourCondition()
             print("--------------")
             tryRoutine()
