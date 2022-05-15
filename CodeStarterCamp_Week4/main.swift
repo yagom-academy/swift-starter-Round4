@@ -8,12 +8,14 @@
 
 import Foundation
 
-var person = BodyCondition(startingPoint: 0)
+let hellExercise: [Exercise] = [sitUp, activeRest, deadLift, activeRest, plank, activeRest, barbellRow, activeRest, cablePullover, activeRest, squat, activeRest, lunge, activeRest, legExtension, activeRest, longRun]
 
-let exercise: [Exercise] = [sitUp, sitUp, sitUp, activeRest, deadLift, deadLift, deadLift, activeRest, plank, plank, plank, activeRest, barbellRow, barbellRow, barbellRow, activeRest, cablePullover, cablePullover, cablePullover, activeRest, longRun]
+let normalExercise: [Exercise] = [sitUp, activeRest, squat, activeRest, activeRest, barbellRow, activeRest, cablePullover, activeRest, legExtension, activeRest, longRun]
 
-let hellRoutine = Routine(routineName: "지옥의 헬스루틴", exercises: exercise)
+// [Routine]에 들어갈 루틴 선언
+let hellRoutine = Routine(routineName: "지옥의 헬스루틴", exercises: hellExercise)
+let normalRoutine = Routine(routineName: "보통의 헬스루탄", exercises: normalExercise)
 
-hellRoutine.startRoutine() // 지옥의 헬스루틴 시작
-person.checkYourCondition() // 인바디 측정 
+let yagomFitnessCenter = FitnessCenter(name: "야곰", listOfRoutine: [hellRoutine, normalRoutine])
+yagomFitnessCenter.exerciseRoutine()
 
