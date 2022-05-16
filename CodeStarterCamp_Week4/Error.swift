@@ -16,26 +16,6 @@ enum WhileExercisingError: Error {
     case unreachedTarget
 }
 
-func checkInputHasCommonError(input: String, InputMustContainOnlyNumber: Bool) throws {
-    if doesUserWantForcedQuit(input) {
-
-        throw commonError.quit
-    } else if doesStringContainsSpecialCharacter(target: input) {
-
-        throw commonError.containSpecialCharacter
-    } else if InputMustContainOnlyNumber {
-        if !doesStringContainsOnlyNumber(target: input) {
-
-            throw commonError.containNotNumber
-        }
-    } else if !InputMustContainOnlyNumber {
-        if doesStringContainsNumber(target: input) {
-
-            throw commonError.containNumber
-        }
-    }
-}
-
 func doesUserWantForcedQuit(_ input: String) -> Bool {
     if input == "q" || input == "'q'"{
 
@@ -71,18 +51,14 @@ func doesStringContainsNumber(target: String) -> Bool {
 }
 
 func doesStringContainsOnlyNumber(target: String) -> Bool {
-    let onlyNumber: [Character] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
-    for character in target {
-        if !onlyNumber.contains(character) {
+    var array: [Bool] = []
+    target.forEach { array.append($0.isNumber) }
 
-            return false
-        } else {
-
-            return true
-        }
+    if array.contains(true) {
+        return true
+    } else {
+        return false
     }
-
-    return false
 }
 
 func doesInputNumberIsBetween(_ numberA: Int, and numberB: Int, inputNumber: Int) throws {
@@ -93,20 +69,20 @@ func doesInputNumberIsBetween(_ numberA: Int, and numberB: Int, inputNumber: Int
 }
 
 func checkExausted(member: Person) throws {
-    if member.bodyCondition.fatigue > 300 {
+    if member.bodyCondition.fatigue >= 300 {
 
         throw WhileExercisingError.overFatigue
     }
 }
 
-func checkReachedTargetBodyCondition(whose: Person, targetBodyCondition: BodyCondition?) throws {
+func checkReachedTargetBodyCondition(who: Person, targetBodyCondition: BodyCondition?) throws {
     guard let targetUpperBodyStrength = targetBodyCondition?.upperBodyStrength,
           let targetLowerBodyStrength = targetBodyCondition?.lowerBodyStrength,
           let targetMuscleEndurance = targetBodyCondition?.muscleEndurance else { return }
 
-    if whose.bodyCondition.upperBodyStrength < targetUpperBodyStrength ||
-        whose.bodyCondition.lowerBodyStrength < targetLowerBodyStrength ||
-        whose.bodyCondition.muscleEndurance < targetMuscleEndurance {
+    if who.bodyCondition.upperBodyStrength < targetUpperBodyStrength ||
+        who.bodyCondition.lowerBodyStrength < targetLowerBodyStrength ||
+        who.bodyCondition.muscleEndurance < targetMuscleEndurance {
 
         throw WhileExercisingError.unreachedTarget
     }

@@ -12,6 +12,7 @@
 		8E6A3EF52824EB440075D443 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A3EF42824EB440075D443 /* Routine.swift */; };
 		8E6A3EF72824EBA10075D443 /* BodyCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A3EF62824EBA10075D443 /* BodyCondition.swift */; };
 		8EC298A5282A9A9100CFA750 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC298A4282A9A9100CFA750 /* Error.swift */; };
+		8ED2560E2831D9DA00026AE3 /* Tablet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED2560D2831D9DA00026AE3 /* Tablet.swift */; };
 		8EE7BAE6282A738600079203 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE7BAE5282A738600079203 /* Person.swift */; };
 		8EE7BAE8282A740800079203 /* FitnessCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE7BAE7282A740800079203 /* FitnessCenter.swift */; };
 /* End PBXBuildFile section */
@@ -35,6 +36,7 @@
 		8E6A3EF42824EB440075D443 /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
 		8E6A3EF62824EBA10075D443 /* BodyCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyCondition.swift; sourceTree = "<group>"; };
 		8EC298A4282A9A9100CFA750 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		8ED2560D2831D9DA00026AE3 /* Tablet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tablet.swift; sourceTree = "<group>"; };
 		8EE7BAE5282A738600079203 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		8EE7BAE7282A740800079203 /* FitnessCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessCenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,6 +77,7 @@
 				8E6A3EF42824EB440075D443 /* Routine.swift */,
 				8EE7BAE5282A738600079203 /* Person.swift */,
 				8EE7BAE7282A740800079203 /* FitnessCenter.swift */,
+				8ED2560D2831D9DA00026AE3 /* Tablet.swift */,
 				8EC298A4282A9A9100CFA750 /* Error.swift */,
 			);
 			path = CodeStarterCamp_Week4;
@@ -140,6 +143,7 @@
 				8EE7BAE6282A738600079203 /* Person.swift in Sources */,
 				8EE7BAE8282A740800079203 /* FitnessCenter.swift in Sources */,
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
+				8ED2560E2831D9DA00026AE3 /* Tablet.swift in Sources */,
 				8E6A3EF32824EB1A0075D443 /* Exercise.swift in Sources */,
 				8E6A3EF52824EB440075D443 /* Routine.swift in Sources */,
 				8EC298A5282A9A9100CFA750 /* Error.swift in Sources */,

@@ -1,10 +1,15 @@
 import Foundation
 
-struct Person {
+class Person {
     var name: String
     var bodyCondition: BodyCondition
 
-    mutating func exercise(routine: Routine, count: Int) {
+    init(name: String, bodyCondition: BodyCondition) {
+        self.name = name
+        self.bodyCondition = bodyCondition
+    }
+
+    func exercise(routine: Routine, count: Int) {
         print(routine.routineOrder[count].name)
         routine.routineOrder[count].action(&bodyCondition)
     }
