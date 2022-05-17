@@ -35,25 +35,21 @@ struct Routine {
     
     func introduceRoutine() {
         print("\(name)의 순서를 소개합니다.")
-        print("----------------------------------")
+        print(newLineString)
         for exercise in exercises {
             print(exercise)
         }
     }
     
-    func startRoutine(based bodyCondition: BodyCondition){
-        print("----------------------------------")
+    func startRoutine(based bodyCondition: BodyCondition) {
         if exercises.isEmpty {
             print("Don't start \(name) Routine because \(name) Routine is empty")
             return
-        } else {
-            print("\(name) Routine Start")
-        }
-        print("----------------------------------")
+        } 
+        print(newLineString)
         for exercise in exercises {
             print("\(exercise.name)")
-            exercise.action()
+            exercise.action(bodyCondition)
         }
-        bodyCondition.informBodyCondition()
     }
 }
