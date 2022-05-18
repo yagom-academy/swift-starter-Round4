@@ -46,7 +46,7 @@ yagomFitness.addRoutine(routine: hellRoutine)
 yagomFitness.addRoutine(routine: ohMyGodRoutine)
 
 // Exercise 실행 시 어떤 bodyCondition 객체의 값이 변경되는지 알아보기 위해 값 설정
-var bodyCondition = BodyCondition(upperBodyStrength: 10, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: -200)
+var bodyCondition = BodyCondition(upperBodyStrength: 10, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
 
 var yagom = Person(name: "yagom", bodyCondition: bodyCondition)
 yagomFitness.register(member: yagom)

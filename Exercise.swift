@@ -34,3 +34,5 @@ let pushUp: Exercise = Exercise(name: "팔굽혀펴기") {
     bodyCondition.upperBodyStrength += Int.random(in: 20...30)
     bodyCondition.fatigue += Int.random(in: 10...20)
 }
+
+

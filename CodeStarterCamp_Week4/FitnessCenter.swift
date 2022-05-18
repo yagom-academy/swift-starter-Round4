@@ -74,7 +74,6 @@ struct FitnessCenter {
         guard let routineNo = Int(readLine()!) else {
             throw FitnessProgramError.inappropriateInput
         }
-//        routines[routineNo-1].run()
         if (routineNo) > routines.count {
             throw FitnessProgramError.inappropriateInput
         }
@@ -128,15 +127,14 @@ struct FitnessCenter {
                 member.exercise(for: repetition, routine: chosenRoutine)
             }
         }
-
-//        if let targetBodyCondition = targetBodyCondition {
-            if (member.bodyCondition.upperBodyStrength >= targetBodyCondition.upperBodyStrength && member.bodyCondition.lowerBodyStrength >= targetBodyCondition.lowerBodyStrength && member.bodyCondition.muscularEndurance >= targetBodyCondition.muscularEndurance){
-                programSuccess(member: member)
-            } else {
-                targetUnreached(member: member)
-                chosenRoutine = try chooseRoutine()
-            }
-//        }
+        
+        // 연산 프로퍼티를 이용해서 구현하는 방법 고민
+        if (member.bodyCondition.upperBodyStrength >= targetBodyCondition.upperBodyStrength && member.bodyCondition.lowerBodyStrength >= targetBodyCondition.lowerBodyStrength && member.bodyCondition.muscularEndurance >= targetBodyCondition.muscularEndurance){
+            programSuccess(member: member)
+        } else {
+            targetUnreached(member: member)
+            chosenRoutine = try chooseRoutine()
+        }
     }
     
 }
