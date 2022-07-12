@@ -8,5 +8,12 @@
 
 import Foundation
 
-print("Hello, World!")
+var myBody: BodyCondition = BodyCondition()
 
+윗몸일으키기.action(myBody)
+
+스쿼트.action(myBody)
+
+오래달리기.action(myBody)
+
+동적휴식.action(myBody)
