@@ -8,5 +8,11 @@
 
 import Foundation
 
-print(conditonOfJae)
-doExercise(who: conditonOfJae, name: sitUp)
+//MARK: STEP 1
+doExercise(who: yagom, name: activeRest)
+doExercise(who: yagom, name: activeRest)
+
+doExercise(who: jae, name: sitUp)
+doExercise(who: jae, name: squart)
+doExercise(who: jae, name: longDistanceRunning)
+doExercise(who: jae, name: activeRest)
