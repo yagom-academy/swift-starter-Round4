@@ -8,11 +8,15 @@
 import Foundation
 import SwiftUI
 
+let numberbetween5to10 = 5...10
+let numberbetween10to20 = 10...20
+let numberbetween20to30 = 20...30
+
 struct BodyCondition {
-    var upperBodyMuscleStrength: Int = Int.random(in: 10...20)
-    var lowerBodyMuscleStrength: Int = Int.random(in: 10...20)
-    var muscularEndurance: Int = Int.random(in: 10...20)
-    var bodyFatigue: Int = Int.random(in: 10...20)
+    var upperBodyMuscleStrength: Int = Int.random(in: numberbetween10to20)
+    var lowerBodyMuscleStrength: Int = Int.random(in: numberbetween10to20)
+    var muscularEndurance: Int = Int.random(in: numberbetween10to20)
+    var bodyFatigue: Int = Int.random(in: numberbetween10to20)
     
     mutating func changeUpperBodyMuscleStrength(add number: Int) {
         self.upperBodyMuscleStrength += number
