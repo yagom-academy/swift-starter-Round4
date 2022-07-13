@@ -69,29 +69,37 @@ struct Activity {
 
 let 윗몸일으키기: Activity = Activity(name: "윗몸일으키기", action: { (bodyCondition: BodyCondition) in
     윗몸일으키기.printStartActivity()
+    
     bodyCondition.changeCondition("상체근력", degree: Int.random(in: 10...20))
     bodyCondition.changeCondition("하체근력", degree: Int.random(in: 10...20))
+    
     bodyCondition.printTotalCondition()
 })
 
 let 스쿼트: Activity = Activity(name: "스쿼트", action: { (bodyCondition: BodyCondition) in
     스쿼트.printStartActivity()
+    
     bodyCondition.changeCondition("하체근력", degree: Int.random(in: 20...30))
     bodyCondition.changeCondition("피로도", degree: Int.random(in: 10...20))
+    
     bodyCondition.printTotalCondition()
 })
 
 let 오래달리기: Activity = Activity(name: "오래달리기", action: { (bodyCondition: BodyCondition) in
     오래달리기.printStartActivity()
+    
     bodyCondition.changeCondition("근지구력", degree: Int.random(in: 20...30))
     bodyCondition.changeCondition("상체", degree: Int.random(in: 5...10))
     bodyCondition.changeCondition("하체", degree: Int.random(in: 5...10))
     bodyCondition.changeCondition("피로도", degree: Int.random(in: 20...30))
+    
     bodyCondition.printTotalCondition()
 })
 
 let 동적휴식: Activity = Activity(name: "동적휴식", action: { (bodyCondition: BodyCondition) in
     동적휴식.printStartActivity()
-    bodyCondition.changeCondition("피로도", degree: Int.random(in: -10 ...  -5))  
+    
+    bodyCondition.changeCondition("피로도", degree: Int.random(in: -10 ...  -5))
+    
     bodyCondition.printTotalCondition()
 })
