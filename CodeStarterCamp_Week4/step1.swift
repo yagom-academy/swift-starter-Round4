@@ -101,3 +101,12 @@ let activeRest: Activity = Activity(name: "동적휴식", action: { bodyConditio
         print("피로도가 \(randomeNumberForFatigue)만큼 하락합니다.")
     }
 })
+
+func doExercise(who: BodyCondition, name: Activity) {
+    print(
+        """
+        <<\(name.name)을(를) 시작합니다>>
+        """)
+    name.action(who)
+    who.printCondition()
+}

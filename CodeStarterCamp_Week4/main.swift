@@ -9,5 +9,4 @@
 import Foundation
 
 print(conditonOfJae)
-sitUp.action(conditonOfJae)
-print(conditonOfJae)
+doExercise(who: conditonOfJae, name: sitUp)
