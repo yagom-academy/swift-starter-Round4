@@ -9,10 +9,11 @@
 import Foundation
 
 //MARK: STEP 1
-doExercise(who: yagom, name: activeRest)
-doExercise(who: yagom, name: activeRest)
+//doExercise(of: conditionOfYagom, for: activeRest)
+//doExercise(of: conditionOfYagom, for: activeRest)
+//
+doExercise(of: sitUp, for: &conditionOfJae)
+//doExercise(of: conditionOfJae, for: squart)
+//doExercise(of: conditionOfJae, for: longDistanceRunning)
+//doExercise(of: conditionOfJae, for: activeRest)
 
-doExercise(who: jae, name: sitUp)
-doExercise(who: jae, name: squart)
-doExercise(who: jae, name: longDistanceRunning)
-doExercise(who: jae, name: activeRest)

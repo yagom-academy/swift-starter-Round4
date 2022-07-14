@@ -6,36 +6,53 @@
 //
 
 import Foundation
-import SwiftUI
 
-let numberbetween5to10 = 5...10
-let numberbetween10to20 = 10...20
-let numberbetween20to30 = 20...30
+enum InputRange {
+    case small
+    case medium
+    case large
+}
 
-class BodyCondition {
-    var upperBodyMuscleStrength: Int = Int.random(in: numberbetween10to20)
-    var lowerBodyMuscleStrength: Int = Int.random(in: numberbetween10to20)
-    var muscularEndurance: Int = Int.random(in: numberbetween10to20)
-    var bodyFatigue: Int = Int.random(in: numberbetween5to10)
+struct BodyCondition {
+    var upperBodyMuscleStrength: Int = 0
+    var lowerBodyMuscleStrength: Int = 0
+    var muscularEndurance: Int = 0
+    var bodyFatigue: Int = 0
     
-    func changeUpperBodyMuscleStrength(add number: Int) {
-        self.upperBodyMuscleStrength += number
+    mutating func increaseUpperBodyMuscleStrength(_ inputRange: InputRange) {
+        let inputValue = increaseMuscleStrength(inputRange: inputRange)
+        self.upperBodyMuscleStrength += inputValue
     }
     
-    func changeLowerBodyMuscleStrength(add number: Int) {
-        self.lowerBodyMuscleStrength += number
+    mutating func increaseLowerBodyMuscleStrength(_ inputRange: InputRange) {
+        let inputValue = increaseMuscleStrength(inputRange: inputRange)
+        self.lowerBodyMuscleStrength += inputValue
     }
     
-    func changeMuscularEndurance(add number: Int) {
-        self.muscularEndurance += number
+    mutating func increaseMuscularEndurance(_ inputRange: InputRange) {
+        let inputValue = increaseMuscleStrength(inputRange: inputRange)
+        self.muscularEndurance += inputValue
     }
     
-    func plusBodyFatigue(number: Int) {
-        self.bodyFatigue += number
+    mutating func increaseBodyFatigue(_ inputRange: InputRange) {
+        let inputValue = increaseMuscleStrength(inputRange: inputRange)
+        self.bodyFatigue += inputValue
     }
     
-    func minusBodyFatigue(number: Int) {
-        self.bodyFatigue -= number
+    mutating func decreaseBodyFatigue(_ inputRange: InputRange) {
+        let inputValue = increaseMuscleStrength(inputRange: inputRange)
+        self.bodyFatigue -= inputValue
+    }
+    
+    func increaseMuscleStrength(inputRange: InputRange) -> Int {
+        switch inputRange {
+        case .small:
+            return Int.random(in: 5...10)
+        case .medium:
+            return Int.random(in: 10...20)
+        case .large:
+            return Int.random(in: 20...30)
+        }
     }
     
     func printCondition() {
@@ -51,63 +68,63 @@ class BodyCondition {
     }
 }
 
-var jae: BodyCondition = BodyCondition()
-var yagom: BodyCondition = BodyCondition()
+var conditionOfJae: BodyCondition = BodyCondition()
+var conditionOfYagom: BodyCondition = BodyCondition()
 
 struct Activity {
     let name: String
-    let action: (BodyCondition) -> Void
+    let action: (inout BodyCondition) -> Void
 }
 
-let sitUp: Activity = Activity(name: "윗몸일으키기", action: { (bodyCondition: BodyCondition) in
-    let randomeNumberForUpperBody = Int.random(in: numberbetween10to20)
-    let randomeNumberForFatigue = Int.random(in: numberbetween10to20)
-    bodyCondition.changeUpperBodyMuscleStrength(add: randomeNumberForUpperBody)
-    bodyCondition.plusBodyFatigue(number: randomeNumberForFatigue)
-    print("상체근력이 \(randomeNumberForUpperBody)만큼 상승합니다.")
-    print("피로도가 \(randomeNumberForFatigue)만큼 상승합니다.")
+let sitUp: Activity = Activity(name: "윗몸일으키기", action: { bodyCondition in
+    let valueOfIncreaseUpperBodyMuscleStrength = bodyCondition.increaseMuscleStrength(inputRange: .medium)
+    let valueOfIncreaseBodyFatigue = InputRange.medium
+    bodyCondition.increaseUpperBodyMuscleStrength(valueOfIncreaseUpperBodyMuscleStrength)
+    bodyCondition.increaseBodyFatigue(valueOfIncreaseBodyFatigue)
+    print("상체근력이 \(valueOfIncreaseUpperBodyMuscleStrength)만큼 상승합니다.")
+    print("피로도가 \(valueOfIncreaseBodyFatigue)만큼 상승합니다.")
 })
 
-let squart: Activity = Activity(name: "스쿼트", action: { bodyCondition in
-    let randomeNumberForLowerBody = Int.random(in: numberbetween20to30)
-    let randomeNumberForFatigue = Int.random(in: numberbetween10to20)
-    bodyCondition.changeLowerBodyMuscleStrength(add: randomeNumberForLowerBody)
-    bodyCondition.plusBodyFatigue(number: randomeNumberForFatigue)
-    print("하체근력이 \(randomeNumberForLowerBody)만큼 상승합니다.")
-    print("피로도가 \(randomeNumberForFatigue)만큼 상승합니다.")
-})
+//let squart: Activity = Activity(name: "스쿼트", action: { bodyCondition in
+//    let randomeNumberForLowerBody = Int.random(in: numberbetween20to30)
+//    let randomeNumberForFatigue = Int.random(in: numberbetween10to20)
+//    bodyCondition.changeLowerBodyMuscleStrength(add: randomeNumberForLowerBody)
+//    bodyCondition.plusBodyFatigue(number: randomeNumberForFatigue)
+//    print("하체근력이 \(randomeNumberForLowerBody)만큼 상승합니다.")
+//    print("피로도가 \(randomeNumberForFatigue)만큼 상승합니다.")
+//})
+//
+//let longDistanceRunning: Activity = Activity(name: "오래달리기", action: { bodyCondition in
+//    let randomeNumberForMuscularEndurance = Int.random(in: numberbetween20to30)
+//    let randomeNumberForUpperBody = Int.random(in: numberbetween5to10)
+//    let randomeNumberForLowerBody = Int.random(in: numberbetween5to10)
+//    let randomeNumberForFatigue = Int.random(in: numberbetween20to30)
+//    bodyCondition.changeMuscularEndurance(add: randomeNumberForMuscularEndurance)
+//    bodyCondition.changeUpperBodyMuscleStrength(add: randomeNumberForUpperBody)
+//    bodyCondition.changeLowerBodyMuscleStrength(add: randomeNumberForLowerBody)
+//    bodyCondition.plusBodyFatigue(number: randomeNumberForFatigue)
+//    print("근지구력이 \(randomeNumberForMuscularEndurance)만큼 상승합니다.")
+//    print("상체근력이 \(randomeNumberForUpperBody)만큼 상승합니다.")
+//    print("하체근력이 \(randomeNumberForLowerBody)만큼 상승합니다.")
+//    print("피로도가 \(randomeNumberForFatigue)만큼 상승합니다.")
+//})
+//
+//let activeRest: Activity = Activity(name: "동적휴식", action: { bodyCondition in
+//    let randomeNumberForFatigue = Int.random(in: numberbetween5to10)
+//    if (bodyCondition.bodyFatigue - randomeNumberForFatigue < 0) {
+//        bodyCondition.bodyFatigue = 0
+//        print("피로도가 0이 되었습니다.")
+//    } else {
+//        bodyCondition.minusBodyFatigue(number: randomeNumberForFatigue)
+//        print("피로도가 \(randomeNumberForFatigue)만큼 하락합니다.")
+//    }
+//})
 
-let longDistanceRunning: Activity = Activity(name: "오래달리기", action: { bodyCondition in
-    let randomeNumberForMuscularEndurance = Int.random(in: numberbetween20to30)
-    let randomeNumberForUpperBody = Int.random(in: numberbetween5to10)
-    let randomeNumberForLowerBody = Int.random(in: numberbetween5to10)
-    let randomeNumberForFatigue = Int.random(in: numberbetween20to30)
-    bodyCondition.changeMuscularEndurance(add: randomeNumberForMuscularEndurance)
-    bodyCondition.changeUpperBodyMuscleStrength(add: randomeNumberForUpperBody)
-    bodyCondition.changeLowerBodyMuscleStrength(add: randomeNumberForLowerBody)
-    bodyCondition.plusBodyFatigue(number: randomeNumberForFatigue)
-    print("근지구력이 \(randomeNumberForMuscularEndurance)만큼 상승합니다.")
-    print("상체근력이 \(randomeNumberForUpperBody)만큼 상승합니다.")
-    print("하체근력이 \(randomeNumberForLowerBody)만큼 상승합니다.")
-    print("피로도가 \(randomeNumberForFatigue)만큼 상승합니다.")
-})
-
-let activeRest: Activity = Activity(name: "동적휴식", action: { bodyCondition in
-    let randomeNumberForFatigue = Int.random(in: numberbetween5to10)
-    if (bodyCondition.bodyFatigue - randomeNumberForFatigue < 0) {
-        bodyCondition.bodyFatigue = 0
-        print("피로도가 0이 되었습니다.")
-    } else {
-        bodyCondition.minusBodyFatigue(number: randomeNumberForFatigue)
-        print("피로도가 \(randomeNumberForFatigue)만큼 하락합니다.")
-    }
-})
-
-func doExercise(who: BodyCondition, name: Activity) {
+func doExercise(of activity: Activity, for bodyCondition: inout BodyCondition) {
     print(
         """
-        <<\(name.name)을(를) 시작합니다>>
+        <<\(activity.name)을(를) 시작합니다>>
         """)
-    name.action(who)
-    who.printCondition()
+    activity.action(&bodyCondition)
+    bodyCondition.printCondition()
 }
