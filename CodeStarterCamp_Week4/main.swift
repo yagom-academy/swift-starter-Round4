@@ -9,11 +9,9 @@
 import Foundation
 
 //MARK: STEP 1
-//doExercise(of: conditionOfYagom, for: activeRest)
-//doExercise(of: conditionOfYagom, for: activeRest)
-//
-doExercise(of: sitUp, for: &conditionOfJae)
-//doExercise(of: conditionOfJae, for: squart)
-//doExercise(of: conditionOfJae, for: longDistanceRunning)
-//doExercise(of: conditionOfJae, for: activeRest)
+doExercise(of: activeRest, for: &conditionOfYagom)
 
+doExercise(of: sitUp, for: &conditionOfJae)
+doExercise(of: squart, for: &conditionOfJae)
+doExercise(of: longDistanceRunning, for: &conditionOfJae)
+doExercise(of: activeRest, for: &conditionOfJae)
