@@ -60,3 +60,4 @@ let activeRest: Activity = Activity(name: "동적휴식", action: { bodyConditio
     codeSparrow.fatigue -= randomFatigueReduction
 })
 
+var codeSparrow: BodyCondition = BodyCondition(upperBodyStrength: 70, lowerBodyStrength: 50, muscularEndurance: 30, fatigue: 0)
