@@ -60,4 +60,10 @@ let activeRest: Activity = Activity(name: "동적휴식", action: { bodyConditio
     codeSparrow.fatigue -= randomFatigueReduction
 })
 
+func workOut(_ activity: Activity) {
+    print("<<\(activity.name)을(를) 시작합니다>>")
+    activity.action(codeSparrow)
+    print("--------------")
+}
+
 var codeSparrow: BodyCondition = BodyCondition(upperBodyStrength: 70, lowerBodyStrength: 50, muscularEndurance: 30, fatigue: 0)
