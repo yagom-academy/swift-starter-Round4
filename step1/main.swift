@@ -66,4 +66,15 @@ func workOut(_ activity: Activity) {
     print("--------------")
 }
 
+func checkBodyCondition(_ name: BodyCondition) {
+    print("""
+현재의 컨디션은 다음과 같습니다.
+상체근력: \(name.upperBodyStrength)
+하체근력: \(name.lowerBodyStrength)
+근지구력: \(name.muscularEndurance)
+피로도: \(name.fatigue)
+--------------
+""")
+}
+
 var codeSparrow: BodyCondition = BodyCondition(upperBodyStrength: 70, lowerBodyStrength: 50, muscularEndurance: 30, fatigue: 0)
