@@ -20,25 +20,29 @@ class Routine {
         let input = readLine() ?? ""
         
         guard let intInput = Int(input) else {
-            print("There is nil in intInput")
+            try doRoutine()
             return
         }
         
         guard intInput > 0 else {
             throw RoutineError.wrongInput
         }
+        try printRoutine(intInput)
+        printCondition()
+    }
+    
+    func printRoutine(_ value: Int) throws {
         print("--------------")
-        for i in 1...intInput {
+        for i in 1...value {
             print("\(i) 번째 \(self.name)을(를) 시작합니다.")
             for act in self.activities {
                 print("<<\(act.name)을(를) 시작합니다>>")
                 act.action(act.bodyConditions)
                 print("--------------")
-                guard 피로도.value < 100 else{
+                guard fatigue.value < 100 else{
                     throw RoutineError.fatigueOverflow
                 }
             }
         }
-        printCondition()
     }
 }

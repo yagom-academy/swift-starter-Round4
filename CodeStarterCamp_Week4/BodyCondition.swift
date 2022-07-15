@@ -8,6 +8,10 @@
 import Foundation
 
 class BodyCondition {
+    func adjustRandomValue(_ minimumValue: Int, _ maximumValue: Int) {
+        
+    }
+    
     func adjustValue() {
         
     }
@@ -15,7 +19,7 @@ class BodyCondition {
 
 class 상체근력: BodyCondition {
     let name = "상체근력"
-    static var value: Int = 0 {
+    var value: Int = 0 {
         didSet(oldNum) {
             let num = self.value - oldNum
             if num > 0 {
@@ -27,8 +31,8 @@ class 상체근력: BodyCondition {
             }
         }
     }
-    let minimumValue: Int
-    let maximumValue: Int
+    var minimumValue: Int
+    var maximumValue: Int
     
     init(_ minimumValue: Int, _ maximumValue: Int) {
         self.minimumValue = minimumValue
@@ -36,13 +40,18 @@ class 상체근력: BodyCondition {
     }
     
     override func adjustValue() {
-        상체근력.value += Int.random(in: minimumValue...maximumValue)
+        self.value += Int.random(in: minimumValue...maximumValue)
+    }
+    
+    override func adjustRandomValue(_ minimumValue: Int, _ maximumValue: Int) {
+        self.minimumValue = minimumValue
+        self.maximumValue = maximumValue
     }
 }
 
 class 하체근력: BodyCondition {
     let name = "하체근력"
-    static var value: Int = 0 {
+    var value: Int = 0 {
         didSet(oldNum) {
             let num = self.value - oldNum
             if num > 0 {
@@ -54,8 +63,8 @@ class 하체근력: BodyCondition {
             }
         }
     }
-    let minimumValue: Int
-    let maximumValue: Int
+    var minimumValue: Int
+    var maximumValue: Int
     
     init(_ minimumValue: Int, _ maximumValue: Int) {
         self.minimumValue = minimumValue
@@ -63,13 +72,18 @@ class 하체근력: BodyCondition {
     }
     
     override func adjustValue() {
-        하체근력.value += Int.random(in: minimumValue...maximumValue)
+        self.value += Int.random(in: minimumValue...maximumValue)
+    }
+    
+    override func adjustRandomValue(_ minimumValue: Int, _ maximumValue: Int) {
+        self.minimumValue = minimumValue
+        self.maximumValue = maximumValue
     }
 }
 
 class 근지구력: BodyCondition {
     let name = "근지구력"
-    static var value: Int = 0 {
+    var value: Int = 0 {
         didSet(oldNum) {
             let num = self.value - oldNum
             if num > 0 {
@@ -81,8 +95,8 @@ class 근지구력: BodyCondition {
             }
         }
     }
-    let minimumValue: Int
-    let maximumValue: Int
+    var minimumValue: Int
+    var maximumValue: Int
     
     init(_ minimumValue: Int, _ maximumValue: Int) {
         self.minimumValue = minimumValue
@@ -90,13 +104,19 @@ class 근지구력: BodyCondition {
     }
     
     override func adjustValue() {
-        근지구력.value += Int.random(in: minimumValue...maximumValue)
+        self.value += Int.random(in: minimumValue...maximumValue)
+    }
+    
+    override func adjustRandomValue(_ minimumValue: Int, _ maximumValue: Int) {
+        self.minimumValue = minimumValue
+        self.maximumValue = maximumValue
     }
 }
 
+
 class 피로도: BodyCondition {
     let name = "피로도"
-    static var value: Int = 0 {
+    var value: Int = 0 {
         didSet(oldNum) {
             let num = self.value - oldNum
             if num > 0 {
@@ -108,8 +128,8 @@ class 피로도: BodyCondition {
             }
         }
     }
-    let minimumValue: Int
-    let maximumValue: Int
+    var minimumValue: Int
+    var maximumValue: Int
     
     init(_ minimumValue: Int, _ maximumValue: Int) {
         self.minimumValue = minimumValue
@@ -117,6 +137,11 @@ class 피로도: BodyCondition {
     }
     
     override func adjustValue() {
-        피로도.value += Int.random(in: minimumValue...maximumValue)
+        self.value += Int.random(in: minimumValue...maximumValue)
+    }
+    
+    override func adjustRandomValue(_ minimumValue: Int, _ maximumValue: Int) {
+        self.minimumValue = minimumValue
+        self.maximumValue = maximumValue
     }
 }
