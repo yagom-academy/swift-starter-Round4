@@ -14,7 +14,7 @@ enum InputRange {
 
 enum ActivityError: Error {
     case over100bodyFatigue
-    case inputException
+    case InvaildInputValue
 }
 
 struct Routine {
@@ -29,31 +29,6 @@ struct BodyCondition {
     var lowerBodyMuscleStrength: Int = 0
     var muscularEndurance: Int = 0
     var bodyFatigue: Int = 0
-    
-    mutating func increaseUpperBodyMuscleStrength(_ inputRange: InputRange) {
-        let inputValue = increaseMuscleStrength(inputRange: inputRange)
-        self.upperBodyMuscleStrength += inputValue
-    }
-    
-    mutating func increaseLowerBodyMuscleStrength(_ inputRange: InputRange) {
-        let inputValue = increaseMuscleStrength(inputRange: inputRange)
-        self.lowerBodyMuscleStrength += inputValue
-    }
-    
-    mutating func increaseMuscularEndurance(_ inputRange: InputRange) {
-        let inputValue = increaseMuscleStrength(inputRange: inputRange)
-        self.muscularEndurance += inputValue
-    }
-    
-    mutating func increaseBodyFatigue(_ inputRange: InputRange) {
-        let inputValue = increaseMuscleStrength(inputRange: inputRange)
-        self.bodyFatigue += inputValue
-    }
-    
-    mutating func decreaseBodyFatigue(_ inputRange: InputRange) {
-        let inputValue = increaseMuscleStrength(inputRange: inputRange)
-        self.bodyFatigue -= inputValue
-    }
     
     func increaseMuscleStrength(inputRange: InputRange) -> Int {
         switch inputRange {
@@ -119,7 +94,7 @@ let activeRest: Activity = Activity(name: "동적휴식", action: { bodyConditio
     }
 })
 
-func doExercise(of routine: Routine, for bodyCondition: inout BodyCondition, repeat routineOrder: UInt) {
+func doExercise(of routine: Routine, for bodyCondition: inout BodyCondition, repeat routineOrder: Int) throws {
     var numberOfRoutineInKorean: String
     
     switch routineOrder {
@@ -152,23 +127,34 @@ func doExercise(of routine: Routine, for bodyCondition: inout BodyCondition, rep
     for orderExercise in 0...2 {
         print("<<\(routine.activities[Int(orderExercise)].name)을(를) 시작합니다>>")
         routine.activities[Int(orderExercise)].action(&bodyCondition)
-    }
-}
-
-
-func startRoutine(of routine: Routine, for bodyCondition: inout BodyCondition) {
-    print("루틴을 몇 번 반복할까요?")
-    while let input = readLine() {
-        if let numberOfRoutine = UInt(input) {
-            print("--------------")
-            for routineOrder in 1...numberOfRoutine {
-                doExercise(of: routine, for: &bodyCondition, repeat: routineOrder)
-            }
-            bodyCondition.printCondition()
-        } else {
-            print("잘못된 입력 형식입니다. 다시 입력해주세요.")
-            print("루틴을 몇 번 반복할까요?")
+        if Int(bodyCondition.bodyFatigue) >= 100 {
+            throw ActivityError.over100bodyFatigue
         }
     }
 }
 
+func inputToInt() throws -> Int {
+    guard let input = readLine(), let input = Int(input) else {
+        throw ActivityError.InvaildInputValue
+    }
+    return input
+}
+
+func startRoutine(of routine: Routine, for bodyCondition: inout BodyCondition) {
+    print("루틴을 몇 번 반복할까요?")
+    do {
+        let numberOfRoutine = try inputToInt()
+        print("--------------")
+        for routineOrder in 1...numberOfRoutine {
+            try doExercise(of: routine, for: &bodyCondition, repeat: routineOrder)
+        }
+        bodyCondition.printCondition()
+    } catch ActivityError.InvaildInputValue {
+        print("잘못된 입력 형식입니다. 다시 입력해주세요.")
+    } catch ActivityError.over100bodyFatigue {
+        print("피로도가 100 이상입니다. 루틴을 중단합니다.")
+        bodyCondition.printCondition()
+    } catch {
+        print(error)
+    }
+}
