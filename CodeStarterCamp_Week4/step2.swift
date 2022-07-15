@@ -63,7 +63,6 @@ struct BodyCondition {
     
     func printCondition() {
         print("""
-        --------------
         현재의 컨디션은 다음과 같습니다.
         상체근력: \(upperBodyMuscleStrength)
         하체근력: \(lowerBodyMuscleStrength)
@@ -87,8 +86,8 @@ let sitUp: Activity = Activity(name: "윗몸일으키기", action: { bodyConditi
     let valueOfIncreaseBodyFatigue = bodyCondition.increaseMuscleStrength(inputRange: .medium)
     bodyCondition.upperBodyMuscleStrength += valueOfIncreaseUpperBodyMuscleStrength
     bodyCondition.bodyFatigue += valueOfIncreaseBodyFatigue
-    print("상체근력이 \(valueOfIncreaseUpperBodyMuscleStrength)만큼 상승합니다.")
-    print("피로도가 \(valueOfIncreaseBodyFatigue)만큼 상승합니다.")
+    print("상체근력이 \(valueOfIncreaseUpperBodyMuscleStrength) 상승합니다.")
+    print("피로도가 \(valueOfIncreaseBodyFatigue) 상승합니다.")
 })
 
 let squart: Activity = Activity(name: "스쿼트", action: { bodyCondition in
@@ -96,8 +95,8 @@ let squart: Activity = Activity(name: "스쿼트", action: { bodyCondition in
     let valueOfIncreaseBodyFatigue = bodyCondition.increaseMuscleStrength(inputRange: .medium)
     bodyCondition.lowerBodyMuscleStrength += valueOfIncreaseLowerBodyMuscleStrength
     bodyCondition.bodyFatigue += valueOfIncreaseBodyFatigue
-    print("하체근력이 \(valueOfIncreaseLowerBodyMuscleStrength)만큼 상승합니다.")
-    print("피로도가 \(valueOfIncreaseBodyFatigue)만큼 상승합니다.")
+    print("하체근력이 \(valueOfIncreaseLowerBodyMuscleStrength) 상승합니다.")
+    print("피로도가 \(valueOfIncreaseBodyFatigue) 상승합니다.")
 })
 
 let activeRest: Activity = Activity(name: "동적휴식", action: { bodyCondition in
@@ -107,7 +106,7 @@ let activeRest: Activity = Activity(name: "동적휴식", action: { bodyConditio
         print("피로도가 0이 되었습니다.")
     } else {
         bodyCondition.bodyFatigue -= valueOfDecreaseBodyFatigue
-        print("피로도가 \(valueOfDecreaseBodyFatigue)만큼 하락합니다.")
+        print("피로도가 \(valueOfDecreaseBodyFatigue) 하락합니다.")
     }
 })
 
@@ -139,10 +138,16 @@ func doExercise(of routine: Routine, for bodyCondition: inout BodyCondition, rep
     
     print(
         """
+        --------------
         \(numberOfRoutineInKorean) 번째 \(routine.name)을(를) 시작합니다
         """)
-    //    routine.activities.(&bodyCondition)
-    bodyCondition.printCondition()
+    for orderExercise in 0...2 {
+        print("<<\(routine.activities[Int(orderExercise)].name)을(를) 시작합니다>>")
+        routine.activities[Int(orderExercise)].action(&bodyCondition)
+        print("--------------")
+    }
+    //routine.activities.(&bodyCondition)
+    //bodyCondition.printCondition()
 }
 
 
@@ -153,6 +158,7 @@ func startRoutine(of routine: Routine, for bodyCondition: inout BodyCondition) {
             for routineOrder in 1...numberOfRoutine {
                 doExercise(of: routine, for: &bodyCondition, repeat: routineOrder)
             }
+            bodyCondition.printCondition()
         } else {
             print("잘못된 입력 형식입니다. 다시 입력해주세요.")
             print("루틴을 몇 번 반복할까요?")
