@@ -12,6 +12,11 @@ enum InputRange {
     case large
 }
 
+enum ActivityError: Error {
+    case over100bodyFatigue
+    case inputException
+}
+
 struct Routine {
     let name: String
     let activities: Array<Activity> = [sitUp, activeRest, squart]
@@ -88,6 +93,7 @@ let sitUp: Activity = Activity(name: "윗몸일으키기", action: { bodyConditi
     bodyCondition.bodyFatigue += valueOfIncreaseBodyFatigue
     print("상체근력이 \(valueOfIncreaseUpperBodyMuscleStrength) 상승합니다.")
     print("피로도가 \(valueOfIncreaseBodyFatigue) 상승합니다.")
+    print("--------------")
 })
 
 let squart: Activity = Activity(name: "스쿼트", action: { bodyCondition in
@@ -97,6 +103,7 @@ let squart: Activity = Activity(name: "스쿼트", action: { bodyCondition in
     bodyCondition.bodyFatigue += valueOfIncreaseBodyFatigue
     print("하체근력이 \(valueOfIncreaseLowerBodyMuscleStrength) 상승합니다.")
     print("피로도가 \(valueOfIncreaseBodyFatigue) 상승합니다.")
+    print("--------------")
 })
 
 let activeRest: Activity = Activity(name: "동적휴식", action: { bodyCondition in
@@ -104,9 +111,11 @@ let activeRest: Activity = Activity(name: "동적휴식", action: { bodyConditio
     if (bodyCondition.bodyFatigue - valueOfDecreaseBodyFatigue < 0) {
         bodyCondition.bodyFatigue = 0
         print("피로도가 0이 되었습니다.")
+        print("--------------")
     } else {
         bodyCondition.bodyFatigue -= valueOfDecreaseBodyFatigue
         print("피로도가 \(valueOfDecreaseBodyFatigue) 하락합니다.")
+        print("--------------")
     }
 })
 
@@ -138,16 +147,12 @@ func doExercise(of routine: Routine, for bodyCondition: inout BodyCondition, rep
     
     print(
         """
-        --------------
         \(numberOfRoutineInKorean) 번째 \(routine.name)을(를) 시작합니다
         """)
     for orderExercise in 0...2 {
         print("<<\(routine.activities[Int(orderExercise)].name)을(를) 시작합니다>>")
         routine.activities[Int(orderExercise)].action(&bodyCondition)
-        print("--------------")
     }
-    //routine.activities.(&bodyCondition)
-    //bodyCondition.printCondition()
 }
 
 
@@ -155,6 +160,7 @@ func startRoutine(of routine: Routine, for bodyCondition: inout BodyCondition) {
     print("루틴을 몇 번 반복할까요?")
     while let input = readLine() {
         if let numberOfRoutine = UInt(input) {
+            print("--------------")
             for routineOrder in 1...numberOfRoutine {
                 doExercise(of: routine, for: &bodyCondition, repeat: routineOrder)
             }
