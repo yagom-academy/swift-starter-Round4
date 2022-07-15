@@ -70,4 +70,37 @@ struct BodyCondition {
 var conditionOfJae: BodyCondition = BodyCondition()
 var conditionOfYagom: BodyCondition = BodyCondition()
 
+struct Activity {
+    let name: String
+    let action: (inout BodyCondition) -> Void
+}
+
+let sitUp: Activity = Activity(name: "윗몸일으키기", action: { bodyCondition in
+    let valueOfIncreaseUpperBodyMuscleStrength = bodyCondition.increaseMuscleStrength(inputRange: .medium)
+    let valueOfIncreaseBodyFatigue = bodyCondition.increaseMuscleStrength(inputRange: .medium)
+    bodyCondition.upperBodyMuscleStrength += valueOfIncreaseUpperBodyMuscleStrength
+    bodyCondition.bodyFatigue += valueOfIncreaseBodyFatigue
+    print("상체근력이 \(valueOfIncreaseUpperBodyMuscleStrength)만큼 상승합니다.")
+    print("피로도가 \(valueOfIncreaseBodyFatigue)만큼 상승합니다.")
+})
+
+let squart: Activity = Activity(name: "스쿼트", action: { bodyCondition in
+    let valueOfIncreaseLowerBodyMuscleStrength = bodyCondition.increaseMuscleStrength(inputRange: .large)
+    let valueOfIncreaseBodyFatigue = bodyCondition.increaseMuscleStrength(inputRange: .medium)
+    bodyCondition.lowerBodyMuscleStrength += valueOfIncreaseLowerBodyMuscleStrength
+    bodyCondition.bodyFatigue += valueOfIncreaseBodyFatigue
+    print("하체근력이 \(valueOfIncreaseLowerBodyMuscleStrength)만큼 상승합니다.")
+    print("피로도가 \(valueOfIncreaseBodyFatigue)만큼 상승합니다.")
+})
+
+let activeRest: Activity = Activity(name: "동적휴식", action: { bodyCondition in
+    let valueOfDecreaseBodyFatigue = bodyCondition.increaseMuscleStrength(inputRange: .small)
+    if (bodyCondition.bodyFatigue - valueOfDecreaseBodyFatigue < 0) {
+        bodyCondition.bodyFatigue = 0
+        print("피로도가 0이 되었습니다.")
+    } else {
+        bodyCondition.bodyFatigue -= valueOfDecreaseBodyFatigue
+        print("피로도가 \(valueOfDecreaseBodyFatigue)만큼 하락합니다.")
+    }
+})
 
