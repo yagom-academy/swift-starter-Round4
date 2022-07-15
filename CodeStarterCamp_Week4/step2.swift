@@ -4,6 +4,7 @@
 //
 //  Created by smfc on 15/7/2022.
 //
+
 import Foundation
 
 enum InputRange {
@@ -94,7 +95,7 @@ let activeRest: Activity = Activity(name: "동적휴식", action: { bodyConditio
     }
 })
 
-func doExercise(of routine: Routine, for bodyCondition: inout BodyCondition, repeat routineOrder: Int) throws {
+func doExercise(of routine: Routine, for bodyCondition: inout BodyCondition, repeat routineOrder: UInt) throws {
     var numberOfRoutineInKorean: String
     
     switch routineOrder {
@@ -133,28 +134,33 @@ func doExercise(of routine: Routine, for bodyCondition: inout BodyCondition, rep
     }
 }
 
-func inputToInt() throws -> Int {
-    guard let input = readLine(), let input = Int(input) else {
+func inputToUInt() throws -> UInt {
+    guard let input = readLine(), let input = UInt(input) else {
         throw ActivityError.InvaildInputValue
     }
     return input
 }
 
 func startRoutine(of routine: Routine, for bodyCondition: inout BodyCondition) {
-    print("루틴을 몇 번 반복할까요?")
-    do {
-        let numberOfRoutine = try inputToInt()
-        print("--------------")
-        for routineOrder in 1...numberOfRoutine {
-            try doExercise(of: routine, for: &bodyCondition, repeat: routineOrder)
+    var islooping = true
+    while islooping {
+        print("루틴을 몇 번 반복할까요?")
+        do {
+            let numberOfRoutine = try inputToUInt()
+            print("--------------")
+            for routineOrder in 1...numberOfRoutine {
+                try doExercise(of: routine, for: &bodyCondition, repeat: routineOrder)
+            }
+            bodyCondition.printCondition()
+            islooping = false
+        } catch ActivityError.InvaildInputValue {
+            print("잘못된 입력 형식입니다. 다시 입력해주세요.")
+        } catch ActivityError.over100bodyFatigue {
+            print("피로도가 100 이상입니다. 루틴을 중단합니다.")
+            islooping = false
+            bodyCondition.printCondition()
+        } catch {
+            print(error)
         }
-        bodyCondition.printCondition()
-    } catch ActivityError.InvaildInputValue {
-        print("잘못된 입력 형식입니다. 다시 입력해주세요.")
-    } catch ActivityError.over100bodyFatigue {
-        print("피로도가 100 이상입니다. 루틴을 중단합니다.")
-        bodyCondition.printCondition()
-    } catch {
-        print(error)
     }
 }
