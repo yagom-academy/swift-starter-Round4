@@ -112,14 +112,39 @@ let activeRest: Activity = Activity(name: "동적휴식", action: { bodyConditio
 })
 
 func doExercise(of routine: Routine, for bodyCondition: inout BodyCondition, repeat routineOrder: UInt) {
+    var numberOfRoutineInKorean: String
     
-//    print(
-//        """
-//        <<\(activity.name)을(를) 시작합니다>>
-//        """)
-//    activity.action(&bodyCondition)
-//    bodyCondition.printCondition()
+    switch routineOrder {
+    case 1:
+        numberOfRoutineInKorean = "첫"
+    case 2:
+        numberOfRoutineInKorean = "두"
+    case 3:
+        numberOfRoutineInKorean = "세"
+    case 4:
+        numberOfRoutineInKorean = "네"
+    case 5:
+        numberOfRoutineInKorean = "다섯"
+    case 6:
+        numberOfRoutineInKorean = "여섯"
+    case 7:
+        numberOfRoutineInKorean = "일곱"
+    case 8:
+        numberOfRoutineInKorean = "여덟"
+    case 9:
+        numberOfRoutineInKorean = "아홉"
+    default:
+        numberOfRoutineInKorean = String(routineOrder)
+    }
+    
+    print(
+        """
+        \(numberOfRoutineInKorean) 번째 \(routine.name)을(를) 시작합니다
+        """)
+    //    routine.activities.(&bodyCondition)
+    bodyCondition.printCondition()
 }
+
 
 func startRoutine(of routine: Routine, for bodyCondition: inout BodyCondition) {
     print("루틴을 몇 번 반복할까요?")
