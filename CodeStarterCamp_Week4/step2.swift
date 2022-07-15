@@ -111,11 +111,27 @@ let activeRest: Activity = Activity(name: "동적휴식", action: { bodyConditio
     }
 })
 
-func doExercise(of activity: Activity, for bodyCondition: inout BodyCondition) {
-    print(
-        """
-        <<\(activity.name)을(를) 시작합니다>>
-        """)
-    activity.action(&bodyCondition)
-    bodyCondition.printCondition()
+func doExercise(of routine: Routine, for bodyCondition: inout BodyCondition, repeat routineOrder: UInt) {
+    
+//    print(
+//        """
+//        <<\(activity.name)을(를) 시작합니다>>
+//        """)
+//    activity.action(&bodyCondition)
+//    bodyCondition.printCondition()
 }
+
+func startRoutine(of routine: Routine, for bodyCondition: inout BodyCondition) {
+    print("루틴을 몇 번 반복할까요?")
+    while let input = readLine() {
+        if let numberOfRoutine = UInt(input) {
+            for routineOrder in 1...numberOfRoutine {
+                doExercise(of: routine, for: &bodyCondition, repeat: routineOrder)
+            }
+        } else {
+            print("잘못된 입력 형식입니다. 다시 입력해주세요.")
+            print("루틴을 몇 번 반복할까요?")
+        }
+    }
+}
+

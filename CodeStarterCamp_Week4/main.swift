@@ -9,9 +9,12 @@
 import Foundation
 
 //MARK: STEP 1
-doExercise(of: activeRest, for: &conditionOfYagom)
+//doExercise(of: activeRest, for: &conditionOfYagom)
+//
+//doExercise(of: sitUp, for: &conditionOfJae)
+//doExercise(of: squart, for: &conditionOfJae)
+//doExercise(of: longDistanceRunning, for: &conditionOfJae)
+//doExercise(of: activeRest, for: &conditionOfJae)
 
-doExercise(of: sitUp, for: &conditionOfJae)
-doExercise(of: squart, for: &conditionOfJae)
-doExercise(of: longDistanceRunning, for: &conditionOfJae)
-doExercise(of: activeRest, for: &conditionOfJae)
+//MARK: STEP 2
+startRoutine(of: hellRoutine, for: &conditionOfJae)
