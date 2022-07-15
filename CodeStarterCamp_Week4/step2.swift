@@ -104,3 +104,11 @@ let activeRest: Activity = Activity(name: "동적휴식", action: { bodyConditio
     }
 })
 
+func doExercise(of activity: Activity, for bodyCondition: inout BodyCondition) {
+    print(
+        """
+        <<\(activity.name)을(를) 시작합니다>>
+        """)
+    activity.action(&bodyCondition)
+    bodyCondition.printCondition()
+}
