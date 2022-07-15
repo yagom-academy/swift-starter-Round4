@@ -12,6 +12,13 @@ enum InputRange {
     case large
 }
 
+struct Routine {
+    let name: String
+    let activities: Array<Activity> = [sitUp, activeRest, squart]
+}
+
+var hellRoutine: Routine = Routine(name: "hellRoutine")
+
 struct BodyCondition {
     var upperBodyMuscleStrength: Int = 0
     var lowerBodyMuscleStrength: Int = 0
