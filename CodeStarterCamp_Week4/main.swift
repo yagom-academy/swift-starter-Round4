@@ -8,5 +8,10 @@
 
 import Foundation
 
-print("Hello, World!")
+//MARK: STEP 1
+doExercise(of: activeRest, for: &conditionOfYagom)
 
+doExercise(of: sitUp, for: &conditionOfJae)
+doExercise(of: squart, for: &conditionOfJae)
+doExercise(of: longDistanceRunning, for: &conditionOfJae)
+doExercise(of: activeRest, for: &conditionOfJae)
