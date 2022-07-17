@@ -53,7 +53,7 @@ class BodyCondition {
         }
     }
     
-    private func checkBodyCondition() {
+    func checkBodyCondition() {
         print("""
 --------------
 현재의 컨디션은 다음과 같습니다.
