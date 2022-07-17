@@ -39,10 +39,10 @@ class BodyCondition {
         if self.fatigue < 100 {
             print("<<\(activity.name)을(를) 시작합니다>>")
             activity.action(self)
-            checkBodyCondition()
         } else {
             print("\(self.name)은(는) 너무 피곤해서 \(activity.name)을(를) 할 수 없다.")
         }
+        checkBodyCondition()
     }
     
     private func printChangeInCondition(condition property: String, amountOfChange: Int) {
