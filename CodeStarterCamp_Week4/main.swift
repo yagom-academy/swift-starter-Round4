@@ -56,7 +56,7 @@ class BodyCondition {
     func checkBodyCondition() {
         print("""
 --------------
-현재의 컨디션은 다음과 같습니다.
+현재 \(self.name)의 컨디션은 다음과 같습니다.
 상체근력: \(self.upperBodyStrength)
 하체근력: \(self.lowerBodyStrength)
 근지구력: \(self.muscularEndurance)
