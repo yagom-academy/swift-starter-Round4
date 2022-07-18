@@ -8,5 +8,10 @@
 
 import Foundation
 
-print("Hello, World!")
+let myBodyCondition: BodyCondition = BodyCondition(upperBodyMuscleStrength: 100, lowerBodyMuscleStrength: 80, muscularEndurance: 80, fatigue: 0)
 
+sitUp.action(myBodyCondition)
+myBodyCondition.printCurrentBodyCondition()
+
+sleep.action(myBodyCondition)
+myBodyCondition.printCurrentBodyCondition()
