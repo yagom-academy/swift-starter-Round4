@@ -25,9 +25,13 @@ let sitUp: Activity = Activity(name: "윗몸일으키기", action: { bodyConditi
     상체근력이 \(randomUpperBodyStrengthGrowth) 상승합니다.
     피로도가 \(randomFatigueGrowth) 상승합니다.
     """)
-    codeSparrow.upperBodyStrength += randomUpperBodyStrengthGrowth
-    codeSparrow.fatigue += randomFatigueGrowth
+    
+    var currentUpperBodyStrength = bodyCondition.upperBodyStrength
+    var currentFatigue = bodyCondition.fatigue
+    currentUpperBodyStrength += randomUpperBodyStrengthGrowth
+    currentFatigue += randomFatigueGrowth
 })
+
 let squat: Activity = Activity(name: "스쿼트", action: { bodyCondition in
     let randomLowerBodyStrengthGrowth = Int.random(in: 20...30)
     let randomFatigueGrowth = Int.random(in: 10...20)
@@ -35,9 +39,13 @@ let squat: Activity = Activity(name: "스쿼트", action: { bodyCondition in
     하체근력이 \(randomLowerBodyStrengthGrowth) 상승합니다.
     피로도가 \(randomFatigueGrowth) 상승합니다.
     """)
-    codeSparrow.lowerBodyStrength += randomLowerBodyStrengthGrowth
-    codeSparrow.fatigue += randomFatigueGrowth
+    
+    var currentLowerBodyStrength  = bodyCondition.lowerBodyStrength
+    var currentFatigue = bodyCondition.fatigue
+    currentLowerBodyStrength += randomLowerBodyStrengthGrowth
+    currentFatigue += randomFatigueGrowth
 })
+
 let running: Activity = Activity(name: "오래달리기", action: { bodyCondition in
     let randomMuscularEnduranceGrowth = Int.random(in: 20...30)
     let randomUpperBodyStrengthGrowth = Int.random(in: 5...10)
@@ -49,15 +57,23 @@ let running: Activity = Activity(name: "오래달리기", action: { bodyConditio
     하체근력이 \(randomLowerBodyStrengthGrowth) 상승합니다.
     피로도가 \(randomFatigueGrowth) 상승합니다.
     """)
-    codeSparrow.muscularEndurance += randomMuscularEnduranceGrowth
-    codeSparrow.upperBodyStrength += randomUpperBodyStrengthGrowth
-    codeSparrow.lowerBodyStrength += randomLowerBodyStrengthGrowth
-    codeSparrow.fatigue += randomFatigueGrowth
+    
+    var currentMuscularEndurance = bodyCondition.muscularEndurance
+    var currentUpperBodyStrength = bodyCondition.upperBodyStrength
+    var currentLowerBodyStrength = bodyCondition.lowerBodyStrength
+    var currentFatigue = bodyCondition.fatigue
+    currentMuscularEndurance += randomMuscularEnduranceGrowth
+    currentUpperBodyStrength += randomUpperBodyStrengthGrowth
+    currentLowerBodyStrength += randomLowerBodyStrengthGrowth
+    currentFatigue += randomFatigueGrowth
 })
+
 let activeRest: Activity = Activity(name: "동적휴식", action: { bodyCondition in
     let randomFatigueReduction = Int.random(in: 5...10)
     print("피로도가 \(randomFatigueReduction) 하락합니다.")
-    codeSparrow.fatigue -= randomFatigueReduction
+    
+    var currentFatigue = bodyCondition.fatigue
+    currentFatigue -= randomFatigueReduction
 })
 
 func workOut(_ activity: Activity) {
@@ -78,3 +94,4 @@ func checkBodyCondition(_ name: BodyCondition) {
 }
 
 var codeSparrow: BodyCondition = BodyCondition(upperBodyStrength: 70, lowerBodyStrength: 50, muscularEndurance: 30, fatigue: 0)
+
