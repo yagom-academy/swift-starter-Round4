@@ -8,10 +8,52 @@
 
 import Foundation
 
+let sitUp: Activity = Activity(name: "윗몸일으키기",
+                               action: { (bodyCondition: BodyCondition) in
+    print("윗몸일으키기를 시작합니다.")
+    bodyCondition.raiseUpperBodyMuscleStrength(Int.random(in: 10...20))
+    bodyCondition.raiseFatigue(Int.random(in: 10...20))
+    print("--------------")
+    bodyCondition.printCurrentBodyCondition()
+})
+
+let squat: Activity = Activity(name: "스쿼트",
+                               action: { (bodyCondition: BodyCondition) in
+    print("스쿼트를 시작합니다.")
+    bodyCondition.raiseLowerBodyMuscleStrength(Int.random(in: 20...30))
+    bodyCondition.raiseFatigue(Int.random(in: 10...20))
+    print("--------------")
+    bodyCondition.printCurrentBodyCondition()
+})
+
+let longRun: Activity = Activity(name: "오래달리기",
+                                 action: { (bodyCondition: BodyCondition) in
+    print("오래달리기를 시작합니다.")
+    bodyCondition.raiseMuscularEndurance(Int.random(in: 20...30))
+    bodyCondition.raiseUpperBodyMuscleStrength(Int.random(in: 5...10))
+    bodyCondition.raiseLowerBodyMuscleStrength(Int.random(in: 5...10))
+    bodyCondition.raiseFatigue(Int.random(in: 20...30))
+    print("--------------")
+    bodyCondition.printCurrentBodyCondition()
+})
+
+let dynamicRest: Activity = Activity(name: "동적휴식") {
+    (bodyCondition: BodyCondition) in
+    print("동적휴식을 시작합니다.")
+    bodyCondition.dropFatigue(Int.random(in: 5...10))
+    print("--------------")
+    bodyCondition.printCurrentBodyCondition()
+}
+
+let sleep: Activity = Activity(name: "잠자기") {
+    print("잠자기를 시작합니다.")
+    $0.dropFatigue(Int.random(in: 20...30))
+    print("--------------")
+    $0.printCurrentBodyCondition()
+}
+
 let myBodyCondition: BodyCondition = BodyCondition(upperBodyMuscleStrength: 100, lowerBodyMuscleStrength: 80, muscularEndurance: 80, fatigue: 0)
 
 sitUp.action(myBodyCondition)
-myBodyCondition.printCurrentBodyCondition()
 
 sleep.action(myBodyCondition)
-myBodyCondition.printCurrentBodyCondition()
