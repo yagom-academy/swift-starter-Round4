@@ -8,5 +8,10 @@
 
 import Foundation
 
-print("Hello, World!")
+var kiwoongsBody = BodyCondition()
 
+doExercise(bodyCondition: kiwoongsBody, activity: sitUp)
+doExercise(bodyCondition: kiwoongsBody, activity: squats)
+doExercise(bodyCondition: kiwoongsBody, activity: longRun)
+doExercise(bodyCondition: kiwoongsBody, activity: rest)
+doExercise(bodyCondition: kiwoongsBody, activity: pushup)
