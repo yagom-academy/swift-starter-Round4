@@ -23,23 +23,27 @@ class BodyCondition {
     
     func buildUpperBodyStrength(_ randomNumber: Int) {
         self.upperBodyStrength += randomNumber
-        print("상체근력이 \(randomNumber) 상승합니다.")
+        showIncreasedMessage("상체근력", for: randomNumber)
     }
     func buildLowerBodyStrength(_ randomNumber: Int) {
         self.lowerBodyStrength += randomNumber
-        print("하체근력이 \(randomNumber) 상승합니다.")
+        showIncreasedMessage("상체근력", for: randomNumber)
     }
     func buildMuscularEndurance(_ randomNumber: Int) {
         self.muscularEndurance += randomNumber
-        print("근지구력이 \(randomNumber) 상승합니다.")
+        showIncreasedMessage("상체근력", for: randomNumber)
     }
     func increaseFatigue(_ randomNumber: Int) {
         self.fatigue += randomNumber
-        print("피로도가 \(randomNumber) 상승합니다.")
+        showIncreasedMessage("피로도", for: randomNumber)
     }
     func reduceFatigue(_ randomNumber: Int) {
         self.fatigue -= randomNumber
         print("피로도가 \(randomNumber) 하락합니다.")
+    }
+    
+    func showIncreasedMessage(_ result: String, for number : Int) {
+        print("\(result)이(가) \(number) 상승합니다")
     }
     
     func showCurrentCondition() {
@@ -69,30 +73,29 @@ func random(_ from: Int, _ to: Int) -> Int {
 let 윗몸일으키기: Activity = Activity(name: "윗몸일으키기") {
     $0.buildUpperBodyStrength(random(10, 20))
     $0.increaseFatigue(random(10,20))
-    $0.showCurrentCondition()
 }
 
 let 스쿼트: Activity = Activity(name: "스쿼트") {
     $0.buildLowerBodyStrength(random(20, 30))
     $0.increaseFatigue(random(10, 20))
-    $0.showCurrentCondition()
 }
 let 오래달리기: Activity = Activity(name: "오래달리기") {
     $0.buildMuscularEndurance(random(20, 30))
     $0.buildUpperBodyStrength(random(5, 10))
     $0.buildLowerBodyStrength(random(5, 10))
     $0.increaseFatigue(random(20, 30))
-    $0.showCurrentCondition()
 }
 let 동적휴식: Activity = Activity(name: "동적휴식") {
     $0.buildLowerBodyStrength(random(5, 10))
-    $0.showCurrentCondition()
 }
 
-func workOut(_ activity: Activity) {
-    
+func workOut(who bodyCondition: BodyCondition , _ act: Activity) {
+    print("<<\(act.name)을(를) 시작합니다>>")
+    act.action(bodyCondition)
+    bodyCondition.showCurrentCondition()
 }
 
 
-윗몸일으키기.action(myBodyCondition)
-스쿼트.action(myBodyCondition)
+
+workOut(who: myBodyCondition, 윗몸일으키기)
+workOut(who: myBodyCondition, 스쿼트)
