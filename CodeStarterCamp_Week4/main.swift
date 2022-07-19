@@ -27,11 +27,11 @@ class BodyCondition {
     }
     func buildLowerBodyStrength(_ randomNumber: Int) {
         self.lowerBodyStrength += randomNumber
-        showIncreasedMessage("상체근력", for: randomNumber)
+        showIncreasedMessage("하체근력", for: randomNumber)
     }
     func buildMuscularEndurance(_ randomNumber: Int) {
         self.muscularEndurance += randomNumber
-        showIncreasedMessage("상체근력", for: randomNumber)
+        showIncreasedMessage("근지구력", for: randomNumber)
     }
     func increaseFatigue(_ randomNumber: Int) {
         self.fatigue += randomNumber
