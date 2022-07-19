@@ -52,8 +52,8 @@ class BodyCondition {
     }
 }
 
-func moveExercise(_ activity: Activity) {
-    activity.action(BodyConditionw)
+func moveExercise(_ activity: Activity, _ bodyCondition: BodyCondition) {
+    activity.action(bodyCondition)
 }
 
 let 윗몸일으키기: Activity = Activity(name: "윗몸일으키기", action: {

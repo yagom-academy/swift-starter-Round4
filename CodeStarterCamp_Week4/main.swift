@@ -8,9 +8,9 @@
 
 import Foundation
 
-var BodyConditionw = BodyCondition(20, 10, 30, 50)
+var NamJunBodyConditionw = BodyCondition(20, 10, 30, 50)
 
-moveExercise(윗몸일으키기)
-moveExercise(스쿼트)
-moveExercise(오래달리기)
-moveExercise(휴식)
+moveExercise(윗몸일으키기,NamJunBodyConditionw)
+moveExercise(스쿼트,NamJunBodyConditionw)
+moveExercise(오래달리기,NamJunBodyConditionw)
+moveExercise(휴식,NamJunBodyConditionw)
