@@ -13,68 +13,32 @@ struct Activity {
 }
 
 class BodyCondition {
-    var upperBodyStrengh: Int = 0
-    var lowerBodyStrengh: Int = 0
-    var muscularEndurance: Int = 0
-    var fatigue: Int = 0
-    
-    func moveSitUp() {
-        let plusupperBodyStrengh = Int.random(in: 10...20)
-        let plusfatigue = Int.random(in: 10...20)
-        
-        self.upperBodyStrengh += plusupperBodyStrengh
-        self.fatigue += plusfatigue
-        
-        print("<<윗몸일으키기을(를) 시작합니다>>")
-        print("상체근력이 \(plusupperBodyStrengh) 상승합니다.")
-        print("피로도가 \(plusfatigue) 상승합니다.")
-        
-        checkCondition()
+    var upperBodyStrengh: Int {
+        didSet(oldValue) {
+            print("상체근력이 \(self.upperBodyStrengh - oldValue) 상승합니다.")
+        }
+    }
+    var lowerBodyStrengh: Int {
+        didSet(oldValue) {
+            print("하체근력이 \(self.lowerBodyStrengh - oldValue) 상승합니다.")
+        }
+    }
+    var muscularEndurance: Int {
+        didSet(oldValue) {
+            print("근지구력이 \(self.muscularEndurance - oldValue) 상승합니다.")
+        }
+    }
+    var fatigue: Int {
+        didSet(oldValue) {
+            print("피로도가 \(self.fatigue - oldValue) 상승합니다.")
+        }
     }
     
-    func moveSquat() {
-        let pluslowerBodyStrengh = Int.random(in: 10...20)
-        let plusfatigue = Int.random(in: 10...20)
-        
-        self.lowerBodyStrengh += pluslowerBodyStrengh
-        self.fatigue += plusfatigue
-        
-        print("<<스쿼트을(를) 시작합니다>>")
-        print("하체근력이 \(pluslowerBodyStrengh) 상승합니다.")
-        print("피로도가 \(plusfatigue) 상승합니다.")
-        
-        checkCondition()
-    }
-
-    func moveLongRun() {
-        let plusupperBodyStrengh = Int.random(in: 5...10)
-        let pluslowerBodyStrengh = Int.random(in: 5...10)
-        let plusmuscularEndurance = Int.random(in: 20...30)
-        let plusfatigue = Int.random(in: 20...30)
-        
-        self.upperBodyStrengh += plusupperBodyStrengh
-        self.lowerBodyStrengh += pluslowerBodyStrengh
-        self.muscularEndurance += plusmuscularEndurance
-        self.fatigue += plusfatigue
-        
-        print("<<오래달리기을(를) 시작합니다>>")
-        print("상체근력이 \(plusupperBodyStrengh) 상승합니다.")
-        print("하체근력이 \(pluslowerBodyStrengh) 상승합니다.")
-        print("근지구력이 \(plusmuscularEndurance) 상승합니다.")
-        print("피로도가 \(plusfatigue) 상승합니다.")
-        
-        checkCondition()
-    }
-
-    func moveRest() {
-        let plusfatigue = -Int.random(in: 5...10)
-        
-        self.fatigue += plusfatigue
-        
-        print("<<휴식을(를) 시작합니다>>")
-        print("피로도가 \(plusfatigue) 상승합니다.")
-        
-        checkCondition()
+    init(_ upperBodyStrengh: Int, _ lowerBodyStrengh: Int, _ muscularEndurance: Int, _ fatigue: Int){
+        self.upperBodyStrengh = upperBodyStrengh
+        self.lowerBodyStrengh = lowerBodyStrengh
+        self.muscularEndurance = muscularEndurance
+        self.fatigue = fatigue
     }
 
     func checkCondition() {
@@ -91,3 +55,40 @@ class BodyCondition {
 func moveExercise(_ activity: Activity) {
     activity.action(BodyConditionw)
 }
+
+let 윗몸일으키기: Activity = Activity(name: "윗몸일으키기", action: {
+    print("<<\(윗몸일으키기.name)을(를) 시작합니다>>")
+    
+    $0.upperBodyStrengh += Int.random(in: 10...20)
+    $0.fatigue += Int.random(in: 10...20)
+    
+    $0.checkCondition()
+})
+
+let 스쿼트: Activity = Activity(name: "스쿼트", action: {
+    print("<<\(스쿼트.name)(를) 시작합니다>>")
+    
+    $0.lowerBodyStrengh += Int.random(in: 10...20)
+    $0.fatigue += Int.random(in: 10...20)
+    
+    $0.checkCondition()
+})
+
+let 오래달리기: Activity = Activity(name: "오래달리기", action: {
+    print("<<\(오래달리기.name)(를) 시작합니다>>")
+    
+    $0.upperBodyStrengh += Int.random(in: 5...10)
+    $0.lowerBodyStrengh += Int.random(in: 5...10)
+    $0.muscularEndurance += Int.random(in: 20...30)
+    $0.fatigue += Int.random(in: 20...30)
+    
+    $0.checkCondition()
+})
+
+let 휴식: Activity = Activity(name: "휴식", action: {
+    print("<<\(휴식.name)(를) 시작합니다>>")
+    
+    $0.fatigue += Int.random(in: 20...30)
+    
+    $0.checkCondition()
+})
