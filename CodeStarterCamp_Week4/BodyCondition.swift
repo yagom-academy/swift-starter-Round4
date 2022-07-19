@@ -72,4 +72,8 @@ class BodyCondition {
               "--------------"
               ,separator: "\n")
     }
+    
+    func fatigueExceed100() -> Bool {
+        return fatigue >= 100
+    }
 }
