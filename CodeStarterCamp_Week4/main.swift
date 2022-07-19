@@ -99,3 +99,55 @@ func workOut(who bodyCondition: BodyCondition , _ act: Activity) {
 
 workOut(who: myBodyCondition, 윗몸일으키기)
 workOut(who: myBodyCondition, 스쿼트)
+
+// Step2
+enum RoutineError: Error {
+    case overFatigue
+    case unexpectedValue
+    case otherException
+}
+
+class Routine {
+    let name: String
+    let activities: [Activity]
+    let bodycondition: BodyCondition
+    
+    init(name: String, activities: [Activity], bodycondition: BodyCondition) {
+        self.name = name
+        self.activities = activities
+        self.bodycondition = bodycondition
+    }
+    
+    func startRoutine() throws {
+//        let round = 1
+        
+        do {
+            print("루틴을 몇 번 반복할까요?")
+            guard let round: Int = Int(readLine() ?? "") else {
+                throw RoutineError.unexpectedValue
+            }
+            
+            
+            for _ in 1...round {
+                guard self.bodycondition.fatigue < 100 else {
+                    throw RoutineError.overFatigue
+                }
+                for act in self.activities {
+                    workOut(who: bodycondition, act)
+                }
+            }
+            self.bodycondition.showCurrentCondition()
+        } catch RoutineError.overFatigue {
+            print("피로도가 100 이상입니다. 루틴을 중단합니다.")
+        } catch RoutineError.unexpectedValue {
+            print("잘못된 입력 형식입니다. 다시 입력해주세요.")
+        } catch RoutineError.otherException {
+            
+        }
+        
+        
+        
+    }
+}
+
+let myRoutine: Routine = Routine(name: "my routine", activities: [윗몸일으키기, 동적휴식, 스쿼트], bodycondition: myBodyCondition)
