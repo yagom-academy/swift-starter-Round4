@@ -8,10 +8,9 @@
 
 import Foundation
 
-var kiwoongsBody = BodyCondition()
+var kiwoongsBody = BodyCondition(upperBodyMuscleStrength: 20, lowerBodyMuscleStrength: 10, muscularEndurance: 25, fatigue: 10)
 
-doExercise(bodyCondition: kiwoongsBody, activity: sitUp)
-doExercise(bodyCondition: kiwoongsBody, activity: squats)
-doExercise(bodyCondition: kiwoongsBody, activity: longRun)
-doExercise(bodyCondition: kiwoongsBody, activity: rest)
-doExercise(bodyCondition: kiwoongsBody, activity: pushup)
+sitUp.action(kiwoongsBody)
+pushup.action(kiwoongsBody)
+rest.action(kiwoongsBody)
+checkBodyCondition(bodyCondition: kiwoongsBody)
