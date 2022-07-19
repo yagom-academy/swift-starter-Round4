@@ -14,33 +14,45 @@ struct Activity {
 
 class BodyCondition {
     var upperBodyStrengh: Int {
-        didSet(oldValue) {
-            print("상체근력이 \(self.upperBodyStrengh - oldValue) 상승합니다.")
+        didSet {
+            print("상체근력이 \(showChangeValueMessage(self.upperBodyStrengh - oldValue))")
         }
     }
     var lowerBodyStrengh: Int {
-        didSet(oldValue) {
-            print("하체근력이 \(self.lowerBodyStrengh - oldValue) 상승합니다.")
+        didSet {
+            print("하체근력이 \(showChangeValueMessage(self.lowerBodyStrengh - oldValue))")
         }
     }
     var muscularEndurance: Int {
-        didSet(oldValue) {
-            print("근지구력이 \(self.muscularEndurance - oldValue) 상승합니다.")
+        didSet {
+            print("근지구력이 \(showChangeValueMessage(self.muscularEndurance - oldValue))")
         }
     }
     var fatigue: Int {
-        didSet(oldValue) {
-            print("피로도가 \(self.fatigue - oldValue) 상승합니다.")
+        didSet {
+            print("피로도가 \(showChangeValueMessage(self.fatigue - oldValue))")
         }
     }
     
-    init(_ upperBodyStrengh: Int, _ lowerBodyStrengh: Int, _ muscularEndurance: Int, _ fatigue: Int){
+    init(upperBodyStrengh: Int, lowerBodyStrengh: Int, muscularEndurance: Int, fatigue: Int) {
         self.upperBodyStrengh = upperBodyStrengh
         self.lowerBodyStrengh = lowerBodyStrengh
         self.muscularEndurance = muscularEndurance
         self.fatigue = fatigue
     }
 
+    func showChangeValueMessage(_ changeValue: Int) -> String {
+        let changeValueMessage: String
+        
+        if changeValue > 0 {
+            changeValueMessage = "상승"
+        } else {
+            changeValueMessage = "하락"
+        }
+        
+        return "\(changeValue) \(changeValueMessage)합니다."
+    }
+    
     func checkCondition() {
         print("--------------")
         print("현재의 컨디션은 다음과 같습니다.")
@@ -88,7 +100,7 @@ let 오래달리기: Activity = Activity(name: "오래달리기", action: {
 let 휴식: Activity = Activity(name: "휴식", action: {
     print("<<\(휴식.name)(를) 시작합니다>>")
     
-    $0.fatigue += Int.random(in: 20...30)
+    $0.fatigue -= Int.random(in: 20...30)
     
     $0.checkCondition()
 })
