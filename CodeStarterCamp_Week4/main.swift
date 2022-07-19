@@ -37,4 +37,3 @@ gundy.doActivity(longDistanceRunning)
 gundy.doActivity(activeRest)
 gundy.fatigue = 100
 gundy.doActivity(sitUp)
-
