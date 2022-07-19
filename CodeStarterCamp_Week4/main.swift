@@ -8,5 +8,9 @@
 
 import Foundation
 
-print("Hello, World!")
+var kiwoongsBody = BodyCondition(upperBodyMuscleStrength: 20, lowerBodyMuscleStrength: 10, muscularEndurance: 25, fatigue: 10)
 
+sitUp.action(kiwoongsBody)
+pushup.action(kiwoongsBody)
+rest.action(kiwoongsBody)
+checkBodyCondition(bodyCondition: kiwoongsBody)
