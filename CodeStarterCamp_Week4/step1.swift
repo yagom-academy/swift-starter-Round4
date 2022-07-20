@@ -41,13 +41,21 @@ class BodyCondition {
         self.lowerBodyMuscleStrength = lowerBodyMuscleStrength
         self.muscularEndurance = muscularEndurance
         self.fatigue = fatigue
-        
     }
 }
 
 struct Activity {
     let name: String
     let action: (BodyCondition) -> Void
+}
+
+struct Routine {
+    let routineName: String
+    let activityArray: [Activity]
+}
+
+enum BodyConditionError: Error {
+    case overFatigue
 }
 
 func checkBodyCondition(bodyCondition: BodyCondition) {
@@ -61,6 +69,36 @@ func checkBodyCondition(bodyCondition: BodyCondition) {
     ------------------------
     \n\n
     """)
+}
+
+func startRoutine(routine: Routine, bodyCondition: BodyCondition) throws {
+    print("루틴을 몇 번 반복할까요? 1이상 정수값을 넣어주세요")
+    guard let repeatRoutine: Int = Int(readLine() ?? "0") else {
+        print("1 이상의 정수값을 넣어주세요")
+        return
+    }
+    if repeatRoutine <= 0 {
+        return
+    }
+    do {
+        for count in 1...repeatRoutine {
+            print("---------------")
+            print("\(count)번째 \(routine.routineName)을(를) 시작합니다.")
+            for routine in routine.activityArray {
+                routine.action(bodyCondition)
+                guard bodyCondition.fatigue < 100 else {
+                    throw BodyConditionError.overFatigue
+                }
+            }
+        }
+        checkBodyCondition(bodyCondition: bodyCondition)
+    } catch BodyConditionError.overFatigue {
+        print("---------------")
+        print("피로도가 100 이상입니다. 루틴을 중단합니다.")
+        checkBodyCondition(bodyCondition: bodyCondition)
+    } catch {
+        print(error)
+    }
 }
 
 let sitUp: Activity = Activity(
