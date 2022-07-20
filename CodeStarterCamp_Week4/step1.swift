@@ -78,6 +78,7 @@ func startRoutine(routine: Routine, bodyCondition: BodyCondition) throws {
         return
     }
     if repeatRoutine <= 0 {
+        print("1 이상의 정수값을 넣어주세요")
         return
     }
     do {
