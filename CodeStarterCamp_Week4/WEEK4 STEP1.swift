@@ -68,8 +68,8 @@ func moveExercise(_ activity: Activity, _ bodyCondition: BodyCondition) {
     activity.action(bodyCondition)
 }
 
-let 윗몸일으키기: Activity = Activity(name: "윗몸일으키기", action: {
-    print("<<\(윗몸일으키기.name)을(를) 시작합니다>>")
+let sitUp: Activity = Activity(name: "윗몸일으키기", action: {
+    print("<<\(sitUp.name)을(를) 시작합니다>>")
     
     $0.upperBodyStrengh += Int.random(in: 10...20)
     $0.fatigue += Int.random(in: 10...20)
@@ -77,8 +77,8 @@ let 윗몸일으키기: Activity = Activity(name: "윗몸일으키기", action: 
     $0.checkCondition()
 })
 
-let 스쿼트: Activity = Activity(name: "스쿼트", action: {
-    print("<<\(스쿼트.name)(를) 시작합니다>>")
+let squat: Activity = Activity(name: "스쿼트", action: {
+    print("<<\(squat.name)(를) 시작합니다>>")
     
     $0.lowerBodyStrengh += Int.random(in: 10...20)
     $0.fatigue += Int.random(in: 10...20)
@@ -86,8 +86,8 @@ let 스쿼트: Activity = Activity(name: "스쿼트", action: {
     $0.checkCondition()
 })
 
-let 오래달리기: Activity = Activity(name: "오래달리기", action: {
-    print("<<\(오래달리기.name)(를) 시작합니다>>")
+let longRun: Activity = Activity(name: "오래달리기", action: {
+    print("<<\(longRun.name)(를) 시작합니다>>")
     
     $0.upperBodyStrengh += Int.random(in: 5...10)
     $0.lowerBodyStrengh += Int.random(in: 5...10)
@@ -97,8 +97,8 @@ let 오래달리기: Activity = Activity(name: "오래달리기", action: {
     $0.checkCondition()
 })
 
-let 휴식: Activity = Activity(name: "휴식", action: {
-    print("<<\(휴식.name)(를) 시작합니다>>")
+let rest: Activity = Activity(name: "휴식", action: {
+    print("<<\(rest.name)(를) 시작합니다>>")
     
     $0.fatigue -= Int.random(in: 20...30)
     
