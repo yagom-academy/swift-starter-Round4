@@ -49,30 +49,29 @@ struct Activity {
     let action: (BodyCondition) -> Void
 }
 
-let sitUp: Activity = Activity(name: "윗몸일으키기", action: {
-    print("<<\(sitUp.name)을(를) 실행합니다>>")
-    $0.upperBodyStrength += Int.random(in: 10...20)
-    $0.fatigue += Int.random(in: 10...20)
-})
-
-let squats : Activity = Activity(name: "스쿼트", action: {
-    print("<<\(squats.name)을(를) 실행합니다>>")
-    $0.lowerBodyStrength += Int.random(in: 20...30)
-    $0.fatigue += Int.random(in: 10...20)
-})
-
-let longRun: Activity = Activity(name: "오래달리기", action: {
-    print("<<\(longRun.name)을(를) 실행합니다>>")
-    $0.upperBodyStrength += Int.random(in: 5...10)
-    $0.lowerBodyStrength += Int.random(in: 5...10)
-    $0.muscularEndurance += Int.random(in: 20...30)
-    $0.fatigue += Int.random(in: 20...30)
-})
-
-let activeRest: Activity = Activity(name: "동적 휴식", action: {
-    print("<<\(activeRest.name)을(를) 실행합니다>>")
-    $0.fatigue -= Int.random(in: 20...30)
-})
+enum Number: UInt {
+    case 첫 = 1, 두, 세, 네, 다섯, 여섯, 일곱, 여덟, 아홉, 열, 열한, 열두, 열세, 열네, 열다섯
+    
+    var KoreanName: String {
+        switch self {
+        case .첫: return "첫"
+        case .두: return "두"
+        case .세: return "세"
+        case .네: return "네"
+        case .다섯: return "다섯"
+        case .여섯: return "여섯"
+        case .일곱: return "일곱"
+        case .여덟: return "여덟"
+        case .아홉: return "아홉"
+        case .열: return "열"
+        case .열한: return "열한"
+        case .열두: return "열두"
+        case .열세: return "열세"
+        case .열네: return "열네"
+        case .열다섯: return "열다섯"
+        }
+    }
+}
 
 enum RoutineError: Error {
     case fatigueOver100
@@ -87,24 +86,26 @@ struct Routine {
     func repeatRoutine(for bodyConditionOfPerformer: BodyCondition) throws {
         print("루틴을 몇 번 반복할까요?")
         let numberOfSets = readLine()
-        let koreanNameOfNumber = [1: "첫", 2: "두", 3: "세", 4: "네", 5: "다섯", 6: "여섯", 7: "일곱", 8: "여덟", 9: "아홉", 10: "열", 11: "열 한", 12: "열 두", 13: "열 세", 14: "열 네", 15: "열 다섯"]
         var OverFatigueLimit: Bool {
             return bodyConditionOfPerformer.fatigue > 100
         }
         print ("---------------------")
         
+        guard numberOfSets != nil else {
+            throw RoutineError.wrongInputValue
+        }
+        guard numberOfSets != "0" else {
+            throw RoutineError.wrongInputValue
+        }
         guard let numberOfSets = numberOfSets else {
             throw RoutineError.oterErrors
         }
-        guard let numberOfSets = Int(numberOfSets) else {
+        guard let numberOfSets = UInt(numberOfSets) else {
             throw RoutineError.wrongInputValue
         }
         
-        for `set` in 1...numberOfSets {
-            guard let koreanNameOfNumber = koreanNameOfNumber[`set`] else {
-                return print("가능한 셋트 수를 초과했습니다.")
-            }
-            print("\(koreanNameOfNumber) 번째 \(self.routineName)을(를) 시작합니다")
+        for number in 1...numberOfSets {
+            print("\(Number(rawValue: (number))?.KoreanName ?? "N")번째 \(self.routineName)을(를) 시작합니다")
             
             for index in 0...routineOrder.count-1 {
                 routineOrder[index].action(bodyConditionOfPerformer)
@@ -114,13 +115,13 @@ struct Routine {
                 }
             }
         }
-        bodyConditionOfPerformer.checkBodyCondition()
     }
 }
 
 func doRoutine(_ routine: Routine, for bodyConditionOfPerformer: BodyCondition) {
     do {
         try routine.repeatRoutine(for: bodyConditionOfPerformer)
+        bodyConditionOfPerformer.checkBodyCondition()
     } catch RoutineError.fatigueOver100 {
         print("피로도가 100 이상입니다. 루틴을 중단합니다.")
         bodyConditionOfPerformer.checkBodyCondition()
