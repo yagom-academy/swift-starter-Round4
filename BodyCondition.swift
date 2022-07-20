@@ -48,7 +48,7 @@ class BodyCondition {
         if amountOfChange > 0 {
             print("\(property) \(amountOfChange) 상승합니다.")
         } else {
-            print("\(property) \(amountOfChange) 감소합니다.")
+            print("\(property) \((-1) * amountOfChange) 감소합니다.")
         }
     }
     
