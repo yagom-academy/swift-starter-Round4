@@ -121,15 +121,16 @@ class Routine {
     func startRoutine() throws {
         do {
             print("루틴을 몇 번 반복할까요?")
-            guard let round: Int = Int(readLine() ?? "") else {
+            guard let round: Int = Int(readLine() ?? ""), round > 0 else {
                 throw RoutineError.unexpectedValue
             }
             for count in 1...round {
                 print("\(count) 번째 \(self.name) 을(를) 시작합니다. ")
-                guard self.bodycondition.fatigue < 100 else {
-                    throw RoutineError.overFatigue
-                }
+                
                 for act in self.activities {
+                    guard self.bodycondition.fatigue < 100 else {
+                        throw RoutineError.overFatigue
+                    }
                     workOut(who: bodycondition, act)
                 }
             }
