@@ -8,5 +8,9 @@
 
 import Foundation
 
-print("Hello, World!")
+var NamJunBodyConditionw = BodyCondition(upperBodyStrengh: 20, lowerBodyStrengh: 10, muscularEndurance: 30, fatigue: 50)
 
+moveExercise(sitUp, NamJunBodyConditionw)
+moveExercise(squat, NamJunBodyConditionw)
+moveExercise(longRun, NamJunBodyConditionw)
+moveExercise(rest, NamJunBodyConditionw)
