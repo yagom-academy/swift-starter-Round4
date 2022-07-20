@@ -10,6 +10,8 @@
 		34811DE8274B93FB00A1E994 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34811DE7274B93FB00A1E994 /* main.swift */; };
 		EB2051342885875300BB74C4 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2051332885875200BB74C4 /* Activity.swift */; };
 		EB205136288617E300BB74C4 /* BodyCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB205135288617E300BB74C4 /* BodyCondition.swift */; };
+		EB2051382886CC1300BB74C4 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2051372886CC1300BB74C4 /* Routine.swift */; };
+		EB20513D2886D0E200BB74C4 /* RoutineError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB20513C2886D0E200BB74C4 /* RoutineError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +31,8 @@
 		34811DE7274B93FB00A1E994 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		EB2051332885875200BB74C4 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		EB205135288617E300BB74C4 /* BodyCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyCondition.swift; sourceTree = "<group>"; };
+		EB2051372886CC1300BB74C4 /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
+		EB20513C2886D0E200BB74C4 /* RoutineError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,8 +66,10 @@
 			isa = PBXGroup;
 			children = (
 				34811DE7274B93FB00A1E994 /* main.swift */,
+				EB2051372886CC1300BB74C4 /* Routine.swift */,
 				EB2051332885875200BB74C4 /* Activity.swift */,
 				EB205135288617E300BB74C4 /* BodyCondition.swift */,
+				EB20513C2886D0E200BB74C4 /* RoutineError.swift */,
 			);
 			path = CodeStarterCamp_Week4;
 			sourceTree = "<group>";
@@ -95,7 +101,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1250;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1340;
 				TargetAttributes = {
 					34811DE3274B93FB00A1E994 = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -127,7 +133,9 @@
 			files = (
 				EB205136288617E300BB74C4 /* BodyCondition.swift in Sources */,
 				EB2051342885875300BB74C4 /* Activity.swift in Sources */,
+				EB2051382886CC1300BB74C4 /* Routine.swift in Sources */,
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
+				EB20513D2886D0E200BB74C4 /* RoutineError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +260,7 @@
 		34811DEC274B93FB00A1E994 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -261,6 +270,7 @@
 		34811DED274B93FB00A1E994 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
