@@ -45,12 +45,14 @@ class BodyCondition {
         let changeValueMessage: String
         
         if changeValue > 0 {
-            changeValueMessage = "상승"
+            changeValueMessage = "\(changeValue) 상승합니다."
+        } else if changeValue < 0 {
+            changeValueMessage = "\(changeValue) 하락합니다."
         } else {
-            changeValueMessage = "하락"
+            changeValueMessage = "변화 없습니다."
         }
         
-        return "\(changeValue) \(changeValueMessage)합니다."
+        return "\(changeValueMessage)"
     }
     
     func checkCondition() {
