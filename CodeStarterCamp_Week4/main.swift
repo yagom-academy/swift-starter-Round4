@@ -11,6 +11,7 @@ import Foundation
 var kiwoongsBody = BodyCondition(upperBodyMuscleStrength: 20, lowerBodyMuscleStrength: 10, muscularEndurance: 25, fatigue: 10)
 var basicRoutine = Routine(
     routineName: "basicRoutine",
-    activityArray: [sitUp,pushup])
+    activityArray: [sitUp,pushup]
+)
 
-try startRoutine(routine: basicRoutine, bodyCondition: kiwoongsBody)
+try readyRoutine(routine: basicRoutine, bodyCondition: kiwoongsBody)

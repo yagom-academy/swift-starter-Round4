@@ -71,36 +71,48 @@ func checkBodyCondition(bodyCondition: BodyCondition) {
     """)
 }
 
-func startRoutine(routine: Routine, bodyCondition: BodyCondition) throws {
-    print("루틴을 몇 번 반복할까요? 1이상 정수값을 넣어주세요")
-    guard let repeatRoutine: Int = Int(readLine() ?? "0") else {
-        print("1 이상의 정수값을 넣어주세요")
-        return
-    }
-    if repeatRoutine <= 0 {
-        print("1 이상의 정수값을 넣어주세요")
-        return
-    }
-    do {
-        for count in 1...repeatRoutine {
-            print("---------------")
-            print("\(count)번째 \(routine.routineName)을(를) 시작합니다.")
-            for routine in routine.activityArray {
-                routine.action(bodyCondition)
-                guard bodyCondition.fatigue < 100 else {
-                    throw BodyConditionError.overFatigue
-                }
-            }
+func readyRoutine(routine: Routine, bodyCondition: BodyCondition) throws {
+    var isTrue: Bool = true
+    while isTrue {
+        print("루틴을 몇 번 반복할까요? 1이상 정수값을 넣어주세요")
+        guard let getLine = readLine() else { continue }
+        guard let input: Int = Int(getLine) else { continue }
+        if input <= 0 {
+            continue
+        } else {
+            isTrue = false
+            try startRoutine(
+                repeateRoutine: input,
+                routine: routine,
+                bodyCondition: bodyCondition)
         }
-        checkBodyCondition(bodyCondition: bodyCondition)
-    } catch BodyConditionError.overFatigue {
-        print("---------------")
-        print("피로도가 100 이상입니다. 루틴을 중단합니다.")
-        checkBodyCondition(bodyCondition: bodyCondition)
-    } catch {
-        print(error)
     }
 }
+
+func startRoutine(
+    repeateRoutine: Int,
+    routine: Routine,
+    bodyCondition: BodyCondition) throws {
+        do {
+            for count in 1...repeateRoutine {
+                print("---------------")
+                print("\(count)번째 \(routine.routineName)을(를) 시작합니다.")
+                for routine in routine.activityArray {
+                    routine.action(bodyCondition)
+                    guard bodyCondition.fatigue < 100 else {
+                        throw BodyConditionError.overFatigue
+                    }
+                }
+            }
+            checkBodyCondition(bodyCondition: bodyCondition)
+        } catch BodyConditionError.overFatigue {
+            print("---------------")
+            print("피로도가 100 이상입니다. 루틴을 중단합니다.")
+            checkBodyCondition(bodyCondition: bodyCondition)
+        } catch {
+            print(error)
+        }
+    }
 
 let sitUp: Activity = Activity(
     name: "윗몸일으키기",
