@@ -27,13 +27,17 @@ let longDistanceRunning: Activity = .init(name: "오래달리기", action: {
     longDistanceRunning.changeFatigue(condition: $0, min: 20, max: 30)
 })
 
+let doubleJump: Activity = .init(name: "더블 점프", action: {
+    doubleJump.lowerGrowth(condition: $0, min: 10, max: 20)
+    doubleJump.changeFatigue(condition: $0, min: 1, max: 20)
+})
+
 let activeRest: Activity = .init(name: "동적휴식", action: {
     activeRest.changeFatigue(condition: $0, min: 5, max: 10, rest: true)
 })
 
-gundy.doActivity(sitUp)
-gundy.doActivity(squat)
-gundy.doActivity(longDistanceRunning)
-gundy.doActivity(activeRest)
-gundy.fatigue = 100
-gundy.doActivity(sitUp)
+var crossFit: Routine = .init(name: "크로스핏", activities: [doubleJump, sitUp])
+var tabata: Routine = .init(name: "타바타", activities: [])
+
+gundy.doRoutine(tabata)
+gundy.doRoutine(crossFit)

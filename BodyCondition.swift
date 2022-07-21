@@ -27,6 +27,7 @@ class BodyCondition {
     var fatigue: Int = 0 {
         didSet {
             self.printChangeInCondition(property: "피로도가", amountOfChange: (fatigue - oldValue))
+            print("--------------")
         }
     }
     
@@ -41,7 +42,6 @@ class BodyCondition {
         } else {
             print("\(self.name)은(는) 너무 피곤해서 \(activity.name)을(를) 할 수 없다.")
         }
-        checkBodyCondition()
     }
     
     private func printChangeInCondition(property: String, amountOfChange: Int) {
@@ -55,7 +55,6 @@ class BodyCondition {
     func checkBodyCondition() {
         print(
         """
-        --------------
         현재 \(self.name)의 컨디션은 다음과 같습니다.
         상체근력: \(self.upperBodyStrength)
         하체근력: \(self.lowerBodyStrength)
@@ -64,5 +63,41 @@ class BodyCondition {
         --------------
         """
         )
+    }
+    
+    func doRoutine(_ routine: Routine) {
+        if self.fatigue >= 100 {
+            print("\(self.name)은(는) 너무 피곤해서 \(routine.name)을(를) 할 수 없다.")
+            return
+        }
+        if routine.activities.isEmpty == false {
+            print("\(routine.name) 루틴을 몇 번 반복할까요?")
+            continueRoutine(routine)
+        } else {
+            do {
+                try routine.startRoutine(person: self)
+            } catch RoutineError.noRoutine {
+                print("\(routine.name) 루틴은 아무 활동도 없습니다.")
+                print("설명: \(RoutineError.noRoutine.localizedDescription)\n")
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    private func continueRoutine(_ routine: Routine) {
+        do {
+            try routine.startRoutine(person: self)
+        } catch RoutineError.wrongInput {
+            print("잘못된 입력 형식입니다. 다시 입력해주세요.")
+            print("설명: \(RoutineError.wrongInput.localizedDescription)\n")
+            continueRoutine(routine)
+        } catch RoutineError.fatigueAccumulation {
+            print("피로도가 100 이상입니다. 루틴을 중단합니다.")
+            print("설명: \(RoutineError.fatigueAccumulation.localizedDescription)\n")
+            checkBodyCondition()
+        } catch {
+            print(error)
+        }
     }
 }

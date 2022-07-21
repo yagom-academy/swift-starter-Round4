@@ -10,6 +10,8 @@
 		34811DE8274B93FB00A1E994 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34811DE7274B93FB00A1E994 /* main.swift */; };
 		BF827EE22886A451000A8F54 /* BodyCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF827EE12886A451000A8F54 /* BodyCondition.swift */; };
 		BF827EE42886A492000A8F54 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF827EE32886A491000A8F54 /* Activity.swift */; };
+		BF827EEC2887D659000A8F54 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF827EEB2887D659000A8F54 /* Routine.swift */; };
+		BF827EF02887DEF0000A8F54 /* RoutineError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF827EEF2887DEF0000A8F54 /* RoutineError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +31,8 @@
 		34811DE7274B93FB00A1E994 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		BF827EE12886A451000A8F54 /* BodyCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyCondition.swift; sourceTree = "<group>"; };
 		BF827EE32886A491000A8F54 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		BF827EEB2887D659000A8F54 /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
+		BF827EEF2887DEF0000A8F54 /* RoutineError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +51,8 @@
 			children = (
 				BF827EE32886A491000A8F54 /* Activity.swift */,
 				BF827EE12886A451000A8F54 /* BodyCondition.swift */,
+				BF827EEB2887D659000A8F54 /* Routine.swift */,
+				BF827EEF2887DEF0000A8F54 /* RoutineError.swift */,
 				34811DE6274B93FB00A1E994 /* CodeStarterCamp_Week4 */,
 				34811DE5274B93FB00A1E994 /* Products */,
 			);
@@ -125,8 +131,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF827EF02887DEF0000A8F54 /* RoutineError.swift in Sources */,
 				BF827EE42886A492000A8F54 /* Activity.swift in Sources */,
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
+				BF827EEC2887D659000A8F54 /* Routine.swift in Sources */,
 				BF827EE22886A451000A8F54 /* BodyCondition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
