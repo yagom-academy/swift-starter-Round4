@@ -50,7 +50,7 @@ struct Activity {
     let action: (BodyCondition) -> Void
 }
 
-let 윗몸일으키기: Activity = Activity(name: "윗몸일으키기") { (bodyCondition: BodyCondition) -> Void in
+let sitUp: Activity = Activity(name: "윗몸일으키기") { (bodyCondition: BodyCondition) -> Void in
     
     let upperBodyMuscleStrength = Int.random(in: 10...20)
     let tiredness = Int.random(in: 10...20)
@@ -62,7 +62,7 @@ let 윗몸일으키기: Activity = Activity(name: "윗몸일으키기") { (bodyC
     bodyCondition.tiredness += tiredness
 }
 
-let 스쿼트: Activity = Activity(name: "스쿼트") { (bodyCondition: BodyCondition) -> Void in
+let Squatting: Activity = Activity(name: "스쿼트") { (bodyCondition: BodyCondition) -> Void in
     
     let lowerBodyMuscleStrength = Int.random(in: 20...30)
     let tiredness = Int.random(in: 10...20)
@@ -74,7 +74,7 @@ let 스쿼트: Activity = Activity(name: "스쿼트") { (bodyCondition: BodyCond
     bodyCondition.tiredness += tiredness
 }
 
-let 오래달리기: Activity = Activity(name: "오래달리기") { (bodyCondition: BodyCondition) -> Void in
+let longRunning: Activity = Activity(name: "오래달리기") { (bodyCondition: BodyCondition) -> Void in
     
     let muscularEndurance = Int.random(in: 20...30)
     let upperBodyMuscleStrength = Int.random(in: 5...10)
@@ -92,7 +92,7 @@ let 오래달리기: Activity = Activity(name: "오래달리기") { (bodyConditi
     bodyCondition.tiredness += tiredness
 }
 
-let 동적휴식: Activity = Activity(name: "동적휴식") {(bodyCondition: BodyCondition) -> Void in
+let dynamicRest: Activity = Activity(name: "동적휴식") {(bodyCondition: BodyCondition) -> Void in
     
     let tiredness = Int.random(in: 5...10)
     
@@ -101,7 +101,7 @@ let 동적휴식: Activity = Activity(name: "동적휴식") {(bodyCondition: Bod
     bodyCondition.tiredness -= tiredness
 }
 
-let 스트레칭: Activity = Activity(name: "스트레칭") {(bodyCondition: BodyCondition) -> Void in
+let stretching: Activity = Activity(name: "스트레칭") {(bodyCondition: BodyCondition) -> Void in
     
     let upperBodyMuscleStrength = Int.random(in: 1...5)
     let lowerBodyMuscleStrength = Int.random(in: 1...5)
@@ -117,11 +117,11 @@ let 스트레칭: Activity = Activity(name: "스트레칭") {(bodyCondition: Bod
 }
 
 var dasanBodyCondition = BodyCondition(name: "다산")
-dasanBodyCondition.activity = 윗몸일으키기
+dasanBodyCondition.activity = sitUp
 dasanBodyCondition.printCondition()
 
 var namuBodyCondition = BodyCondition(name: "나무", upperBodyMuscleStrength: 50, lowerBodyMuscleStrength: 50, muscularEndurance: 50, tiredness: 10)
-namuBodyCondition.activity = 스트레칭
+namuBodyCondition.activity = stretching
 namuBodyCondition.printCondition()
 
 
