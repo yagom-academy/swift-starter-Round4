@@ -16,12 +16,15 @@ class Routine {
         self.activities = activities
     }
     
-    func startRoutine(person: BodyCondition) throws -> Void{
+    func startRoutine(person: BodyCondition) throws -> Void {
         guard activities.isEmpty == false else {
             throw RoutineError.noRoutine
         }
         while let input = readLine() {
             guard let sets = Int(input) else {
+                throw RoutineError.wrongInput
+            }
+            guard sets > 0 else {
                 throw RoutineError.wrongInput
             }
             print("--------------")

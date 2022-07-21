@@ -39,5 +39,5 @@ let activeRest: Activity = .init(name: "동적휴식", action: {
 var crossFit: Routine = .init(name: "크로스핏", activities: [doubleJump, sitUp])
 var tabata: Routine = .init(name: "타바타", activities: [])
 
-gundy.doRoutine(crossFit)
 gundy.doRoutine(tabata)
+gundy.doRoutine(crossFit)
