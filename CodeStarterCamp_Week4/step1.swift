@@ -75,17 +75,16 @@ func readyRoutine(routine: Routine, bodyCondition: BodyCondition) throws {
     var isTrue: Bool = true
     while isTrue {
         print("루틴을 몇 번 반복할까요? 1이상 정수값을 넣어주세요")
-        guard let getLine = readLine() else { continue }
-        guard let input: Int = Int(getLine) else { continue }
-        if input <= 0 {
+        guard let getLine = readLine() , let input: Int = Int(getLine) else { continue }
+        guard input > 0 else {
             continue
-        } else {
-            isTrue = false
-            try startRoutine(
-                repeateRoutine: input,
-                routine: routine,
-                bodyCondition: bodyCondition)
         }
+        isTrue = false
+        try startRoutine(
+            repeateRoutine: input,
+            routine: routine,
+            bodyCondition: bodyCondition
+        )
     }
 }
 
