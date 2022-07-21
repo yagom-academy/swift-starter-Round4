@@ -14,7 +14,7 @@ let routine = Routine(routineName: "남준루틴", activities: activities)
 
 do {
     try startRoutine()
-} catch ActivityError.nilValue {
+} catch ActivityError.wrongValue {
     print("잘못된 입력 형식입니다. 다시 입력해주세요.")
     try startRoutine()
 } catch ActivityError.notPositiveInteger {
@@ -22,5 +22,5 @@ do {
     try startRoutine()
 } catch ActivityError.excessiveFatigue {
     print("피로도가 100이상입니다. 루틴을 중단합니다.")
-    moveExercise(checkCondition, NamJunBodyConditionw)
+    NamJunBodyConditionw.checkCondition()
 }

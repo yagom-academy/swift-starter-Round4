@@ -98,41 +98,32 @@ let rest: Activity = Activity(name: "휴식", action: {
     $0.fatigue -= Int.random(in: 20...30)
 })
 
-let checkCondition: Activity = Activity(name: "컨디션체크", action: {
-    $0.checkCondition()
-})
-
-class Routine {
+struct Routine {
     let routineName: String
     let activities: Array<Activity>
-    
-    init(routineName: String, activities: Array<Activity>) {
-        self.routineName = routineName
-        self.activities = activities
-    }
 }
 
 enum ActivityError: Error {
-    case nilValue
+    case wrongValue
     case notPositiveInteger
     case excessiveFatigue
 }
 
 func startRoutine() throws {
     print("루틴을 몇 번 반복할까요?")
-    let input = readLine()!
+    let input: String! = readLine()
     
-    guard let checkInput = Int(input) else {
-        throw ActivityError.nilValue
+    guard let intOfInput = Int(input) else {
+        throw ActivityError.wrongValue
     }
     
-    if checkInput < 1 {
+    if intOfInput < 1 {
         throw ActivityError.notPositiveInteger
     }
     
     print("--------------")
     
-    for count in 1...checkInput {
+    for count in 1...intOfInput {
         print("\(count) 번째 \(routine.routineName)을(를) 시작합니다.")
     
         for sizecount in 0...routine.activities.count - 1 {
@@ -145,5 +136,5 @@ func startRoutine() throws {
             }
         }
     }
-    moveExercise(checkCondition, NamJunBodyConditionw)
+    NamJunBodyConditionw.checkCondition()
 }
