@@ -34,12 +34,9 @@ struct Routine {
     var routineName: String,
         routineOrder: [Activity]
     
-    func repeatRoutine(for bodyConditionOfPerformer: BodyCondition) throws {
+    func determineNumberOfSets() throws -> UInt {
         print("루틴을 몇 번 반복할까요?")
         let numberOfSets = readLine()
-        var OverFatigueLimit: Bool {
-            return bodyConditionOfPerformer.fatigue > 100
-        }
         print ("---------------------")
         
         guard numberOfSets != nil,
@@ -51,6 +48,14 @@ struct Routine {
         }
         guard let numberOfSets = UInt(numberOfSets) else {
             throw RoutineError.wrongInputValue
+        }
+        return numberOfSets
+    }
+    
+    func repeatRoutine(for bodyConditionOfPerformer: BodyCondition) throws {
+        let numberOfSets = try determineNumberOfSets()
+        var OverFatigueLimit: Bool {
+            return bodyConditionOfPerformer.fatigue > 100
         }
         
         for number in 1...numberOfSets {
