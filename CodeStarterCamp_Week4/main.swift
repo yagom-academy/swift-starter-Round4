@@ -48,7 +48,6 @@ class BodyCondition {
     
     func showCurrentCondition() {
         print("""
-------------------------
 현재의 컨디션은 다음과 같습니다.
 상체근력: \(upperBodyStrength)
 하체근력: \(lowerBodyStrength)
@@ -86,16 +85,67 @@ let 오래달리기: Activity = Activity(name: "오래달리기") {
     $0.increaseFatigue(random(20, 30))
 }
 let 동적휴식: Activity = Activity(name: "동적휴식") {
-    $0.buildLowerBodyStrength(random(5, 10))
+    $0.reduceFatigue(random(5, 10))
 }
 
 func workOut(who bodyCondition: BodyCondition , _ act: Activity) {
     print("<<\(act.name)을(를) 시작합니다>>")
     act.action(bodyCondition)
-    bodyCondition.showCurrentCondition()
+    print("------------------------")
+//    bodyCondition.showCurrentCondition()
 }
 
 
 
-workOut(who: myBodyCondition, 윗몸일으키기)
-workOut(who: myBodyCondition, 스쿼트)
+//workOut(who: myBodyCondition, 윗몸일으키기)
+//workOut(who: myBodyCondition, 스쿼트)
+
+// Step2
+enum RoutineError: Error {
+    case overFatigue
+    case unexpectedValue
+    case otherException
+}
+
+class Routine {
+    let name: String
+    let activities: [Activity]
+    let bodycondition: BodyCondition
+    
+    init(name: String, activities: [Activity], bodycondition: BodyCondition) {
+        self.name = name
+        self.activities = activities
+        self.bodycondition = bodycondition
+    }
+    
+    func startRoutine() throws {
+        do {
+            print("루틴을 몇 번 반복할까요?")
+            guard let round: Int = Int(readLine() ?? ""), round > 0 else {
+                throw RoutineError.unexpectedValue
+            }
+            for count in 1...round {
+                print("\(count) 번째 \(self.name) 을(를) 시작합니다. ")
+                
+                for act in self.activities {
+                    guard self.bodycondition.fatigue < 100 else {
+                        throw RoutineError.overFatigue
+                    }
+                    workOut(who: bodycondition, act)
+                }
+            }
+            self.bodycondition.showCurrentCondition()
+        } catch RoutineError.overFatigue {
+            print("피로도가 100 이상입니다. 루틴을 중단합니다.")
+            self.bodycondition.showCurrentCondition()
+        } catch RoutineError.unexpectedValue {
+            print("잘못된 입력 형식입니다. 다시 입력해주세요.")
+            try self.startRoutine()
+        } catch RoutineError.otherException {
+            
+        }
+    }
+}
+
+let myRoutine: Routine = Routine(name: "my routine", activities: [윗몸일으키기, 동적휴식, 스쿼트], bodycondition: myBodyCondition)
+try myRoutine.startRoutine()
