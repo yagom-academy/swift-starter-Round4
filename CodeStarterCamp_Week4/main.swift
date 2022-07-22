@@ -50,25 +50,60 @@ struct Activity {
     let action: (BodyCondition) -> Void
 }
 
+enum PhysicalStatus {
+    case upperBodyMuscleStrength(Int)
+    case lowerBodyMuscleStrength(Int)
+    case muscularEndurance(Int)
+    case tiredness(Int)
+
+    var message: String {
+        switch self {
+        case .upperBodyMuscleStrength(let value):
+            if value >= 0 {
+                return "상체근력이 \(value) 상승합니다."
+            }
+            return "상체근력이 \(-value) 감소합니다."
+        case .lowerBodyMuscleStrength(let value):
+            if value >= 0 {
+                return "하체근력이 \(value) 상승합니다."
+            }
+            return "하체근력이 \(-value) 감소합니다."
+        case .muscularEndurance(let value):
+            if value >= 0 {
+                return "근지구력이 \(value) 상승합니다."
+            }
+            return "근지구력이 \(-value) 감소합니다."
+        case .tiredness(let value):
+            if value >= 0 {
+                return "피로도가 \(value) 상승합니다."
+            }
+            return "피로도가 \(-value) 감소합니다."
+        }
+    }
+
+    func printMessage() {
+        print(self.message)
+    }
+}
 let sitUp: Activity = Activity(name: "윗몸일으키기") { (bodyCondition: BodyCondition) -> Void in
     
     let upperBodyMuscleStrength = Int.random(in: 10...20)
     let tiredness = Int.random(in: 10...20)
     
-    print("상체근력이 \(upperBodyMuscleStrength) 상승합니다.")
-    print("피로도가 \(tiredness) 상승합니다.")
+    PhysicalStatus.upperBodyMuscleStrength(upperBodyMuscleStrength).printMessage()
+    PhysicalStatus.tiredness(tiredness).printMessage()
     
     bodyCondition.upperBodyMuscleStrength += upperBodyMuscleStrength
     bodyCondition.tiredness += tiredness
 }
 
-let Squatting: Activity = Activity(name: "스쿼트") { (bodyCondition: BodyCondition) -> Void in
+let squatting: Activity = Activity(name: "스쿼트") { (bodyCondition: BodyCondition) -> Void in
     
     let lowerBodyMuscleStrength = Int.random(in: 20...30)
     let tiredness = Int.random(in: 10...20)
     
-    print("하체근력이 \(lowerBodyMuscleStrength) 상승합니다.")
-    print("피로도가 \(tiredness) 상승합니다.")
+    PhysicalStatus.lowerBodyMuscleStrength(lowerBodyMuscleStrength).printMessage()
+    PhysicalStatus.tiredness(tiredness).printMessage()
     
     bodyCondition.lowerBodyMuscleStrength += lowerBodyMuscleStrength
     bodyCondition.tiredness += tiredness
@@ -81,10 +116,10 @@ let longRunning: Activity = Activity(name: "오래달리기") { (bodyCondition: 
     let lowerBodyMuscleStrength = Int.random(in: 5...10)
     let tiredness = Int.random(in: 20...30)
     
-    print("근지구력이 \(muscularEndurance) 상승합니다.")
-    print("상체근력이 \(upperBodyMuscleStrength) 상승합니다.")
-    print("하체근력이 \(lowerBodyMuscleStrength) 상승합니다.")
-    print("피로도가 \(tiredness) 상승합니다.")
+    PhysicalStatus.muscularEndurance(muscularEndurance).printMessage()
+    PhysicalStatus.upperBodyMuscleStrength(upperBodyMuscleStrength).printMessage()
+    PhysicalStatus.lowerBodyMuscleStrength(lowerBodyMuscleStrength).printMessage()
+    PhysicalStatus.tiredness(tiredness).printMessage()
     
     bodyCondition.muscularEndurance += muscularEndurance
     bodyCondition.upperBodyMuscleStrength += upperBodyMuscleStrength
@@ -95,8 +130,8 @@ let longRunning: Activity = Activity(name: "오래달리기") { (bodyCondition: 
 let dynamicRest: Activity = Activity(name: "동적휴식") {(bodyCondition: BodyCondition) -> Void in
     
     let tiredness = Int.random(in: 5...10)
-    
-    print("피로도가 \(tiredness) 감소합니다.")
+   
+    PhysicalStatus.tiredness(-tiredness).printMessage()
     
     bodyCondition.tiredness -= tiredness
 }
@@ -107,9 +142,9 @@ let stretching: Activity = Activity(name: "스트레칭") {(bodyCondition: BodyC
     let lowerBodyMuscleStrength = Int.random(in: 1...5)
     let tiredness = Int.random(in: 1...5)
     
-    print("상체근력이 \(upperBodyMuscleStrength) 상승합니다.")
-    print("하체근력이 \(lowerBodyMuscleStrength) 상승합니다.")
-    print("피로도가 \(tiredness) 감소합니다.")
+    PhysicalStatus.upperBodyMuscleStrength(upperBodyMuscleStrength).printMessage()
+    PhysicalStatus.lowerBodyMuscleStrength(lowerBodyMuscleStrength).printMessage()
+    PhysicalStatus.tiredness(-tiredness).printMessage()
     
     bodyCondition.upperBodyMuscleStrength += upperBodyMuscleStrength
     bodyCondition.lowerBodyMuscleStrength += lowerBodyMuscleStrength
