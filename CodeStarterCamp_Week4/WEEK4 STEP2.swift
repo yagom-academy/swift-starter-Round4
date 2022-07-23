@@ -56,7 +56,6 @@ class BodyCondition {
     }
     
     func checkCondition() {
-        print("--------------")
         print("현재의 컨디션은 다음과 같습니다.")
         print("상체근력: \(upperBodyStrengh)")
         print("하체근력: \(lowerBodyStrengh)")
@@ -75,8 +74,6 @@ let sitUp: Activity = Activity(name: "윗몸일으키기", action: {
     
     $0.upperBodyStrengh += Int.random(in: 10...20)
     $0.fatigue += Int.random(in: 10...20)
-    
-    $0.checkCondition()
 })
 
 let squat: Activity = Activity(name: "스쿼트", action: {
@@ -84,8 +81,6 @@ let squat: Activity = Activity(name: "스쿼트", action: {
     
     $0.lowerBodyStrengh += Int.random(in: 10...20)
     $0.fatigue += Int.random(in: 10...20)
-    
-    $0.checkCondition()
 })
 
 let longRun: Activity = Activity(name: "오래달리기", action: {
@@ -95,14 +90,51 @@ let longRun: Activity = Activity(name: "오래달리기", action: {
     $0.lowerBodyStrengh += Int.random(in: 5...10)
     $0.muscularEndurance += Int.random(in: 20...30)
     $0.fatigue += Int.random(in: 20...30)
-    
-    $0.checkCondition()
 })
 
 let rest: Activity = Activity(name: "휴식", action: {
     print("<<\(rest.name)(를) 시작합니다>>")
     
     $0.fatigue -= Int.random(in: 20...30)
-    
-    $0.checkCondition()
 })
+
+struct Routine {
+    let routineName: String
+    let activities: Array<Activity>
+}
+
+enum ActivityError: Error {
+    case wrongValue
+    case notPositiveInteger
+    case excessiveFatigue
+}
+
+func startRoutine() throws {
+    print("루틴을 몇 번 반복할까요?")
+    let input: String! = readLine()
+    
+    guard let intOfInput = Int(input) else {
+        throw ActivityError.wrongValue
+    }
+    
+    if intOfInput < 1 {
+        throw ActivityError.notPositiveInteger
+    }
+    
+    print("--------------")
+    
+    for count in 1...intOfInput {
+        print("\(count) 번째 \(routine.routineName)을(를) 시작합니다.")
+    
+        for sizecount in 0...routine.activities.count - 1 {
+            moveExercise(routine.activities[sizecount], NamJunBodyConditionw)
+    
+            print("--------------")
+            
+            if NamJunBodyConditionw.fatigue > 100 {
+                throw ActivityError.excessiveFatigue
+            }
+        }
+    }
+    NamJunBodyConditionw.checkCondition()
+}
