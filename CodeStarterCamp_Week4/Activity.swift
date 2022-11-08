@@ -8,7 +8,7 @@
 import Foundation
 
 struct Activity {
-    var name: String
+    let name: String
     let action: (BodyCondition) -> Void
     
     func startExercise() {
