@@ -8,25 +8,55 @@
 
 import Foundation
 
-struct BodyCondition {
-    var upperBodyStrength: Int = 0
-    var lowerBodyStrength: Int = 0
-    var muscularEndurance: Int = 0
-    var fatigueLevel: Int = 0
+class BodyCondition {
+    var upperBodyStrength: Int {
+        didSet {
+            print("상체근력이 \(upperBodyStrength - oldValue) 상승합니다.")
+        }
+    }
+    var lowerBodyStrength: Int {
+        didSet {
+            print("하체근력이 \(lowerBodyStrength - oldValue) 상승합니다.")
+        }
+    }
+    var muscularEndurance: Int {
+        didSet {
+            print("근지구력이 \(muscularEndurance - oldValue) 상승합니다.")
+        }
+    }
+    var fatigueLevel: Int {
+        didSet {
+            if oldValue < fatigueLevel {
+                print("피로도가 \(fatigueLevel - oldValue) 상승합니다.")
+            } else {
+                print("피로도가 \(oldValue - fatigueLevel) 하락합니다.")
+            }
+        }
+    }
+    
+    init(upperBodyStrength: Int, lowerBodyStrength: Int, muscularEndurance: Int, fatigueLevel: Int) {
+        self.upperBodyStrength = upperBodyStrength
+        self.lowerBodyStrength = lowerBodyStrength
+        self.muscularEndurance = muscularEndurance
+        self.fatigueLevel = fatigueLevel
+    }
     
     func informBodyCondition() {
-        print("--------------\n현재의 컨디션은 다음과 같습니다.")
-        print("상체근력: \(upperBodyStrength)")
-        print("하체근력: \(lowerBodyStrength)")
-        print("근지구력: \(muscularEndurance)")
-        print("피로도: \(fatigueLevel)")
-        print("--------------")
+        print("""
+        --------------
+        현재의 컨디션은 다음과 같습니다.
+        상체근력: \(upperBodyStrength)
+        하체근력: \(lowerBodyStrength)
+        근지구력: \(muscularEndurance)
+        피로도: \(fatigueLevel)
+        --------------
+        """)
     }
 }
 
 struct Activity {
     let name: String
-    let action: (inout BodyCondition) -> Void
+    let action: (BodyCondition) -> Void
 }
 
 
@@ -36,8 +66,6 @@ let sitUp: Activity = Activity(name: "윗몸일으키기", action: { bodyConditi
     
     bodyCondition.upperBodyStrength += upperBodyStrengthFigure
     bodyCondition.fatigueLevel += fatigueLevelFigure
-    print("상체근력이 \(upperBodyStrengthFigure) 상승합니다.")
-    print("피로도가 \(fatigueLevelFigure) 상승합니다.")
 })
 
 let squat: Activity = Activity(name: "스쿼트", action: { bodyCondition in
@@ -46,8 +74,6 @@ let squat: Activity = Activity(name: "스쿼트", action: { bodyCondition in
     
     bodyCondition.lowerBodyStrength += lowerBodyStrengthFigure
     bodyCondition.fatigueLevel += fatigueLevelFigure
-    print("하체근력이 \(lowerBodyStrengthFigure) 상승합니다.")
-    print("피로도가 \(fatigueLevelFigure) 상승합니다.")
 })
 
 let longRunning: Activity = Activity(name: "오래달리기", action: { bodyCondition in
@@ -59,31 +85,26 @@ let longRunning: Activity = Activity(name: "오래달리기", action: { bodyCond
     bodyCondition.upperBodyStrength += bodyStrengthFigure
     bodyCondition.lowerBodyStrength += bodyStrengthFigure
     bodyCondition.fatigueLevel += fatigueLevelFigure
-    print("근지구력이 \(muscularEnduranceFigure) 상승합니다.")
-    print("상,하체근력이 \(bodyStrengthFigure) 상승합니다.")
-    print("피로도가 \(fatigueLevelFigure) 상승합니다.")
 })
 
 let activeRest: Activity = Activity(name: "동적휴식", action: { bodyCondition in
     let fatigueLevelFigure = Int.random(in: 5...10)
     
     bodyCondition.fatigueLevel -= fatigueLevelFigure
-    print("피로도가 \(fatigueLevelFigure) 하락합니다.")
 })
 
 
-var myCondition: BodyCondition = BodyCondition()
+var myCondition: BodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigueLevel: 0)
 
-func workOut(activity: Activity, by bodyCondition: inout BodyCondition) {
+func workOut(activity: Activity, by bodyCondition: BodyCondition) {
     print("<<\(activity.name)을(를) 시작합니다.>>")
-    activity.action(&bodyCondition)
+    activity.action(bodyCondition)
 }
 
 
-workOut(activity: sitUp, by: &myCondition)
-workOut(activity: squat, by: &myCondition)
-workOut(activity: longRunning, by: &myCondition)
-workOut(activity: activeRest, by: &myCondition)
+workOut(activity: sitUp, by: myCondition)
+workOut(activity: squat, by: myCondition)
+workOut(activity: longRunning, by: myCondition)
+workOut(activity: activeRest, by: myCondition)
 
-myCondition.informBodyCondition()
 myCondition.informBodyCondition()
