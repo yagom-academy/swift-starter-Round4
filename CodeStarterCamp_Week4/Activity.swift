@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct Activity {
+    var name: String
+    let action: (BodyCondition) -> Void
+    
+    func startExercise() {
+        print("<<\(name)을(를) 시작합니다>>")
+    }
+}
