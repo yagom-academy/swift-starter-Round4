@@ -51,19 +51,19 @@ struct BodyCondition {
     """)
     }
     
-    mutating func setUpperStrength(from a: Int, to b: Int) {
+    mutating func addRandomIntUpperStrength(from a: Int, to b: Int) {
         self.upperBodyStrength += Int.random(in: a...b)
     }
     
-    mutating func setLowerStrength(from a: Int, to b: Int) {
+    mutating func addRandomIntLowerStrength(from a: Int, to b: Int) {
         self.lowerBodyStrength += Int.random(in: a...b)
     }
     
-    mutating func setMuscularEndurance(from a: Int, to b: Int) {
+    mutating func addRandomIntMuscularEndurance(from a: Int, to b: Int) {
         self.muscularEndurance += Int.random(in: a...b)
     }
     
-    mutating func setFatigue(from a: Int, to b: Int) {
+    mutating func addRandomIntFatigue(from a: Int, to b: Int) {
         self.fatigue += Int.random(in: a...b)
     }
 }
@@ -75,39 +75,39 @@ struct Activity {
 
 let sitUp = Activity(name: "윗몸일으키키", action: { bodyCondition in
     print("<<\(sitUp.name)을(를) 시작합니다>>")
-    bodyCondition.setUpperStrength(from: 10, to: 20)
-    bodyCondition.setFatigue(from: 10, to: 20)
+    bodyCondition.addRandomIntUpperStrength(from: 10, to: 20)
+    bodyCondition.addRandomIntFatigue(from: 10, to: 20)
     print("--------------")
 })
 
 let squat = Activity(name: "스쿼트", action: { bodyCondition in
     print("<<\(squat.name)을(를) 시작합니다>>")
-    bodyCondition.setLowerStrength(from: 20, to: 30)
-    bodyCondition.setFatigue(from: 10, to: 20)
+    bodyCondition.addRandomIntLowerStrength(from: 20, to: 30)
+    bodyCondition.addRandomIntFatigue(from: 10, to: 20)
     print("--------------")
 })
 
 let running = Activity(name: "오래달리기", action: { bodyCondition in
     print("<<\(running.name)을(를) 시작합니다>>")
-    bodyCondition.setMuscularEndurance(from: 20, to: 30)
-    bodyCondition.setUpperStrength(from: 5, to: 10)
-    bodyCondition.setLowerStrength(from: 5, to: 10)
-    bodyCondition.setFatigue(from: 20, to: 30)
+    bodyCondition.addRandomIntMuscularEndurance(from: 20, to: 30)
+    bodyCondition.addRandomIntUpperStrength(from: 5, to: 10)
+    bodyCondition.addRandomIntLowerStrength(from: 5, to: 10)
+    bodyCondition.addRandomIntFatigue(from: 20, to: 30)
     print("--------------")
 })
 
 let dynamicBreak = Activity(name: "동적휴식", action: { bodyCondition in
     print("<<\(dynamicBreak.name)을(를) 시작합니다>>")
-    bodyCondition.setFatigue(from: -10, to: -5)
+    bodyCondition.addRandomIntFatigue(from: -10, to: -5)
     print("--------------")
 })
 
 let climbing = Activity(name: "클라이밍", action: { bodyCondition in
     print("\(climbing.name)을(를) 시작합니다>>")
-    bodyCondition.setUpperStrength(from: 15, to: 30)
-    bodyCondition.setLowerStrength(from: 5, to: 10)
-    bodyCondition.setMuscularEndurance(from: 20, to: 30)
-    bodyCondition.setFatigue(from: 10, to: 20)
+    bodyCondition.addRandomIntUpperStrength(from: 15, to: 30)
+    bodyCondition.addRandomIntLowerStrength(from: 5, to: 10)
+    bodyCondition.addRandomIntMuscularEndurance(from: 20, to: 30)
+    bodyCondition.addRandomIntFatigue(from: 10, to: 20)
     print("--------------")
 })
 
