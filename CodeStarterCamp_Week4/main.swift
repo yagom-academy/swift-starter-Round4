@@ -10,46 +10,46 @@ import Foundation
 
 // MARK: BodyCondition Type
 class BodyCondition {
-    var 상체근력: Int {
-        didSet (oldValue) {
-            if oldValue < self.상체근력 {
-                print("상체근력이 \(self.상체근력 - oldValue)만큼 상승합니다.")
+    var 상체근력 = 20 {
+        didSet {
+            if oldValue < 상체근력 {
+                print("상체근력이 \(상체근력 - oldValue)만큼 상승합니다.")
             } else {
-                print("상체근력이 \(oldValue - self.상체근력)만큼 하강합니다.")
+                print("상체근력이 \(oldValue - 상체근력)만큼 하강합니다.")
             }
         }
     }
-    
-    var 하체근력: Int {
-        didSet (oldValue) {
-            if oldValue < self.하체근력 {
-                print("하체근력이 \(self.하체근력 - oldValue)만큼 상승합니다.")
+
+    var 하체근력 = 20 {
+        didSet {
+            if oldValue < 하체근력 {
+                print("하체근력이 \(하체근력 - oldValue)만큼 상승합니다.")
             } else {
-                print("하체근력이 \(oldValue - self.하체근력)만큼 하강합니다.")
+                print("하체근력이 \(oldValue - 하체근력)만큼 하강합니다.")
             }
         }
     }
-    
-    var 근지구력: Int {
-        didSet (oldValue) {
-            if oldValue < self.근지구력 {
-                print("근지구력 \(self.근지구력 - oldValue)만큼 상승합니다.")
+
+    var 근지구력 = 20 {
+        didSet {
+            if oldValue < 근지구력 {
+                print("근지구력 \(근지구력 - oldValue)만큼 상승합니다.")
             } else {
-                print("근지구력 \(oldValue - self.근지구력)만큼 하강합니다.")
+                print("근지구력 \(oldValue - 근지구력)만큼 하강합니다.")
             }
         }
     }
-    
-    var 피로도: Int {
-        didSet (oldValue) {
-            if oldValue < self.피로도 {
-                print("피로도 \(self.피로도 - oldValue)만큼 상승합니다.")
+
+    var 피로도 = 20 {
+        didSet {
+            if oldValue < 피로도 {
+                print("피로도 \(피로도 - oldValue)만큼 상승합니다.")
             } else {
-                print("피로도 \(oldValue - self.피로도)만큼 하강합니다.")
+                print("피로도 \(oldValue - 피로도)만큼 하강합니다.")
             }
         }
     }
-    
+
     func printCurrentBodyCondition() {
         print("""
         --------------
@@ -61,13 +61,7 @@ class BodyCondition {
         -------------- \n
         """)
     }
-    
-    init(상체근력: Int = 20, 하체근력: Int = 20, 근지구력: Int = 20, 피로도: Int = 20) {
-        self.상체근력 = 상체근력
-        self.하체근력 = 하체근력
-        self.근지구력 = 근지구력
-        self.피로도 = 피로도
-    }
+
 }
 
 // MARK: Activity Type
@@ -101,6 +95,7 @@ let 오래달리기: Activity = Activity(name: "오래달리기", action: { body
 
 let 동적휴식: Activity = Activity(name: "동적휴식", action: { bodyCondition in
     print("<<\(동적휴식.name) 을(를) 시작합니다>>")
+    bodyCondition.근지구력 += Int.random(in: 1...5)
     bodyCondition.피로도 -= Int.random(in: 10...20)
     bodyCondition.printCurrentBodyCondition()
 })
@@ -115,6 +110,7 @@ let 정적휴식: Activity = Activity(name: "정적휴식", action: { bodyCondit
 })
 
 //MARK: 출력
+
 var muri = BodyCondition()
 윗몸일으키기.action(muri)
 오래달리기.action(muri)
