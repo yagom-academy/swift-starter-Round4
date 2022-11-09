@@ -20,7 +20,6 @@ var myCondition: BodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodySt
 
 
 // MARK: - STEP2 호출
-
 var myRoutine: Routine = Routine(routineName: "hyemorysRoutine")
 
 do {

@@ -8,7 +8,7 @@
 import Foundation
 
 
-enum Numbers: UInt, CaseIterable {
+enum Numbers: UInt {
     case first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh, twelfth
     
     var numbers: String {
