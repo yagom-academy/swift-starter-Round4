@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		34811DE8274B93FB00A1E994 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34811DE7274B93FB00A1E994 /* main.swift */; };
+		6876AD29291BC0A00035D091 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6876AD28291BC0A00035D091 /* Routine.swift */; };
+		6876AD2B291BC5A00035D091 /* ActivityError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6876AD2A291BC5A00035D091 /* ActivityError.swift */; };
+		6876AD2D291BCA040035D091 /* KoreanNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6876AD2C291BCA040035D091 /* KoreanNumber.swift */; };
 		68C3B960291A1B6B00439D8C /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C3B95F291A1B6B00439D8C /* Activity.swift */; };
 		68C3B962291A1B8100439D8C /* BodyCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C3B961291A1B8100439D8C /* BodyCondition.swift */; };
 		68C3B969291A707B00439D8C /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C3B968291A707B00439D8C /* Exercise.swift */; };
@@ -28,6 +31,9 @@
 /* Begin PBXFileReference section */
 		34811DE4274B93FB00A1E994 /* CodeStarterCamp_Week4 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CodeStarterCamp_Week4; sourceTree = BUILT_PRODUCTS_DIR; };
 		34811DE7274B93FB00A1E994 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		6876AD28291BC0A00035D091 /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
+		6876AD2A291BC5A00035D091 /* ActivityError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityError.swift; sourceTree = "<group>"; };
+		6876AD2C291BCA040035D091 /* KoreanNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanNumber.swift; sourceTree = "<group>"; };
 		68C3B95F291A1B6B00439D8C /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		68C3B961291A1B8100439D8C /* BodyCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyCondition.swift; sourceTree = "<group>"; };
 		68C3B968291A707B00439D8C /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
@@ -67,6 +73,9 @@
 				68C3B95F291A1B6B00439D8C /* Activity.swift */,
 				68C3B961291A1B8100439D8C /* BodyCondition.swift */,
 				68C3B968291A707B00439D8C /* Exercise.swift */,
+				6876AD28291BC0A00035D091 /* Routine.swift */,
+				6876AD2A291BC5A00035D091 /* ActivityError.swift */,
+				6876AD2C291BCA040035D091 /* KoreanNumber.swift */,
 			);
 			path = CodeStarterCamp_Week4;
 			sourceTree = "<group>";
@@ -128,9 +137,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6876AD29291BC0A00035D091 /* Routine.swift in Sources */,
+				6876AD2B291BC5A00035D091 /* ActivityError.swift in Sources */,
 				68C3B960291A1B6B00439D8C /* Activity.swift in Sources */,
 				68C3B969291A707B00439D8C /* Exercise.swift in Sources */,
 				68C3B962291A1B8100439D8C /* BodyCondition.swift in Sources */,
+				6876AD2D291BCA040035D091 /* KoreanNumber.swift in Sources */,
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
