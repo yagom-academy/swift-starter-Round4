@@ -8,25 +8,33 @@
 
 import Foundation
 
-
-let bodyCondition = BodyCondition(fatigue: 100)
-
-func startActivity(exercise: Exercise,
-                   condition: BodyCondition) {
-    let activity = Activity(name: exercise.rawValue) { bodyCondition in
-        bodyCondition.upperBodyStrength += exercise.upperMuscleStrength
-        bodyCondition.muscularEndurance += exercise.muscularEndurance
-        bodyCondition.lowerBodyStrength += exercise.lowerMuscleStrength
-        bodyCondition.fatigue += exercise.fatigue
+/// Activity 제작 함수
+/// - Parameters:
+///   - exercises: 수행할 운동 종류(중첩 가능)
+///   - condition: BodyCondition
+/// - Returns: 수행할 Activity 배열
+func makeActivity(exercises: [Exercise], condition: BodyCondition) -> [Activity] {
+    return exercises.map { exercise -> Activity in
+        Activity(name: exercise.rawValue) { bodyCondition in
+            bodyCondition.upperBodyStrength += exercise.upperMuscleStrength
+            bodyCondition.muscularEndurance += exercise.muscularEndurance
+            bodyCondition.lowerBodyStrength += exercise.lowerMuscleStrength
+            bodyCondition.fatigue += exercise.fatigue
+        }
     }
-    
-    activity.startExercise()
-    activity.action(condition)
 }
- 
-startActivity(exercise: .sitUp, condition: bodyCondition)
-startActivity(exercise: .squat, condition: bodyCondition)
-startActivity(exercise: .longRun, condition: bodyCondition)
-startActivity(exercise: .dynamicBreak, condition: bodyCondition)
 
-bodyCondition.printCondition()
+let bodyCondition = BodyCondition(fatigue: 0)
+
+let activities = makeActivity(exercises:
+                                [
+                                    .sitUp,
+                                    .longRun,
+                                    .dynamicBreak,
+                                    .squat
+                                ],
+                              condition: bodyCondition)
+
+let routine = Routine(routineName: "HELL 뤼틴", activities: activities)
+
+try routine.startActivityRoutine(condition: bodyCondition)
