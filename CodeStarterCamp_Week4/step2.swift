@@ -45,10 +45,6 @@ struct Routine {
         let setsNumber: String? = readLine()
         print("--------------")
         
-        guard setsNumber != nil else {
-            throw RoutineError.invalidInput
-        }
-        
         guard let setsNumber = setsNumber else {
             throw RoutineError.invalidInput
         }
