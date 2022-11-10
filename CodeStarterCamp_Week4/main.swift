@@ -116,7 +116,7 @@ let rowan = BodyCondition()
 
 
 // MARK: STEP2 야곰 피트니스, 지옥의 헬스 트레이닝
-enum RoutineError: Error{
+enum RoutineError: Error {
     case overFatigueLimit
     case wrongInput
     case overRoutineLimit
@@ -126,7 +126,7 @@ let ordinalNumber: Array<String> = ["첫", "두", "세", "네", "다섯", "여�
 
 struct Routine {
     let name: String
-    let activities: Array<Activity> = [sitUp, dynamicBreak, climbing]
+    let activities: Array<Activity> = [sitUp, dynamicBreak, climbing, dynamicBreak]
     let member: BodyCondition
     
     mutating func repeatRoutine(_ bodyCondition: BodyCondition) throws {
@@ -161,7 +161,7 @@ struct Routine {
 
 var hellRoutine = Routine(name: "hellRoutine", member: rowan)
 
-func startRoutine() {
+func startRoutine() throws {
     print("루틴을 몇 번 반복할까요?")
     do {
         try hellRoutine.repeatRoutine(hellRoutine.member)
@@ -170,12 +170,11 @@ func startRoutine() {
         hellRoutine.member.checkCondition()
     } catch RoutineError.wrongInput {
         print("잘못된 입력 형식입니다. 다시 입력해주세요.")
+        try hellRoutine.repeatRoutine(hellRoutine.member)
     } catch RoutineError.overRoutineLimit {
         print("루틴 반복 횟수 최대치 10회를 초과했습니다. 루틴을 중단합니다.")
         hellRoutine.member.checkCondition()
-    } catch {
-        print("예상치 못한 에러가 발생했습니다. \(error)")
     }
 }
 
-startRoutine()
+try startRoutine()
