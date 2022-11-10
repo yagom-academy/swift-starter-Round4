@@ -81,3 +81,17 @@ struct Routine {
     }
 }
 
+
+func executeRoutine(routine: Routine, by bodyCondition: BodyCondition) {
+    do {
+        try routine.repeatRoutine(by: bodyCondition)
+    } catch RoutineError.invalidInput {
+        print("잘못된 입력 형식입니다. 다시 입력해주세요.")
+        executeRoutine(routine: routine, by: bodyCondition)
+    } catch RoutineError.fatigueLevelLimit {
+        print("피로도가 100이상입니다. 루틴을 중단합니다.")
+        bodyCondition.informBodyCondition()
+    } catch {
+        print(error)
+    }
+}
