@@ -36,7 +36,7 @@ class Routine {
     
     /// Int 값 KoreanNumber 열거형으로 변환
     /// - Parameter count: 변환할 Int
-    /// - Returns: KoreanNumber 열거형
+    /// - Returns: "N 번째" String type
     func getKorenNumberText(count: Int) -> String {
         return KoreanNumber(rawValue: count)?.numberText ?? "\(count) 번째"
     }
