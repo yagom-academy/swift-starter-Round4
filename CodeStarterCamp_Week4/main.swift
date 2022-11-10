@@ -1,5 +1,7 @@
 
 import Foundation
 
-situp.action(bodyCondition)
+printResult(activity: squart)
+printCondtion()
+
 
