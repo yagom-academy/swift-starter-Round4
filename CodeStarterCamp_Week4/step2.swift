@@ -46,7 +46,7 @@ enum RoutineError: Error {
 
 struct Routine {
     let name: String
-    var activities: [Activity] = [longRunning, activeRest, squat]
+    var activities: [Activity] = [squat, activeRest, longRunning]
     
     func repeatSet() throws -> UInt {
         let setsNumber: String? = readLine()
@@ -60,7 +60,7 @@ struct Routine {
             throw RoutineError.invalidInput
         }
         
-        return positiveSetsNumber - 1
+        return positiveSetsNumber
     }
     
     func repeatRoutine(by bodyCondition: BodyCondition) throws {
@@ -71,7 +71,7 @@ struct Routine {
                 throw RoutineError.fatigueLevelLimit
             }
             
-            print("\(Numbers(rawValue: sets)?.numbers ?? "\(sets + 1)")번째 \(name)을(를) 시작합니다")
+            print("\(Numbers(rawValue: sets)?.numbers ?? "\(sets)")번째 \(name)을(를) 시작합니다")
             
             for activitiy in activities {
                 workOut(activity: activitiy, by: bodyCondition)
