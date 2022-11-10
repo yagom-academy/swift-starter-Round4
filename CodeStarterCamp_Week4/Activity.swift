@@ -1,19 +1,11 @@
 import Foundation
-class BodyCondition {
-    var upperBodyStrength: Int = 30
-    var legStrength: Int = 45
-    var muscularEndurance: Int = 25
-    var tiredness: Int = 2
-}
-
-var bodyCondition = BodyCondition()
 
 struct Activity {
     var name: String
     let action: (BodyCondition) -> Void
 }
 
-let situp: Activity = Activity(name: "윗몸일으키기", action: {(bodyCondtion) in
+let situp: Activity = Activity(name: "윗몸일으키기", action: { (bodyCondtion) in
     var plusUpperBodyStrength = Int.random(in: 10...20)
     var plusTiredness = Int.random(in: 10...20)
 
@@ -26,7 +18,7 @@ let situp: Activity = Activity(name: "윗몸일으키기", action: {(bodyCondtio
     print("--------------")
 })
 
-let squart: Activity = Activity(name: "스쿼트", action: {(bodyCondition) in
+let squart: Activity = Activity(name: "스쿼트", action: { (bodyCondition) in
     var plusLegStrength = Int.random(in: 20...30)
     var plusTiredness = Int.random(in: 10...20)
     
@@ -39,7 +31,7 @@ let squart: Activity = Activity(name: "스쿼트", action: {(bodyCondition) in
     print("--------------")
 })
 
-let running: Activity = Activity(name: "오래달리기", action: {(bodyCondition) in
+let running: Activity = Activity(name: "오래달리기", action: { (bodyCondition) in
     var plusUpperBodyStrength = Int.random(in: 5...10)
     var plusLegStrength = Int.random(in: 5...10)
     var plusTiredness = Int.random(in: 20...30)
@@ -56,7 +48,7 @@ let running: Activity = Activity(name: "오래달리기", action: {(bodyConditio
     
 })
 
-let dynamicRest: Activity = Activity(name: "동적휴식", action: {(bodyCondition) in
+let dynamicRest: Activity = Activity(name: "동적휴식", action: { (bodyCondition) in
     var minusTiredness = Int.random(in: 5...10)
     
     bodyCondition.tiredness -= minusTiredness
@@ -66,18 +58,4 @@ let dynamicRest: Activity = Activity(name: "동적휴식", action: {(bodyConditi
     print("--------------")
 })
 
-func printCondtion() {
-    print("""
-        현재의 컨디션은 다음과 같습니다.
-        상체근력: \(bodyCondition.upperBodyStrength)
-        하체근력: \(bodyCondition.legStrength)
-        근지구력: \(bodyCondition.muscularEndurance)
-        피로도: \(bodyCondition.tiredness)
-        --------------
-        """)
-}
 
-func printResult(activity: Activity) {
-    activity.action(bodyCondition)
-    printCondtion()
-}
