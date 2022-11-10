@@ -1,31 +1,16 @@
 import Foundation
 class BodyCondition {
-    var upperBodyStrength: Int
-    var legStrength: Int
-    var muscularEndurance: Int
-    var tiredness: Int
-    
-    init(upperBodyStrength: Int, legStrength: Int, muscularEndurance: Int, tiredness: Int) {
-        self.upperBodyStrength = upperBodyStrength
-        self.legStrength = legStrength
-        self.muscularEndurance = muscularEndurance
-        self.tiredness = tiredness
-    }
+    var upperBodyStrength: Int = 30
+    var legStrength: Int = 45
+    var muscularEndurance: Int = 25
+    var tiredness: Int = 2
 }
 
-var bodyCondition = BodyCondition(upperBodyStrength: 40, legStrength: 40, muscularEndurance: 40, tiredness: 15)
+var bodyCondition = BodyCondition()
 
 struct Activity {
     var name: String
-    
     let action: (BodyCondition) -> Void
-}
-
-enum ActivityType: String {
-    case situp = "윗몸일으키기"
-    case squart = "스쿼트"
-    case running = "오래달리기"
-    case dynamicRest = "동적휴식"
 }
 
 let situp: Activity = Activity(name: "윗몸일으키기", action: {(bodyCondtion) in
@@ -91,8 +76,6 @@ func printCondtion() {
         --------------
         """)
 }
-
-
 
 func printResult(activity: Activity) {
     activity.action(bodyCondition)
