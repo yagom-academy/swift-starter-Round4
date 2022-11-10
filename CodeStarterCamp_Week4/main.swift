@@ -69,7 +69,7 @@ let running = Activity(name: "오래달리기", action: {(bodyCondition) -> Void
     bodyCondition.lowerBodyMuscle += Int.random(in: 5...10)
     bodyCondition.fatigue += Int.random(in: 20...30)
 })
-let lest = Activity(name: "동적휴식", action: {(bodyCondition) -> Void in
+let rest = Activity(name: "동적휴식", action: {(bodyCondition) -> Void in
     bodyCondition.fatigue -= Int.random(in: 5...10)
 })
 
