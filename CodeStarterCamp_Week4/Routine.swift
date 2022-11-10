@@ -37,12 +37,8 @@ class Routine {
     /// Int 값 KoreanNumber 열거형으로 변환
     /// - Parameter count: 변환할 Int
     /// - Returns: KoreanNumber 열거형
-    func getKorenNumberText(count: Int) throws -> KoreanNumber {
-        guard let koreanNumber = KoreanNumber(rawValue: count) else {
-            throw ActivityError.onlyInteger
-        }
-        
-        return koreanNumber
+    func getKorenNumberText(count: Int) -> String {
+        return KoreanNumber(rawValue: count)?.numberText ?? "\(count) 번째"
     }
     
     /// Activity 시작 함수
@@ -66,9 +62,9 @@ class Routine {
             let totalRoutineCount = try inputRoutineCount()
             print("--------------")
             for routine in 1...totalRoutineCount {
-                let routineText = try getKorenNumberText(count: routine)
-                print("\(routineText.numberText) \(routineName)을(를) 시작합니다.")
-                try startActivity(condition: condition)
+                let routineText = getKorenNumberText(count: routine)
+                print("\(routineText) \(routineName)을(를) 시작합니다.")
+                try? startActivity(condition: condition)
             }
             condition.printCondition()
         } catch ActivityError.overFatigue {
