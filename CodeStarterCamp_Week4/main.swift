@@ -15,7 +15,6 @@ class BodyCondition {
             print("상체근력이 \(upperBodyStrength - oldValue) 상승합니다.")
         }
     }
-    
     var lowerBodyStrength: Int {
         
         didSet(oldValue) {
@@ -26,7 +25,6 @@ class BodyCondition {
         
         didSet(oldValue) {
             print("근지구력이 \(muscularEndurance - oldValue) 상승합니다.")
-            
         }
     }
     var fatigueDegree: Int {
