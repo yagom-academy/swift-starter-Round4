@@ -88,8 +88,7 @@ class BodyCondition {
 
 func checkInputCount (inputCountRoutines: String?) throws -> Int {
     var returnInt = 0
-    if let inputToString = inputCountRoutines {
-        if let inputToInt = Int(inputToString) {
+    if let inputToString = inputCountRoutines, let inputToInt = Int(inputToString) {
             guard inputToInt >= 1 && inputToInt < 100 else {
                 throw ActivityError.invalidInput
             }
@@ -97,19 +96,16 @@ func checkInputCount (inputCountRoutines: String?) throws -> Int {
         } else {
             throw ActivityError.invalidInput
         }
-    } else {
-        throw ActivityError.invalidInput
-    }
     
     return returnInt
 }
 
-func doActivity (bodyCondition: BodyCondition, activityName: String, min상체근력: Int = 0, max상체근력: Int = 0, min하체근력: Int = 0, max하체근력: Int = 0, min근지구력: Int = 0, max근지구력: Int = 0, min피로도: Int = 0, max피로도: Int = 0) {
+func doActivity (bodyCondition: BodyCondition, activityName: String, 상체근력: ClosedRange<Int>, 하체근력: ClosedRange<Int>, 근지구력: ClosedRange<Int>, 피로도: ClosedRange<Int>) {
     print("<<\(activityName)을(를) 시작합니다>>")
-    bodyCondition.상체근력 += Int.random(in: min상체근력...max상체근력)
-    bodyCondition.하체근력 += Int.random(in: min하체근력...max하체근력)
-    bodyCondition.근지구력 += Int.random(in: min근지구력...max근지구력)
-    bodyCondition.피로도 += Int.random(in: min피로도...max피로도)
+    bodyCondition.상체근력 += Int.random(in: 상체근력)
+    bodyCondition.하체근력 += Int.random(in: 하체근력)
+    bodyCondition.근지구력 += Int.random(in: 근지구력)
+    bodyCondition.피로도 += Int.random(in: 피로도)
     print("--------------")
 }
 
@@ -170,6 +166,38 @@ func changeNumToOrdinal (num: Int) -> String {
         
     return returnOrdinal
 }
+
+func startRoutines (countRoutines: Int, routine: Routine, mybodyCondition: BodyCondition) {
+    do {
+        for countRoutine in 1...countRoutines {
+            print("\(changeNumToOrdinal(num: countRoutine))번째 \(routine.name)을(를) 시작합니다.")
+            for routineActivity in routine.activities {
+                try routineActivity.action(myBodyCondition)
+            }
+        }
+    } catch {
+        print("피로도가 100 이상입니다. 루틴을 중단합니다.")
+    }
+}
+
+func takeInputCount () -> Int {
+    var countRoutines = 0
+    print("루틴을 몇 번 반복할까요?")
+
+    do {
+        repeat {
+            do {
+                let inputCountRoutines = readLine()
+                countRoutines = try checkInputCount(inputCountRoutines: inputCountRoutines)
+            } catch {
+                print("잘못된 입력 형식입니다. 다시 입력해주세요.")
+            }
+        } while countRoutines == 0
+    }
+    
+    return countRoutines
+}
+
 struct Routine {
     let name: String
     let activities: [Activity]
@@ -186,35 +214,35 @@ struct Activity {
 }
 
 let 윗몸일으키기: Activity = Activity(name: "윗몸일으키기", action: { bodyCondition throws in
-    doActivity(bodyCondition: bodyCondition, activityName: 윗몸일으키기.name, min상체근력: 10, max상체근력: 20, min피로도: 10, max피로도: 20)
+    doActivity(bodyCondition: bodyCondition, activityName: 스쿼트.name, 상체근력: 10...20, 하체근력: 0...0, 근지구력: 0...0, 피로도: 10...20)
     guard bodyCondition.피로도 < 100 else {
         throw ActivityError.overFatigue
     }
 })
         
 let 스쿼트: Activity = Activity(name: "스쿼트", action: { bodyCondition throws in
-    doActivity(bodyCondition: bodyCondition, activityName: 스쿼트.name, min하체근력: 20, max하체근력: 30, min피로도: 10, max피로도: 20)
+    doActivity(bodyCondition: bodyCondition, activityName: 스쿼트.name, 상체근력: 0...0, 하체근력: 20...30, 근지구력: 0...0, 피로도: 10...20)
     guard bodyCondition.피로도 < 100 else {
         throw ActivityError.overFatigue
     }
 })
 
 let 오래달리기: Activity = Activity(name: "오래달리기", action: { bodyCondition throws in
-    doActivity(bodyCondition: bodyCondition, activityName: 오래달리기.name, min상체근력: 5, max상체근력: 10, min하체근력: 5, max하체근력:  10, min근지구력: 20, max근지구력: 30, min피로도: 20, max피로도: 30)
+    doActivity(bodyCondition: bodyCondition, activityName: 스쿼트.name, 상체근력: 5...10, 하체근력: 5...10, 근지구력: 20...30, 피로도: 20...30)
     guard bodyCondition.피로도 < 100 else {
         throw ActivityError.overFatigue
     }
 })
 
 let 동적휴식: Activity = Activity(name: "동적휴식", action: { bodyCondition in
-    doActivity(bodyCondition: bodyCondition, activityName: 동적휴식.name, min피로도: -10, max피로도: -5)
+    doActivity(bodyCondition: bodyCondition, activityName: 스쿼트.name, 상체근력: 0...0, 하체근력: 0...0, 근지구력: 0...0, 피로도: (-10)...(-5))
     guard bodyCondition.피로도 < 100 else {
         throw ActivityError.overFatigue
     }
 })
 
 let 동적음주: Activity = Activity(name: "동적음주", action: { bodyCondition throws in
-    doActivity(bodyCondition: bodyCondition, activityName: 동적음주.name, min상체근력: -10, max상체근력: -5, min하체근력: -30, max하체근력: -20, min근지구력: -10, max근지구력: -5, min피로도: 10, max피로도: 20)
+    doActivity(bodyCondition: bodyCondition, activityName: 스쿼트.name, 상체근력: (-10)...(-5), 하체근력: (-30)...(-20), 근지구력: (-10)...(-5), 피로도: 10...20)
     guard bodyCondition.피로도 < 100 else {
         throw ActivityError.overFatigue
     }
@@ -223,29 +251,9 @@ let 동적음주: Activity = Activity(name: "동적음주", action: { bodyCondit
 // Testing...
 var myBodyCondition: BodyCondition = BodyCondition()
 let hellRoutine = Routine(name: "hellRoutine", activities: [윗몸일으키기, 동적휴식, 스쿼트])
-var countRoutines = 0
 
-print("루틴을 몇 번 반복할까요?")
-
-do {
-    repeat {
-        do {
-            var inputCountRoutines = readLine()
-            countRoutines = try checkInputCount(inputCountRoutines: inputCountRoutines)
-        } catch ActivityError.invalidInput {
-            print("잘못된 입력 형식입니다. 다시 입력해주세요.")
-        }
-    } while countRoutines == 0
-
-    print("--------------")
-    
-    for countRoutine in 1...countRoutines {
-        print("\(changeNumToOrdinal(num: countRoutine))번째 \(hellRoutine.name)을(를) 시작합니다.")
-        for routineActivity in hellRoutine.activities {
-            try routineActivity.action(myBodyCondition)
-        }
-    }
-} catch ActivityError.overFatigue {
-    print("피로도가 100 이상입니다. 루틴을 중단합니다.")
-}
+let countRoutines = takeInputCount()
+startRoutines(countRoutines: countRoutines, routine: hellRoutine, mybodyCondition: myBodyCondition)
 myBodyCondition.printCurrentCondition()
+
+
