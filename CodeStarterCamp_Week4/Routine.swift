@@ -68,13 +68,13 @@ class Routine {
             }
             condition.printCondition()
         } catch ActivityError.overFatigue {
-            print(ActivityError.overFatigue.errorMessage)
+            print(ActivityError.overFatigue.localizedDescription)
             condition.printCondition()
         } catch ActivityError.onlyInteger {
-            print(ActivityError.onlyInteger.errorMessage)
+            print(ActivityError.onlyInteger.localizedDescription)
             try startActivityRoutine(condition: condition)
         } catch ActivityError.wrongInput {
-            print(ActivityError.wrongInput.errorMessage)
+            print(ActivityError.wrongInput.localizedDescription)
             try startActivityRoutine(condition: condition)
         }
     }

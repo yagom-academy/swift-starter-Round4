@@ -11,8 +11,10 @@ enum ActivityError: Error {
     case overFatigue
     case onlyInteger
     case wrongInput
-    
-    var errorMessage: String {
+}
+
+extension ActivityError: LocalizedError {
+    var errorDescription: String? {
         switch self {
         case .overFatigue:
             return "피로도가 100 이상입니다. 루틴을 중단합니다."
