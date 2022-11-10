@@ -1,12 +1,13 @@
-//
-//  main.swift
-//  CodeStarterCamp_Week4
-//
-//  Created by yagom.
-//  Copyright © yagom academy. All rights reserved.
-//
-
 import Foundation
 
-print("Hello, World!")
+
+func printResult(activity: Activity) {
+    activity.action(bodyCondition)
+    bodyCondition.printCondtion()
+}
+
+var bodyCondition = BodyCondition()
+printResult(activity: squart)
+
+
 
