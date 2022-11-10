@@ -21,16 +21,26 @@ enum KoreanNumber: Int {
     
     var numberText: String {
         switch self {
-        case .one: return "첫 번째"
-        case .two: return "두 번쨰"
-        case .three: return "세 번쨰"
-        case .four: return "네 번째"
-        case .five: return "다섯 번째"
-        case .six: return "여섯 번째"
-        case .seven: return "일곱 번째"
-        case .eight: return "여덟 번째"
-        case .nine: return "아홈 번째"
-        case .ten: return "열 번째"
+        case .one:
+            return "첫 번째"
+        case .two:
+            return "두 번쨰"
+        case .three:
+            return "세 번쨰"
+        case .four:
+            return "네 번째"
+        case .five:
+            return "다섯 번째"
+        case .six:
+            return "여섯 번째"
+        case .seven:
+            return "일곱 번째"
+        case .eight:
+            return "여덟 번째"
+        case .nine:
+            return "아홈 번째"
+        case .ten:
+            return "열 번째"
         }
     }
 }
