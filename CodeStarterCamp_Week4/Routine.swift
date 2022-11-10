@@ -20,11 +20,11 @@ class Routine {
     /// - Returns: Int
     func inputRoutineCount() throws -> Int {
         guard let inputText = readLine() else {
-            throw ActivityError.unknown
+            throw ActivityError.wrongInput
         }
         
         guard let totalRoutineCount = Int(inputText) else {
-            throw ActivityError.unknown
+            throw ActivityError.wrongInput
         }
         
         guard totalRoutineCount > 0 else {
@@ -64,7 +64,7 @@ class Routine {
             for routine in 1...totalRoutineCount {
                 let routineText = getKorenNumberText(count: routine)
                 print("\(routineText) \(routineName)을(를) 시작합니다.")
-                try? startActivity(condition: condition)
+                try startActivity(condition: condition)
             }
             condition.printCondition()
         } catch ActivityError.overFatigue {
@@ -73,8 +73,8 @@ class Routine {
         } catch ActivityError.onlyInteger {
             print(ActivityError.onlyInteger.errorMessage)
             try startActivityRoutine(condition: condition)
-        } catch ActivityError.unknown {
-            print(ActivityError.unknown.errorMessage)
+        } catch ActivityError.wrongInput {
+            print(ActivityError.wrongInput.errorMessage)
             try startActivityRoutine(condition: condition)
         }
     }
