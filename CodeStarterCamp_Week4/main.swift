@@ -126,8 +126,17 @@ let ordinalNumber: Array<String> = ["첫", "두", "세", "네", "다섯", "여�
 
 struct Routine {
     let name: String
-    let activities: Array<Activity> = [sitUp, dynamicBreak, climbing, dynamicBreak]
+    var activities: Array<Activity> = []
     let member: BodyCondition
+    
+    func doRoutine() throws {
+        for count in 0...self.activities.count-1 {
+            self.activities[count].action(self.member)
+            guard self.member.fatigue < 100 else {
+                throw RoutineError.overFatigueLimit
+            }
+        }
+    }
     
     mutating func repeatRoutine(_ bodyCondition: BodyCondition) throws {
         var roundUInt: UInt?
@@ -147,19 +156,21 @@ struct Routine {
                 
                 let number = Int(round)
                 print("\(ordinalNumber[number]) 번째 \(self.name)을(를) 시작합니다.")
-                for count in 0...self.activities.count-1 {
-                    self.activities[count].action(self.member)
-                    guard self.member.fatigue < 100 else {
-                        throw RoutineError.overFatigueLimit
-                    }
-                }
+                try self.doRoutine()
             }
             bodyCondition.checkCondition()
         }
     }
+    
+    init(name: String, member: BodyCondition, activities: Array<Activity>) {
+        self.name = name
+        self.member = member
+        self.activities = activities
+    }
 }
 
-var hellRoutine = Routine(name: "hellRoutine", member: rowan)
+var hellRoutine = Routine(name: "hellRoutine", member: rowan, activities: [sitUp, dynamicBreak, climbing, dynamicBreak])
+
 
 func startRoutine() throws {
     print("루틴을 몇 번 반복할까요?")
