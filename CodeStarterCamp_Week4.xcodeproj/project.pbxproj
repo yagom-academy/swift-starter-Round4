@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		34811DE8274B93FB00A1E994 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34811DE7274B93FB00A1E994 /* main.swift */; };
-		ADE1DAD5291E0565006ADC27 /* step1.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE1DAD4291E0565006ADC27 /* step1.swift */; };
-		ADE1DAD7291E0728006ADC27 /* step2.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE1DAD6291E0728006ADC27 /* step2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,8 +25,6 @@
 /* Begin PBXFileReference section */
 		34811DE4274B93FB00A1E994 /* CodeStarterCamp_Week4 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CodeStarterCamp_Week4; sourceTree = BUILT_PRODUCTS_DIR; };
 		34811DE7274B93FB00A1E994 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		ADE1DAD4291E0565006ADC27 /* step1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = step1.swift; sourceTree = "<group>"; };
-		ADE1DAD6291E0728006ADC27 /* step2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = step2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,8 +58,6 @@
 			isa = PBXGroup;
 			children = (
 				34811DE7274B93FB00A1E994 /* main.swift */,
-				ADE1DAD4291E0565006ADC27 /* step1.swift */,
-				ADE1DAD6291E0728006ADC27 /* step2.swift */,
 			);
 			path = CodeStarterCamp_Week4;
 			sourceTree = "<group>";
@@ -126,8 +120,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
-				ADE1DAD5291E0565006ADC27 /* step1.swift in Sources */,
-				ADE1DAD7291E0728006ADC27 /* step2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +184,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
