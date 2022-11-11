@@ -80,33 +80,33 @@ struct Activity {
     let action: (BodyCondition) -> Void
 }
 
-let situp: Activity = Activity(name: "윗몸일으키기", action: { BodyCondition in
+let situp: Activity = Activity(name: "윗몸일으키기", action: { bodyCondition in
     print("<<\(situp.name)을(를) 시작합니다>>")
-    BodyCondition.upperBodyStrength += Int.random(in: 10...20)
-    BodyCondition.fatigueDegree += Int.random(in: 10...20)
+    bodyCondition.upperBodyStrength += Int.random(in: 10...20)
+    bodyCondition.fatigueDegree += Int.random(in: 10...20)
 })
-let squirt: Activity = Activity(name: "스쿼트", action: { BodyCondition in
+let squirt: Activity = Activity(name: "스쿼트", action: { bodyCondition in
     print("<<\(squirt.name)을(를) 시작합니다>>")
-    BodyCondition.lowerBodyStrength += Int.random(in: 20...30)
-    BodyCondition.fatigueDegree += Int.random(in: 10...20)
-    BodyCondition.bodyWeight -= Int.random(in: 1...10)
+    bodyCondition.lowerBodyStrength += Int.random(in: 20...30)
+    bodyCondition.fatigueDegree += Int.random(in: 10...20)
+    bodyCondition.bodyWeight -= Int.random(in: 1...10)
 })
-let longDistanceRunning: Activity = Activity(name: "오래달리기", action: { BodyCondition in
+let longDistanceRunning: Activity = Activity(name: "오래달리기", action: { bodyCondition in
     print("<<\(longDistanceRunning.name)을(를) 시작합니다>>")
-    BodyCondition.muscularEndurance += Int.random(in: 20...30)
-    BodyCondition.upperBodyStrength += Int.random(in: 5...10)
-    BodyCondition.lowerBodyStrength += Int.random(in: 5...10)
-    BodyCondition.fatigueDegree += Int.random(in: 20...30)
+    bodyCondition.muscularEndurance += Int.random(in: 20...30)
+    bodyCondition.upperBodyStrength += Int.random(in: 5...10)
+    bodyCondition.lowerBodyStrength += Int.random(in: 5...10)
+    bodyCondition.fatigueDegree += Int.random(in: 20...30)
 })
-let dynamicRest: Activity = Activity(name: "동적휴식", action: { BodyCondition in
+let dynamicRest: Activity = Activity(name: "동적휴식", action: { bodyCondition in
     print("<<\(dynamicRest.name)을(를) 시작합니다>>")
-    BodyCondition.fatigueDegree -= Int.random(in: 5...10)
+    bodyCondition.fatigueDegree -= Int.random(in: 5...10)
 })
-let pilates: Activity = Activity(name: "필라테스", action: { BodyCondition in
+let pilates: Activity = Activity(name: "필라테스", action: { bodyCondition in
     print("<<\(pilates.name)을(를) 시작합니다>>")
-    BodyCondition.coreStrength += Int.random(in: 5...10)
-    BodyCondition.fatigueDegree += Int.random(in: 5...10)
-    BodyCondition.bodyWeight -= Int.random(in: 1...10)
+    bodyCondition.coreStrength += Int.random(in: 5...10)
+    bodyCondition.fatigueDegree += Int.random(in: 5...10)
+    bodyCondition.bodyWeight -= Int.random(in: 1...10)
 })
 
 var yourBodyCondition: BodyCondition = BodyCondition(
