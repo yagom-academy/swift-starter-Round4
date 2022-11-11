@@ -49,7 +49,13 @@ class BodyCondition {
             print("\(bodyWeight)kg 에서 \(afterDiet-bodyWeight)kg 감량했습니다.")
         }
     }
-    init(upperBodyStrength: Int, lowerBodyStrength: Int, muscularEndurance : Int, fatigueDegree: Int, coreStrength: Int) {
+    init(
+        upperBodyStrength: Int,
+        lowerBodyStrength: Int,
+        muscularEndurance : Int,
+        fatigueDegree: Int,
+        coreStrength: Int
+    ) {
         self.upperBodyStrength = upperBodyStrength
         self.lowerBodyStrength = lowerBodyStrength
         self.muscularEndurance = muscularEndurance
@@ -74,36 +80,42 @@ struct Activity {
     let action: (BodyCondition) -> Void
 }
 
-let situp: Activity = Activity(name: "윗몸일으키기", action: { bodycondition in
+let situp: Activity = Activity(name: "윗몸일으키기", action: { BodyCondition in
     print("<<\(situp.name)을(를) 시작합니다>>")
-    bodycondition.upperBodyStrength += Int.random(in: 10...20)
-    bodycondition.fatigueDegree += Int.random(in: 10...20)
+    BodyCondition.upperBodyStrength += Int.random(in: 10...20)
+    BodyCondition.fatigueDegree += Int.random(in: 10...20)
 })
-let squirt: Activity = Activity(name: "스쿼트", action: { bodycondition in
+let squirt: Activity = Activity(name: "스쿼트", action: { BodyCondition in
     print("<<\(squirt.name)을(를) 시작합니다>>")
-    bodycondition.lowerBodyStrength += Int.random(in: 20...30)
-    bodycondition.fatigueDegree += Int.random(in: 10...20)
-    bodycondition.bodyWeight -= Int.random(in: 1...10)
+    BodyCondition.lowerBodyStrength += Int.random(in: 20...30)
+    BodyCondition.fatigueDegree += Int.random(in: 10...20)
+    BodyCondition.bodyWeight -= Int.random(in: 1...10)
 })
-let longDistanceRunning: Activity = Activity(name: "오래달리기", action: { bodycondition in
+let longDistanceRunning: Activity = Activity(name: "오래달리기", action: { BodyCondition in
     print("<<\(longDistanceRunning.name)을(를) 시작합니다>>")
-    bodycondition.muscularEndurance += Int.random(in: 20...30)
-    bodycondition.upperBodyStrength += Int.random(in: 5...10)
-    bodycondition.lowerBodyStrength += Int.random(in: 5...10)
-    bodycondition.fatigueDegree += Int.random(in: 20...30)
+    BodyCondition.muscularEndurance += Int.random(in: 20...30)
+    BodyCondition.upperBodyStrength += Int.random(in: 5...10)
+    BodyCondition.lowerBodyStrength += Int.random(in: 5...10)
+    BodyCondition.fatigueDegree += Int.random(in: 20...30)
 })
-let dynamicRest: Activity = Activity(name: "동적휴식", action: { bodycondition in
+let dynamicRest: Activity = Activity(name: "동적휴식", action: { BodyCondition in
     print("<<\(dynamicRest.name)을(를) 시작합니다>>")
-    bodycondition.fatigueDegree -= Int.random(in: 5...10)
+    BodyCondition.fatigueDegree -= Int.random(in: 5...10)
 })
-let pilates: Activity = Activity(name: "필라테스", action: { bodycondition in
+let pilates: Activity = Activity(name: "필라테스", action: { BodyCondition in
     print("<<\(pilates.name)을(를) 시작합니다>>")
-    bodycondition.coreStrength += Int.random(in: 5...10)
-    bodycondition.fatigueDegree += Int.random(in: 5...10)
-    bodycondition.bodyWeight -= Int.random(in: 1...10)
+    BodyCondition.coreStrength += Int.random(in: 5...10)
+    BodyCondition.fatigueDegree += Int.random(in: 5...10)
+    BodyCondition.bodyWeight -= Int.random(in: 1...10)
 })
 
-var yourBodyCondition: BodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigueDegree: 0, coreStrength: 0)
+var yourBodyCondition: BodyCondition = BodyCondition(
+    upperBodyStrength: 0,
+    lowerBodyStrength: 0,
+    muscularEndurance: 0,
+    fatigueDegree: 0,
+    coreStrength: 0
+)
 
 
 situp.action(yourBodyCondition)
