@@ -67,15 +67,8 @@ class Routine {
                 try startActivity(condition: condition)
             }
             condition.printCondition()
-        } catch ActivityError.overFatigue {
-            print(ActivityError.overFatigue.localizedDescription)
-            condition.printCondition()
-        } catch ActivityError.onlyInteger {
-            print(ActivityError.onlyInteger.localizedDescription)
-            try startActivityRoutine(condition: condition)
-        } catch ActivityError.wrongInput {
-            print(ActivityError.wrongInput.localizedDescription)
-            try startActivityRoutine(condition: condition)
+        } catch {
+            print(error.localizedDescription)
         }
     }
 }
