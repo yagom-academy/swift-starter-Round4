@@ -10,10 +10,10 @@ import Foundation
 
 struct Activity {
     let name: String
-    let action: (BodyCondition) -> Void
+    let action: (BodyCondition) -> BodyCondition
 }
 
-class BodyCondition {
+struct BodyCondition {
     var upperBodyMuscle = 50 {
         willSet(newValue) {
             print("상체 근력이 \(newValue - upperBodyMuscle) 상승합니다")
@@ -41,38 +41,58 @@ class BodyCondition {
     
     func printBodyCondition() {
         print("현재의 컨디션은 다음과 같습니다.")
-        print("상체근력: \(self.upperBodyMuscle)")
-        print("하체근력: \(self.lowerBodyMuscle)")
-        print("근지구력: \(self.endurance)")
-        print("피로도: \(self.fatigue)")
-        print("----------------")
-    }
-    
-    func exercise(activity: Activity) {
-        print("<<\(activity.name)을(를) 시작합니다>>")
-        activity.action(self)
-        print("----------------")
+        print("""
+        상체근력: \(self.upperBodyMuscle)
+        하체근력: \(self.lowerBodyMuscle)
+        근지구력: \(self.endurance)
+        피로도: \(self.fatigue)
+        ----------------
+        """)
     }
 }
 
-let sitUp = Activity(name: "윗몸일으키기", action: {(bodyCondition) -> Void in
-    bodyCondition.upperBodyMuscle += Int.random(in: 10...20)
-    bodyCondition.fatigue += Int.random(in: 10...20)
-})
-let squat = Activity(name: "스쿼트", action: {(bodyCondition) -> Void in
-    bodyCondition.lowerBodyMuscle += Int.random(in: 20...30)
-    bodyCondition.fatigue += Int.random(in: 10...20)
-})
-let running = Activity(name: "오래달리기", action: {(bodyCondition) -> Void in
-    bodyCondition.endurance += Int.random(in: 20...30)
-    bodyCondition.upperBodyMuscle += Int.random(in: 5...10)
-    bodyCondition.lowerBodyMuscle += Int.random(in: 5...10)
-    bodyCondition.fatigue += Int.random(in: 20...30)
-})
-let rest = Activity(name: "동적휴식", action: {(bodyCondition) -> Void in
-    bodyCondition.fatigue -= Int.random(in: 5...10)
-})
+func doExercise(activity: Activity, body: BodyCondition) -> BodyCondition {
+    print("<<\(activity.name)을(를) 시작합니다>>")
+    let bodyCondtion = activity.action(body)
+    print("----------------")
+    
+    return bodyCondtion
+}
 
-let leon = BodyCondition()
-leon.exercise(activity: sitUp)
+let sitUp = Activity(name: "윗몸일으키기", action: { (bodyCondition) -> BodyCondition in
+    var body = bodyCondition
+    body.upperBodyMuscle += Int.random(in: 10...20)
+    body.fatigue += Int.random(in: 10...20)
+    
+    return body
+} )
+
+let squat = Activity(name: "스쿼트", action: { (bodyCondition) -> BodyCondition in
+    var body = bodyCondition
+    body.lowerBodyMuscle += Int.random(in: 20...30)
+    body.fatigue += Int.random(in: 10...20)
+    
+    return body
+} )
+
+let running = Activity(name: "오래달리기", action: { (bodyCondition) -> BodyCondition in
+    var body = bodyCondition
+    body.endurance += Int.random(in: 20...30)
+    body.upperBodyMuscle += Int.random(in: 5...10)
+    body.lowerBodyMuscle += Int.random(in: 5...10)
+    body.fatigue += Int.random(in: 20...30)
+    
+    return body
+} )
+
+let rest = Activity(name: "동적휴식", action: { (bodyCondition) -> BodyCondition in
+    var body = bodyCondition
+    body.fatigue -= Int.random(in: 5...10)
+    
+    return body
+} )
+
+var leon = BodyCondition()
+leon = doExercise(activity: squat, body: leon)
 leon.printBodyCondition()
+
