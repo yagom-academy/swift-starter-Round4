@@ -10,25 +10,28 @@ import Foundation
 
 struct Activity {
     let name: String
-    let action: (BodyCondition) -> BodyCondition
+    let action: (BodyCondition) -> Void
 }
 
-struct BodyCondition {
+class BodyCondition {
     var upperBodyMuscle = 50 {
         willSet(newValue) {
             print("상체 근력이 \(newValue - upperBodyMuscle) 상승합니다")
         }
     }
+    
     var lowerBodyMuscle = 60 {
         willSet(newValue) {
             print("하체 근력이 \(newValue - lowerBodyMuscle) 상승합니다")
         }
     }
+    
     var endurance = 30 {
         willSet(newValue) {
             print("근지구력이 \(newValue - endurance) 상승합니다")
         }
     }
+    
     var fatigue = 15 {
         willSet(newValue) {
             if newValue > fatigue {
@@ -51,48 +54,38 @@ struct BodyCondition {
     }
 }
 
-func doExercise(activity: Activity, body: BodyCondition) -> BodyCondition {
+func doExercise(activity: Activity, body: BodyCondition) -> Void {
     print("<<\(activity.name)을(를) 시작합니다>>")
-    let bodyCondtion = activity.action(body)
+    activity.action(body)
     print("----------------")
-    
-    return bodyCondtion
 }
 
-let sitUp = Activity(name: "윗몸일으키기", action: { (bodyCondition) -> BodyCondition in
+let sitUp = Activity(name: "윗몸일으키기", action: { (bodyCondition) -> Void in
     var body = bodyCondition
     body.upperBodyMuscle += Int.random(in: 10...20)
     body.fatigue += Int.random(in: 10...20)
-    
-    return body
 } )
 
-let squat = Activity(name: "스쿼트", action: { (bodyCondition) -> BodyCondition in
+let squat = Activity(name: "스쿼트", action: { (bodyCondition) -> Void in
     var body = bodyCondition
     body.lowerBodyMuscle += Int.random(in: 20...30)
     body.fatigue += Int.random(in: 10...20)
-    
-    return body
 } )
 
-let running = Activity(name: "오래달리기", action: { (bodyCondition) -> BodyCondition in
+let running = Activity(name: "오래달리기", action: { (bodyCondition) -> Void in
     var body = bodyCondition
     body.endurance += Int.random(in: 20...30)
     body.upperBodyMuscle += Int.random(in: 5...10)
     body.lowerBodyMuscle += Int.random(in: 5...10)
     body.fatigue += Int.random(in: 20...30)
-    
-    return body
 } )
 
-let rest = Activity(name: "동적휴식", action: { (bodyCondition) -> BodyCondition in
+let rest = Activity(name: "동적휴식", action: { (bodyCondition) -> Void in
     var body = bodyCondition
     body.fatigue -= Int.random(in: 5...10)
-    
-    return body
 } )
 
 var leon = BodyCondition()
-leon = doExercise(activity: squat, body: leon)
+doExercise(activity: squat, body: leon)
 leon.printBodyCondition()
 
