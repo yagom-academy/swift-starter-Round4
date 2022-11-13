@@ -61,28 +61,24 @@ func doExercise(activity: Activity, body: BodyCondition) -> Void {
 }
 
 let sitUp = Activity(name: "윗몸일으키기", action: { (bodyCondition) -> Void in
-    var body = bodyCondition
-    body.upperBodyMuscle += Int.random(in: 10...20)
-    body.fatigue += Int.random(in: 10...20)
+    bodyCondition.upperBodyMuscle += Int.random(in: 10...20)
+    bodyCondition.fatigue += Int.random(in: 10...20)
 } )
 
 let squat = Activity(name: "스쿼트", action: { (bodyCondition) -> Void in
-    var body = bodyCondition
-    body.lowerBodyMuscle += Int.random(in: 20...30)
-    body.fatigue += Int.random(in: 10...20)
+    bodyCondition.lowerBodyMuscle += Int.random(in: 20...30)
+    bodyCondition.fatigue += Int.random(in: 10...20)
 } )
 
 let running = Activity(name: "오래달리기", action: { (bodyCondition) -> Void in
-    var body = bodyCondition
-    body.endurance += Int.random(in: 20...30)
-    body.upperBodyMuscle += Int.random(in: 5...10)
-    body.lowerBodyMuscle += Int.random(in: 5...10)
-    body.fatigue += Int.random(in: 20...30)
+    bodyCondition.endurance += Int.random(in: 20...30)
+    bodyCondition.upperBodyMuscle += Int.random(in: 5...10)
+    bodyCondition.lowerBodyMuscle += Int.random(in: 5...10)
+    bodyCondition.fatigue += Int.random(in: 20...30)
 } )
 
 let rest = Activity(name: "동적휴식", action: { (bodyCondition) -> Void in
-    var body = bodyCondition
-    body.fatigue -= Int.random(in: 5...10)
+    bodyCondition.fatigue -= Int.random(in: 5...10)
 } )
 
 var leon = BodyCondition()
