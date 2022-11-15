@@ -37,6 +37,28 @@ class BodyCondition {
         self.muscularEndurance = edurance
         self.fatigue = fatigue
     }
+    
+    /// Property Observer 내부에서 값의 변화를 감지하여 값을 출력해줄 함수
+    func printChangedStatus(newData: Int, currentData: Int, part: bodyStatus) {
+            
+        if newData > currentData {
+            print("\(part.rawValue)이(가) \(newData - currentData)만큼 상승했습니다.")
+        } else if newData == currentData {
+        } else {
+            print("\(part.rawValue)이(가) \(currentData - newData)만큼 하락했습니다.")
+        }
+    }
+    
+    /// 현상태 BodyCondtion을 체크하는 함수
+    func checkCurrenStatus() {
+        print("-----------------------")
+        print("현재의 컨디션은 다음과 같습니다.")
+        print("\(bodyStatus.upper.rawValue): \(upperBodyStrength)")
+        print("\(bodyStatus.lower.rawValue): \(lowerBodyStrength)")
+        print("\(bodyStatus.endurance.rawValue): \(muscularEndurance)")
+        print("\(bodyStatus.fatigue.rawValue): \(fatigue)")
+        print("-----------------------")
+    }
 }
 
 /// Activity 타입을 설계합니다.
@@ -93,47 +115,24 @@ func randomGenerator(from a: Int, to b: Int, option updown: Bool) -> Int {
     return randomValue
 }
 
-/// Property Observer 내부에서 값의 변화를 감지하여 값을 출력해줄 함수
-func printChangedStatus(newData: Int, currentData: Int, part: bodyStatus) {
-        
-    if newData > currentData {
-        print("\(part.rawValue)이(가) \(newData - currentData)만큼 상승했습니다.")
-    } else if newData == currentData {
-    } else {
-        print("\(part.rawValue)이(가) \(currentData - newData)만큼 하락했습니다.")
-    }
-}
-
 /// Activity를 수행하는 함수
 func doActivity(to condition: BodyCondition, do activity: Activity) {
     print("\(activity.name)을(를) 시작합니다.")
     activity.action(condition)
 }
 
-/// 현상태 BodyCondtion을 체크하는 함수
-func checkCurrenStatus(check condition: BodyCondition) {
-    print("-----------------------")
-    print("현재의 컨디션은 다음과 같습니다.")
-    print("\(bodyStatus.upper.rawValue): \(condition.upperBodyStrength)")
-    print("\(bodyStatus.lower.rawValue): \(condition.lowerBodyStrength)")
-    print("\(bodyStatus.endurance.rawValue): \(condition.muscularEndurance)")
-    print("\(bodyStatus.fatigue.rawValue): \(condition.fatigue)")
-    print("-----------------------")
-}
-
-checkCurrenStatus(check: bodyConditionOfHarry)
+bodyConditionOfHarry.checkCurrenStatus()
 
 doActivity(to: bodyConditionOfHarry, do: situp)
-checkCurrenStatus(check: bodyConditionOfHarry)
+bodyConditionOfHarry.checkCurrenStatus()
 
 doActivity(to: bodyConditionOfHarry, do: squat)
-checkCurrenStatus(check: bodyConditionOfHarry)
+bodyConditionOfHarry.checkCurrenStatus()
 
 doActivity(to: bodyConditionOfHarry, do: longrun)
-checkCurrenStatus(check: bodyConditionOfHarry)
+bodyConditionOfHarry.checkCurrenStatus()
 
 doActivity(to: bodyConditionOfHarry, do: relaxation)
-checkCurrenStatus(check: bodyConditionOfHarry)
-
+bodyConditionOfHarry.checkCurrenStatus()
 
 
