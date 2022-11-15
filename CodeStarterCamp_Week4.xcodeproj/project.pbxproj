@@ -10,6 +10,7 @@
 		1C71A69129235331006E98C3 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C71A69029235331006E98C3 /* Routine.swift */; };
 		1C7441D3291B691A0061D9AF /* BodyCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7441D2291B691A0061D9AF /* BodyCondition.swift */; };
 		1CB54E49291D15B100F9B285 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB54E48291D15B100F9B285 /* Activity.swift */; };
+		1CB5D0A42923A67E00F8D1CA /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB5D0A32923A67E00F8D1CA /* Error.swift */; };
 		34811DE8274B93FB00A1E994 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34811DE7274B93FB00A1E994 /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		1C71A69029235331006E98C3 /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
 		1C7441D2291B691A0061D9AF /* BodyCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyCondition.swift; sourceTree = "<group>"; };
 		1CB54E48291D15B100F9B285 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		1CB5D0A32923A67E00F8D1CA /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		34811DE4274B93FB00A1E994 /* CodeStarterCamp_Week4 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CodeStarterCamp_Week4; sourceTree = BUILT_PRODUCTS_DIR; };
 		34811DE7274B93FB00A1E994 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,6 +69,7 @@
 				1C7441D2291B691A0061D9AF /* BodyCondition.swift */,
 				1CB54E48291D15B100F9B285 /* Activity.swift */,
 				1C71A69029235331006E98C3 /* Routine.swift */,
+				1CB5D0A32923A67E00F8D1CA /* Error.swift */,
 			);
 			path = CodeStarterCamp_Week4;
 			sourceTree = "<group>";
@@ -131,6 +134,7 @@
 				1C71A69129235331006E98C3 /* Routine.swift in Sources */,
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
 				1CB54E49291D15B100F9B285 /* Activity.swift in Sources */,
+				1CB5D0A42923A67E00F8D1CA /* Error.swift in Sources */,
 				1C7441D3291B691A0061D9AF /* BodyCondition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
