@@ -14,7 +14,7 @@ enum BodyStatus: String {
 }
 
 /// Error 프로토콜을 채택한 열거형 타입 생성
-enum error: Error {
+enum ProgramError: Error {
     case inputIsWrong
     case fatigueIsSerious
 }
@@ -101,7 +101,7 @@ let situp: Activity = Activity(name: "윗몸일으키기", action: { bodyConditi
     bodyCondition.fatigue += randomGenerator(from: 10, to: 20, option: true)
     print("--------------------------")
     guard bodyCondition.fatigue <= 100 else {
-        throw error.fatigueIsSerious
+        throw ProgramError.fatigueIsSerious
     }
 })
 
@@ -112,7 +112,7 @@ let squat: Activity = Activity(name: "스쿼트", action: { bodyCondition in
     bodyCondition.fatigue += randomGenerator(from: 10, to: 20, option: true)
     print("--------------------------")
     guard bodyCondition.fatigue <= 100 else {
-        throw error.fatigueIsSerious
+        throw ProgramError.fatigueIsSerious
     }
 })
 
@@ -123,7 +123,7 @@ let longrun: Activity = Activity(name: "오래 달리기", action: { bodyConditi
     bodyCondition.fatigue += randomGenerator(from: 20, to: 30, option: true)
     print("--------------------------")
     guard bodyCondition.fatigue <= 100 else {
-        throw error.fatigueIsSerious
+        throw ProgramError.fatigueIsSerious
     }
 })
 
@@ -135,7 +135,7 @@ let relaxation: Activity = Activity(name: "동적휴식", action: { bodyConditio
     }
     print("--------------------------")
     guard bodyCondition.fatigue <= 100 else {
-        throw error.fatigueIsSerious
+        throw ProgramError.fatigueIsSerious
     }
 })
   
@@ -153,7 +153,7 @@ func doActivity(to condition: BodyCondition, do activity: Activity) {
     print("<<\(activity.name)을(를) 시작합니다>>")
     do {
         try activity.action(condition)
-    } catch error.fatigueIsSerious {
+    } catch ProgramError.fatigueIsSerious {
         print("피로도가 100을 넘었습니다. 루틴을 중단합니다.")
         condition.checkCurrenStatus()
         exit(0)
@@ -172,7 +172,7 @@ func inputRepeatCount() throws -> Int {
     let tempNumberOfRepeat = Int(readLine() ?? "문자나 공백이 입력되었어요.")
     
     guard tempNumberOfRepeat != nil && tempNumberOfRepeat! > 0 else {
-        throw error.inputIsWrong
+        throw ProgramError.inputIsWrong
     }
 
     if let repeatNumber = tempNumberOfRepeat {
@@ -190,7 +190,7 @@ func repeatCount() -> Int {
     
     do {
         inputNumber = try inputRepeatCount()
-    } catch error.inputIsWrong {
+    } catch ProgramError.inputIsWrong {
         print("입력이 잘못되었습니다. 1이상의 정수만 입력하세요.")
         inputNumber = repeatCount()
     } catch {
