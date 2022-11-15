@@ -9,7 +9,7 @@
 import Foundation
 
 /// bodyStatus 타입을 설계합니다.
-enum bodyStatus: String {
+enum BodyStatus: String {
     case upper = "상체근력", lower = "하체근력", endurance = "근지구력", fatigue = "피로도"
 }
 
@@ -20,7 +20,7 @@ enum error: Error {
 }
 
 /// BodyCondition 타입을 설계합니다.
-class bodyCondition {
+class BodyCondition {
     var upperBodyStrength: Int {
         willSet {
             printChangedStatus(newData: newValue, currentData: upperBodyStrength, part: .upper)
@@ -50,7 +50,7 @@ class bodyCondition {
     }
     
     /// Property Observer 내부에서 값의 변화를 감지하여 값을 출력해줄 함수
-    func printChangedStatus(newData: Int, currentData: Int, part: bodyStatus) {
+    func printChangedStatus(newData: Int, currentData: Int, part: BodyStatus) {
             
         if newData > currentData {
             print("\(part.rawValue)이(가) \(newData - currentData)만큼 상승했습니다.")
@@ -63,10 +63,10 @@ class bodyCondition {
     /// 현상태 BodyCondtion을 체크하는 함수
     func checkCurrenStatus() {
         print("현재의 컨디션은 다음과 같습니다.")
-        print("\(bodyStatus.upper.rawValue): \(upperBodyStrength)")
-        print("\(bodyStatus.lower.rawValue): \(lowerBodyStrength)")
-        print("\(bodyStatus.endurance.rawValue): \(muscularEndurance)")
-        print("\(bodyStatus.fatigue.rawValue): \(fatigue)")
+        print("\(BodyStatus.upper.rawValue): \(upperBodyStrength)")
+        print("\(BodyStatus.lower.rawValue): \(lowerBodyStrength)")
+        print("\(BodyStatus.endurance.rawValue): \(muscularEndurance)")
+        print("\(BodyStatus.fatigue.rawValue): \(fatigue)")
         print("--------------------------")
     }
 }
@@ -74,17 +74,27 @@ class bodyCondition {
 /// Activity 타입을 설계합니다.
 struct Activity {
     let name: String
-    let action: (bodyCondition) throws -> Void
+    let action: (BodyCondition) throws -> Void
 }
 
 struct Routine {
     var routineName: String
     var numberOfRepeat: Int
     var activities: [Activity]
+    
+    /// 루틴 반복 횟수만큼 루틴 운동을 실행해주는 함수
+    func doRoutineActivity(user: BodyCondition) {
+        for count in 1...numberOfRepeat {
+            print("\(count) 번째 \(routineName)을 수행합니다.")
+            for number in 0...activities.count - 1 {
+                doActivity(to: user, do: activities[number])
+            }
+        }
+    }
 }
 
 /// 각종 운동에 대한 Activity 인스턴스를 생성하고 내부에 클로져를 통해 해당 운동에 알맞는 상태를 증가 또는 하락시키는 함수 블럭을 설계합니다.
-let situp: Activity = Activity(name: "윗몸일으키기", action: { bodyCondition throws -> Void in
+let situp: Activity = Activity(name: "윗몸일으키기", action: { bodyCondition in
     bodyCondition.upperBodyStrength += randomGenerator(from: 10, to: 20, option: true)
     bodyCondition.lowerBodyStrength += 0
     bodyCondition.muscularEndurance += 0
@@ -95,7 +105,7 @@ let situp: Activity = Activity(name: "윗몸일으키기", action: { bodyConditi
     }
 })
 
-let squat: Activity = Activity(name: "스쿼트", action: { bodyCondition throws -> Void in
+let squat: Activity = Activity(name: "스쿼트", action: { bodyCondition in
     bodyCondition.upperBodyStrength += 0
     bodyCondition.lowerBodyStrength += randomGenerator(from: 20, to: 30, option: true)
     bodyCondition.muscularEndurance += 0
@@ -106,7 +116,7 @@ let squat: Activity = Activity(name: "스쿼트", action: { bodyCondition throws
     }
 })
 
-let longrun: Activity = Activity(name: "오래 달리기", action: { bodyCondition throws -> Void in
+let longrun: Activity = Activity(name: "오래 달리기", action: { bodyCondition in
     bodyCondition.upperBodyStrength += randomGenerator(from: 5, to: 10, option: true)
     bodyCondition.lowerBodyStrength += randomGenerator(from: 5, to: 10, option: true)
     bodyCondition.muscularEndurance += randomGenerator(from: 20, to: 30, option: true)
@@ -118,7 +128,7 @@ let longrun: Activity = Activity(name: "오래 달리기", action: { bodyConditi
 })
 
 /// if 문을 지정한 이유는 피로도가 0 이하로 떨어져 - 값이 나오는 것을 방지하기 위함
-let relaxation: Activity = Activity(name: "동적휴식", action: { bodyCondition throws -> Void in
+let relaxation: Activity = Activity(name: "동적휴식", action: { bodyCondition in
     bodyCondition.fatigue += randomGenerator(from: 5, to: 10, option: false)
     if bodyCondition.fatigue < 0 {
         bodyCondition.fatigue = 0
@@ -139,7 +149,7 @@ func randomGenerator(from a: Int, to b: Int, option updown: Bool) -> Int {
 }
 
 /// Activity를 수행하는 함수
-func doActivity(to condition: bodyCondition, do activity: Activity) {
+func doActivity(to condition: BodyCondition, do activity: Activity) {
     print("<<\(activity.name)을(를) 시작합니다>>")
     do {
         try activity.action(condition)
@@ -152,15 +162,7 @@ func doActivity(to condition: bodyCondition, do activity: Activity) {
     }
 }
 
-/// 루틴 반복 횟수만큼 루틴 운동을 실행해주는 함수
-func doRoutineActivity(routine: Routine) {
-    for count in 1...routine.numberOfRepeat {
-        print("\(count) 번째 \(routine.routineName)을 수행합니다.")
-        for number in 0...routine.activities.count - 1 {
-            doActivity(to: bodyConditionOfHarry, do: routine.activities[number])
-        }
-    }
-}
+
     
 /// 값 입력 받는 부분
 func inputRepeatCount() throws -> Int {
@@ -169,7 +171,7 @@ func inputRepeatCount() throws -> Int {
     print("루틴 반복 횟수를 입력해주세요", terminator: ": ")
     let tempNumberOfRepeat = Int(readLine() ?? "문자나 공백이 입력되었어요.")
     
-    guard tempNumberOfRepeat != nil && tempNumberOfRepeat! != 0 else {
+    guard tempNumberOfRepeat != nil && tempNumberOfRepeat! > 0 else {
         throw error.inputIsWrong
     }
 
@@ -199,11 +201,11 @@ func repeatCount() -> Int {
 }
 
 /// Harry의 BodyCondition 인스턴스를 생성합니다.
-var bodyConditionOfHarry = bodyCondition(upper: 0, lower: 0, edurance: 0, fatigue: 0)
+var bodyConditionOfHarry = BodyCondition(upper: 0, lower: 0, edurance: 0, fatigue: 0)
 
 /// routineOfHarry 인스턴스를 생성합니다.
 var routineOfHarry = Routine(routineName: "Harry's Routine", numberOfRepeat: repeatCount(), activities: [ longrun, relaxation, situp, relaxation, squat, relaxation])
 
 bodyConditionOfHarry.checkCurrenStatus()
-doRoutineActivity(routine: routineOfHarry)
+routineOfHarry.doRoutineActivity(user: bodyConditionOfHarry)
 bodyConditionOfHarry.checkCurrenStatus()
