@@ -3,7 +3,7 @@ class BodyCondition {
     var upperBodyStrength: Int = 30
     var legStrength: Int = 45
     var muscularEndurance: Int = 25
-    var tiredness: Int = 2
+    var tiredness: Int = 0
     
     func printCondtion() {
         print("""
