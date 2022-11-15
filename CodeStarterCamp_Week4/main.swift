@@ -14,8 +14,8 @@ struct Activity {
 }
 
 enum ExerciseError: Error {
-    case highFatigueError // 100이상의 피로도
-    case incorrectInputError // 예상치 못한 입력값
+    case highFatigueError
+    case incorrectInputError
 }
 
 struct Routine {
@@ -69,33 +69,14 @@ class BodyCondition {
     }
 }
 
-func checkCorrectInput(readData: String?) throws -> Int {
-    var intData: Int = 0
-    if let stringData = readData {
-        intData = Int(stringData) ?? 0
-        guard intData > 0 else {
-            throw ExerciseError.incorrectInputError
-        }
-    } else {
-        throw ExerciseError.incorrectInputError
-    }
+func readNumRoutine() throws -> Int {
+    let readData = readLine()
     
-    return intData
-}
-
-func readNumRoutine() -> Int {
-    print("루틴을 몇번 반복할까요?")
-    while true {
-        let numRoutineData = readLine()
-        do {
-            let numRoutine = try checkCorrectInput(readData: numRoutineData)
-            return numRoutine
-        } catch ExerciseError.incorrectInputError {
-            print("잘못된 입력 형식입니다 다시 입력해주세요")
-        } catch {
-            print(error)
-        }
-    }
+    guard let data = readData else { throw ExerciseError.incorrectInputError }
+    guard let numData = Int(data) else { throw ExerciseError.incorrectInputError }
+    guard numData > 0 else { throw ExerciseError.incorrectInputError }
+    
+    return numData
 }
 
 func doExercise(activity: Activity, body: BodyCondition) throws -> Void {
@@ -108,17 +89,30 @@ func doExercise(activity: Activity, body: BodyCondition) throws -> Void {
     }
 }
 
-func exerciseRoutines(numRoutine: Int, routines: Routine, person: BodyCondition) {
+func exerciseRoutines(routines: Routine, person: BodyCondition) {
+    var numRoutine = 0
+    
+    print("루틴을 몇번 반복할까요?")
+    
+    while true {
+        do {
+            numRoutine = try readNumRoutine()
+            break
+        } catch ExerciseError.incorrectInputError {
+            print("잘못된 입력 형식입니다 다시 입력해주세요")
+        } catch {
+            print(error)
+        }
+    }
+    
     for num in 1...numRoutine {
         print("\(num) 번째 \(routines.name)을(를) 시작합니다")
         for routine in routines.activities {
             do {
                 try doExercise(activity: routine, body: person)
             } catch ExerciseError.highFatigueError {
-                print("""
-                      피로도가 100 이상입니다. 루틴을 중단합니다.
-                      \(person.printBodyCondition())
-                      """)
+                print("피로도가 100 이상입니다. 루틴을 중단합니다.")
+                person.printBodyCondition()
                 return
             } catch {
                 print("Error")
@@ -126,7 +120,8 @@ func exerciseRoutines(numRoutine: Int, routines: Routine, person: BodyCondition)
             }
         }
     }
-    print(person.printBodyCondition())
+    
+    person.printBodyCondition()
 }
 
 let sitUp = Activity(name: "윗몸일으키기", action: { (bodyCondition) -> Void in
@@ -152,6 +147,5 @@ let rest = Activity(name: "동적휴식", action: { (bodyCondition) -> Void in
 
 var leon = BodyCondition()
 let routines = Routine(name: "First Routine", activities: [sitUp, rest, running, squat])
-let numRoutine = readNumRoutine()
 
-exerciseRoutines(numRoutine: numRoutine, routines: routines, person: leon)
+exerciseRoutines(routines: routines, person: leon)
