@@ -58,4 +58,3 @@ let dynamicRest: Activity = Activity(name: "동적휴식", action: { (bodyCondit
     print("--------------")
 })
 
-
