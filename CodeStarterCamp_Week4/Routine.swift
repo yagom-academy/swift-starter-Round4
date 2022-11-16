@@ -15,7 +15,7 @@ struct Routine {
         activities[3].action(bodyCondition)
     }
     
-    func pro(bodyCondition: BodyCondition) {
+    func senior(bodyCondition: BodyCondition) {
         activities[0].action(bodyCondition)
         activities[1].action(bodyCondition)
         activities[2].action(bodyCondition)
