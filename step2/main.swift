@@ -122,13 +122,6 @@ func doWorkOut(activity: Activity, bodyCondition: BodyCondition) {
 
 
 
-//situp.action(yourBodyCondition)
-//pilates.action(yourBodyCondition)
-//longDistanceRunning.action(yourBodyCondition)
-//dynamicRest.action(yourBodyCondition)
-//squirt.action(yourBodyCondition)
-//yourBodyCondition.checkBodyCondition()
-
 
 enum RoutineError: Error {
     case overFatigueDegree
@@ -148,11 +141,11 @@ class Routine {
         let input : String? = readLine()
         print("--------------")
         
-        guard input != nil else {
+        guard let inputValue = input else {
             throw RoutineError.wrongInputValue
         }
         
-        guard let inputValue = input else {
+        guard inputValue != "0" else {
             throw RoutineError.wrongInputValue
         }
         
@@ -170,8 +163,8 @@ class Routine {
             guard bodyCondition.fatigueDegree <= 100 else {
                 throw RoutineError.overFatigueDegree
             }
-            print("\(index)번째 \(name)을(를) 시작합니다.")
             
+            print("\(index)번째 \(name)을(를) 시작합니다.")
             for activity in activities {
                 
                 doWorkOut(activity: activity, bodyCondition: bodyCondition)
