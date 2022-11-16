@@ -1,9 +1,8 @@
 //
 //  main.swift
-//  CodeStarterCamp_Week4
+//  step2
 //
-//  Created by yagom.
-//  Copyright © yagom academy. All rights reserved.
+//  Created by jiye Yi on 2022/11/15.
 //
 
 import Foundation
@@ -63,7 +62,6 @@ class BodyCondition {
         self.coreStrength = coreStrength
     }
     func checkBodyCondition() {
-        print("--------------")
         print("현재의 컨디션은 다음과 같습니다.")
         print("상체근력: \(upperBodyStrength)")
         print("하체근력: \(lowerBodyStrength)")
@@ -117,13 +115,81 @@ var yourBodyCondition: BodyCondition = BodyCondition(
     coreStrength: 0
 )
 
+func doWorkOut(activity: Activity, bodyCondition: BodyCondition) {
+    activity.action(bodyCondition)
+    print("--------------")
+}
 
-//situp.action(yourBodyCondition)
-//pilates.action(yourBodyCondition)
-//longDistanceRunning.action(yourBodyCondition)
-//dynamicRest.action(yourBodyCondition)
-//squirt.action(yourBodyCondition)
-//yourBodyCondition.checkBodyCondition()
+
+
+
+enum RoutineError: Error {
+    case overFatigueDegree
+    case wrongInputValue
+}
+
+
+class Routine {
+    var name: String
+    var activities: [Activity] = [situp, squirt, pilates, longDistanceRunning, dynamicRest]
+    init(name: String) {
+        self.name = name
+    }
+    
+    func timesOfRoutine() throws -> UInt {
+        print("루틴을 몇 번 반복할까요?")
+        let input : String? = readLine()
+        print("--------------")
+        
+        guard let inputValue = input else {
+            throw RoutineError.wrongInputValue
+        }
+        
+        guard inputValue != "0" else {
+            throw RoutineError.wrongInputValue
+        }
+        
+        guard let positiveValue = UInt(inputValue) else {
+            throw RoutineError.wrongInputValue
+        }
+        
+        return positiveValue
+    }
+    
+    func doRoutineWorkOut(bodyCondition: BodyCondition) throws {
+        let positiveValue: UInt = try timesOfRoutine()
+        for index in 1...positiveValue {
+            
+            guard bodyCondition.fatigueDegree <= 100 else {
+                throw RoutineError.overFatigueDegree
+            }
+            
+            print("\(index)번째 \(name)을(를) 시작합니다.")
+            for activity in activities {
+                
+                doWorkOut(activity: activity, bodyCondition: bodyCondition)
+            }
+        }
+        yourBodyCondition.checkBodyCondition()
+    }
+}
+
+var yourRoutine: Routine = Routine(name: "dailyRoutine")
+func handleRoutineError() {
+    do {
+        try yourRoutine.doRoutineWorkOut(bodyCondition: yourBodyCondition)
+    } catch RoutineError.wrongInputValue {
+        print("잘못된 입력 형식입니다. 다시 입력해주세요.")
+        handleRoutineError()
+    } catch RoutineError.overFatigueDegree {
+        print("피로도가 100 이상입니다. 루틴을 중단합니다.")
+        yourBodyCondition.checkBodyCondition()
+    } catch {
+        print(error)
+    }
+}
+
+handleRoutineError()
 
 
 
