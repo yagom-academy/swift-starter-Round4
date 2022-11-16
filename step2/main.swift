@@ -86,11 +86,16 @@ struct Routine {
     func doRoutineActivity(user: BodyCondition) {
         for count in 1...numberOfRepeat {
             print("\(count) 번째 \(routineName)을 수행합니다.")
-            for number in 0...activities.count - 1 {
-                doActivity(to: user, do: activities[number])
-            }
+            repeatActivities(user: user)
         }
     }
+    
+    func repeatActivities(user: BodyCondition) {
+        for number in 0...activities.count - 1 {
+            doActivity(to: user, do: activities[number])
+        }
+    }
+
 }
 
 /// 각종 운동에 대한 Activity 인스턴스를 생성하고 내부에 클로져를 통해 해당 운동에 알맞는 상태를 증가 또는 하락시키는 함수 블럭을 설계합니다.
@@ -170,8 +175,12 @@ func inputRepeatCount() throws -> Int {
     
     print("루틴 반복 횟수를 입력해주세요", terminator: ": ")
     let tempNumberOfRepeat = Int(readLine() ?? "문자나 공백이 입력되었어요.")
-    
-    guard tempNumberOfRepeat != nil && tempNumberOfRepeat! > 0 else {
+
+    if let checkValue = tempNumberOfRepeat {
+        if checkValue <= 0 {
+            throw ProgramError.inputIsWrong
+        }
+    } else {
         throw ProgramError.inputIsWrong
     }
 
