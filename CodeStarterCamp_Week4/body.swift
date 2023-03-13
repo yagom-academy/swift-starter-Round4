@@ -41,11 +41,12 @@ struct Activity {
 }
 
 
-let 윗몸일으키기: Activity = Activity(name: "윗몸일으키기", action: { BodyCondition -> Void in
+let 윗몸일으키기: Activity = Activity(name: "윗몸일으키기", action: { bodycondition in
     let upperBodyCount = Int.random(in: 10...20)
     let fatigabilityCount = Int.random(in: 10...20)
-    BodyCondition.upperBodyStrength += upperBodyCount
-    BodyCondition.fatigability += fatigabilityCount
+    
+    bodycondition.upperBodyStrength += upperBodyCount
+    bodycondition.fatigability += fatigabilityCount
     print(
     """
     <<\(윗몸일으키기.name)을(를) 시작합니다.>>
@@ -53,14 +54,15 @@ let 윗몸일으키기: Activity = Activity(name: "윗몸일으키기", action: 
     피로도가 \(fatigabilityCount)만큼 상승합니다.
     """
     )
-    BodyCondition.conditionCheck()
+    bodycondition.conditionCheck()
 })
 
-let 스쿼트: Activity = Activity(name: "스쿼트", action: { BodyCondition -> Void in
+let 스쿼트: Activity = Activity(name: "스쿼트", action: { bodyCondition in
     let lowerBodyCount = Int.random(in: 20...30)
     let fatigabilityCount = Int.random(in: 10...20)
-    BodyCondition.lowerBodyStrength += lowerBodyCount
-    BodyCondition.fatigability += fatigabilityCount
+    
+    bodyCondition.lowerBodyStrength += lowerBodyCount
+    bodyCondition.fatigability += fatigabilityCount
     print(
     """
     <<\(스쿼트.name)을(를) 시작합니다.>>
@@ -68,18 +70,19 @@ let 스쿼트: Activity = Activity(name: "스쿼트", action: { BodyCondition ->
     피로도가 \(fatigabilityCount)만큼 상승합니다.
     """
     )
-    BodyCondition.conditionCheck()
+    bodyCondition.conditionCheck()
 })
 
-let 오래달리기: Activity = Activity(name: "오래달리기", action: { BodyCondition -> Void in
+let 오래달리기: Activity = Activity(name: "오래달리기", action: { bodyCondition in
     let upperBodyCount = Int.random(in: 5...10)
     let lowerBodyCount = Int.random(in: 5...10)
     let muscularEnduranceCount = Int.random(in: 20...30)
     let fatigabilityCount = Int.random(in: 20...30)
-    BodyCondition.upperBodyStrength += upperBodyCount
-    BodyCondition.lowerBodyStrength += lowerBodyCount
-    BodyCondition.muscularEndurance += muscularEnduranceCount
-    BodyCondition.fatigability += fatigabilityCount
+    
+    bodyCondition.upperBodyStrength += upperBodyCount
+    bodyCondition.lowerBodyStrength += lowerBodyCount
+    bodyCondition.muscularEndurance += muscularEnduranceCount
+    bodyCondition.fatigability += fatigabilityCount
     print(
     """
     <<\(오래달리기.name)을(를) 시작합니다.>>
@@ -89,18 +92,19 @@ let 오래달리기: Activity = Activity(name: "오래달리기", action: { Body
     피로도가 \(fatigabilityCount)만큼 상승합니다.
     """
     )
-    BodyCondition.conditionCheck()
+    bodyCondition.conditionCheck()
 })
 
-let 동적휴식: Activity = Activity(name: "동적휴식", action: { BodyCondition -> Void in
+let 동적휴식: Activity = Activity(name: "동적휴식", action: { bodyCondition in
     let fatigabilityCount = Int.random(in: 5...10)
-    BodyCondition.fatigability -= fatigabilityCount
+    
+    bodyCondition.fatigability -= fatigabilityCount
     print(
     """
     <<\(동적휴식.name)을(를) 시작합니다.>>
     피로도가 \(fatigabilityCount)만큼 줄어듭니다.
     """
     )
-    BodyCondition.conditionCheck()
+    bodyCondition.conditionCheck()
 })
 
