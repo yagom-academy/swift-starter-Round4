@@ -8,5 +8,5 @@
 
 import Foundation
 
-print("Hello, World!")
+var mint = BodyCondition(upperBodyStrength: 100, lowerBodyStrength: 100, muscularEndurance: 150, fatigability: 0)
 
