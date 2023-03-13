@@ -8,7 +8,7 @@
 
 import Foundation
 
-var idinaloq = BodyCondition(상체근력: 10, 하체근력: 20, 근지구력: 30, 피로도: 7)
+var idinaloq = BodyCondition(상체근력: 10, 하체근력: 20, 근지구력: 30, 피로도: 0)
 
 윗몸일으키기.action(idinaloq)
 idinaloq.checkBodyCondition()
