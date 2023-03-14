@@ -9,23 +9,23 @@ import Foundation
 
 class BodyCondition {
     var upperBodyStrength: Int {
-        didSet {
-            printChangeCondition(subject: "상체근력이", from: oldValue, to: upperBodyStrength)
+        willSet {
+            printChangeCondition(subject: "상체근력이", from: upperBodyStrength, to: newValue)
         }
     }
     var lowerBodyStrength: Int {
-        didSet {
-            printChangeCondition(subject: "하체근력이", from: oldValue, to: lowerBodyStrength)
+        willSet {
+            printChangeCondition(subject: "하체근력이", from: lowerBodyStrength, to: newValue)
         }
     }
     var muscularEndurance: Int {
-        didSet {
-            printChangeCondition(subject: "근지구력이", from: oldValue, to: muscularEndurance)
+        willSet {
+            printChangeCondition(subject: "근지구력이", from: muscularEndurance, to: newValue)
         }
     }
     var fatigue: Int {
-        didSet {
-            printChangeCondition(subject: "피로도가", from: oldValue, to: fatigue)
+        willSet {
+            printChangeCondition(subject: "피로도가", from: fatigue, to: newValue)
         }
     }
     
@@ -43,16 +43,16 @@ class BodyCondition {
             print("\(subject) \(oldStrength - changeStrength) 하락합니다.")
         }
     }
-}
-
-func checkBody(_ condition: BodyCondition) {
-    print("""
-    현재의 컨디션은 다음과 같습니다.
-    상체근력: \(condition.upperBodyStrength)
-    하체근력: \(condition.lowerBodyStrength)
-    근지구력: \(condition.muscularEndurance)
-    피로도: \(condition.fatigue)
-    --------------
     
-    """)
+    func checkBody() {
+        print("""
+        현재의 컨디션은 다음과 같습니다.
+        상체근력: \(upperBodyStrength)
+        하체근력: \(lowerBodyStrength)
+        근지구력: \(muscularEndurance)
+        피로도: \(fatigue)
+        --------------
+        
+        """)
+    }
 }
