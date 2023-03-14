@@ -46,6 +46,4 @@ let lunge: Activity = Activity(name: "런지", action: { bodyCondition in
     bodyCondition.fatigue += Int.random(in: 10...20)
 })
 
-sitUp.doExercise(bodyCondition)
-lunge.doExercise(bodyCondition)
-dynamicRest.doExercise(bodyCondition)
+Activity.doExercise(bodyCondition, activities: [sitUp])
