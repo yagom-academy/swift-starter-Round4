@@ -9,32 +9,34 @@ import Foundation
 
 class BodyCondition {
     
-    var 상체근력: Int = 0 {
-        didSet(oldValue) {
+    var 상체근력: Int {
+        didSet {
             print("상체근력이 \(self.상체근력 - oldValue) 상승합니다.")
         }
     }
     
-    var 하체근력: Int = 0 {
-        didSet(oldValue) {
+    var 하체근력: Int {
+        didSet {
             print("하체근력이 \(self.하체근력 - oldValue) 상승합니다.")
         }
     }
     
-    var 근지구력: Int = 0 {
-        didSet(oldValue) {
+    var 근지구력: Int {
+        didSet {
             print("근지구력이 \(self.근지구력 - oldValue) 상승합니다.")
         }
     }
     
-    var 피로도: Int = 0 {
-        didSet(oldValue) {
+    var 피로도: Int {
+        didSet {
             if self.피로도 > oldValue {
                 print("피로도가 \(self.피로도 - oldValue) 상승합니다.")
             } else if self.피로도 < oldValue {
                 print("피로도가 \(oldValue - self.피로도) 감소합니다.")
                 if self.피로도 < 0 {
                     self.피로도 = 0
+                } else {
+                    print("피로도 변화가 없습니다.")
                 }
             }
         }
