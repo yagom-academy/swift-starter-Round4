@@ -94,7 +94,11 @@ let 오래달리기 = Activity(name: "오래달리기", action: { bodyCondition 
 })
 
 let 동적휴식 = Activity(name: "동적휴식", action: { bodyCondition in
-    let fatigue = Int.random(in: 5...10)
+    var fatigue = Int.random(in: 5...10)
+    
+    if bodyCondition.fatigue <= fatigue {
+        fatigue = bodyCondition.fatigue
+    }
     
     print("""
           <<동적휴식을(를) 시작합니다>>
@@ -106,9 +110,9 @@ let 동적휴식 = Activity(name: "동적휴식", action: { bodyCondition in
     bodyCondition.checkCondition()
 })
 
-let zion = BodyCondition(upperBodyStrength: 30, lowerBodyStrength: 30, muscleEndurance: 50, fatigue: 22)
+let zion = BodyCondition(upperBodyStrength: 30, lowerBodyStrength: 30, muscleEndurance: 50, fatigue: 9)
 
-윗몸일으키기.action(zion)
-스쿼트.action(zion)
-오래달리기.action(zion)
+//윗몸일으키기.action(zion)
+//스쿼트.action(zion)
+//오래달리기.action(zion)
 동적휴식.action(zion)
