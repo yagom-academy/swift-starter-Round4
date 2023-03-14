@@ -45,7 +45,7 @@ class BodyCondition {
         }
     }
 
-    func checkCondition() {
+    func check() {
         print("--------------")
         print("현재의 컨디션은 다음과 같습니다.")
         print("상체근력: \(upperBody)\n하체근력: \(lowerBody)\n근지구력: \(endurance)\n피로도: \(fatigue)")
