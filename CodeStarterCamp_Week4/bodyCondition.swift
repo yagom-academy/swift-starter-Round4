@@ -10,25 +10,25 @@ import Foundation
 class BodyCondition {
     var upperBodyStrength: Int {
         didSet {
-            print("상체근력이 \(upperBodyStrength - oldValue)만큼 상승합니다.")
+            print("상체근력이 \(upperBodyStrength - oldValue) 상승합니다.")
         }
     }
     var lowerBodyStrength: Int {
         didSet {
-            print("하체근력이 \(lowerBodyStrength - oldValue)만큼 상승합니다.")
+            print("하체근력이 \(lowerBodyStrength - oldValue) 상승합니다.")
         }
     }
     var muscularEndurance: Int {
         didSet {
-            print("근지구력이 \(muscularEndurance - oldValue)만큼 상승합니다.")
+            print("근지구력이 \(muscularEndurance - oldValue) 상승합니다.")
         }
     }
     var fatigability: Int {
         didSet {
             if fatigability > oldValue {
-                print("피로도가 \(fatigability - oldValue)만큼 상승합니다.")
+                print("피로도가 \(fatigability - oldValue) 상승합니다.")
             } else {
-                print("피로도가 \(oldValue - fatigability)만큼 줄어듭니다.")
+                print("피로도가 \(oldValue - fatigability) 하락합니다.")
             }
         }
     }
