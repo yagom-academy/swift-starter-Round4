@@ -35,8 +35,8 @@ class BodyCondition {
 
 //활동 타입
 struct Activity {
-        let name: String
-        let action: (BodyCondition) -> Void
+    let name: String
+    let action: (BodyCondition) -> Void
 }
 
 let 윗몸일으키기 = Activity(name: "윗몸일으키기", action: { bodyCondition in
@@ -112,7 +112,7 @@ let 동적휴식 = Activity(name: "동적휴식", action: { bodyCondition in
 
 let zion = BodyCondition(upperBodyStrength: 30, lowerBodyStrength: 30, muscleEndurance: 50, fatigue: 9)
 
-//윗몸일으키기.action(zion)
-//스쿼트.action(zion)
-//오래달리기.action(zion)
+윗몸일으키기.action(zion)
+스쿼트.action(zion)
+오래달리기.action(zion)
 동적휴식.action(zion)
