@@ -37,7 +37,7 @@ class BodyCondition {
         self.fatigue = fatigue
     }
     
-    func excercise(_ activity: Activity) {
+    func exercise(_ activity: Activity) {
         print("<<\(activity.name)을(를) 시작합니다>>")
         activity.action(self)
         self.checkBodyConditionStatus()
@@ -52,7 +52,7 @@ class BodyCondition {
     }
     
     func checkBodyConditionStatus() {
-        let bodyStatusNow: String = """
+        let currentBodyStatus: String = """
         --------------
         현재의 컨디션은 다음과 같습니다.
         상체근력: \(self.upperStrength)
@@ -62,7 +62,7 @@ class BodyCondition {
         --------------
         
         """
-        print(bodyStatusNow)
+        print(currentBodyStatus)
     }
 }
 
@@ -72,36 +72,36 @@ struct Activity {
     let action: (BodyCondition) -> Void
 }
 
-let 윗몸일으키기: Activity = Activity(name: "윗몸일으키기", action: { bodyCondition in
-    bodyCondition.upperStrength += Int.random(in: 10...20)
-    bodyCondition.fatigue += Int.random(in: 10...20)
-})
-let 스쿼트: Activity = Activity(name: "스쿼트", action: { bodyCondition in
-    bodyCondition.lowerStrength += Int.random(in: 20...30)
-    bodyCondition.fatigue += Int.random(in: 10...20)
-})
-let 오래달리기: Activity = Activity(name: "오래달리기", action: { bodyCondition in
-    bodyCondition.endurance += Int.random(in: 20...30)
-    bodyCondition.upperStrength += Int.random(in: 5...10)
-    bodyCondition.lowerStrength += Int.random(in: 5...10)
-    bodyCondition.fatigue += Int.random(in: 20...30)
-})
-let 동적휴식: Activity = Activity(name: "동적휴식", action: { bodyCondition in
-    bodyCondition.fatigue -= Int.random(in: 5...10)
-})
-let 플랭크: Activity = Activity(name: "플랭크", action: { bodyCondition in
-    bodyCondition.upperStrength += Int.random(in: 10...20)
-    bodyCondition.fatigue += Int.random(in: 10...20)
-})
+let sitUp: Activity = Activity(name: "윗몸일으키기") {
+    $0.upperStrength += Int.random(in: 10...20)
+    $0.fatigue += Int.random(in: 10...20)
+}
+let squat: Activity = Activity(name: "스쿼트") {
+    $0.lowerStrength += Int.random(in: 20...30)
+    $0.fatigue += Int.random(in: 10...20)
+}
+let running: Activity = Activity(name: "오래달리기") {
+    $0.endurance += Int.random(in: 20...30)
+    $0.upperStrength += Int.random(in: 5...10)
+    $0.lowerStrength += Int.random(in: 5...10)
+    $0.fatigue += Int.random(in: 20...30)
+}
+let activeRest: Activity = Activity(name: "동적휴식") {
+    $0.fatigue -= Int.random(in: 5...10)
+}
+let plank: Activity = Activity(name: "플랭크") {
+    $0.upperStrength += Int.random(in: 10...20)
+    $0.fatigue += Int.random(in: 10...20)
+}
 
 
 
 let myBody = BodyCondition(upperStrength: 100, lowerStrength: 80, endurance: 80, fatigue: 0)
-myBody.excercise(스쿼트)
-myBody.excercise(윗몸일으키기)
-myBody.excercise(플랭크)
-myBody.excercise(동적휴식)
-myBody.excercise(오래달리기)
-myBody.excercise(동적휴식)
-myBody.excercise(윗몸일으키기)
+myBody.exercise(squat)
+myBody.exercise(sitUp)
+myBody.exercise(plank)
+myBody.exercise(activeRest)
+myBody.exercise(running)
+myBody.exercise(activeRest)
+myBody.exercise(sitUp)
 
