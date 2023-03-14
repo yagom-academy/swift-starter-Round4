@@ -25,9 +25,17 @@ struct Routine {
         var count: Int
         do {
             count = try setCount()
-            for _ in 1...count {
+        outerLoop: for _ in 1...count {
                 for index in activities {
                     index.action(name)
+                    do {
+                        try name.conditionCheck()
+                    } catch RoutineError.maxFatigability {
+                        print("피로도가 100 이상입니다. 루틴을 중단합니다.")
+                        break outerLoop
+                    } catch {
+                        print("알 수 없는 오류가 발생했습니다.")
+                    }
                 }
             }
         } catch RoutineError.unsuspectedInput {

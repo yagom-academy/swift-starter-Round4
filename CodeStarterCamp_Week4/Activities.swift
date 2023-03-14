@@ -31,14 +31,11 @@ enum Activity {
             print("<<윗몸 일으키기을(를) 시작합니다.>>")
             type.upperBodyStrength += Int.random(in: 10...20)
             type.fatigability += Int.random(in: 10...20)
-            type.conditionCheck()
-            return 
         }
         case .squat: do {
             print("<<스쿼트을(를) 시작합니다.>>")
             type.lowerBodyStrength += Int.random(in: 20...30)
             type.fatigability += Int.random(in: 10...20)
-            type.conditionCheck()
         }
         case .loongDistanceRunning: do {
             print("<<오래달리기을(를) 시작합니다.>>")
@@ -46,7 +43,6 @@ enum Activity {
             type.lowerBodyStrength += Int.random(in: 5...10)
             type.muscularEndurance += Int.random(in: 20...30)
             type.fatigability += Int.random(in: 20...30)
-            type.conditionCheck()
         }
         case .pushUp: do {
             print("<<팔굽혀펴기을(를) 시작합니다.>>")
@@ -65,7 +61,6 @@ enum Activity {
                     break
                 }
             }
-            type.conditionCheck()
         }
         }
     }

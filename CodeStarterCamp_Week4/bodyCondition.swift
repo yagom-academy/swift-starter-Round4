@@ -40,7 +40,7 @@ class BodyCondition {
         self.fatigability = fatigability
     }
     
-    func conditionCheck() {
+    func conditionCheck() throws {
         print(
         """
         --------------
@@ -52,5 +52,8 @@ class BodyCondition {
         --------------
         """
         )
+        guard fatigability < 100 else {
+            throw RoutineError.maxFatigability
+        }
     }
 }
