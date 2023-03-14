@@ -46,7 +46,7 @@ class Routine {
         for time in 0..<times {
             print("\(koreanCount[time]) 번째 \(name)을(를) 시작합니다.")
             Activity.doExercise(condition, activities: activities)
-            if condition.fatigue > 100 {
+            if condition.fatigue >= 100 {
                 throw RoutineError.overFatigue
             }
         }
