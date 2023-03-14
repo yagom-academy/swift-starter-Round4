@@ -37,7 +37,16 @@ let 오래달리기: Activity = Activity(name: "오래달리기") { bodyConditio
 
 let 동적휴식: Activity = Activity(name: "동적휴식") { bodyCondition in
     print("<<\(동적휴식.name)을(를) 시작합니다.>>")
-    bodyCondition.fatigability -= Int.random(in: 5...10)
+    guard bodyCondition.fatigability >= 0 else {
+        print("현재 피로도가 0 입니다.")
+        return
+    }
+    for index in 1...10 {
+        if bodyCondition.fatigability <= index {
+            bodyCondition.fatigability -= Int.random(in: 1...index)
+            break
+        }
+    }
     bodyCondition.conditionCheck()
 }
 
