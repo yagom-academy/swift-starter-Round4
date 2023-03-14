@@ -7,42 +7,31 @@
 
 import Foundation
 
-struct Routine {
+class Routine {
     let name: String
     var activities = [Activity]()
     
-    private func setCount() throws -> Int {
+    init(name: String, activities: [Activity]) {
+        self.name = name
+        self.activities = activities
+    }
+    
+    func setCount() throws -> Int {
         print("루틴을 몇 번 반복할까요?")
-        let input: String? = readLine()
-        guard let inputValue = input.map ({ (value: String) -> Int in Int(value) ?? 0 }), inputValue > 0 else {
-            throw RoutineError.unsuspectedInput
+        guard let input = readLine(), let inputValue = Int(input) else {
+            throw Errors.unsuspectedInput
         }
-        
         return inputValue
     }
     
-    func setRoutine(_ name: BodyCondition) {
+    func round(_ member: BodyCondition, from manager: Manager) {
         var count: Int
         do {
             count = try setCount()
-        outerLoop: for number in 1...count {
-                print("\(number) 번째 루틴을 시작합니다.")
-                for index in activities {
-                    index.action(name)
-                    do {
-                        try name.conditionCheck()
-                    } catch RoutineError.maxFatigability {
-                        print("피로도가 100 이상입니다. 루틴을 중단합니다.")
-                        break outerLoop
-                    } catch {
-                        print("알 수 없는 오류가 발생했습니다.")
-                    }
-                }
-            }
-        } catch RoutineError.unsuspectedInput {
+            manager.exercise(round: count)
+        } catch Errors.unsuspectedInput {
             print("잘못된 입력 형식입니다. 다시 입력해주세요.")
-        } catch {
-            print("알 수 없는 오류입니다.")
-        }
+            manager.setRoutine()
+        } catch {}
     }
 }

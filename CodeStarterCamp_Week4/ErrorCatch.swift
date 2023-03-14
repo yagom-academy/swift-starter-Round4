@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum RoutineError: Error {
+enum Errors: Error {
     case maxFatigability
     case unsuspectedInput
     

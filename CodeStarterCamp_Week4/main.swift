@@ -9,6 +9,8 @@
 import Foundation
 
 var mom = BodyCondition(upperBodyStrength: 100, lowerBodyStrength: 110, muscularEndurance: 110, fatigability: 50)
-var special = Routine(name: "특별한 운동", activities: [.sitUp])
+var special = Routine(name: "특별한 운동", activities: [.sitUp, .squat])
 
-special.setRoutine(mom)
+var trainer = Manager(member: mom, routine: special)
+
+trainer.setRoutine()

@@ -12,6 +12,7 @@
 		92E2987A29BFF9CF00A95176 /* Activities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E2987929BFF9CF00A95176 /* Activities.swift */; };
 		92E2987C29BFFA1500A95176 /* routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E2987B29BFFA1500A95176 /* routine.swift */; };
 		92E2987E29C03DFF00A95176 /* ErrorCatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E2987D29C03DFF00A95176 /* ErrorCatch.swift */; };
+		92E2988029C0D18E00A95176 /* Maneger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E2987F29C0D18E00A95176 /* Maneger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +34,7 @@
 		92E2987929BFF9CF00A95176 /* Activities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activities.swift; sourceTree = "<group>"; };
 		92E2987B29BFFA1500A95176 /* routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = routine.swift; sourceTree = "<group>"; };
 		92E2987D29C03DFF00A95176 /* ErrorCatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCatch.swift; sourceTree = "<group>"; };
+		92E2987F29C0D18E00A95176 /* Maneger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maneger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				92E2987929BFF9CF00A95176 /* Activities.swift */,
 				92E2987B29BFFA1500A95176 /* routine.swift */,
 				92E2987D29C03DFF00A95176 /* ErrorCatch.swift */,
+				92E2987F29C0D18E00A95176 /* Maneger.swift */,
 			);
 			path = CodeStarterCamp_Week4;
 			sourceTree = "<group>";
@@ -134,6 +137,7 @@
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
 				92E2987629BEC39900A95176 /* bodyCondition.swift in Sources */,
 				92E2987C29BFFA1500A95176 /* routine.swift in Sources */,
+				92E2988029C0D18E00A95176 /* Maneger.swift in Sources */,
 				92E2987A29BFF9CF00A95176 /* Activities.swift in Sources */,
 				92E2987E29C03DFF00A95176 /* ErrorCatch.swift in Sources */,
 			);

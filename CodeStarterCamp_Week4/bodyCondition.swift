@@ -40,10 +40,9 @@ class BodyCondition {
         self.fatigability = fatigability
     }
     
-    func conditionCheck() throws {
+    func conditionCheck() {
         print(
         """
-        --------------
         현재의 컨디션은 다음과 같습니다.
         상체근력: \(upperBodyStrength)
         하체근력: \(lowerBodyStrength)
@@ -52,8 +51,11 @@ class BodyCondition {
         --------------
         """
         )
+    }
+    
+    func fatigabilityCheck() throws {
         guard fatigability < 100 else {
-            throw RoutineError.maxFatigability
+            throw Errors.maxFatigability
         }
     }
 }
