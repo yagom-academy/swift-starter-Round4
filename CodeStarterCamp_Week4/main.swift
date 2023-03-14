@@ -8,5 +8,10 @@
 
 import Foundation
 
-print("Hello, World!")
+// MARK: - practice
+//closure()
+//higherOrderFunction()
+
+// MARK: - step1
+
 
