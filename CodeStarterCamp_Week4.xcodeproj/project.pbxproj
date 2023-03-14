@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		34811DE8274B93FB00A1E994 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34811DE7274B93FB00A1E994 /* main.swift */; };
+		5B1D96AF29C0748000E198CD /* BodyCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1D96AE29C0748000E198CD /* BodyCondition.swift */; };
+		5B1D96B129C0780C00E198CD /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1D96B029C0780C00E198CD /* Workout.swift */; };
+		5B1D96B329C078FF00E198CD /* YagomFitness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1D96B229C078FF00E198CD /* YagomFitness.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +28,9 @@
 /* Begin PBXFileReference section */
 		34811DE4274B93FB00A1E994 /* CodeStarterCamp_Week4 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CodeStarterCamp_Week4; sourceTree = BUILT_PRODUCTS_DIR; };
 		34811DE7274B93FB00A1E994 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		5B1D96AE29C0748000E198CD /* BodyCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyCondition.swift; sourceTree = "<group>"; };
+		5B1D96B029C0780C00E198CD /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
+		5B1D96B229C078FF00E198CD /* YagomFitness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YagomFitness.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,9 @@
 			isa = PBXGroup;
 			children = (
 				34811DE7274B93FB00A1E994 /* main.swift */,
+				5B1D96B229C078FF00E198CD /* YagomFitness.swift */,
+				5B1D96AE29C0748000E198CD /* BodyCondition.swift */,
+				5B1D96B029C0780C00E198CD /* Workout.swift */,
 			);
 			path = CodeStarterCamp_Week4;
 			sourceTree = "<group>";
@@ -120,6 +129,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
+				5B1D96AF29C0748000E198CD /* BodyCondition.swift in Sources */,
+				5B1D96B329C078FF00E198CD /* YagomFitness.swift in Sources */,
+				5B1D96B129C0780C00E198CD /* Workout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
