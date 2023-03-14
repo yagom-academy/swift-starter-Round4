@@ -25,7 +25,8 @@ struct Routine {
         var count: Int
         do {
             count = try setCount()
-        outerLoop: for _ in 1...count {
+        outerLoop: for number in 1...count {
+                print("\(number) 번째 루틴을 시작합니다.")
                 for index in activities {
                     index.action(name)
                     do {
