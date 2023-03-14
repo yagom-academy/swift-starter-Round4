@@ -19,3 +19,7 @@ var mom = BodyCondition(upperBodyStrength: 100, lowerBodyStrength: 110, muscular
 
 동적휴식.action(mom)
 동적휴식.action(mom)
+
+var special = Routine(name: "특별한 운동", activities: [윗몸일으키기])
+
+special.setRoutine(mom)
