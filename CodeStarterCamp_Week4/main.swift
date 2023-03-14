@@ -46,4 +46,6 @@ let lunge: Activity = Activity(name: "런지", action: { bodyCondition in
     bodyCondition.fatigue += Int.random(in: 10...20)
 })
 
-Activity.doExercise(bodyCondition, activities: [sitUp])
+/* Step 2: 야곰 피트니스, 지옥의 헬스 트레이닝 */
+let hellRoutine: Routine = Routine(name: "hellRoutine", activities: [sitUp, dynamicRest, squat])
+hellRoutine.training(bodyCondition)

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		34811DE8274B93FB00A1E994 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34811DE7274B93FB00A1E994 /* main.swift */; };
+		B6457A7729C061A6004D9857 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6457A7629C061A6004D9857 /* Routine.swift */; };
 		B6DECB7A29BEB1600009642D /* BodyCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DECB7929BEB1600009642D /* BodyCondition.swift */; };
 		B6DECB7C29BEB2070009642D /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DECB7B29BEB2070009642D /* Activity.swift */; };
 /* End PBXBuildFile section */
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		34811DE4274B93FB00A1E994 /* CodeStarterCamp_Week4 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CodeStarterCamp_Week4; sourceTree = BUILT_PRODUCTS_DIR; };
 		34811DE7274B93FB00A1E994 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		B6457A7629C061A6004D9857 /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
 		B6DECB7929BEB1600009642D /* BodyCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyCondition.swift; sourceTree = "<group>"; };
 		B6DECB7B29BEB2070009642D /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,6 +65,7 @@
 			children = (
 				B6DECB7929BEB1600009642D /* BodyCondition.swift */,
 				B6DECB7B29BEB2070009642D /* Activity.swift */,
+				B6457A7629C061A6004D9857 /* Routine.swift */,
 				34811DE7274B93FB00A1E994 /* main.swift */,
 			);
 			path = CodeStarterCamp_Week4;
@@ -127,6 +130,7 @@
 			files = (
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
 				B6DECB7A29BEB1600009642D /* BodyCondition.swift in Sources */,
+				B6457A7729C061A6004D9857 /* Routine.swift in Sources */,
 				B6DECB7C29BEB2070009642D /* Activity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
