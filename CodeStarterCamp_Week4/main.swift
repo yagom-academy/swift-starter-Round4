@@ -8,9 +8,13 @@
 
 import Foundation
 
-var mom = BodyCondition(upperBodyStrength: 100, lowerBodyStrength: 110, muscularEndurance: 110, fatigability: 50)
-var special = Routine(name: "특별한 운동", activities: [.sitUp, .squat])
+let mom = BodyCondition(upperBodyStrength: 100, lowerBodyStrength: 110, muscularEndurance: 110, fatigability: 50)
+let special = Routine(name: "특별한 운동", activities: [.sitUp, .squat])
 
-var trainer = Manager(member: mom, routine: special)
+let trainer = Manager(member: mom)
 
-trainer.setRoutine()
+//trainer.setRoutineRound(special)
+
+let rest = Routine(name: "오직 휴식", activities: [.DynamicResting, .DynamicResting, .DynamicResting])
+
+trainer.setRoutineRound(special)

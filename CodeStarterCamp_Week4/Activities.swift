@@ -25,43 +25,29 @@ enum Activity {
         }
     }
     
-    func action(_ type: BodyCondition) {
+    func action(_ member: BodyCondition) {
         switch self {
-        case .sitUp: do {
+        case .sitUp:
             print("<<윗몸 일으키기을(를) 시작합니다.>>")
-            type.upperBodyStrength += Int.random(in: 10...20)
-            type.fatigability += Int.random(in: 10...20)
-        }
-        case .squat: do {
+            member.upperBodyStrength += Int.random(in: 10...20)
+            member.fatigability += Int.random(in: 10...20)
+        case .squat:
             print("<<스쿼트을(를) 시작합니다.>>")
-            type.lowerBodyStrength += Int.random(in: 20...30)
-            type.fatigability += Int.random(in: 10...20)
-        }
-        case .loongDistanceRunning: do {
+            member.lowerBodyStrength += Int.random(in: 20...30)
+            member.fatigability += Int.random(in: 10...20)
+        case .loongDistanceRunning:
             print("<<오래달리기을(를) 시작합니다.>>")
-            type.upperBodyStrength += Int.random(in: 5...10)
-            type.lowerBodyStrength += Int.random(in: 5...10)
-            type.muscularEndurance += Int.random(in: 20...30)
-            type.fatigability += Int.random(in: 20...30)
-        }
-        case .pushUp: do {
+            member.upperBodyStrength += Int.random(in: 5...10)
+            member.lowerBodyStrength += Int.random(in: 5...10)
+            member.muscularEndurance += Int.random(in: 20...30)
+            member.fatigability += Int.random(in: 20...30)
+        case .pushUp:
             print("<<팔굽혀펴기을(를) 시작합니다.>>")
-            type.upperBodyStrength += Int.random(in: 20...30)
-            type.fatigability += Int.random(in: 15...20)
-        }
-        case .DynamicResting: do {
+            member.upperBodyStrength += Int.random(in: 20...30)
+            member.fatigability += Int.random(in: 15...20)
+        case .DynamicResting:
             print("<<동적휴식을(를) 시작합니다.>>")
-            guard type.fatigability >= 0 else {
-                print("현재 피로도가 0 입니다.")
-                return
-            }
-            for index in 1...10 {
-                if type.fatigability <= index {
-                    type.fatigability -= Int.random(in: 1...index)
-                    break
-                }
-            }
-        }
+            member.fatigability -= Int.random(in: 5...10)
         }
     }
 }

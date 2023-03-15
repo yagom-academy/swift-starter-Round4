@@ -25,7 +25,9 @@ class BodyCondition {
     }
     var fatigability: Int {
         didSet {
-            if fatigability > oldValue {
+            if fatigability < 0 {
+                fatigability = 0
+            } else if fatigability > oldValue {
                 print("피로도가 \(fatigability - oldValue) 상승합니다.")
             } else {
                 print("피로도가 \(oldValue - fatigability) 하락합니다.")
@@ -54,6 +56,9 @@ class BodyCondition {
     }
     
     func fatigabilityCheck() throws {
+        guard fatigability > 0 else {
+            throw Errors.minusFatigability
+        }
         guard fatigability < 100 else {
             throw Errors.maxFatigability
         }
