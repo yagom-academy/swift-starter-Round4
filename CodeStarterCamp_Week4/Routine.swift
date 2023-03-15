@@ -16,16 +16,16 @@ class Routine {
         self.activities = activities
     }
     
-    func training(_ condition: BodyCondition, isRetry: Bool = false) {
+    func startExercise(_ condition: BodyCondition, isRetry: Bool = false) {
         if !isRetry { print("루틴을 몇 번 반복할까요?") }
         do {
             try repeatExcercise(condition)
         } catch RoutineError.wrongType {
             print("잘못된 입력 형식입니다. 다시 입력해주세요.")
-            training(condition, isRetry: true)
+            startExercise(condition, isRetry: true)
         } catch RoutineError.wrongTimes {
             print("1에서 10 사이의 정수를 입력해주세요.")
-            training(condition, isRetry: true)
+            startExercise(condition, isRetry: true)
         } catch RoutineError.overFatigue {
             print("피로도가 100 이상입니다. 루틴을 중단합니다.")
             condition.checkBody()

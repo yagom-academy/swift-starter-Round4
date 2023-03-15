@@ -17,6 +17,7 @@ struct Activity {
             print("<<\(activity.name)을(를) 시작합니다>>")
             activity.action(condition)
             print("--------------")
+            if condition.fatigue >= 100 { break }
         }
     }
 }
