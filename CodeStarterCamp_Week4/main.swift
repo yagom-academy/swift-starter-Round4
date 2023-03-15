@@ -10,4 +10,3 @@ import Foundation
 
 let yagomFitness = FitnessCenter()
 yagomFitness.healthTraining()
-

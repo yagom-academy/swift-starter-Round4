@@ -8,12 +8,39 @@
 import Foundation
 
 struct Person {
+    struct Routine {
+        var name: String
+        var activities: [Activity]
+    }
+    
     var name: String
     var bodyCondition: BodyCondition
+    private let koreanCount = ["첫", "두", "세", "네", "다섯", "여섯", "일곱", "여덟", "아홉", "열"]
     
     init(name: String, _ bodyCondition: BodyCondition) {
         self.name = name
         self.bodyCondition = bodyCondition
+    }
+    
+    func startWorkout(_ routineCount: Int) throws {
+        let workout = Workout()
+        let routine = Routine(name: "\(self.name)의 루틴", activities: [workout.오래달리기,
+                                                             workout.스쿼트,
+                                                             workout.동적휴식,
+                                                             workout.윗몸일으키기,
+                                                             workout.동적휴식])
+        for count in 0..<routineCount {
+            print("\(koreanCount[count]) 번째 \(routine.name)을(를) 시작합니다.")
+            for activity in routine.activities {
+                print("<<\(activity.name)을(를) 시작합니다>>")
+                activity.action(self.bodyCondition)
+                print("---------------")
+                if self.bodyCondition.isOverFatigue() {
+                    throw FitnessCenterError.overFatigueError(self.bodyCondition)
+                }
+            }
+            self.bodyCondition.checkCondition()
+        }
     }
 }
 
