@@ -7,11 +7,16 @@
 
 import Foundation
 
-struct Activity {
+class Activity {
     let name: String
     let action: (BodyCondition) -> Void
     
-    func exerciseStart(activity: Activity, bodyCondition: BodyCondition) {
+    init(name: String, action: @escaping (BodyCondition) -> Void) {
+        self.name = name
+        self.action = action
+    }
+    
+    class func exerciseStart(activity: Activity, bodyCondition: BodyCondition) {
         print("<<\(activity.name)을(를) 시작합니다.>>")
         (activity.action(bodyCondition))
     }
