@@ -2,7 +2,6 @@
 //  main.swift
 //  CodeStarterCamp_Week4
 //
-//  Copyright © yagom academy. All rights reserved.
 //  Created by JeonSangHyeok on 2023/03/15.
 //
 
@@ -31,11 +30,7 @@ class BodyCondition {
     }
     var fatigue: Int = 0 {
         didSet {
-            if fatigue >= oldValue {
-                print("피로도가 \(fatigue - oldValue) 상승합니다.")
-            } else {
-                print("피로도가 \(fatigue - oldValue) 감소합니다.")
-            }
+            fatigue >= oldValue ? print("피로도가 \(fatigue - oldValue) 상승합니다.") : print("피로도가 \(fatigue - oldValue) 감소합니다.")
         }
     }
     
