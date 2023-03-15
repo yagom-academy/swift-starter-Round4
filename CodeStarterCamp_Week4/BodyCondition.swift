@@ -35,9 +35,9 @@ class BodyCondition {
                 print("피로도가 \(oldValue - self.피로도) 감소합니다.")
                 if self.피로도 < 0 {
                     self.피로도 = 0
-                } else {
-                    print("피로도 변화가 없습니다.")
                 }
+            } else {
+                print("피로도 변화가 없습니다.")
             }
         }
     }
