@@ -1,11 +1,21 @@
 //
-//  BodyCondition.swift
+//  Person.swift
 //  CodeStarterCamp_Week4
 //
 //  Created by Hyungmin Lee on 2023/03/14.
 //
 
 import Foundation
+
+struct Person {
+    var name: String
+    var bodyCondition: BodyCondition
+    
+    init(name: String, _ bodyCondition: BodyCondition) {
+        self.name = name
+        self.bodyCondition = bodyCondition
+    }
+}
 
 class BodyCondition {
     var upperBodyStrength: Int {
@@ -25,12 +35,8 @@ class BodyCondition {
     }
     var fatigue: Int {
         didSet (oldValue) {
-            if fatigue > oldValue {
-                print("피로도가 \(fatigue - oldValue) 상승합니다.")
-            }
-            else {
-                print("피로도가 \(oldValue - fatigue) 하락합니다.")
-            }
+            fatigue > oldValue ?
+            print("피로도가 \(fatigue - oldValue) 상승합니다.") : print("피로도가 \(oldValue - fatigue) 하락합니다.")
         }
     }
     

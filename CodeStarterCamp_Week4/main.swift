@@ -8,6 +8,6 @@
 
 import Foundation
 
-let yagomFitness = YagomFitness()
+let yagomFitness = FitnessCenter()
 yagomFitness.healthTraining()
 
