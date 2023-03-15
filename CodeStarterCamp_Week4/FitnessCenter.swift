@@ -38,10 +38,6 @@ struct FitnessCenter {
         
         let member = Person(name: "Zion", BodyCondition(upperBodyStrength: 30, lowerBodyStrength: 30,
                                                         muscleEndurance: 50, fatigue: 24))
-        do {
-            try member.startWorkout(routineCount)
-        } catch FitnessCenterError.overFatigueError(let bodyCondition) {
-            throw FitnessCenterError.overFatigueError(bodyCondition)
-        }
+        try member.startWorkout(routineCount)
     }
 }
