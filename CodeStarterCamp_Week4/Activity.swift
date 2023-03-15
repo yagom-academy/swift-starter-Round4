@@ -13,12 +13,11 @@ struct Activity {
     
     static func doExercise(_ condition: BodyCondition, activities: [Activity]) {
         guard activities.count > 0 else { return }
-
-        for (index, activity) in activities.enumerated() {
+        for activity in activities {
             print("<<\(activity.name)을(를) 시작합니다>>")
             activity.action(condition)
-            print(index == activities.count-1 ? "--------------" : "")
+            print("--------------")
+            if condition.fatigue >= 100 { break }
         }
-        condition.checkBody()
     }
 }
