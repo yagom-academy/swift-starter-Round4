@@ -22,14 +22,14 @@ class Manager {
         return inputValue
     }
     
-    func setRoutineRound(_ routine: Routine) {
+    func setRound(routine: Routine) {
         var count: Int
         do {
             count = try setCount()
             self.roundLoop(number: count, name: routine)
         } catch Errors.unsuspectedInput {
             print("잘못된 입력 형식입니다. 다시 입력해주세요.")
-            self.setRoutineRound(routine)
+            self.setRound(routine: routine)
         } catch {
             print("알 수 없는 오류입니다.")
         }
@@ -42,14 +42,15 @@ class Manager {
                 print("\(count)번째 \(routine.name)을 시작합니다.")
                 self.execrciseLoop(name: routine)
             } catch Errors.maxFatigability {
+                print("루틴을 중단합니다.", terminator: "")
                 break
             } catch Errors.minusFatigability {
                 break
             } catch {
                 print("알 수 없는 오류입니다.")
             }
-            
         }
+        print()
         member.conditionCheck()
     }
     
@@ -60,7 +61,7 @@ class Manager {
             do {
                 try member.fatigabilityCheck()
             } catch Errors.maxFatigability {
-                print("피로도가 100 이상입니다. 루틴을 중단합니다.")
+                print("피로도가 100 이상입니다.", terminator: " ")
                 break
             } catch Errors.minusFatigability {
                 print("충분한 휴식을 취했습니다.")
