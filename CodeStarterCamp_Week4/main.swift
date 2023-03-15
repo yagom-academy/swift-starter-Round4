@@ -2,6 +2,7 @@
 //  main.swift
 //  CodeStarterCamp_Week4
 //
+//  Copyright © yagom academy. All rights reserved.
 //  Created by JeonSangHyeok on 2023/03/15.
 //
 
