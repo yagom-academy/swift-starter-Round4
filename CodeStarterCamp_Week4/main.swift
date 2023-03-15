@@ -10,7 +10,10 @@ import Foundation
 
 let maryCondition = BodyCondition(upperBody: 0, lowerBody: 0, endurance: 0, fatigue: 0)
 
+sitUp.start()
 sitUp.action(maryCondition)
 maryCondition.check()
+
+squat.start()
 squat.action(maryCondition)
 maryCondition.check()
