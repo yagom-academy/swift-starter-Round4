@@ -8,6 +8,6 @@
 import Foundation
 
 struct Routine {
-    var routineName: String
+    var name: String
     var activities: Array<Activity>
 }

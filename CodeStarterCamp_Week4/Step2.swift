@@ -24,12 +24,14 @@ struct Routine {
             self.notice = "\(round) 번째 \(routineName)을(를) 시작합니다."
         }
     }
-    
+
     func checkInputValid() throws -> Int {
-        guard let input = readLine(), let inputAsInt = Int(input) else {
+        guard let input = readLine(),
+              let inputAsInt = Int(input)
+        else {
             throw HealthTrainingError.invalidInput
         }
-        
+
         return inputAsInt
     }
 }
@@ -59,7 +61,7 @@ class BodyCondition {
             }
         }
     }
-    
+
     func printMeasuredBodyCondition() {
         print("현재의 컨디션은 다음과 같습니다.")
         print("상체근력: \(self.upperBodyStrength)")
@@ -68,7 +70,7 @@ class BodyCondition {
         print("피로도: \(self.fatigability)")
         print("--------------")
     }
-    
+
     func warnExcessiveFatigue() throws {
         guard self.fatigability < 100 else {
             throw HealthTrainingError.overFatigability
