@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Activity {
+struct Activity {
     let name: String
     let action: (BodyCondition) -> Void
     
@@ -16,7 +16,7 @@ class Activity {
         self.action = action
     }
     
-    class func exerciseStart(activity: Activity, bodyCondition: BodyCondition) {
+    static func exerciseStart(activity: Activity, bodyCondition: BodyCondition) {
         print("<<\(activity.name)을(를) 시작합니다.>>")
         (activity.action(bodyCondition))
     }

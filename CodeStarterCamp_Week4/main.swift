@@ -31,11 +31,15 @@ let dynamicResting = Activity(name: "동적휴식", action: { bodyCondition in
     bodyCondition.fatigue -= Int.random(in: 5...10)
 })
 
+
 Activity.exerciseStart(activity: dynamicResting, bodyCondition: tomBodyCondition)
 Activity.exerciseStart(activity: squat, bodyCondition: tomBodyCondition)
 Activity.exerciseStart(activity: sitUp, bodyCondition: tomBodyCondition)
 tomBodyCondition.check(tomBodyCondition)
 
 
+//print("입력해주세요 :")
+//let input: String = readLine()!
+//print("입력값은 \(input)입니다")
 
 
