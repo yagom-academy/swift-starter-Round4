@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		34811DE8274B93FB00A1E994 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34811DE7274B93FB00A1E994 /* main.swift */; };
-		9C587F7E29C1A003007EB7D2 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C587F7D29C1A003007EB7D2 /* File.swift */; };
 		9CC4D28429BF7FF00012B86A /* step01.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC4D28329BF7FF00012B86A /* step01.swift */; };
-		9CC4D29929C03DD40012B86A /* Step01-closer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC4D29829C03DD40012B86A /* Step01-closer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,9 +26,7 @@
 /* Begin PBXFileReference section */
 		34811DE4274B93FB00A1E994 /* CodeStarterCamp_Week4 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CodeStarterCamp_Week4; sourceTree = BUILT_PRODUCTS_DIR; };
 		34811DE7274B93FB00A1E994 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		9C587F7D29C1A003007EB7D2 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		9CC4D28329BF7FF00012B86A /* step01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = step01.swift; sourceTree = "<group>"; };
-		9CC4D29829C03DD40012B86A /* Step01-closer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Step01-closer.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,7 +43,6 @@
 		34811DDB274B93FB00A1E994 = {
 			isa = PBXGroup;
 			children = (
-				9C587F7D29C1A003007EB7D2 /* File.swift */,
 				34811DE6274B93FB00A1E994 /* CodeStarterCamp_Week4 */,
 				34811DE5274B93FB00A1E994 /* Products */,
 			);
@@ -64,7 +59,6 @@
 		34811DE6274B93FB00A1E994 /* CodeStarterCamp_Week4 */ = {
 			isa = PBXGroup;
 			children = (
-				9CC4D29829C03DD40012B86A /* Step01-closer.swift */,
 				9CC4D28329BF7FF00012B86A /* step01.swift */,
 				34811DE7274B93FB00A1E994 /* main.swift */,
 			);
@@ -129,8 +123,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CC4D28429BF7FF00012B86A /* step01.swift in Sources */,
-				9C587F7E29C1A003007EB7D2 /* File.swift in Sources */,
-				9CC4D29929C03DD40012B86A /* Step01-closer.swift in Sources */,
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
