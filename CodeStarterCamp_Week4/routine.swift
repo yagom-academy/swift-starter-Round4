@@ -17,20 +17,20 @@ class Routine {
         self.activities = activities
     }
     
-    func inputRepeatTime() throws -> Int {
+    func inputRepeatTimes() throws -> Int {
         print("루틴을 몇 번 반복할까요?")
-        guard let repeatTime = Int(readLine() ?? "error") else {
+        guard let input = readLine(), let repeatTimes = Int(input) else {
             throw YagomFitnessError.inputTypeIncorrect
         }
-        guard 0 < repeatTime && repeatTime <= 10 else {
+        guard 0 < repeatTimes && repeatTimes <= 10 else {
             throw YagomFitnessError.inputOutOfRange
         }
-        return repeatTime
+        return repeatTimes
     }
     
-    func repeatRoutine(of body: BodyCondition, for repeatTime: Int) throws {
+    func repeatRoutine(of body: BodyCondition, for repeatTimes: Int) throws {
         print("--------------")
-        for round in (0..<repeatTime) {
+        for round in (0..<repeatTimes) {
             print("\(numberCount[round]) 번째 \(self.name)을(를) 시작합니다.")
             for activity in activities {
                 body.exercise(activity)
@@ -42,11 +42,14 @@ class Routine {
     }
     
     func startRoutine(of body: BodyCondition) {
-        var repeatTime: Int = 0
-        while repeatTime == 0 {
+        var repeatTimes: Int = 0
+        var isInputReceived: Bool = false
+        
+        while !isInputReceived {
             do {
-                let input: Int = try inputRepeatTime()
-                repeatTime = input
+                let input: Int = try inputRepeatTimes()
+                repeatTimes = input
+                isInputReceived = true
             } catch YagomFitnessError.inputTypeIncorrect {
                 print("잘못된 입력 형식입니다. 다시 입력해주세요.")
             } catch {
@@ -54,7 +57,7 @@ class Routine {
             }
         }
         do {
-            try repeatRoutine(of: body, for: repeatTime)
+            try repeatRoutine(of: body, for: repeatTimes)
         } catch {
                 print("피로도가 100 이상입니다. 루틴을 중단합니다.")
         }
