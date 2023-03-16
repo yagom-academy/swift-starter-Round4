@@ -12,7 +12,7 @@ struct Activity {
     let action: (BodyCondition) -> Void
     
     func start() {
-        print("<<\(name) 을(를) 시작합니다>>")
+        print("<<\(name)을(를) 시작합니다>>")
     }
 }
 
