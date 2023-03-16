@@ -34,5 +34,6 @@ let longRun = Activity(name: "오래달리기") {
 }
 
 let activeRest = Activity(name: "동적휴식") {
-    $0.fatigue -= Int.random(in: 5...10)
+    let delta = Int.random(in: 5...10)
+    $0.fatigue < delta ? ($0.fatigue = 0) : ($0.fatigue -= delta)
 }

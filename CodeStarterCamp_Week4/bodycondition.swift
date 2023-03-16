@@ -28,6 +28,7 @@ class BodyCondition {
     }
     var fatigue: Int {
         didSet {
+            guard fatigue != oldValue else { return }
             let result = fatigue > oldValue ? "\(fatigue-oldValue) 상승" : "\(oldValue-fatigue) 하락"
             print("피로도가 \(result)합니다.")
         }
