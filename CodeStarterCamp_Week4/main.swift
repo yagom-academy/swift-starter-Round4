@@ -8,5 +8,12 @@
 
 import Foundation
 
-print("Hello, World!")
+let person = BodyCondition(upperBodyStrength: 0, lowerBodyMuscleStrength: 0, muscularEndurance: 0, degreeOfFatigue: 0)
+
+sitUp.action(person)
+squats.action(person)
+longRun.action(person)
+dynamicResting.action(person)
+
+
 
