@@ -56,58 +56,56 @@ enum RoutineError: Error {
 struct Routine {
     var name: String
     var activities: [Activity]
-    let routineCount = ["첫", "두", "세", "네", "다섯"]
-    var bodyCondition = BodyCondition()
+    var bodyCoindition = BodyCondition()
+    let roundCount = ["첫", "두", "세", "네", "다섯"]
     
-    func startRoutine() {
+    func startRountine() {
         do {
-            try getRouineCout()
-        } catch RoutineError.overLimitRange {
-            print("1에서 5까지의 숫자를 입력 바랍니다.")
-        } catch RoutineError.unexpectedInput {
-            print("잘못된 입력 형식입니다. 다시 입력해주세여.")
+            try getRoutineCount()
         } catch RoutineError.overLimitFatigue {
-            print("피로도가 100 이상입니다. 루틴을 종료합니다.")
-            print(bodyCondition.checkCondition())
+            print("피로도가 100 이상입니다. 루틴을 중단합니다.")
+            print(bodyCoindition.checkCondition())
+        } catch RoutineError.overLimitRange {
+            print("1에서 5사이의 숫자를 입력해주세요.")
+        } catch RoutineError.unexpectedInput {
+            print("잘못된 입력 형식입니다. 다시 입력해주세요.")
         } catch {
-            print("원인 모를 에러가 발생하였습니다..")
+            print("원인 모를 에러가 발생했습니다.")
         }
     }
     
     @discardableResult
-    func getRouineCout() throws -> Int {
+    func getRoutineCount() throws -> Int {
         print("루틴을 몇 번 반복할까요?")
-        guard let input = readLine(), let roundTImes = Int(input)
+        guard let input = readLine(), let routineCount = Int(input)
         else {
             throw RoutineError.unexpectedInput
         }
-        guard 0 < roundTImes && roundTImes < 6
+        guard 0 < routineCount && routineCount < 6
         else {
             throw RoutineError.overLimitRange
         }
-        print("--------------")
-        try setRoutine(roundTImes)
-        return roundTImes
+        try setRoutine(routineCount)
+        return routineCount
     }
     
-    func setRoutine(_ roundTimes: Int) throws {
-        for count in 0..<roundTimes {
-            print("\(routineCount[count]) 번째 \(self.name)을(를) 시작합니다.")
+    func setRoutine(_ routinCount: Int) throws {
+        print("--------------")
+        for count in 0...routinCount {
+            print("\(roundCount[count]) 번쨰 \(self.name)을(를) 시작합나다.")
             for activity in activities {
-                activity.action(self.bodyCondition)
+                activity.action(self.bodyCoindition)
                 print("--------------")
-                if self.bodyCondition.fatigue >= 100 {
+                if self.bodyCoindition.fatigue >= 100 {
                     throw RoutineError.overLimitFatigue
                 }
             }
         }
-        bodyCondition.checkCondition()
+        bodyCoindition.checkCondition()
     }
-    
 }
 
-struct Training {
-    
+struct TrainingList {
     let 윗몸일으키기: Activity = Activity(name: "윗몸일으키기", action: { BodyCondition in
         print("<<윗몸일으키기을(를) 시작합니다>>")
         BodyCondition.upperBodyStrength += Int.random(in: 10...20)
@@ -144,11 +142,10 @@ struct Training {
         BodyCondition.lowerBodyStrength += Int.random(in: 30...50)
         BodyCondition.fatigue += Int.random(in: 10...20)
     })
-    
 }
 
-let trainingList = Training()
+let training = TrainingList()
 
-let hyeokRoutine = Routine(name: "PressRoutine", activities: [trainingList.레그프레스, trainingList.벤치프레스, trainingList.동적휴식])
+let hyeokRoutine = Routine(name: "Press Routine", activities: [training.벤치프레스, training.레그프레스, training.동적휴식])
 
-hyeokRoutine.startRoutine()
+hyeokRoutine.startRountine()
