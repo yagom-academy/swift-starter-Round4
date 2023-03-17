@@ -154,6 +154,6 @@ struct Training {
 
 let trainingList = Training()
 
-let hyeokRoutine = Routine(name: "hell", activities: [trainingList.스쿼트, trainingList.윗몸일으키기, trainingList.동적휴식])
+let hyeokRoutine = Routine(name: "PressRoutine", activities: [trainingList.레그프레스, trainingList.벤치프레스, trainingList.동적휴식])
 
 hyeokRoutine.startRoutine()
