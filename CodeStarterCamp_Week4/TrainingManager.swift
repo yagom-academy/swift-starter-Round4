@@ -8,7 +8,7 @@
 import Foundation
 
 struct TrainingManager {
-    let koreanOrdinalNumber: Array<String> = ["첫", "두", "세"]
+    let koreanOrdinalNumber: Array<String> = ["첫", "두", "세", "네"]
     
     mutating func startExercise(of routine: Routine, by bodyCondition: BodyCondition) {
         print("루틴을 몇 번 반복할까요?")
@@ -18,8 +18,12 @@ struct TrainingManager {
             
             do {
                 round = try self.checkInputValid()
+                try self.checkRangeValid(with: round)
             } catch HealthTrainingError.invalidInput {
                 print("잘못된 입력 형식입니다. 다시 입력해주세요.")
+                continue
+            } catch HealthTrainingError.outOfRange {
+                print("루틴 횟수가 너무 많습니다. 다시 입력해주세요.")
                 continue
             } catch {
                 print(error)
@@ -43,24 +47,16 @@ struct TrainingManager {
         return inputAsInt
     }
     
-    func changeNumberTokoreanOrdinalNumber(with round: Int) throws -> String {
+    func checkRangeValid(with round: Int) throws {
         guard koreanOrdinalNumber.indices.contains(round - 1) else {
-            throw HealthTrainingError.indexOutOfRange
+            throw HealthTrainingError.outOfRange
         }
-        
-        return koreanOrdinalNumber[round - 1]
     }
     
     func executeRoutine(with routine: Routine, by bodyCondition: BodyCondition, in round: Int) {
-        do {
-            for per in 1...round {
-                try print("\(changeNumberTokoreanOrdinalNumber(with: per)) 번째 \(routine.name)을(를) 시작합니다.")
-                self.executeActivity(of: routine, by: bodyCondition)
-            }
-        } catch HealthTrainingError.indexOutOfRange {
-            print("루틴의 횟수가 너무 많습니다.")
-        } catch {
-            print(error)
+        for per in 1...round {
+            print("\(koreanOrdinalNumber[per - 1]) 번째 \(routine.name)을(를) 시작합니다.")
+            self.executeActivity(of: routine, by: bodyCondition)
         }
     }
     
@@ -75,5 +71,4 @@ struct TrainingManager {
             print(error)
         }
     }
-    
 }

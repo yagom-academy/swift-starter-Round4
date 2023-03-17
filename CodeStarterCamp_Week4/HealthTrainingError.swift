@@ -10,5 +10,5 @@ import Foundation
 enum HealthTrainingError: Error {
     case invalidInput
     case overFatigability
-    case indexOutOfRange
+    case outOfRange
 }
