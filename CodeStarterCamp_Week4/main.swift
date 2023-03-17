@@ -53,4 +53,4 @@ let benchPress = Activity(name: "벤치프레스") { bodyCondition in
 
 
 
-sitUp.doExercise(charlesBodyCondition)
+sitUp.doExercise(with: charlesBodyCondition)
