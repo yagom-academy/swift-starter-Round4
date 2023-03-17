@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 class BodyCondition {
     
     var 상체근력: Int {

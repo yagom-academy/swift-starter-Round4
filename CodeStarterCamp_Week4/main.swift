@@ -10,6 +10,4 @@ import Foundation
 
 var idinaloq: BodyCondition = BodyCondition(상체근력: 0, 하체근력: 0, 근지구력: 0, 피로도: 0)
 
-//윗몸일으키기.action(idinaloq)
-
 startRoutine(name: idinaloq)
