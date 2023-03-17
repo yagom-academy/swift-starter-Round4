@@ -42,12 +42,12 @@ var bmoCondition = BodyCondition(
     fatigue: 15
 )
 
-func exercise(_ activity: Activity, bodyConditon: inout BodyCondition) {
+func exercise(_ activity: Activity, bodyConditon: BodyCondition) {
     print("<<\(activity.name)을(를) 시작합니다>>")
-    activity.action(&bodyConditon)
+    activity.action(bodyConditon)
     bodyConditon.printCurrentBodyCondition()
 }
 
-exercise(squat, bodyConditon: &bmoCondition)
-exercise(hangBoard, bodyConditon: &bmoCondition)
-exercise(dynamicRest, bodyConditon: &bmoCondition)
+exercise(squat, bodyConditon: bmoCondition)
+exercise(hangBoard, bodyConditon: bmoCondition)
+exercise(dynamicRest, bodyConditon: bmoCondition)

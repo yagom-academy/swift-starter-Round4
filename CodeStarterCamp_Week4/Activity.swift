@@ -9,5 +9,5 @@ import Foundation
 
 struct Activity {
     let name: String
-    let action: (inout BodyCondition) -> Void
+    let action: (BodyCondition) -> Void
 }

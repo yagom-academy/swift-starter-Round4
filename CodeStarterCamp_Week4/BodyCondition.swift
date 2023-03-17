@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BodyCondition {
+class BodyCondition {
     var upperBodyStrength: Int {
         didSet {
             printChanges(in: "상체근력", before: oldValue, after: upperBodyStrength)
@@ -30,6 +30,13 @@ struct BodyCondition {
             }
             printChanges(in: "피로도", before: oldValue, after: fatigue)
         }
+    }
+    
+    init(upperBodyStrength: Int, lowerBodyStrength: Int, muscularEndurance: Int, fatigue: Int) {
+        self.upperBodyStrength = upperBodyStrength
+        self.lowerBodyStrength = lowerBodyStrength
+        self.muscularEndurance = muscularEndurance
+        self.fatigue = fatigue
     }
     
     func printChanges(in partName: String, before oldValue: Int, after newValue: Int) {
