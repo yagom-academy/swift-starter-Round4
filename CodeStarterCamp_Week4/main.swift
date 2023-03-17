@@ -105,11 +105,11 @@ let stretching: Activity = Activity(name: "동적휴식", action: { bodyConditio
     bodyCondition.changeStats(by: exerciseName)
 })
 
-var me: BodyCondition = BodyCondition(upperBodyStrength: 10, lowerBodyStrength: 10, muscularEndurance: 10, fatigue: 10)
+var bodyCondition: BodyCondition = BodyCondition(upperBodyStrength: 10, lowerBodyStrength: 10, muscularEndurance: 10, fatigue: 10)
 
-sitUp.action(me)
-squats.action(me)
-stretching.action(me)
-longRun.action(me)
+sitUp.action(bodyCondition)
+squats.action(bodyCondition)
+stretching.action(bodyCondition)
+longRun.action(bodyCondition)
 
-me.checkCondition()
+bodyCondition.checkCondition()
