@@ -53,16 +53,11 @@ enum RoutineError: Error {
     case unexpectedInput
 }
 
-class Routine {
+struct Routine {
     var name: String
     var activities: [Activity]
     let routineCount = ["첫", "두", "세", "네", "다섯"]
     var bodyCondition = BodyCondition()
-    
-    init(name: String, activities: [Activity]) {
-        self.name = name
-        self.activities = activities
-    }
     
     func startRoutine() {
         do {
