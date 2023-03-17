@@ -11,4 +11,10 @@ import Foundation
 struct Activity {
     let name: String
     let action: (BodyCondition) -> Void
+    
+    
+    func doExercise(with condition: BodyCondition) {
+        print("<<\(self.name)을(를) 시작합니다>>")
+        self.action(condition)
+    }
 }

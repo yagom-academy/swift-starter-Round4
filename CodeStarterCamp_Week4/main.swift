@@ -8,55 +8,49 @@
 
 import Foundation
 
-var charles = BodyCondition(upperStrength: 0, lowerStrength: 0, muscularEndurance: 0, fatigability: 0)
+var charlesBodyCondition = BodyCondition(upperStrength: 0, lowerStrength: 0, muscularEndurance: 0, fatigability: 0)
 
-let sitUp = Activity(name: "윗몸일으키기") { charles in
-    print("<<윗몸일으키기을(를) 시작합니다>>")
-    charles.upperStrength += Int.random(in: 10 ... 20)
-    charles.fatigability += Int.random(in: 10 ... 20)
-    charles.checkCondition()
+
+let sitUp = Activity(name: "윗몸일으키기") { bodyCondition in
+    bodyCondition.upperStrength += Int.random(in: 10 ... 20)
+    bodyCondition.fatigability += Int.random(in: 10 ... 20)
+    bodyCondition.checkCondition()
 }
 
 
-let squat = Activity(name: "스쿼트") { charles in
-    print("<<스쿼트을(를) 시작합니다>>")
-    charles.lowerStrength += Int.random(in: 20 ... 30)
-    charles.fatigability += Int.random(in: 10 ... 20)
-    charles.checkCondition()
+let squat = Activity(name: "스쿼트") { bodyCondition in
+    bodyCondition.lowerStrength += Int.random(in: 20 ... 30)
+    bodyCondition.fatigability += Int.random(in: 10 ... 20)
+    bodyCondition.checkCondition()
 }
 
-let lognRun = Activity(name: "오래달리기") { charles in
-    print("<<오래달리기을(를) 시작합니다>>")
-    charles.muscularEndurance += Int.random(in: 20 ... 30)
-    charles.upperStrength += Int.random(in: 5 ... 10)
-    charles.lowerStrength += Int.random(in: 5 ... 10)
-    charles.fatigability += Int.random(in: 20 ... 30)
-    charles.checkCondition()
+let longRun = Activity(name: "오래달리기") { bodyCondition in
+    bodyCondition.muscularEndurance += Int.random(in: 20 ... 30)
+    bodyCondition.upperStrength += Int.random(in: 5 ... 10)
+    bodyCondition.lowerStrength += Int.random(in: 5 ... 10)
+    bodyCondition.fatigability += Int.random(in: 20 ... 30)
+    bodyCondition.checkCondition()
 }
 
-let dynamicRestin = Activity(name: "동적휴식") { chalres in
-    print("<<동적휴식을(를) 시작합니다>>")
-    charles.fatigability -= Int.random(in: 5 ... 10)
-    charles.checkCondition()
+let dynamicRestin = Activity(name: "동적휴식") { bodyCondition in
+    bodyCondition.fatigability -= Int.random(in: 5 ... 10)
+    bodyCondition.checkCondition()
 }
 
 
-let deadLift = Activity(name: "데드리프트") { charles in
-    print("<<데드리프트을(를) 시작합니다>>")
-    charles.upperStrength += Int.random(in: 10 ... 20)
-    charles.lowerStrength += Int.random(in: 10 ... 20)
-    charles.fatigability += Int.random(in: 10 ... 20)
+let deadLift = Activity(name: "데드리프트") { bodyCondition in
+    bodyCondition.upperStrength += Int.random(in: 10 ... 20)
+    bodyCondition.lowerStrength += Int.random(in: 10 ... 20)
+    bodyCondition.fatigability += Int.random(in: 10 ... 20)
 }
 
-let benchPress = Activity(name: "벤치프레스") { charles in
-    print("<<벤치프레스을(를) 시작합니다>>")
-    charles.upperStrength += Int.random(in: 20 ... 30)
-    charles.fatigability += Int.random(in: 20 ... 30)
-    charles.checkCondition()
+let benchPress = Activity(name: "벤치프레스") { bodyCondition in
+    bodyCondition.upperStrength += Int.random(in: 20 ... 30)
+    bodyCondition.fatigability += Int.random(in: 20 ... 30)
+    bodyCondition.checkCondition()
 }
 
 
-sitUp.action(charles)
-squat.action(charles)
-lognRun.action(charles)
-dynamicRestin.action(charles)
+
+
+sitUp.doExercise(charlesBodyCondition)

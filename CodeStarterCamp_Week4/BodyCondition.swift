@@ -9,22 +9,22 @@ import Foundation
 
 
 class BodyCondition {
-    var upperStrength: Int = 0 {
+    var upperStrength: Int  {
         didSet {
             print("상체근력이 \(upperStrength - oldValue)만큼 상승했습니다.")
         }
     }
-    var lowerStrength: Int = 0 {
+    var lowerStrength: Int  {
         didSet {
             print("하체근력이 \(lowerStrength - oldValue)만큼 상승했습니다.")
         }
     }
-    var muscularEndurance: Int = 0 {
+    var muscularEndurance: Int  {
         didSet {
             print("근지구력이 \(muscularEndurance - oldValue)만큼 상승했습니다.")
         }
     }
-    var fatigability: Int = 0 {
+    var fatigability: Int  {
         didSet {
             if fatigability - oldValue < 0 {
                 print("피로도가 \(oldValue - fatigability)만큼 하락했습니다.")
