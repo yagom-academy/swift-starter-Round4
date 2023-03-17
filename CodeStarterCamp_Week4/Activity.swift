@@ -2,7 +2,7 @@
 //  Step1.swift
 //  CodeStarterCamp_Week4
 //
-//  Created by 서혜진 on 2023/03/17.
+//  Created by Whales on 2023/03/17.
 //
 
 import Swift
