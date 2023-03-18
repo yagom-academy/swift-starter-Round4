@@ -19,31 +19,31 @@ struct Routine {
     let numberInKorean: [String] = ["첫", "두", "세", "네", "다섯", "여섯", "일곱", "여덟", "아홉", "열"]
          
     func start(conditions: BodyCondition) throws {
-        let sets = try getNumberOfSets()
+        let times = try getNumberOfRepetition()
         
-        for set in 1...sets {
-            print("\(numberInKorean[set-1]) 번째 \(name)을(를) 시작합니다.")
+        for time in 1...times {
+            print("\(numberInKorean[time-1]) 번째 \(name)을(를) 시작합니다.")
             try workOut(conditions: conditions)
         }
     }
     
-    private func getNumberOfSets() throws -> Int {
+    private func getNumberOfRepetition() throws -> Int {
         print("루틴을 몇 번 반복할까요?")
-        guard let sets = Int(readLine()!) else {
+        guard let times = readLine(), let times = Int(times) else {
             throw RoutineError.invalidInput
         }
         
-        guard isInRange(sets: sets) else {
+        guard isInRange(times: times) else {
             throw RoutineError.outOfRangeInput
         }
         
         print("--------------")
         
-        return sets
+        return times
     }
     
-    private func isInRange(sets: Int) -> Bool {
-        sets > 0 && sets <= 10 ? true : false
+    private func isInRange(times: Int) -> Bool {
+        1...10 ~= times
     }
        
     private func workOut(conditions: BodyCondition) throws {
@@ -57,7 +57,7 @@ struct Routine {
     }
     
     private func isExausted(conditions: BodyCondition) -> Bool {
-        conditions.fatigue >= 100 ? true : false
+        100... ~= conditions.fatigue
     }
 }
 
