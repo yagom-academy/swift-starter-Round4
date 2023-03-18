@@ -45,8 +45,10 @@ class BodyCondition {
     func printChangedCondition(of bodyPart: String, from oldStatus: Int, to newStatus: Int) {
         if oldStatus > newStatus {
             print("\(bodyPart)이(가) \(oldStatus - newStatus) 감소합니다.")
-        } else {
+        } else if oldStatus < newStatus {
             print("\(bodyPart)이(가) \(newStatus - oldStatus) 증가합니다.")
+        } else {
+            return
         }
     }
 

@@ -9,7 +9,18 @@
 import Foundation
 
 let myBody = BodyCondition(upperStrength: 100, lowerStrength: 80, endurance: 80, fatigue: 0)
-let exercises = Exercise()
-let myRoutine = Routine(name: "hellRoutine", activities: [exercises.sitUp, exercises.plank, exercises.running, exercises.activeRest, exercises.squat, exercises.running, exercises.activeRest])
+let myRoutine = Routine(name: "hellRoutine", activities: [ActivityStorage.sitUp.activity,
+                                                          ActivityStorage.plank.activity,
+                                                          ActivityStorage.running.activity,
+                                                          ActivityStorage.activeRest.activity,
+                                                          ActivityStorage.activeRest.activity,
+                                                          ActivityStorage.activeRest.activity,
+                                                          ActivityStorage.activeRest.activity,
+                                                          ActivityStorage.activeRest.activity,
+                                                          ActivityStorage.activeRest.activity,
+                                                          ActivityStorage.activeRest.activity,
+                                                          ActivityStorage.activeRest.activity,
+                                                          ActivityStorage.activeRest.activity,
+                                                          ActivityStorage.activeRest.activity])
 myRoutine.startRoutine(of: myBody)
 
