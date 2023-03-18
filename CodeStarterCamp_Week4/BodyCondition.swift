@@ -8,17 +8,17 @@
 import Swift
 
 class BodyCondition {
-    var upperBodyMuscleStrength: Int{
+    var upperBodyMuscleStrength: Int {
         didSet {
             print("상체근력이 \(upperBodyMuscleStrength - oldValue) 상승합니다.")
         }
     }
-    var lowerBodyMuscleStrength: Int{
+    var lowerBodyMuscleStrength: Int {
         didSet {
             print("하체근력이 \(lowerBodyMuscleStrength - oldValue) 상승합니다.")
         }
     }
-    var muscularEndurance: Int{
+    var muscularEndurance: Int {
         didSet {
             print("근지구력이 \(muscularEndurance - oldValue) 상승합니다.")
         }
@@ -40,7 +40,7 @@ class BodyCondition {
         self.degreeOfFatigue = fatigue
     }
 
-    func checkBodyCondition () {
+    func checkBodyCondition() {
         print("""
         ------------------------
         현재의 컨디션은 다음과 같습니다.
