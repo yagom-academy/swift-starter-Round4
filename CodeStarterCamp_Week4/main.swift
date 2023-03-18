@@ -48,12 +48,34 @@ let myBody: BodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrengt
 
 let yourBody: BodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
 
-윗몸일으키기.action(myBody)
-스쿼트.action(myBody)
-오래달리기.action(myBody)
-동적휴식.action(myBody)
-취침.action(myBody)
+class My {
+   lazy var 밈밈: Activity = Activity(name: "윗몸일으키기", action: { bodyCondition in
+       self.밈밈.printStartMessage(name: "윗몸일으키기")
+       self.밈밈.startActivity(activityType: .UpperBody, bodyCondition: bodyCondition, from: 10, to: 20)
+       self.밈밈.startActivity(activityType: .Fatigue, bodyCondition: bodyCondition, from: 10, to: 20)
+       self.밈밈.printMyBodyCondition(bodyCondition: bodyCondition)
+    })
+    
+    let myBody: BodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
+    
+    func 밈밈동작() {
+        밈밈.action(myBody)
+    }
+}
 
-오래달리기.action(yourBody)
-취침.action(yourBody)
+My().밈밈동작()
 
+//스쿼트.action(myBody)
+//오래달리기.action(myBody)
+//동적휴식.action(myBody)
+//취침.action(myBody)
+//
+//오래달리기.action(yourBody)
+//취침.action(yourBody)
+
+
+/**
+ Step 2: 야곰 피트니스, 지옥의 헬스 트레이닝
+ */
+//let routine = Routine(name: "Blue 트레이닝", activities: [윗몸일으키기, 스쿼트])
+//routine.startRoutine(body: myBody)
