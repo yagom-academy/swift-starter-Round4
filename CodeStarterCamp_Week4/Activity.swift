@@ -7,10 +7,6 @@
 
 import Foundation
 
-enum ActivityType {
-    case UpperBody, LowerBody, Muscular, Fatigue, Relax
-}
-
 //활동 타입
 struct Activity {
     let name: String
