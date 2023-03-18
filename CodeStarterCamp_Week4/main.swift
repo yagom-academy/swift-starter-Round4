@@ -53,18 +53,22 @@ enum RoutineError: Error {
     case unexpectedInput
 }
 
-struct Routine {
+struct Person {
     var name: String
-    var activities: [Activity]
-    var bodyCoindition = BodyCondition()
+    var bodyCondition = BodyCondition()
     let roundCount = ["첫", "두", "세", "네", "다섯"]
     
-    func startRountine() {
+    struct Routine {
+        var routineName: String
+        var activities: [Activity]
+    }
+    
+    func startRoutine() {
         do {
             try getRoutineCount()
         } catch RoutineError.overLimitFatigue {
             print("피로도가 100 이상입니다. 루틴을 중단합니다.")
-            print(bodyCoindition.checkCondition())
+            print(bodyCondition.checkCondition())
         } catch RoutineError.overLimitRange {
             print("1에서 5사이의 숫자를 입력해주세요.")
         } catch RoutineError.unexpectedInput {
@@ -89,37 +93,38 @@ struct Routine {
         return routineCount
     }
     
-    func setRoutine(_ routinCount: Int) throws {
+    func setRoutine(_ routineCount: Int) throws {
+        let training = TrainingList()
+        let routine = Routine(routineName: "일상루틴", activities: [training.레그프레스, training.윗몸일으키기, training.벤치프레스, training.스쿼트, training.오래달리기, training.동적휴식])
         print("--------------")
-        for count in 0...routinCount {
-            print("\(roundCount[count]) 번쨰 \(self.name)을(를) 시작합나다.")
-            for activity in activities {
-                activity.action(self.bodyCoindition)
+        for count in 0...routineCount {
+            print("\(roundCount[count]) 번쨰 \(routine.routineName)을(를) 시작합나다.")
+            for activity in routine.activities {
+                print("<<\(activity.name)을(를) 시작합니다>>")
+                activity.action(self.bodyCondition)
                 print("--------------")
-                if self.bodyCoindition.fatigue >= 100 {
+                if self.bodyCondition.fatigue >= 100 {
                     throw RoutineError.overLimitFatigue
                 }
             }
         }
-        bodyCoindition.checkCondition()
+        bodyCondition.checkCondition()
     }
 }
 
 struct TrainingList {
     let 윗몸일으키기: Activity = Activity(name: "윗몸일으키기", action: { BodyCondition in
-        print("<<윗몸일으키기을(를) 시작합니다>>")
         BodyCondition.upperBodyStrength += Int.random(in: 10...20)
         BodyCondition.fatigue += Int.random(in: 10...20)
     })
     
     let 스쿼트: Activity = Activity(name: "스쿼트", action: { BodyCondition in
-        print("<<스쿼트을(를) 시작합니다>>")
+        BodyCondition.upperBodyStrength += Int.random(in: 5...10)
         BodyCondition.lowerBodyStrength += Int.random(in: 20...30)
         BodyCondition.fatigue += Int.random(in: 10...20)
     })
     
     let 오래달리기: Activity = Activity(name: "오래달리기", action: { BodyCondition in
-        print("<<오래달리기을(를) 시작합니다>>")
         BodyCondition.muscularEndurance += Int.random(in: 20...30)
         BodyCondition.upperBodyStrength += Int.random(in: 5...10)
         BodyCondition.lowerBodyStrength += Int.random(in: 5...10)
@@ -127,25 +132,20 @@ struct TrainingList {
     })
     
     let 동적휴식: Activity = Activity(name: "동적휴식", action: { BodyCondition in
-        print("<<동적휴식을(를) 시작합니다>>")
         BodyCondition.fatigue -= Int.random(in: 5...10)
     })
     
     let 벤치프레스: Activity = Activity(name: "벤치프레스", action: { BodyCondition in
-        print("<<벤치프레스을(를) 시작합니다>>")
         BodyCondition.upperBodyStrength += Int.random(in: 30...50)
         BodyCondition.fatigue += Int.random(in: 10...20)
     })
     
     let 레그프레스: Activity = Activity(name: "레그프레스", action: { BodyCondition in
-        print("<<레그프레스을(를) 시자갑니다>>")
         BodyCondition.lowerBodyStrength += Int.random(in: 30...50)
         BodyCondition.fatigue += Int.random(in: 10...20)
     })
 }
 
-let training = TrainingList()
+let hyeok: Person = Person(name: "Hyeok")
 
-let hyeokRoutine = Routine(name: "Press Routine", activities: [training.벤치프레스, training.레그프레스, training.동적휴식])
-
-hyeokRoutine.startRountine()
+hyeok.startRoutine()
