@@ -19,26 +19,16 @@ struct Routine {
     let activities: [Activity] = [윗몸일으키기, 스쿼트, 오래달리기, 동적휴식]
 }
 
-func startRoutineAndThrows(_ inputString: String?, _ bodyCondition: BodyCondition) throws {
+func startRoutineAndThrows(_ inputString: String?, _ bodyCondition: BodyCondition, _ routine: Routine) throws {
     
-    guard let input = inputString else {
-        throw RoutineInputError.routineInputIsNil
-    }
-    
-    guard let inputToInt = Int(input) else {
-        throw RoutineInputError.invalidInputType
-    }
-    
-    guard inputToInt > 0 else {
-        throw RoutineInputError.routineInputLessThanZero
-    }
+    checkInputValue(inputString)
     
     guard bodyCondition.피로도 < 100 else {
         throw RoutineInputError.fatigueOver100
     }
     
-    let routine: Routine = Routine(routineName: "hellRoutine")
-    
+    //let routine: Routine = Routine(routineName: routine)
+    print("\(routine.routineName)을 시작합니다.")
     for routineCount in 1...inputToInt {
         print("\(routineCount)번째 루틴을 시작합니다.")
         print("-------------------------")
@@ -57,14 +47,14 @@ func startRoutineAndThrows(_ inputString: String?, _ bodyCondition: BodyConditio
     }
 }
 
-func startRoutine(name: BodyCondition) {
+func startRoutine(name: BodyCondition, routine: Routine) {
     
     while(true) {
         print("루틴을 몇 번 반복할까요?")
         let input = readLine()
         
         do {
-            try startRoutineAndThrows(input, name)
+            try startRoutineAndThrows(input, name, routine)
         } catch RoutineInputError.routineInputIsNil {
             print("입력값이 없습니다. 다시 입력해주세요.")
             print("-------------------------")
@@ -85,4 +75,20 @@ func startRoutine(name: BodyCondition) {
             break
         }
     }
+}
+
+func checkInputValue(_ inputString: String?) throws -> Int{
+    guard let input = inputString else {
+        throw RoutineInputError.routineInputIsNil
+    }
+    
+    guard let inputToInt = Int(input) else {
+        throw RoutineInputError.invalidInputType
+    }
+    
+    guard inputToInt > 0 else {
+        throw RoutineInputError.routineInputLessThanZero
+    }
+    
+    return inputToInt
 }
