@@ -8,11 +8,29 @@
 import Foundation
 
 class BodyCondition {
-    var upperBodyStrength: Int
-    var lowerBodyStrength: Int
-    var muscularEndurance: Int
+    var upperBodyStrength: Int {
+        didSet(oldValue) {
+            printBodyStrength(activityType: .UpperBody, strength: (self.upperBodyStrength-oldValue))
+        }
+    }
+    var lowerBodyStrength: Int {
+        didSet(oldValue) {
+            printBodyStrength(activityType: .LowerBody, strength: (self.lowerBodyStrength-oldValue))
+        }
+    }
+    var muscularEndurance: Int {
+        didSet(oldValue) {
+            printBodyStrength(activityType: .Muscular, strength: (self.muscularEndurance-oldValue))
+        }
+    }
     var fatigue: Int {
-        didSet {
+        didSet(oldValue) {
+            if oldValue > self.fatigue {
+                print("피로도가 \(oldValue-self.fatigue) 하락합니다.")
+            } else if oldValue < self.fatigue{
+                print("피로도가 \(self.fatigue-oldValue) 상승합니다.")
+            }
+            
             if self.fatigue < 0 {
                 self.fatigue = 0
             }
@@ -24,5 +42,17 @@ class BodyCondition {
         self.lowerBodyStrength = lowerBodyStrength
         self.muscularEndurance = muscularEndurance
         self.fatigue = fatigue
+    }
+    
+    func printBodyStrength(activityType: ActivityType, strength: Int) {
+        switch(activityType) {
+        case .UpperBody:
+            print("상체근력이 \(strength) 상승합니다.")
+        case .LowerBody:
+            print("하체근력이 \(strength) 상승합니다.")
+        case .Muscular:
+            print("근지구력이 \(strength) 상승합니다.")
+        default: break
+        }
     }
 }
