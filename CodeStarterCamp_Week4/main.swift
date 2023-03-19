@@ -42,12 +42,9 @@ var bmoCondition = BodyCondition(
     fatigue: 15
 )
 
-func exercise(_ activity: Activity, bodyConditon: BodyCondition) {
-    print("<<\(activity.name)을(를) 시작합니다>>")
-    activity.action(bodyConditon)
-    bodyConditon.printCurrentBodyCondition()
-}
 
-exercise(squat, bodyConditon: bmoCondition)
-exercise(hangBoard, bodyConditon: bmoCondition)
-exercise(dynamicRest, bodyConditon: bmoCondition)
+let activities: [Activity] = [sitUp, dynamicRest, hangBoard, dynamicRest]
+let routine = Routine(name: "비모루틴", activities: activities)
+
+print("루틴을 몇 번 반복할까요?")
+routine.play(bodyCondition: bmoCondition)
