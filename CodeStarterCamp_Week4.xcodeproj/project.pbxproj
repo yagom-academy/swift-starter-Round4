@@ -11,6 +11,7 @@
 		9B46C3F129C043AD00B1D85C /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B46C3F029C043AD00B1D85C /* Activity.swift */; };
 		9B46C3F329C043C800B1D85C /* BodyCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B46C3F229C043C800B1D85C /* BodyCondition.swift */; };
 		9B46C3F729C5CC7A00B1D85C /* ActivityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B46C3F629C5CC7A00B1D85C /* ActivityType.swift */; };
+		9B46C3F929C6F86C00B1D85C /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B46C3F829C6F86C00B1D85C /* Routine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,7 @@
 		9B46C3F029C043AD00B1D85C /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		9B46C3F229C043C800B1D85C /* BodyCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyCondition.swift; sourceTree = "<group>"; };
 		9B46C3F629C5CC7A00B1D85C /* ActivityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityType.swift; sourceTree = "<group>"; };
+		9B46C3F829C6F86C00B1D85C /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				9B46C3F029C043AD00B1D85C /* Activity.swift */,
 				9B46C3F229C043C800B1D85C /* BodyCondition.swift */,
 				9B46C3F629C5CC7A00B1D85C /* ActivityType.swift */,
+				9B46C3F829C6F86C00B1D85C /* Routine.swift */,
 			);
 			path = CodeStarterCamp_Week4;
 			sourceTree = "<group>";
@@ -128,6 +131,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B46C3F929C6F86C00B1D85C /* Routine.swift in Sources */,
 				9B46C3F729C5CC7A00B1D85C /* ActivityType.swift in Sources */,
 				9B46C3F129C043AD00B1D85C /* Activity.swift in Sources */,
 				9B46C3F329C043C800B1D85C /* BodyCondition.swift in Sources */,

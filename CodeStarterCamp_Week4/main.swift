@@ -38,11 +38,22 @@ let myBodyCodition: BodyCondition = BodyCondition(upperBodyStrength: 0, lowerBod
 
 let yourBodyCondition: BodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
 
-윗몸일으키기.exercise(bodyCondition: myBodyCodition)
-스쿼트.exercise(bodyCondition: myBodyCodition)
-오래달리기.exercise(bodyCondition: myBodyCodition)
-동적휴식.exercise(bodyCondition: myBodyCodition)
-취침.exercise(bodyCondition: myBodyCodition)
 
-오래달리기.exercise(bodyCondition: yourBodyCondition)
-취침.exercise(bodyCondition: yourBodyCondition)
+/**
+ Step 1: 활동을 만들어 진행해보자!
+ */
+//윗몸일으키기.exercise(bodyCondition: myBodyCodition)
+//스쿼트.exercise(bodyCondition: myBodyCodition)
+//오래달리기.exercise(bodyCondition: myBodyCodition)
+//동적휴식.exercise(bodyCondition: myBodyCodition)
+//취침.exercise(bodyCondition: myBodyCodition)
+//
+//오래달리기.exercise(bodyCondition: yourBodyCondition)
+//취침.exercise(bodyCondition: yourBodyCondition)
+
+/**
+ Step 2: 야곰 피트니스, 지옥의 헬스 트레이닝
+ */
+let routine = Routine(name: "평일 루틴", activities: [오래달리기, 동적휴식, 스쿼트, 동적휴식, 윗몸일으키기])
+routine.startRoutine(body: myBodyCodition)
+
