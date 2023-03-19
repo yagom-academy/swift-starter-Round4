@@ -12,7 +12,6 @@
 		DC4EDED229BF49DD00894BBA /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4EDED129BF49DD00894BBA /* Activity.swift */; };
 		DC4EDED629C1F78E00894BBA /* startRoutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4EDED529C1F78E00894BBA /* startRoutine.swift */; };
 		DC4EDEDA29C5DFE000894BBA /* RoutineInputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4EDED929C5DFE000894BBA /* RoutineInputError.swift */; };
-		DC4EDEDC29C5E12700894BBA /* checkInputValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4EDEDB29C5E12700894BBA /* checkInputValue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,7 +33,6 @@
 		DC4EDED129BF49DD00894BBA /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		DC4EDED529C1F78E00894BBA /* startRoutine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startRoutine.swift; sourceTree = "<group>"; };
 		DC4EDED929C5DFE000894BBA /* RoutineInputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineInputError.swift; sourceTree = "<group>"; };
-		DC4EDEDB29C5E12700894BBA /* checkInputValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkInputValue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +70,6 @@
 				DC4EDED129BF49DD00894BBA /* Activity.swift */,
 				DC4EDED529C1F78E00894BBA /* startRoutine.swift */,
 				DC4EDED929C5DFE000894BBA /* RoutineInputError.swift */,
-				DC4EDEDB29C5E12700894BBA /* checkInputValue.swift */,
 			);
 			path = CodeStarterCamp_Week4;
 			sourceTree = "<group>";
@@ -135,7 +132,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC4EDED629C1F78E00894BBA /* startRoutine.swift in Sources */,
-				DC4EDEDC29C5E12700894BBA /* checkInputValue.swift in Sources */,
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
 				DC4EDED029BF48ED00894BBA /* BodyCondition.swift in Sources */,
 				DC4EDED229BF49DD00894BBA /* Activity.swift in Sources */,

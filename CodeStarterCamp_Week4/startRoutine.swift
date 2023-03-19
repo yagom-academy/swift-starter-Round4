@@ -1,5 +1,5 @@
 //
-//  routineCount.swift
+//  startRoutine.swift
 //  CodeStarterCamp_Week4
 //
 //  Created by JSB on 2023/03/15.
@@ -11,38 +11,36 @@ struct Routine {
     let routineName: String
     var activities: [Activity]
     
-    func startAndThrows(_ inputString: String?, _ bodyCondition: BodyCondition, _ routine: Routine) throws {
+    func startAndThrows(_ inputString: String?, _ bodyCondition: BodyCondition) throws {
         
-        do {
-            let input = try checkInputValue(inputString)
-            print("\(routine.routineName)을 시작합니다.")
+        let input = try checkInputValue(inputString)
+        print("\(self.routineName)을 시작합니다.")
+        
+        for routineCount in 1...input {
+            print("\(routineCount)번째 루틴을 시작합니다.")
+            print("-------------------------")
             
-            for routineCount in 1...input {
-                print("\(routineCount)번째 루틴을 시작합니다.")
+            for activity in self.activities {
+                activity.action(bodyCondition)
                 print("-------------------------")
-                
-                for activity in routine.activities {
-                    activity.action(bodyCondition)
-                    print("-------------------------")
-                    guard bodyCondition.피로도 < 100 else {
-                        throw RoutineInputError.fatigueOver100
-                    }
+                guard bodyCondition.피로도 < 100 else {
+                    throw RoutineInputError.fatigueOver100
                 }
-            
-                bodyCondition.checkBodyCondition()
-                print("-------------------------")
             }
+            
+            bodyCondition.checkBodyCondition()
+            print("-------------------------")
         }
     }
-
-    func start(bodyCondition: BodyCondition, routine: Routine) {
+    
+    func start(bodyCondition: BodyCondition) {
         
-        while(true) {
+        while true {
             print("루틴을 몇 번 반복할까요?")
             let input = readLine()
             
             do {
-                try startAndThrows(input, bodyCondition, routine)
+                try startAndThrows(input, bodyCondition)
             } catch RoutineInputError.routineInputIsNil {
                 print("입력값이 없습니다. 다시 입력해주세요.")
                 print("-------------------------")
@@ -63,5 +61,21 @@ struct Routine {
                 break
             }
         }
+    }
+    
+    func checkInputValue(_ inputString: String?) throws -> Int{
+        guard let input = inputString else {
+            throw RoutineInputError.routineInputIsNil
+        }
+        
+        guard let inputToInt = Int(input) else {
+            throw RoutineInputError.invalidInputType
+        }
+        
+        guard inputToInt > 0 else {
+            throw RoutineInputError.routineInputLessThanZero
+        }
+        
+        return inputToInt
     }
 }

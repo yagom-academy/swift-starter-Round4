@@ -1,5 +1,5 @@
 //
-//  bodyCondition.swift
+//  BodyCondition.swift
 //  CodeStarterCamp_Week4
 //
 //  Created by JSB on 2023/03/13.
