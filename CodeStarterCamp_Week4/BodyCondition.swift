@@ -49,7 +49,7 @@ class BodyCondition {
         self.피로도 = 피로도
     }
     
-    func checkBodyCondition () {
+    func checkBodyCondition() {
         print("현재의 컨디션은 다음과 같습니다.")
         print("상체근력: \(self.상체근력)")
         print("하체근력: \(self.하체근력)")
