@@ -8,6 +8,6 @@
 import Foundation
 
 enum ActivityError: Error {
-      case error
-      case overFatigue
+      case inputError
+      case overFatigueError
 }

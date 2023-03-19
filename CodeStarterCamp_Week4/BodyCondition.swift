@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BodyCondition {
+final class BodyCondition {
     var upperBodyStrength: Int {
         willSet { print("상체근력이 \(abs(upperBodyStrength - newValue)) 상승합니다.") }
     }

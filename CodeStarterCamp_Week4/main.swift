@@ -8,7 +8,10 @@
 
 import Foundation
 
-let tomBodyCondition = BodyCondition(upperBodyStrength: 40, lowerBodyStrength: 40, muscularEndurance: 40, fatigue: 0)
+
+let tomBodyCondition = BodyCondition(upperBodyStrength: 40, lowerBodyStrength: 40, muscularEndurance: 40, fatigue: 70)
+let tomRoutine = Routine(name: "tomRoutine", activities: [])
+tomRoutine.activities = [sitUp, squat]
 
 let sitUp = Activity(name: "윗몸일으키기", action: { bodyCondition in
     bodyCondition.upperBodyStrength += Int.random(in: 10...20)
@@ -32,14 +35,12 @@ let dynamicResting = Activity(name: "동적휴식", action: { bodyCondition in
 })
 
 
-Activity.exerciseStart(activity: dynamicResting, bodyCondition: tomBodyCondition)
-Activity.exerciseStart(activity: squat, bodyCondition: tomBodyCondition)
-Activity.exerciseStart(activity: sitUp, bodyCondition: tomBodyCondition)
-tomBodyCondition.check(tomBodyCondition)
 
-
-//print("입력해주세요 :")
-//let input: String = readLine()!
-//print("입력값은 \(input)입니다")
-
-
+tomRoutine.mistakenInputError(test: sitUp, test1: tomBodyCondition) // 리드라인 에러
+//tomRoutine.mistakenInputError(test: sitUp, test1: tomBodyCondition)
+//Activity.exerciseStart(activity: dynamicResting, bodyCondition: tomBodyCondition)
+//Activity.exerciseStart(activity: squat, bodyCondition: tomBodyCondition) // 이게 나와서 운동이 시작된다
+//Activity.exerciseStart(activity: sitUp, bodyCondition: tomBodyCondition)
+tomRoutine.fatigueError(condition: tomBodyCondition) // 피로도 100넘으면 시마이
+tomBodyCondition.check(tomBodyCondition) // 컨디션 상태
+ 
