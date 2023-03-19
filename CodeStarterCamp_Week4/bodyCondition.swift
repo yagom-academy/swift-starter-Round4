@@ -1,17 +1,11 @@
 //
-//  step01.swift
+//  bodyCondition.swift
 //  CodeStarterCamp_Week4
 //
-//  Created by karen on 2023/03/14.
+//  Created by karen on 2023/03/19.
 //
 
 import Foundation
-
-struct Activity {
-    let name: String
-    let action: (BodyCondition) -> Void
-    
-}
 
 class BodyCondition {
     var upperBodyStrength: Int {
@@ -37,16 +31,16 @@ class BodyCondition {
     
     func printChangeValue(_ changeValue: Int) -> String {
         let changeValueText: String
-        
+        let changeInt: Int
         if changeValue > 0 {
             changeValueText = "\(changeValue) 상승합니다."
         } else if changeValue < 0 {
-            changeValueText = "\(changeValue) 하락합니다."
+            changeInt = changeValue * -1
+            changeValueText = "\(changeInt) 하락합니다."
         } else {
             changeValueText = "변화 없습니다."
         }
-        
-        return "\(changeValueText)"
+        return changeValueText
     }
     
     func printCondition() {
@@ -56,7 +50,6 @@ class BodyCondition {
         print("하체 근력 : \(lowerBodyMuscleStrength)")
         print("근지구력 : \(muscularEndurance)")
         print("피로도 : \(degreeOfFatigue)")
-        
     }
     
     init(upperBodyStrength: Int, lowerBodyMuscleStrength: Int, muscularEndurance: Int, degreeOfFatigue: Int) {
@@ -67,37 +60,27 @@ class BodyCondition {
     }
 }
 
-func startTraining (_ activity: Activity, _ bodyCondition: BodyCondition) {
-    activity.action(bodyCondition)
-}
-
-let sitUp: Activity = Activity(name: "윗몸일으키기", action: { bodyCondition in
+let sitUp: Activity = Activity(name: "윗몸일으키기", action: {
     print("<<\(sitUp.name)을(를) 시작합니다.>>")
-    bodyCondition.upperBodyStrength += Int.random(in:10...20)
-    bodyCondition.degreeOfFatigue += Int.random(in:10...20)
-    bodyCondition.printCondition()
+    $0.upperBodyStrength += Int.random(in:10...20)
+    $0.degreeOfFatigue += Int.random(in:10...20)
 })
 
-let squats: Activity = Activity(name: "스쿼트", action: { bodyCondition in
+let squats: Activity = Activity(name: "스쿼트", action: {
     print("<<\(squats.name)을(를) 시작합니다.>>")
-    bodyCondition.lowerBodyMuscleStrength += Int.random(in:20...30)
-    bodyCondition.degreeOfFatigue += Int.random(in:10...20)
-    bodyCondition.printCondition()
+    $0.lowerBodyMuscleStrength += Int.random(in:20...30)
+    $0.degreeOfFatigue += Int.random(in:10...20)
 })
 
-let longRun: Activity = Activity(name: "오래달리기", action: { bodyCondition in
+let longRun: Activity = Activity(name: "오래달리기", action: {
     print("<<\(longRun.name)을(를) 시작합니다.>>")
-    bodyCondition.muscularEndurance += Int.random(in:20...30)
-    bodyCondition.upperBodyStrength += Int.random(in:5...10)
-    bodyCondition.lowerBodyMuscleStrength += Int.random(in:5...10)
-    bodyCondition.degreeOfFatigue += Int.random(in:10...20)
-    bodyCondition.printCondition()
+    $0.muscularEndurance += Int.random(in:20...30)
+    $0.upperBodyStrength += Int.random(in:5...10)
+    $0.lowerBodyMuscleStrength += Int.random(in:5...10)
+    $0.degreeOfFatigue += Int.random(in:10...20)
 })
 
-let dynamicResting: Activity = Activity(name: "동적휴식", action: { bodyCondition in
+let dynamicResting: Activity = Activity(name: "동적휴식", action: {
     print("<<\(dynamicResting.name)을(를) 시작합니다.>>")
-    bodyCondition.degreeOfFatigue -= Int.random(in:5...10)
-    bodyCondition.printCondition()
+    $0.degreeOfFatigue -= Int.random(in:5...10)
 })
-
-
