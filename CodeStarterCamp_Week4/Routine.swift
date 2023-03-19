@@ -17,7 +17,7 @@ final class Routine {
         self.activities = activities
     }
     ///피로도
-    func fatigueError(condition: BodyCondition) {
+    private func fatigueError(condition: BodyCondition) {
         do {
             try fatigueCheck(fatigue:condition)
         } catch ActivityError.overFatigueError { // 밑에 함수 받으면 에러 메시지
@@ -36,7 +36,7 @@ final class Routine {
     ///리드라인
     func mistakenInputError(activitys: [Activity], bodyCondition: BodyCondition) {
         do {
-            try routineCount(activitys: activitys, bodyCondition: bodyCondition)
+            try routineCount(bodyCondition: bodyCondition)
         } catch ActivityError.inputError {
             print("잘못된 입력 형식입니다. 다시 입력해주세요.")
             mistakenInputError(activitys: activitys, bodyCondition: bodyCondition)  // 본인을 호출한이유 do에 함수 실행시키기
@@ -45,19 +45,19 @@ final class Routine {
         }
     }
     
-    private func routineCount(activitys: [Activity], bodyCondition: BodyCondition) throws {
-        print("루틴을 몇 번 반복할까요? :")
-        let input = readLine()! // 생성
-        guard let intInput = Int(input) else {throw ActivityError.inputError} // 인트로변경하고 변경되면 포문 안되면 에러
-        for index in 1...intInput {
-            print("\(index) 번째 hellRoutine을(를) 시작합니다.")
-            for activity in activitys {
-                print("<<\(activity.name)을(를) 시작합니다.>>")
-                activity.action(bodyCondition)
-                activities = activitys
+    private func routineCount(bodyCondition: BodyCondition) throws {
+        print("루틴을 몇 번 반복할까요?", terminator: " ")
+        let input = readLine() // 생성  강제! 없이 어떻게 만들지..
+        guard let routineIntInput = Int(input!) else {throw ActivityError.inputError} // 인트로변경하고 변경되면 포문 안되면 에러
+        for routineCount in 0..<routineIntInput {
+            print("\(routineCount + 1) 번째 hellRoutine을(를) 시작합니다.")
+            for activity in activities {
+                Activity.exerciseStart(activity: activity, bodyCondition: bodyCondition)
+                if bodyCondition.fatigue > 100 {
+                    fatigueError(condition: bodyCondition)
+                    return bodyCondition.check(bodyCondition)
+                }
             }
         }
     }
 }
-
-

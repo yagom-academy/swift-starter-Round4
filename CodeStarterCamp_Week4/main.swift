@@ -10,7 +10,6 @@ import Foundation
 
 
 let tomBodyCondition = BodyCondition(upperBodyStrength: 40, lowerBodyStrength: 40, muscularEndurance: 40, fatigue: 60)
-let tomRoutine = Routine(name: "tomRoutine", activities: [])
 
 let sitUp = Activity(name: "윗몸일으키기", action: { bodyCondition in
     bodyCondition.upperBodyStrength += Int.random(in: 10...20)
@@ -33,8 +32,12 @@ let dynamicResting = Activity(name: "동적휴식", action: { bodyCondition in
     bodyCondition.fatigue -= Int.random(in: 5...10)
 })
 
+let tomRoutine = Routine(name: "tomRoutine", activities: [sitUp, squat])
 
-tomRoutine.mistakenInputError(activitys: [sitUp, squat], bodyCondition: tomBodyCondition) // 리드라인 에러
-tomRoutine.fatigueError(condition: tomBodyCondition) // 피로도 100 에러
-tomBodyCondition.check(tomBodyCondition) // 컨디션 상태
+tomRoutine.mistakenInputError(activitys: [], bodyCondition: tomBodyCondition) // 리드라인 에러
+
+
+
+//tomRoutine.fatigueError(condition: tomBodyCondition) // 피로도 100 에러
+//tomBodyCondition.check(tomBodyCondition) // 컨디션 상태
  
