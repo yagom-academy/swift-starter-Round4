@@ -36,11 +36,12 @@ let dynamicResting = Activity(name: "동적휴식", action: { bodyCondition in
 
 
 
-tomRoutine.mistakenInputError(test: sitUp, test1: tomBodyCondition) // 리드라인 에러
-//tomRoutine.mistakenInputError(test: sitUp, test1: tomBodyCondition)
-//Activity.exerciseStart(activity: dynamicResting, bodyCondition: tomBodyCondition)
-//Activity.exerciseStart(activity: squat, bodyCondition: tomBodyCondition) // 이게 나와서 운동이 시작된다
-//Activity.exerciseStart(activity: sitUp, bodyCondition: tomBodyCondition)
+tomRoutine.mistakenInputError(test: [sitUp, longRun, sitUp], test1: tomBodyCondition) // 리드라인 에러
 tomRoutine.fatigueError(condition: tomBodyCondition) // 피로도 100넘으면 시마이
 tomBodyCondition.check(tomBodyCondition) // 컨디션 상태
  
+
+
+//Activity.exerciseStart(activity: dynamicResting, bodyCondition: tomBodyCondition)
+//Activity.exerciseStart(activity: squat, bodyCondition: tomBodyCondition) // 이게 나와서 운동이 시작된다
+//Activity.exerciseStart(activity: sitUp, bodyCondition: tomBodyCondition)
