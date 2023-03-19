@@ -63,7 +63,7 @@ struct Routine {
         }
     }
     
-    func checkInputValue(_ inputString: String?) throws -> Int{
+    func checkInputValue(_ inputString: String?) throws -> Int {
         guard let input = inputString else {
             throw RoutineInputError.routineInputIsNil
         }
