@@ -10,6 +10,8 @@
 		34811DE8274B93FB00A1E994 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34811DE7274B93FB00A1E994 /* main.swift */; };
 		DC4EDED029BF48ED00894BBA /* BodyCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4EDECF29BF48ED00894BBA /* BodyCondition.swift */; };
 		DC4EDED229BF49DD00894BBA /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4EDED129BF49DD00894BBA /* Activity.swift */; };
+		DC4EDED629C1F78E00894BBA /* startRoutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4EDED529C1F78E00894BBA /* startRoutine.swift */; };
+		DC4EDEDA29C5DFE000894BBA /* RoutineInputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4EDED929C5DFE000894BBA /* RoutineInputError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +31,8 @@
 		34811DE7274B93FB00A1E994 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		DC4EDECF29BF48ED00894BBA /* BodyCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyCondition.swift; sourceTree = "<group>"; };
 		DC4EDED129BF49DD00894BBA /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		DC4EDED529C1F78E00894BBA /* startRoutine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startRoutine.swift; sourceTree = "<group>"; };
+		DC4EDED929C5DFE000894BBA /* RoutineInputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineInputError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,8 @@
 				34811DE7274B93FB00A1E994 /* main.swift */,
 				DC4EDECF29BF48ED00894BBA /* BodyCondition.swift */,
 				DC4EDED129BF49DD00894BBA /* Activity.swift */,
+				DC4EDED529C1F78E00894BBA /* startRoutine.swift */,
+				DC4EDED929C5DFE000894BBA /* RoutineInputError.swift */,
 			);
 			path = CodeStarterCamp_Week4;
 			sourceTree = "<group>";
@@ -125,9 +131,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC4EDED629C1F78E00894BBA /* startRoutine.swift in Sources */,
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
 				DC4EDED029BF48ED00894BBA /* BodyCondition.swift in Sources */,
 				DC4EDED229BF49DD00894BBA /* Activity.swift in Sources */,
+				DC4EDEDA29C5DFE000894BBA /* RoutineInputError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

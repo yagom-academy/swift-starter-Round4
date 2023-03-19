@@ -8,19 +8,8 @@
 
 import Foundation
 
-var idinaloq: BodyCondition = BodyCondition(상체근력: 10, 하체근력: 20, 근지구력: 30, 피로도: 0)
+var idinaloq: BodyCondition = BodyCondition(상체근력: 0, 하체근력: 0, 근지구력: 0, 피로도: 0)
 
-윗몸일으키기.action(idinaloq)
-idinaloq.checkBodyCondition()
+var hellRoutine: Routine = Routine(routineName: "hellRoutine", activities: [윗몸일으키기, 스쿼트, 오래달리기])
 
-스쿼트.action(idinaloq)
-idinaloq.checkBodyCondition()
-
-오래달리기.action(idinaloq)
-idinaloq.checkBodyCondition()
-
-동적휴식.action(idinaloq)
-idinaloq.checkBodyCondition()
-
-종합운동.action(idinaloq)
-idinaloq.checkBodyCondition()
+hellRoutine.start(bodyCondition: idinaloq)

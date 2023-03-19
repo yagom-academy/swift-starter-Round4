@@ -1,5 +1,5 @@
 //
-//  bodyCondition.swift
+//  BodyCondition.swift
 //  CodeStarterCamp_Week4
 //
 //  Created by JSB on 2023/03/13.
@@ -49,13 +49,11 @@ class BodyCondition {
         self.피로도 = 피로도
     }
     
-    func checkBodyCondition () {
-        print("-------------------------")
+    func checkBodyCondition() {
         print("현재의 컨디션은 다음과 같습니다.")
         print("상체근력: \(self.상체근력)")
         print("하체근력: \(self.하체근력)")
         print("근지구력: \(self.근지구력)")
         print("피로도: \(self.피로도)")
-        print("-------------------------")
     }
 }
