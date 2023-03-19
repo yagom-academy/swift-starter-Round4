@@ -6,7 +6,13 @@
 //  Copyright © yagom academy. All rights reserved.
 //
 
-import Foundation
+import Swift
 
-print("Hello, World!")
-
+sitUp.action(bodyCondition)
+bodyCondition.checkBodyCondition()
+squat.action(bodyCondition)
+bodyCondition.checkBodyCondition()
+marathon.action(bodyCondition)
+bodyCondition.checkBodyCondition()
+dynamicResting.action(bodyCondition)
+bodyCondition.checkBodyCondition()
