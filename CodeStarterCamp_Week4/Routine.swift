@@ -34,32 +34,30 @@ final class Routine {
     }
     
     ///리드라인
-    func mistakenInputError(test: [Activity], test1: BodyCondition) {
+    func mistakenInputError(activitys: [Activity], bodyCondition: BodyCondition) {
         do {
-            for i in test {
-                try routineCount(test: i, test1: test1) }
+            try routineCount(activitys: activitys, bodyCondition: bodyCondition)
         } catch ActivityError.inputError {
             print("잘못된 입력 형식입니다. 다시 입력해주세요.")
-            mistakenInputError(test: test, test1: test1)  // 본인을 호출한이유 do에 함수 실행시키기    // 여기서 1.5일?
+            mistakenInputError(activitys: activitys, bodyCondition: bodyCondition)  // 본인을 호출한이유 do에 함수 실행시키기
         } catch {
             print(error)
         }
     }
     
-    func routineCount(test: Activity, test1: BodyCondition) throws {
+    private func routineCount(activitys: [Activity], bodyCondition: BodyCondition) throws {
         print("루틴을 몇 번 반복할까요? :")
         let input = readLine()! // 생성
         guard let intInput = Int(input) else {throw ActivityError.inputError} // 인트로변경하고 변경되면 포문 안되면 에러
         for index in 1...intInput {
             print("---------------루틴 포문")
             print("\(index) 번째 hellRoutine을(를) 시작합니다.")
-            print("<<\(test.name)을(를) 시작합니다.>>루틴 포문")
-            test.action(test1)
-//            activities.append(test)
-//            activities
-//            print("뭐가 어펜드 되냐 \(activities)") ?? 이러면 이 프로퍼티를 안쓰느데 흠..
+            for activity in activitys {
+                print("<<\(activity.name)을(를) 시작합니다.>>")
+                activity.action(bodyCondition)
+                activities = activitys
+            }
         }
-//        return activities
     }
 }
 
