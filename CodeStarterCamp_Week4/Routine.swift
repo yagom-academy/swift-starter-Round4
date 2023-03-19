@@ -50,7 +50,6 @@ final class Routine {
         let input = readLine()! // 생성
         guard let intInput = Int(input) else {throw ActivityError.inputError} // 인트로변경하고 변경되면 포문 안되면 에러
         for index in 1...intInput {
-            print("---------------루틴 포문")
             print("\(index) 번째 hellRoutine을(를) 시작합니다.")
             for activity in activitys {
                 print("<<\(activity.name)을(를) 시작합니다.>>")
