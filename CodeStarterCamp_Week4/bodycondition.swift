@@ -10,35 +10,34 @@ import Foundation
 class BodyCondition {
     var upperBody: Int {
         didSet {
-            upperBody > oldValue ?
-            print("상체근력이 \(upperBody-oldValue) 상승합니다.") :
-            print("상체근력이 \(oldValue-upperBody) 하락합니다.")
+            guard upperBody != oldValue else { return }
+            print("상체근력이 \(abs(upperBody-oldValue)) \(checkDirection(current: upperBody, old: oldValue))합니다.")
         }
     }
     var lowerBody: Int {
         didSet {
-            lowerBody > oldValue ?
-            print("하체근력이 \(lowerBody-oldValue) 상승합니다.") :
-            print("하체근력이 \(oldValue-lowerBody) 하락합니다.")
+            guard lowerBody != oldValue else { return }
+            print("하체근력이 \(abs(lowerBody-oldValue)) \(checkDirection(current: lowerBody, old: oldValue))합니다.")
         }
     }
     var endurance: Int {
         didSet {
-            endurance > oldValue ?
-            print("근지구력이 \(endurance-oldValue) 상승합니다.") :
-            print("근지구력이 \(oldValue-endurance) 하락합니다.")
+            guard endurance != oldValue else { return }
+            print("근지구력이 \(abs(endurance-oldValue)) \(checkDirection(current: endurance, old: oldValue))합니다.")
         }
     }
     var fatigue: Int {
         didSet {
-            fatigue > oldValue ?
-            print("피로도가 \(fatigue-oldValue) 상승합니다.") :
-            print("피로도가 \(oldValue-fatigue) 하락합니다.")
+            guard fatigue != oldValue else { return }
+            print("피로도가 \(abs(fatigue-oldValue)) \(checkDirection(current: fatigue, old: oldValue))합니다.")
         }
+    }
+   
+    func checkDirection(current: Int, old: Int) -> String {
+        return current - old > 0 ? "상승" : "하락"
     }
 
     func check() {
-        print("--------------")
         print("현재의 컨디션은 다음과 같습니다.")
         print("상체근력: \(upperBody)\n하체근력: \(lowerBody)\n근지구력: \(endurance)\n피로도: \(fatigue)")
         print("--------------")
@@ -51,5 +50,3 @@ class BodyCondition {
         self.fatigue = fatigue
     }
 }
-
-

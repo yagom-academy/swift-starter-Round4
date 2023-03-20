@@ -8,12 +8,8 @@
 
 import Foundation
 
-let maryCondition = BodyCondition(upperBody: 0, lowerBody: 0, endurance: 0, fatigue: 0)
+let maryBodyCondition = BodyCondition(upperBody: 0, lowerBody: 0, endurance: 0, fatigue: 0)
+let mary = Person(name: "mary", bodyCondition: maryBodyCondition)
+let hellRoutine = Routine(name: "hellRoutine", activities: [sitUp, activeRest, squat])
 
-sitUp.start()
-sitUp.action(maryCondition)
-maryCondition.check()
-
-squat.start()
-squat.action(maryCondition)
-maryCondition.check()
+mary.doWorkout(routine: hellRoutine)

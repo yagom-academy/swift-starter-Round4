@@ -10,10 +10,6 @@ import Foundation
 struct Activity {
     let name: String
     let action: (BodyCondition) -> Void
-    
-    func start() {
-        print("<<\(name) 을(를) 시작합니다>>")
-    }
 }
 
 let sitUp = Activity(name: "윗몸일으키기") {
@@ -34,5 +30,6 @@ let longRun = Activity(name: "오래달리기") {
 }
 
 let activeRest = Activity(name: "동적휴식") {
-    $0.fatigue -= Int.random(in: 5...10)
+    let delta = Int.random(in: 5...10)
+    $0.fatigue < delta ? ($0.fatigue = 0) : ($0.fatigue -= delta)
 }
