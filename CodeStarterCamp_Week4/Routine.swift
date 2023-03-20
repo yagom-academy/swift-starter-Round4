@@ -7,15 +7,13 @@
 
 import Foundation
 
-class Routine {
+struct Routine {
     var name: String
     var activities: Array<Activity>
+}
+
+class RoutineProgram {
     let numberCount: Array<String> = ["첫", "두", "세", "네", "다섯", "여섯", "일곱", "여덟", "아홉", "열"]
-    
-    init(name: String, activities: Array<Activity>) {
-        self.name = name
-        self.activities = activities
-    }
     
     func inputRepeatTimes() throws -> Int {
         print("루틴을 몇 번 반복할까요?")
@@ -28,11 +26,11 @@ class Routine {
         return repeatTimes
     }
     
-    func repeatRoutine(of body: BodyCondition, for repeatTimes: Int) throws {
+    func repeatRoutine(of body: BodyCondition, with routine: Routine, for repeatTimes: Int) throws {
         print("--------------")
         for round in (0..<repeatTimes) {
-            print("\(numberCount[round]) 번째 \(self.name)을(를) 시작합니다.")
-            for activity in activities {
+            print("\(numberCount[round]) 번째 \(routine.name)을(를) 시작합니다.")
+            for activity in routine.activities {
                 body.exercise(activity)
                 if body.fatigue > 100 {
                     throw YagomFitnessError.fatigueOverLimit
@@ -41,7 +39,7 @@ class Routine {
         }
     }
     
-    func startRoutine(of body: BodyCondition) {
+    func startRoutine(of body: BodyCondition, with routine: Routine) {
         var repeatTimes: Int = 0
         var isInputReceived: Bool = false
         
@@ -59,9 +57,9 @@ class Routine {
             }
         }
         do {
-            try repeatRoutine(of: body, for: repeatTimes)
+            try repeatRoutine(of: body, with: routine, for: repeatTimes)
         } catch YagomFitnessError.fatigueOverLimit {
-                print("피로도가 100 이상입니다. 루틴을 중단합니다.")
+            print("피로도가 100 이상입니다. 루틴을 중단합니다.")
         } catch {
             print("원인을 알 수 없는 오류: \(error)")
         }

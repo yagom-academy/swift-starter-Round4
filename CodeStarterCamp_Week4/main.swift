@@ -13,14 +13,7 @@ let myRoutine = Routine(name: "hellRoutine", activities: [ActivityStorage.sitUp.
                                                           ActivityStorage.plank.activity,
                                                           ActivityStorage.running.activity,
                                                           ActivityStorage.activeRest.activity,
-                                                          ActivityStorage.activeRest.activity,
-                                                          ActivityStorage.activeRest.activity,
-                                                          ActivityStorage.activeRest.activity,
-                                                          ActivityStorage.activeRest.activity,
-                                                          ActivityStorage.activeRest.activity,
-                                                          ActivityStorage.activeRest.activity,
-                                                          ActivityStorage.activeRest.activity,
-                                                          ActivityStorage.activeRest.activity,
                                                           ActivityStorage.activeRest.activity])
-myRoutine.startRoutine(of: myBody)
+var myProgram = RoutineProgram()
+myProgram.startRoutine(of: myBody, with: myRoutine)
 

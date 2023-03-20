@@ -7,7 +7,10 @@
 
 import Foundation
 
-typealias Activity = (name: String, action: (BodyCondition) -> Void)
+struct Activity {
+    let name: String
+    let action: (BodyCondition) -> Void
+}
 
 enum ActivityStorage {
     case sitUp, squat, running, activeRest, plank
@@ -15,24 +18,24 @@ enum ActivityStorage {
     var activity: Activity {
         switch self {
         case.sitUp:
-            return (name: "윗몸일으키기", action: {
+            return Activity(name: "윗몸일으키기", action: {
                 $0.upperStrength += Int.random(in: 10...20)
                 $0.fatigue += Int.random(in: 10...20)
             })
         case .squat:
-            return (name: "스쿼트", action: {
+            return Activity(name: "스쿼트", action: {
                 $0.lowerStrength += Int.random(in: 20...30)
                 $0.fatigue += Int.random(in: 10...20)
             })
         case .running:
-            return (name: "오래달리기", action: {
+            return Activity(name: "오래달리기", action: {
                 $0.endurance += Int.random(in: 20...30)
                 $0.upperStrength += Int.random(in: 5...10)
                 $0.lowerStrength += Int.random(in: 5...10)
                 $0.fatigue += Int.random(in: 20...30)
             })
         case .activeRest:
-            return (name: "동적휴식", action: {
+            return Activity(name: "동적휴식", action: {
                 let randomNumber = Int.random(in: 5...10)
                 guard randomNumber <= $0.fatigue else {
                     $0.fatigue = 0
@@ -41,7 +44,7 @@ enum ActivityStorage {
                 $0.fatigue -= randomNumber
             })
         case .plank:
-            return (name: "플랭크", action: {
+            return Activity(name: "플랭크", action: {
                 $0.upperStrength += Int.random(in: 10...20)
                 $0.fatigue += Int.random(in: 10...20)
             })
