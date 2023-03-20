@@ -55,5 +55,5 @@ let yourBodyCondition: BodyCondition = BodyCondition(upperBodyStrength: 0, lower
  Step 2: 야곰 피트니스, 지옥의 헬스 트레이닝
  */
 let routine = Routine(name: "평일 루틴", activities: [오래달리기, 동적휴식, 스쿼트, 동적휴식, 윗몸일으키기])
-routine.startRoutine(body: myBodyCodition)
+routine.start(body: myBodyCodition)
 

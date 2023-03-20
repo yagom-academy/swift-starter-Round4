@@ -54,9 +54,6 @@ class BodyCondition {
     
     func printMyBodyCondition() {
         print("--------------")
-        if fatigue >= 100 {
-            print("피로도가 100 이상입니다. 루틴을 중단합니다.")
-        }
         print("현재의 컨디션은 다음과 같습니다.\n상체근력:\(upperBodyStrength)\n하체근력: \(lowerBodyStrength)\n근지구력: \(muscularEndurance)\n피로도: \(fatigue)\n--------------")
     }
 }

@@ -38,7 +38,6 @@ struct Activity {
     func exercise(bodyCondition: BodyCondition) {
         printStartMessage()
         action(bodyCondition)
-        bodyCondition.printMyBodyCondition()
     }
     
     private func printStartMessage() {
