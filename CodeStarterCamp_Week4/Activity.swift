@@ -12,29 +12,38 @@ struct Activity {
     let action: (BodyCondition) -> Void
 }
 
-let sitUp: Activity = Activity(name: "윗몸일으키기") {
-    $0.upperBodyStrength += Int.random(in: 10...20)
-    $0.fatigue += Int.random(in: 10...20)
-}
-
-let squat: Activity = Activity(name: "스쿼트") {
-    $0.lowerBodyStrength += Int.random(in: 20...30)
-    $0.fatigue += Int.random(in: 10...20)
-}
-
-let longRun: Activity = Activity(name: "오래달리기") {
-    $0.muscularEndurance += Int.random(in: 20...30)
-    $0.upperBodyStrength += Int.random(in: 5...10)
-    $0.lowerBodyStrength += Int.random(in: 5...10)
-    $0.fatigue += Int.random(in: 20...30)
-}
-
-let dynamicRest: Activity = Activity(name: "동적휴식") {
-    $0.fatigue -= Int.random(in: 5...10)
-}
-
-let hangBoard: Activity = Activity(name: "행보드") {
-    $0.upperBodyStrength += Int.random(in: 10...20)
-    $0.muscularEndurance += Int.random(in: 10...20)
-    $0.fatigue += Int.random(in: 10...20)
+enum ActivitySample {
+    case sitUp, squat, longRun, dynamicRest, hangBoard
+    
+    var activity: Activity {
+        switch self {
+        case .sitUp:
+            return Activity(name: "윗몸일으키기") {
+                $0.upperBodyStrength += Int.random(in: 10...20)
+                $0.fatigue += Int.random(in: 10...20)
+            }
+        case .squat:
+            return Activity(name: "스쿼트") {
+                $0.lowerBodyStrength += Int.random(in: 20...30)
+                $0.fatigue += Int.random(in: 10...20)
+            }
+        case .longRun:
+            return Activity(name: "오래달리기") {
+                $0.muscularEndurance += Int.random(in: 20...30)
+                $0.upperBodyStrength += Int.random(in: 5...10)
+                $0.lowerBodyStrength += Int.random(in: 5...10)
+                $0.fatigue += Int.random(in: 20...30)
+            }
+        case .dynamicRest:
+            return Activity(name: "동적휴식") {
+                $0.fatigue -= Int.random(in: 5...10)
+            }
+        case .hangBoard:
+            return Activity(name: "행보드") {
+                $0.upperBodyStrength += Int.random(in: 10...20)
+                $0.muscularEndurance += Int.random(in: 10...20)
+                $0.fatigue += Int.random(in: 10...20)
+            }
+        }
+    }
 }

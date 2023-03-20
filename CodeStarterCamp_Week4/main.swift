@@ -14,7 +14,12 @@ var bmoCondition = BodyCondition(
     muscularEndurance: 30,
     fatigue: 15
 )
-let activities: [Activity] = [sitUp, dynamicRest, hangBoard, dynamicRest]
+let activities: [Activity] = [
+    ActivitySample.sitUp.activity,
+    ActivitySample.dynamicRest.activity,
+    ActivitySample.hangBoard.activity,
+    ActivitySample.dynamicRest.activity
+]
 let routine = Routine(name: "비모루틴", activities: activities)
 let manager = RoutineManager()
 
