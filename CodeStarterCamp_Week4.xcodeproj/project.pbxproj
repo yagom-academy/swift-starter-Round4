@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		34811DE8274B93FB00A1E994 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34811DE7274B93FB00A1E994 /* main.swift */; };
-		9CC4D28429BF7FF00012B86A /* step01.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC4D28329BF7FF00012B86A /* step01.swift */; };
+		9C2D39CA29C7347A0061877D /* activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D39C929C7347A0061877D /* activity.swift */; };
+		9C2D39CC29C734890061877D /* bodyCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D39CB29C734890061877D /* bodyCondition.swift */; };
+		9C2D39CE29C734A70061877D /* routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D39CD29C734A70061877D /* routine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,7 +28,9 @@
 /* Begin PBXFileReference section */
 		34811DE4274B93FB00A1E994 /* CodeStarterCamp_Week4 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CodeStarterCamp_Week4; sourceTree = BUILT_PRODUCTS_DIR; };
 		34811DE7274B93FB00A1E994 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		9CC4D28329BF7FF00012B86A /* step01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = step01.swift; sourceTree = "<group>"; };
+		9C2D39C929C7347A0061877D /* activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = activity.swift; sourceTree = "<group>"; };
+		9C2D39CB29C734890061877D /* bodyCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bodyCondition.swift; sourceTree = "<group>"; };
+		9C2D39CD29C734A70061877D /* routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = routine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,8 +63,10 @@
 		34811DE6274B93FB00A1E994 /* CodeStarterCamp_Week4 */ = {
 			isa = PBXGroup;
 			children = (
-				9CC4D28329BF7FF00012B86A /* step01.swift */,
 				34811DE7274B93FB00A1E994 /* main.swift */,
+				9C2D39C929C7347A0061877D /* activity.swift */,
+				9C2D39CB29C734890061877D /* bodyCondition.swift */,
+				9C2D39CD29C734A70061877D /* routine.swift */,
 			);
 			path = CodeStarterCamp_Week4;
 			sourceTree = "<group>";
@@ -122,7 +128,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CC4D28429BF7FF00012B86A /* step01.swift in Sources */,
+				9C2D39CC29C734890061877D /* bodyCondition.swift in Sources */,
+				9C2D39CA29C7347A0061877D /* activity.swift in Sources */,
+				9C2D39CE29C734A70061877D /* routine.swift in Sources */,
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
