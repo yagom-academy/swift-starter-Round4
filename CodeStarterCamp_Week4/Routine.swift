@@ -48,14 +48,15 @@ final class Routine {
     private func healthRoutine(bodyCondition: BodyCondition) throws {
         print("루틴을 몇 번 반복할까요?", terminator: " ")
         if let input = readLine()  { // 생성  강제! 없이 어떻게 만들지..
-            guard let routineIntInput = Int(input) else {throw ActivityError.inputError} // 인트로변경하고 변경되면 포문 안되면 에러
-            for routineCount in abs(0)..<abs(routineIntInput) {
+            guard let routineCountIntInput = Int(input) else {throw ActivityError.inputError} // 인트로변경하고 변경되면 포문 안되면 에러
+            if routineCountIntInput <= 0 { throw ActivityError.inputError } // UInt || <=0
+            for routineCount in 0..<routineCountIntInput {
                 print("\(routineCount + 1) 번째 hellRoutine을(를) 시작합니다.")
-                for activity in activities {
-                    Activity.exerciseStart(activity: activity, bodyCondition: bodyCondition)
-                    if bodyCondition.fatigue > 100 {
-                        fatigueError(condition: bodyCondition)
-                        return bodyCondition.nowBodyCondition(bodyCondition)
+                    for activity in activities {
+                        Activity.exerciseStart(activity: activity, bodyCondition: bodyCondition)
+                        if bodyCondition.fatigue > 100 {
+                            fatigueError(condition: bodyCondition)
+                            return bodyCondition.nowBodyCondition(bodyCondition)
                     }
                 }
             }
