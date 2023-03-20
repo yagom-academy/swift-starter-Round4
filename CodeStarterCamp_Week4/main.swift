@@ -42,9 +42,9 @@ var bmoCondition = BodyCondition(
     fatigue: 15
 )
 
-
 let activities: [Activity] = [sitUp, dynamicRest, hangBoard, dynamicRest]
 let routine = Routine(name: "비모루틴", activities: activities)
+let manager = RoutineManager()
 
 print("루틴을 몇 번 반복할까요?")
-routine.play(bodyCondition: bmoCondition)
+manager.start(routine, of: bmoCondition)
