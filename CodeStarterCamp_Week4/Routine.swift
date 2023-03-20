@@ -46,19 +46,19 @@ struct Routine {
             print("\(number) 번째 \(name)을(를) 시작합니다.")
             
             for activity in activities {
-                try exercise(activity, bodyConditon: bodyCondition)
+                try exercise(activity, bodyCondition: bodyCondition)
             }
         }
         
         bodyCondition.printCurrentBodyCondition()
     }
     
-    func exercise(_ activity: Activity, bodyConditon: BodyCondition) throws {
+    func exercise(_ activity: Activity, bodyCondition: BodyCondition) throws {
         print("<<\(activity.name)을(를) 시작합니다>>")
         
-        activity.action(bodyConditon)
+        activity.action(bodyCondition)
         
-        guard bodyConditon.fatigue < 100 else {
+        guard bodyCondition.fatigue < 100 else {
             throw RoutineError.exceedingFatigue
         }
         
