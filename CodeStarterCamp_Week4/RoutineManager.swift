@@ -8,7 +8,7 @@
 import Foundation
 
 struct RoutineManager {
-    let ordinalNumber: [String] = ["첫", "두", "세", "네", "다섯", "여섯", "일곱", "여덟", "아홉", "열"]
+    private let ordinalNumber: [String] = ["첫", "두", "세", "네", "다섯", "여섯", "일곱", "여덟", "아홉", "열"]
     
     func start(_ routine: Routine, of body: BodyCondition) {
         do {
@@ -31,7 +31,7 @@ struct RoutineManager {
         }
     }
     
-    func inputRound() throws -> Int {
+    private func inputRound() throws -> Int {
         guard let input = readLine(), let inputAsInt = Int(input), inputAsInt > 0 else {
             throw RoutineError.invalidInput
         }
@@ -41,7 +41,7 @@ struct RoutineManager {
         return inputAsInt
     }
     
-    func repeatRoutine(course: Routine, times: Int, of body: BodyCondition) throws {
+    private func repeatRoutine(course: Routine, times: Int, of body: BodyCondition) throws {
         for time in 1...times {
             print("\(ordinalNumber[time - 1]) 번째 \(course.name)을(를) 시작합니다.")
             
@@ -53,7 +53,7 @@ struct RoutineManager {
         body.printCurrentBodyCondition()
     }
     
-    func exercise(_ activity: Activity, of bodyCondition: BodyCondition) throws {
+    private func exercise(_ activity: Activity, of bodyCondition: BodyCondition) throws {
         print("<<\(activity.name)을(를) 시작합니다>>")
         
         activity.action(bodyCondition)

@@ -39,7 +39,7 @@ class BodyCondition {
         self.fatigue = fatigue
     }
     
-    func printChanges(in partName: String, before oldValue: Int, after newValue: Int) {
+    private func printChanges(in partName: String, before oldValue: Int, after newValue: Int) {
         if newValue > oldValue {
             print("\(partName)이(가) \(newValue - oldValue) 상승합니다.")
         } else if newValue < oldValue {
