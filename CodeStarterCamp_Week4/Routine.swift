@@ -10,7 +10,7 @@ import Foundation
 
 final class Routine {
     let name: String
-    var activities : [Activity]
+    let activities : [Activity]
     
     init(name: String, activities: [Activity]) {
         self.name = name
@@ -34,30 +34,32 @@ final class Routine {
     }
     
     ///리드라인
-    func mistakenInputError(activitys: [Activity], bodyCondition: BodyCondition) {
+    func readLineInputError(activities: [Activity], bodyCondition: BodyCondition) {
         do {
-            try routineCount(bodyCondition: bodyCondition)
+            try healthRoutine(bodyCondition: bodyCondition)
         } catch ActivityError.inputError {
             print("잘못된 입력 형식입니다. 다시 입력해주세요.")
-            mistakenInputError(activitys: activitys, bodyCondition: bodyCondition)  // 본인을 호출한이유 do에 함수 실행시키기
+            readLineInputError(activities: activities, bodyCondition: bodyCondition)  // 본인을 호출한이유 do에 함수 실행시키기
         } catch {
             print(error)
         }
     }
     
-    private func routineCount(bodyCondition: BodyCondition) throws {
+    private func healthRoutine(bodyCondition: BodyCondition) throws {
         print("루틴을 몇 번 반복할까요?", terminator: " ")
-        let input = readLine() // 생성  강제! 없이 어떻게 만들지..
-        guard let routineIntInput = Int(input!) else {throw ActivityError.inputError} // 인트로변경하고 변경되면 포문 안되면 에러
-        for routineCount in 0..<routineIntInput {
-            print("\(routineCount + 1) 번째 hellRoutine을(를) 시작합니다.")
-            for activity in activities {
-                Activity.exerciseStart(activity: activity, bodyCondition: bodyCondition)
-                if bodyCondition.fatigue > 100 {
-                    fatigueError(condition: bodyCondition)
-                    return bodyCondition.check(bodyCondition)
+        if let input = readLine()  { // 생성  강제! 없이 어떻게 만들지..
+            guard let routineIntInput = Int(input) else {throw ActivityError.inputError} // 인트로변경하고 변경되면 포문 안되면 에러
+            for routineCount in abs(0)..<abs(routineIntInput) {
+                print("\(routineCount + 1) 번째 hellRoutine을(를) 시작합니다.")
+                for activity in activities {
+                    Activity.exerciseStart(activity: activity, bodyCondition: bodyCondition)
+                    if bodyCondition.fatigue > 100 {
+                        fatigueError(condition: bodyCondition)
+                        return bodyCondition.nowBodyCondition(bodyCondition)
+                    }
                 }
             }
+            bodyCondition.nowBodyCondition(bodyCondition)
         }
     }
 }

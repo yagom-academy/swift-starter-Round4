@@ -34,7 +34,7 @@ let dynamicResting = Activity(name: "동적휴식", action: { bodyCondition in
 
 let tomRoutine = Routine(name: "tomRoutine", activities: [sitUp, squat])
 
-tomRoutine.mistakenInputError(activitys: [], bodyCondition: tomBodyCondition) // 리드라인 에러
+tomRoutine.readLineInputError(activities: [], bodyCondition: tomBodyCondition) // 리드라인 에러
 
 
 

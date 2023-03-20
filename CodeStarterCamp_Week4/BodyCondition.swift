@@ -34,7 +34,7 @@ final class BodyCondition {
         self.fatigue = fatigue
     }
     
-    func check(_ bodyCondition: BodyCondition) {
+    func nowBodyCondition(_ bodyCondition: BodyCondition) {
         print("현재의 컨디션은 다음과 같습니다.")
         print("상체근력: \(bodyCondition.upperBodyStrength)")
         print("하체근력: \(bodyCondition.lowerBodyStrength)")
