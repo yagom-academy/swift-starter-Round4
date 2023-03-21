@@ -80,7 +80,7 @@ let sitUp: Activity = Activity(name: "윗몸일으키기", action: { bodyConditi
 })
 
 let squat: Activity = Activity(name: "스쿼트", action: { bodyCondition in
-    print("<<윗몸일으키기을(를) 시작합니다>>")
+    print("<<\(squat.name)을(를) 시작합니다>>")
     bodyCondition.lowerBodyStrength += Int.random(in: 20...30)
     bodyCondition.fatigue += Int.random(in: 10...20)
 })
