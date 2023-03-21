@@ -10,6 +10,9 @@
 		34811DE8274B93FB00A1E994 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34811DE7274B93FB00A1E994 /* main.swift */; };
 		CB32777D29C0B60800AE3726 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB32777C29C0B60800AE3726 /* Activity.swift */; };
 		CB32777F29C0B63700AE3726 /* BodyCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB32777E29C0B63700AE3726 /* BodyCondition.swift */; };
+		CB32778129C4B2A700AE3726 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB32778029C4B2A700AE3726 /* Routine.swift */; };
+		CB32778329C4DBC100AE3726 /* RoutineError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB32778229C4DBC100AE3726 /* RoutineError.swift */; };
+		CB32778729C8C0D000AE3726 /* RoutineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB32778629C8C0D000AE3726 /* RoutineManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +32,9 @@
 		34811DE7274B93FB00A1E994 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		CB32777C29C0B60800AE3726 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		CB32777E29C0B63700AE3726 /* BodyCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyCondition.swift; sourceTree = "<group>"; };
+		CB32778029C4B2A700AE3726 /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
+		CB32778229C4DBC100AE3726 /* RoutineError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineError.swift; sourceTree = "<group>"; };
+		CB32778629C8C0D000AE3726 /* RoutineManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +70,9 @@
 				34811DE7274B93FB00A1E994 /* main.swift */,
 				CB32777C29C0B60800AE3726 /* Activity.swift */,
 				CB32777E29C0B63700AE3726 /* BodyCondition.swift */,
+				CB32778029C4B2A700AE3726 /* Routine.swift */,
+				CB32778229C4DBC100AE3726 /* RoutineError.swift */,
+				CB32778629C8C0D000AE3726 /* RoutineManager.swift */,
 			);
 			path = CodeStarterCamp_Week4;
 			sourceTree = "<group>";
@@ -127,7 +136,10 @@
 			files = (
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
 				CB32777F29C0B63700AE3726 /* BodyCondition.swift in Sources */,
+				CB32778729C8C0D000AE3726 /* RoutineManager.swift in Sources */,
+				CB32778129C4B2A700AE3726 /* Routine.swift in Sources */,
 				CB32777D29C0B60800AE3726 /* Activity.swift in Sources */,
+				CB32778329C4DBC100AE3726 /* RoutineError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
