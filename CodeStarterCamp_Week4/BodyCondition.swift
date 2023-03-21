@@ -30,10 +30,6 @@ class BodyCondition {
             } else if oldValue < self.fatigue{
                 print("피로도가 \(self.fatigue-oldValue) 상승합니다.")
             }
-            
-            if self.fatigue < 0 {
-                self.fatigue = 0
-            }
         }
     }
     
@@ -54,5 +50,9 @@ class BodyCondition {
             print("근지구력이 \(strength) 상승합니다.")
         default: break
         }
+    }
+    
+    func printMyBodyCondition() {
+        print("현재의 컨디션은 다음과 같습니다.\n상체근력:\(upperBodyStrength)\n하체근력: \(lowerBodyStrength)\n근지구력: \(muscularEndurance)\n피로도: \(fatigue)\n--------------")
     }
 }

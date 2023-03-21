@@ -35,18 +35,17 @@ struct Activity {
         }
     }
     
-    func exercise(bodyCondition: BodyCondition) {
+    func exercise(bodyCondition: BodyCondition, isRoutine: Bool) {
         printStartMessage()
         action(bodyCondition)
-        printMyBodyCondition(bodyCondition: bodyCondition)
+        if !isRoutine {
+            print("--------------")
+            bodyCondition.printMyBodyCondition()
+        }
     }
     
     private func printStartMessage() {
         print("<<\(name)을(를) 시작합니다>>")
-    }
-
-    private func printMyBodyCondition(bodyCondition: BodyCondition) {
-        print("--------------\n현재의 컨디션은 다음과 같습니다.\n상체근력:\(bodyCondition.upperBodyStrength)\n하체근력: \(bodyCondition.lowerBodyStrength)\n근지구력: \(bodyCondition.muscularEndurance)\n피로도: \(bodyCondition.fatigue)\n--------------")
     }
 }
 
