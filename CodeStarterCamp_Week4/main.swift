@@ -42,8 +42,8 @@ let yourBodyCondition: BodyCondition = BodyCondition(upperBodyStrength: 0, lower
 /**
  Step 1: 활동을 만들어 진행해보자!
  */
-//윗몸일으키기.exercise(bodyCondition: myBodyCodition)
-//스쿼트.exercise(bodyCondition: myBodyCodition)
+//윗몸일으키기.exercise(bodyCondition: myBodyCodition, isRoutine: false)
+//스쿼트.exercise(bodyCondition: myBodyCodition, isRoutine: false)
 //오래달리기.exercise(bodyCondition: myBodyCodition)
 //동적휴식.exercise(bodyCondition: myBodyCodition)
 //취침.exercise(bodyCondition: myBodyCodition)

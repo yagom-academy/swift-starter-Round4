@@ -35,9 +35,13 @@ struct Activity {
         }
     }
     
-    func exercise(bodyCondition: BodyCondition) {
+    func exercise(bodyCondition: BodyCondition, isRoutine: Bool) {
         printStartMessage()
         action(bodyCondition)
+        if !isRoutine {
+            print("--------------")
+            bodyCondition.printMyBodyCondition()
+        }
     }
     
     private func printStartMessage() {

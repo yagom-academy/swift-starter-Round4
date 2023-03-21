@@ -23,9 +23,10 @@ struct Routine {
             try doRoutine(bodyCondition: body)
         } catch RoutineError.exhaustion {
             print("피로도가 100 이상입니다. 루틴을 중단합니다.")
-            printMyBodyCondition(bodyCondition: body)
+            body.printMyBodyCondition()
         } catch RoutineError.invalidInput {
             print("잘못된 입력 형식입니다. 다시 입력해주세요.")
+            start(body: body)
         } catch {
             print("알수없는 문제가 발생하였습니다.")
         }
@@ -46,20 +47,16 @@ struct Routine {
                 if bodyCondition.fatigue >= fatigueMaginotLine {
                     throw RoutineError.exhaustion
                 }  else {
-                    activity.exercise(bodyCondition: bodyCondition)
+                    activity.exercise(bodyCondition: bodyCondition, isRoutine: true)
                 }
                 print("--------------")
             }
         }
         
-        printMyBodyCondition(bodyCondition: bodyCondition)
-    }
-    
-    private func printMyBodyCondition(bodyCondition: BodyCondition) {
-        print("현재의 컨디션은 다음과 같습니다.\n상체근력:\(bodyCondition.upperBodyStrength)\n하체근력: \(bodyCondition.lowerBodyStrength)\n근지구력: \(bodyCondition.muscularEndurance)\n피로도: \(bodyCondition.fatigue)\n--------------")
+        bodyCondition.printMyBodyCondition()
     }
     
     private func getKoreanNumber(index: Int) -> String {
-        return koreanNumber[index] ?? ""
+        return koreanNumber[index] ?? String(index)
     }
 }
