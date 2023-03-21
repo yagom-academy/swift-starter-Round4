@@ -9,13 +9,19 @@ import Foundation
 
 final class BodyCondition {
     var upperBodyStrength: Int {
-        willSet { print("상체근력이 \(abs(upperBodyStrength - newValue)) 상승합니다.") }
+        willSet {
+            print("상체근력이 \(abs(upperBodyStrength - newValue)) 상승합니다.")
+        }
     }
     var lowerBodyStrength: Int {
-        willSet { print("하체근력이 \(abs(lowerBodyStrength - newValue)) 상승합니다.") }
+        willSet {
+            print("하체근력이 \(abs(lowerBodyStrength - newValue)) 상승합니다.")
+        }
     }
     var muscularEndurance: Int {
-        willSet { print("근지구력이 \(abs(muscularEndurance - newValue)) 상승합니다.") }
+        willSet {
+            print("근지구력이 \(abs(muscularEndurance - newValue)) 상승합니다.")
+        }
     }
     var fatigue: Int {
         willSet {
@@ -34,11 +40,11 @@ final class BodyCondition {
         self.fatigue = fatigue
     }
     
-    func nowBodyCondition(_ bodyCondition: BodyCondition) {
+    func currentCondition() {
         print("현재의 컨디션은 다음과 같습니다.")
-        print("상체근력: \(bodyCondition.upperBodyStrength)")
-        print("하체근력: \(bodyCondition.lowerBodyStrength)")
-        print("근지구력: \(bodyCondition.muscularEndurance)")
-        print("피로도: \(bodyCondition.fatigue)")
+        print("상체근력: \(upperBodyStrength)")
+        print("하체근력: \(lowerBodyStrength)")
+        print("근지구력: \(muscularEndurance)")
+        print("피로도: \(fatigue)")
     }
 }

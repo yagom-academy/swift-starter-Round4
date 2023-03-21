@@ -16,7 +16,7 @@ struct Activity {
         self.action = action
     }
     
-    static func exerciseStart(activity: Activity, bodyCondition: BodyCondition) {
+    static func start(activity: Activity, bodyCondition: BodyCondition) {
         print("<<\(activity.name)을(를) 시작합니다.>>")
         (activity.action(bodyCondition))
     }
