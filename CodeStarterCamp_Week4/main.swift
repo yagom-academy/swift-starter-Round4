@@ -8,7 +8,8 @@
 
 import Foundation
 
-let tomBodyCondition = BodyCondition(upperBodyStrength: 40, lowerBodyStrength: 40, muscularEndurance: 40, fatigue: 0)
+
+let tomBodyCondition = BodyCondition(upperBodyStrength: 40, lowerBodyStrength: 40, muscularEndurance: 40, fatigue: 60)
 
 let sitUp = Activity(name: "윗몸일으키기", action: { bodyCondition in
     bodyCondition.upperBodyStrength += Int.random(in: 10...20)
@@ -31,15 +32,5 @@ let dynamicResting = Activity(name: "동적휴식", action: { bodyCondition in
     bodyCondition.fatigue -= Int.random(in: 5...10)
 })
 
-
-Activity.exerciseStart(activity: dynamicResting, bodyCondition: tomBodyCondition)
-Activity.exerciseStart(activity: squat, bodyCondition: tomBodyCondition)
-Activity.exerciseStart(activity: sitUp, bodyCondition: tomBodyCondition)
-tomBodyCondition.check(tomBodyCondition)
-
-
-//print("입력해주세요 :")
-//let input: String = readLine()!
-//print("입력값은 \(input)입니다")
-
-
+let tomRoutine = Routine(name: "tomRoutine", activities: [sitUp, squat])
+tomRoutine.start(bodyCondition: tomBodyCondition)
