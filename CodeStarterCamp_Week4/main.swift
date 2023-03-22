@@ -41,7 +41,7 @@ class BodyCondition {
         self.fatigue = fatigue
     }
     
-    func conditionCheck() {
+    func checkBodyCondition() {
         print("""
             현재의 컨디션은 다음과 같습니다.
             상체근력: \(upperBodyStrength)
@@ -88,10 +88,10 @@ let dynamicBreak: Activity = Activity(name: "동적휴식", action: { bodyCondit
     print("----------")
 })
 
-let myBody = BodyCondition(upperBodyStrength: 10, lowerBodyStrength: 10, muscularEndurance: 10, fatigue: 0)
+let myBodyCondition = BodyCondition(upperBodyStrength: 10, lowerBodyStrength: 10, muscularEndurance: 10, fatigue: 0)
 
-sitUp.action(myBody)
-squat.action(myBody)
-longRun.action(myBody)
-dynamicBreak.action(myBody)
-myBody.conditionCheck()
+sitUp.action(myBodyCondition)
+squat.action(myBodyCondition)
+longRun.action(myBodyCondition)
+dynamicBreak.action(myBodyCondition)
+myBodyCondition.checkBodyCondition()
