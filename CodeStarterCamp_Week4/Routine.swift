@@ -14,7 +14,7 @@ struct Routine {
     
     func writeNumberOfRoutine() throws -> Int {
         
-        guard let timesOfRoutine = readLine(), let routineTimes = Int(timesOfRoutine),routineTimes >= 0 else {
+        guard let timesOfRoutine = readLine(), let routineTimes = Int(timesOfRoutine),routineTimes > 0, routineTimes != 0 else {
             throw RoutineInputError.unexpectedInputValue
         }
         
