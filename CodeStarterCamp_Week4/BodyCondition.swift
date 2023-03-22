@@ -25,17 +25,9 @@ class BodyCondition {
     }
     var degreeOfFatigue: Int {
         didSet {
-            guard degreeOfFatigue - oldValue >= 0 else {
-                print("""
-                      피로도가 \(oldValue - degreeOfFatigue) 하락합니다.
-                      ------------------------
-                      """)
-                return
-            }
-            print("""
-                  피로도가 \(degreeOfFatigue - oldValue) 상승합니다.
-                  ------------------------
-                  """)
+            degreeOfFatigue > oldValue ?
+            print("피로도가 \(degreeOfFatigue - oldValue) 상승합니다.") :
+            print("피로도가 \(oldValue - degreeOfFatigue) 하락합니다.")
         }
     }
     
@@ -45,7 +37,7 @@ class BodyCondition {
         self.muscularEndurance = muscular
         self.degreeOfFatigue = fatigue
     }
-
+    
     func checkBodyCondition() {
         print("""
         현재의 컨디션은 다음과 같습니다.
