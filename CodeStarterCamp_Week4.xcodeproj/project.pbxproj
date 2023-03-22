@@ -10,6 +10,8 @@
 		34811DE8274B93FB00A1E994 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34811DE7274B93FB00A1E994 /* main.swift */; };
 		DCDB8D7329C1F425005FF846 /* BodyCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDB8D7229C1F425005FF846 /* BodyCondition.swift */; };
 		DCDB8D7529C1F55A005FF846 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDB8D7429C1F55A005FF846 /* Activity.swift */; };
+		DCDB8D8A29C7EC8E005FF846 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDB8D8929C7EC8E005FF846 /* Routine.swift */; };
+		DCDB8D8C29C824DC005FF846 /* RoutineInputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDB8D8B29C824DC005FF846 /* RoutineInputError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +31,8 @@
 		34811DE7274B93FB00A1E994 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		DCDB8D7229C1F425005FF846 /* BodyCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyCondition.swift; sourceTree = "<group>"; };
 		DCDB8D7429C1F55A005FF846 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		DCDB8D8929C7EC8E005FF846 /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
+		DCDB8D8B29C824DC005FF846 /* RoutineInputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineInputError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,8 @@
 				34811DE7274B93FB00A1E994 /* main.swift */,
 				DCDB8D7229C1F425005FF846 /* BodyCondition.swift */,
 				DCDB8D7429C1F55A005FF846 /* Activity.swift */,
+				DCDB8D8929C7EC8E005FF846 /* Routine.swift */,
+				DCDB8D8B29C824DC005FF846 /* RoutineInputError.swift */,
 			);
 			path = CodeStarterCamp_Week4;
 			sourceTree = "<group>";
@@ -127,6 +133,8 @@
 			files = (
 				DCDB8D7529C1F55A005FF846 /* Activity.swift in Sources */,
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
+				DCDB8D8A29C7EC8E005FF846 /* Routine.swift in Sources */,
+				DCDB8D8C29C824DC005FF846 /* RoutineInputError.swift in Sources */,
 				DCDB8D7329C1F425005FF846 /* BodyCondition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

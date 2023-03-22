@@ -43,7 +43,6 @@ class BodyCondition {
     
     func checkCondition() {
         print("""
-        --------------
         현재의 컨디션은 다음과 같습니다.
         상체근력: \(upperStrength)
         하체근력: \(lowerStrength)
@@ -51,5 +50,11 @@ class BodyCondition {
         피로도: \(fatigability)
         --------------
         """)
+    }
+    
+    func checkFatigability() throws {
+        if self.fatigability >= 100 {
+            throw RoutineInputError.overflowFatigue
+        }
     }
 }
