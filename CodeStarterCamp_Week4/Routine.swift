@@ -14,11 +14,7 @@ struct Routine {
     
     func writeNumberOfRoutine() throws -> Int {
         
-        guard let timesOfRoutine = readLine(), let routineTimes = Int(timesOfRoutine) else {
-            throw RoutineInputError.unexpectedInputValue
-        }
-        
-        guard routineTimes >= 0 else {
+        guard let timesOfRoutine = readLine(), let routineTimes = Int(timesOfRoutine),routineTimes >= 0 else {
             throw RoutineInputError.unexpectedInputValue
         }
         
@@ -48,6 +44,7 @@ struct Routine {
             bodyCondition.checkCondition()
         } catch RoutineInputError.unexpectedInputValue {
             print("잘못된 입력 형식입니다. 다시 입력해주세요.")
+            doRoutineActivities(by: activities, with: bodyCondition)
         } catch RoutineInputError.otherException {
             print("예기치 않은 오류")
         } catch RoutineInputError.overflowFatigue {
