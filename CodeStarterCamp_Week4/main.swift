@@ -8,5 +8,10 @@
 
 import Foundation
 
-print("Hello, World!")
 
+sitUp.action(Dawn)
+Dawn.checkBodyCondition()
+squat.action(Dawn)
+Dawn.checkBodyCondition()
+dynamicBreak.action(Dawn)
+Dawn.checkBodyCondition()
