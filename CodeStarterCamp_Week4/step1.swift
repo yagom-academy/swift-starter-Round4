@@ -87,7 +87,6 @@ class BodyCondition {
 struct Activity {
     let name: String
     let action: (BodyCondition) -> Void
-    static func checkCondition(_ condition: BodyCondition) { condition.printCondition() }
 }
 
 let 윗몸일으키기: Activity = .init(name: "윗몸일으키기") { condition in
