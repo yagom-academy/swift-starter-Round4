@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		34811DE8274B93FB00A1E994 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34811DE7274B93FB00A1E994 /* main.swift */; };
+		5DC511F829C5D8F3004BC916 /* BodyCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC511F729C5D8F3004BC916 /* BodyCondition.swift */; };
+		5DC511FA29C5D94C004BC916 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC511F929C5D94C004BC916 /* Activity.swift */; };
+		5DC511FC29C5DA3B004BC916 /* ErrorCatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC511FB29C5DA3B004BC916 /* ErrorCatch.swift */; };
+		5DC511FE29CB2197004BC916 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC511FD29CB2197004BC916 /* Routine.swift */; };
+		5DC5120029CB5C03004BC916 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC511FF29CB5C03004BC916 /* Person.swift */; };
+		5DC5120229CB61E0004BC916 /* PersonalTrainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC5120129CB61E0004BC916 /* PersonalTrainer.swift */; };
+		5DC5120429CB656A004BC916 /* ConsoleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC5120329CB656A004BC916 /* ConsoleManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +32,13 @@
 /* Begin PBXFileReference section */
 		34811DE4274B93FB00A1E994 /* CodeStarterCamp_Week4 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CodeStarterCamp_Week4; sourceTree = BUILT_PRODUCTS_DIR; };
 		34811DE7274B93FB00A1E994 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		5DC511F729C5D8F3004BC916 /* BodyCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyCondition.swift; sourceTree = "<group>"; };
+		5DC511F929C5D94C004BC916 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		5DC511FB29C5DA3B004BC916 /* ErrorCatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCatch.swift; sourceTree = "<group>"; };
+		5DC511FD29CB2197004BC916 /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
+		5DC511FF29CB5C03004BC916 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		5DC5120129CB61E0004BC916 /* PersonalTrainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalTrainer.swift; sourceTree = "<group>"; };
+		5DC5120329CB656A004BC916 /* ConsoleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +72,13 @@
 			isa = PBXGroup;
 			children = (
 				34811DE7274B93FB00A1E994 /* main.swift */,
+				5DC511FD29CB2197004BC916 /* Routine.swift */,
+				5DC5120329CB656A004BC916 /* ConsoleManager.swift */,
+				5DC5120129CB61E0004BC916 /* PersonalTrainer.swift */,
+				5DC511FB29C5DA3B004BC916 /* ErrorCatch.swift */,
+				5DC511F729C5D8F3004BC916 /* BodyCondition.swift */,
+				5DC511FF29CB5C03004BC916 /* Person.swift */,
+				5DC511F929C5D94C004BC916 /* Activity.swift */,
 			);
 			path = CodeStarterCamp_Week4;
 			sourceTree = "<group>";
@@ -119,7 +140,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DC5120029CB5C03004BC916 /* Person.swift in Sources */,
+				5DC511FE29CB2197004BC916 /* Routine.swift in Sources */,
+				5DC511FC29C5DA3B004BC916 /* ErrorCatch.swift in Sources */,
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
+				5DC5120429CB656A004BC916 /* ConsoleManager.swift in Sources */,
+				5DC5120229CB61E0004BC916 /* PersonalTrainer.swift in Sources */,
+				5DC511FA29C5D94C004BC916 /* Activity.swift in Sources */,
+				5DC511F829C5D8F3004BC916 /* BodyCondition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
