@@ -10,45 +10,25 @@ import Foundation
 class BodyCondition {
     var upperBodyStrength: Int = 0 {
         didSet {
-            let diff = upperBodyStrength - oldValue
-            if diff > 0 {
-                print("상체 근력이 \(diff)만큼 증가했습니다.")
-            } else {
-                print("상체 근력이 \(diff)만큼 감소했습니다.")
-            }
+            printDiff("상체근력", diff: upperBodyStrength - oldValue)
         }
     }
 
     var lowerBodyStrength: Int = 0 {
         didSet {
-            let diff = lowerBodyStrength - oldValue
-            if diff > 0 {
-                print("하체 근력이 \(diff)만큼 증가했습니다.")
-            } else {
-                print("하체 근력이 \(diff)만큼 감소했습니다.")
-            }
+            printDiff("하체근력", diff: lowerBodyStrength - oldValue)
         }
     }
 
     var coreStrength: Int = 0 {
         didSet {
-            let diff = coreStrength - oldValue
-            if diff > 0 {
-                print("근지구력이 \(diff)만큼 증가했습니다.")
-            } else {
-                print("근지구력이 \(diff)만큼 감소했습니다.")
-            }
+            printDiff("근지구력", diff: coreStrength - oldValue)
         }
     }
 
     var fatigue: Int = 0 {
         didSet {
-            let diff = fatigue - oldValue
-            if diff > 0 {
-                print("피로도가 \(diff)만큼 증가했습니다.")
-            } else {
-                print("피로도가 \(diff)만큼 감소했습니다.")
-            }
+            printDiff("피로도", diff: fatigue - oldValue)
         }
     }
 
@@ -81,6 +61,14 @@ class BodyCondition {
         피로도: \(fatigue)
         --------------
         """)
+    }
+    
+    private func printDiff(_ name: String, diff: Int) {
+        if diff > 0 {
+            print("\(name) 이(가) \(diff) 만큼 증가했습니다.")
+        } else {
+            print("\(name) 이(가) \(diff) 만큼 감소했습니다.")
+        }
     }
 }
 
