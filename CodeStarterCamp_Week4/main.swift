@@ -77,7 +77,7 @@ let 오래달리기: Activity = Activity(name: "오래달리기") {
 
 let 동적휴식: Activity = Activity(name: "동적휴식") {
     print("<<동적휴식을(를) 시작합니다>>")
-    $0.fatigue -= Int.random(in: 10...20)
+    $0.fatigue -= Int.random(in: 5...10)
     $0.checkBody()
 }
 
@@ -95,4 +95,4 @@ let 온라인게임: Activity = Activity(name: "온라인게임") {
 }
 
 var HotTtu: BodyCondition = BodyCondition()
-윗몸일으키기.action(HotTtu)
+동적휴식.action(HotTtu)
