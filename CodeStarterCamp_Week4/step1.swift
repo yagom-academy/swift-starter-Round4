@@ -78,21 +78,21 @@ struct Activity {
 }
 
 let 윗몸일으키기: Activity = .init(name: "윗몸일으키기") { condition in
-    print("<<윗몸일으키기을(를)>> 시작합니다.")
+    print("<<윗몸일으키기를 시작합니다>>")
     condition.increaseUpperBodyStrength(by: Int.random(in: 10 ... 20))
     condition.increaseFatigue(by: Int.random(in: 10 ... 20))
     condition.printCondition()
 }
 
 let 스쿼트: Activity = .init(name: "스쿼트") { condition in
-    print("<<스쿼트를>> 시작합니다.")
+    print("<<스쿼트를 시작합니다>>")
     condition.increaseLowerBodyStrength(by: Int.random(in: 20 ... 30))
     condition.increaseFatigue(by: Int.random(in: 10 ... 20))
     condition.printCondition()
 }
 
 let 오래달리기: Activity = .init(name: "오래달리기") { condition in
-    print("<<오래달리기를>> 시작합니다.")
+    print("<<오래달리기를 시작합니다>>")
     condition.increaseCoreStrength(by: Int.random(in: 20 ... 30))
     condition.increaseUpperBodyStrength(by: Int.random(in: 5 ... 10))
     condition.increaseLowerBodyStrength(by: Int.random(in: 5 ... 10))
@@ -100,7 +100,7 @@ let 오래달리기: Activity = .init(name: "오래달리기") { condition in
 }
 
 let 동적휴식: Activity = .init(name: "동적휴식") { condition in
-    print("<<동적휴식을>> 시작합니다.")
+    print("<<동적휴식을 시작합니다>>")
     condition.increaseFatigue(by: Int.random(in: -10 ... -5))
     condition.printCondition()
 }
