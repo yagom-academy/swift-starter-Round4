@@ -53,9 +53,9 @@ struct personalTrainer {
                 print(routineCountMessage)
             }
             
-            for i in 0...routine.activities.count-1 {
+            for activity in routine.activities {
                 if person.bodyCondition.fatigue <= 100 {
-                    routine.activities[i].action(person)
+                    activity.action(person)
                 } else {
                     throw RoutineError.fatigueOverError
                 }
@@ -72,6 +72,4 @@ struct personalTrainer {
             print("알 수 없는 오류가 발생했습니다. 루틴을 중단합니다.")
         }
     }
-    
-    
 }
