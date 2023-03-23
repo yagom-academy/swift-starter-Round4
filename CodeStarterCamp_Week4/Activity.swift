@@ -8,19 +8,19 @@ struct Activity {
     }
 }
 
-let performSitUps = Activity(name: "윗몸일으키기", action: { (bodyCondition: BodyCondition) -> () in
+let sitUp = Activity(name: "윗몸일으키기", action: { (bodyCondition: BodyCondition) -> () in
     bodyCondition.changeUpperBodyStrength(by: Int.random(in: 10...20))
     bodyCondition.changeFatigueLevel(by: Int.random(in: 10...20))
     bodyCondition.showBodyCondition()
 })
 
-let performSquats: Activity = Activity(name: "스쿼트", action: { (bodyCondition: BodyCondition) -> () in
+let squats: Activity = Activity(name: "스쿼트", action: { (bodyCondition: BodyCondition) -> () in
     bodyCondition.changeLowerBodyStrength(by: Int.random(in: 20...30))
     bodyCondition.changeFatigueLevel(by: Int.random(in: 10...20))
     bodyCondition.showBodyCondition()
 })
 
-let runLogDistance: Activity = Activity(name: "오래달리기", action: { (bodyCondition: BodyCondition) -> () in
+let longDistanceRunning: Activity = Activity(name: "오래달리기", action: { (bodyCondition: BodyCondition) -> () in
     bodyCondition.changeMuscularEndurance(by: Int.random(in: 20...30))
     bodyCondition.changeUpperBodyStrength(by: Int.random(in: 5...10))
     bodyCondition.changeLowerBodyStrength(by: Int.random(in: 5...10))

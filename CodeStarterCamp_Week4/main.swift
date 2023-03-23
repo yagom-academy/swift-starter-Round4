@@ -7,4 +7,4 @@ import Foundation
 
 let person: BodyCondition = BodyCondition(upperBodyStrengthValue: 0, lowerBodyStrengthValue: 0, muscularEnduranceValue: 0, fatigueLevelValue: 0)
 
-performSitUps.start(bodyCondition: person)
+sitUp.start(bodyCondition: person)
