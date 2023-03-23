@@ -8,10 +8,13 @@
 
 import Foundation
 
+// Step1
+//sitUp.action(dawn)
+//dawn.checkBodyCondition()
+//squat.action(dawn)
+//dawn.checkBodyCondition()
+//dynamicBreak.action(dawn)
+//dawn.checkBodyCondition()
 
-sitUp.action(Dawn)
-Dawn.checkBodyCondition()
-squat.action(Dawn)
-Dawn.checkBodyCondition()
-dynamicBreak.action(Dawn)
-Dawn.checkBodyCondition()
+// Step2
+routine.startRoutine(body: dawn)
