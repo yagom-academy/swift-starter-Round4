@@ -14,10 +14,6 @@ struct Person {
                                                       muscularEndurance: 10,
                                                       fatigue: 10)
     
-    init(name: String) {
-        self.name = name
-    }
-    
     func changeStats(by action: String) {
         print("<<\(action)을(를) 시작합니다.>>")
         

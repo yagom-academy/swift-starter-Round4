@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct personalTrainer{
+struct personalTrainer {
     var routine: Routine
     
     func question() -> String? {
@@ -29,8 +29,8 @@ struct personalTrainer{
         repeat {
             letter = question()
             do {
-                try checkResult = textManager.checkInput(to: letter).result
-                try parsingNumber = textManager.checkInput(to: letter).outputNumber
+                try checkResult = consoleManager.checkInput(to: letter).result
+                try parsingNumber = consoleManager.checkInput(to: letter).outputNumber
             } catch RoutineError.inputError {
                 print("잘못된 입력 형식입니다. 다시 입력해주세요")
             } catch RoutineError.inputOverError {
@@ -47,9 +47,11 @@ struct personalTrainer{
         var routineCountMessage: String
         
         for i in 1...loopCount {
-            routineCountMessage = textManager.printRoutineMessage(routineCount: i,
+            routineCountMessage = consoleManager.printRoutineMessage(routineCount: i,
                                                                   name: routine.name)
-            print(routineCountMessage)
+            if person.bodyCondition.fatigue <= 100 {
+                print(routineCountMessage)
+            }
             
             for i in 0...routine.activities.count-1 {
                 if person.bodyCondition.fatigue <= 100 {

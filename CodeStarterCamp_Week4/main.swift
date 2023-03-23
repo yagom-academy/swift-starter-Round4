@@ -11,7 +11,7 @@ import Foundation
 var redmango = Person(name: "redmango")
 var som = personalTrainer(routine: Routine(name: "hellRoutine",
                                            activities: [sitUp, stretching, squats, longRun]))
-var textManager = TextManager()
+var consoleManager = ConsoleManager()
 
 som.startRoutine(to: redmango)
 redmango.bodyCondition.checkCondition()

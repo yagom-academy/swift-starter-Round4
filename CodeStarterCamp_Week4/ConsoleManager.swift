@@ -7,8 +7,7 @@
 
 import Foundation
 
-struct TextManager {
-    
+struct ConsoleManager {
     func checkInput(to letter: String?) throws -> (result: Bool, outputNumber: Int) {
         var result: Bool = true
         

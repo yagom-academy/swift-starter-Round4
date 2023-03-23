@@ -12,8 +12,6 @@ struct Activity {
     let action: (Person) -> Void
 }
 
-// 기능 분리
-
 let sitUp: Activity = Activity(name: "윗몸일으키기", action: { person in
     person.changeStats(by: sitUp.name)
 })
