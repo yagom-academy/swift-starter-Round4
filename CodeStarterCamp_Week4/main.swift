@@ -30,6 +30,9 @@ class BodyCondition {
                 print("피로도가 \(fatigue - oldValue) 상승합니다.")
             } else {
                 print("피로도가 \(oldValue - fatigue) 하락합니다.")
+                if fatigue <= 0 {
+                    fatigue = 0
+                }
             }
         }
     }
