@@ -28,7 +28,11 @@ class BodyCondition {
 
     var fatigue: Int = 0 {
         didSet {
-            printDiff("피로도", diff: fatigue - oldValue)
+            if fatigue = 0 {
+                print("피로도가 0이 되었습니다.")
+            } else {
+                printDiff("피로도", diff: fatigue - oldValue)
+            }
         }
     }
 
@@ -62,7 +66,7 @@ class BodyCondition {
         --------------
         """)
     }
-    
+
     private func printDiff(_ name: String, diff: Int) {
         if diff > 0 {
             print("\(name) 이(가) \(diff) 만큼 증가했습니다.")
