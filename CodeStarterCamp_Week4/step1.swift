@@ -20,9 +20,9 @@ class BodyCondition {
         }
     }
 
-    var coreStrength: Int = 0 {
+    var muscularEndurance: Int = 0 {
         didSet {
-            printDiff("근지구력", diff: coreStrength - oldValue)
+            printDiff("근지구력", diff: muscularEndurance - oldValue)
         }
     }
 
@@ -44,8 +44,8 @@ class BodyCondition {
         lowerBodyStrength += value
     }
 
-    func increaseCoreStrength(by value: Int) {
-        coreStrength += value
+    func increaseMuscularEndurance(by value: Int) {
+        muscularEndurance += value
     }
 
     func increaseFatigue(by value: Int) {
@@ -61,7 +61,7 @@ class BodyCondition {
         현재의 컨디션은 다음과 같습니다.
         상체근력: \(upperBodyStrength)
         하체근력: \(lowerBodyStrength)
-        근지구력: \(coreStrength)
+        근지구력: \(muscularEndurance)
         피로도: \(fatigue)
         --------------
         """)
@@ -79,32 +79,31 @@ class BodyCondition {
 struct Activity {
     let name: String
     let action: (BodyCondition) -> Void
+
+    // action을 실행하고, 실행 결과를 출력합니다.
+    func perform(on condition: BodyCondition) {
+        print("<<\(name)를(을) 시작합니다>>")
+        action(condition)
+        condition.printCondition()
+    }
 }
 
-let 윗몸일으키기: Activity = .init(name: "윗몸일으키기") { condition in
-    print("<<윗몸일으키기를 시작합니다>>")
+let sitUp: Activity = .init(name: "윗몸일으키기") { condition in
     condition.increaseUpperBodyStrength(by: Int.random(in: 10 ... 20))
     condition.increaseFatigue(by: Int.random(in: 10 ... 20))
-    condition.printCondition()
 }
 
-let 스쿼트: Activity = .init(name: "스쿼트") { condition in
-    print("<<스쿼트를 시작합니다>>")
+let squat: Activity = .init(name: "스쿼트") { condition in
     condition.increaseLowerBodyStrength(by: Int.random(in: 20 ... 30))
     condition.increaseFatigue(by: Int.random(in: 10 ... 20))
-    condition.printCondition()
 }
 
-let 오래달리기: Activity = .init(name: "오래달리기") { condition in
-    print("<<오래달리기를 시작합니다>>")
-    condition.increaseCoreStrength(by: Int.random(in: 20 ... 30))
+let longRun: Activity = .init(name: "오래달리기") { condition in
+    condition.increaseMuscularEndurance(by: Int.random(in: 20 ... 30))
     condition.increaseUpperBodyStrength(by: Int.random(in: 5 ... 10))
     condition.increaseLowerBodyStrength(by: Int.random(in: 5 ... 10))
-    condition.printCondition()
 }
 
-let 동적휴식: Activity = .init(name: "동적휴식") { condition in
-    print("<<동적휴식을 시작합니다>>")
+let dynamicBreak: Activity = .init(name: "동적휴식") { condition in
     condition.increaseFatigue(by: Int.random(in: -10 ... -5))
-    condition.printCondition()
 }
