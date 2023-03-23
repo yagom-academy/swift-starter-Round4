@@ -28,7 +28,7 @@ class BodyCondition {
 
     var fatigue: Int = 0 {
         didSet {
-            if fatigue = 0 {
+            if fatigue == 0 {
                 print("피로도가 0이 되었습니다.")
             } else {
                 printDiff("피로도", diff: fatigue - oldValue)
