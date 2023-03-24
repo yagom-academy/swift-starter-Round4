@@ -13,6 +13,7 @@
 		D852C49629CC900400C201D8 /* RoutineError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D852C49529CC900400C201D8 /* RoutineError.swift */; };
 		D852C49829CC905D00C201D8 /* BodyCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D852C49729CC905D00C201D8 /* BodyCondition.swift */; };
 		D852C49A29CC907C00C201D8 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D852C49929CC907C00C201D8 /* Activity.swift */; };
+		D880DC8729CE231E00BC7A73 /* FitnessProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = D880DC8629CE231E00BC7A73 /* FitnessProgram.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,7 @@
 		D852C49529CC900400C201D8 /* RoutineError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineError.swift; sourceTree = "<group>"; };
 		D852C49729CC905D00C201D8 /* BodyCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyCondition.swift; sourceTree = "<group>"; };
 		D852C49929CC907C00C201D8 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		D880DC8629CE231E00BC7A73 /* FitnessProgram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessProgram.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				D852C49529CC900400C201D8 /* RoutineError.swift */,
 				D852C49729CC905D00C201D8 /* BodyCondition.swift */,
 				D852C49929CC907C00C201D8 /* Activity.swift */,
+				D880DC8629CE231E00BC7A73 /* FitnessProgram.swift */,
 			);
 			path = CodeStarterCamp_Week4;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 				D852C49829CC905D00C201D8 /* BodyCondition.swift in Sources */,
 				D852C49A29CC907C00C201D8 /* Activity.swift in Sources */,
 				D852C47D29C912B700C201D8 /* step1.swift in Sources */,
+				D880DC8729CE231E00BC7A73 /* FitnessProgram.swift in Sources */,
 				D852C49429CC8FD200C201D8 /* Routine.swift in Sources */,
 				D852C49629CC900400C201D8 /* RoutineError.swift in Sources */,
 			);

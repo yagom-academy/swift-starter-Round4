@@ -55,7 +55,7 @@ class BodyCondition {
         self.fatigue = fatigue
     }
 
-    func checkBodyCondition() {
+    func printCurrentBodyCondition() {
         print("""
         현재의 컨디션은 다음과 같습니다.
         상체근력: \(upperBodyStrength)
@@ -66,5 +66,3 @@ class BodyCondition {
         """)
     }
 }
-
-let dawn: BodyCondition = BodyCondition(upperBodyStrength: 10, lowerBodyStrength: 10, muscularEndurance: 10, fatigue: 10)
