@@ -10,7 +10,7 @@ import Foundation
 
 var bodyCondition = BodyCondition()
 
-sitUp.perform(on: bodyCondition)
-squat.perform(on: bodyCondition)
-longRun.perform(on: bodyCondition)
-dynamicBreak.perform(on: bodyCondition)
+sitUp.start(on: bodyCondition)
+squat.start(on: bodyCondition)
+longRun.start(on: bodyCondition)
+dynamicBreak.start(on: bodyCondition)
