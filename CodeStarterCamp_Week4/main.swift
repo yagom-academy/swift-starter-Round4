@@ -23,48 +23,48 @@ class BodyCondition {
     func enhanceMuscle(activity type: activityType) {
         print("<<\(type.name)을(를) 시작합니다.>>")
         var fatigueStat: Int = 0
-        var muscleInfo: [(activityType?, Int)] = []
+        var activityInfo: [(activityType?, Int)] = []
         
         switch type {
         case activityType.situp:
             let randomStat: Int = getRandomMuscleStat(range: 10...20)
-            muscleInfo.append((type, randomStat))
+            activityInfo.append((type, randomStat))
             
             fatigueStat = getRandomMuscleStat(range: 10...20)
-            muscleInfo.append((nil, fatigueStat))
+            activityInfo.append((nil, fatigueStat))
         case activityType.squat:
             let randomStat: Int = getRandomMuscleStat(range: 20...30)
-            muscleInfo.append((type, randomStat))
+            activityInfo.append((type, randomStat))
             
             fatigueStat = getRandomMuscleStat(range: 10...20)
-            muscleInfo.append((nil, fatigueStat))
+            activityInfo.append((nil, fatigueStat))
         case activityType.running:
             var randomStat: Int
             
             randomStat = getRandomMuscleStat(range: 5...10)
-            muscleInfo.append((activityType.situp, randomStat))
+            activityInfo.append((activityType.situp, randomStat))
             
             randomStat = getRandomMuscleStat(range: 5...10)
-            muscleInfo.append((activityType.squat, randomStat))
+            activityInfo.append((activityType.squat, randomStat))
             
             randomStat = getRandomMuscleStat(range: 20...30)
-            muscleInfo.append((type, randomStat))
+            activityInfo.append((type, randomStat))
             
             fatigueStat = getRandomMuscleStat(range: 20...30)
-            muscleInfo.append((nil, fatigueStat))
+            activityInfo.append((nil, fatigueStat))
         case activityType.rest:
             let randomStat: Int = getRandomMuscleStat(range: 5...10)
             let fatigueAfterRest: Int = self.fatigue - randomStat
             
             if fatigueAfterRest >= 0 {
-                muscleInfo.append((type,randomStat))
+                activityInfo.append((type,randomStat))
             } else {
                 print("하락할 피로도가 없습니다.")
                 self.fatigue = 0
             }
         }
         
-        changeBodyCondition(muscleInfo: muscleInfo)
+        changeBodyCondition(muscleInfo: activityInfo)
     }
     
     private func getRandomMuscleStat(range: ClosedRange<Int>) -> Int {
