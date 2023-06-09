@@ -10,22 +10,22 @@ import Foundation
 
 // MARK: Activity 정의
 let 윗몸일으키기: Activity = Activity(name: "윗몸일으키기") { condition in
-    print("<<윗몸일으키기를 시작합니다>>")
+    print("<<\(윗몸일으키기.name)을(를) 시작합니다>>")
     condition.updateBodyCondition(upperBodyStrength: getStats(10, 20), fatigueLevel: getStats(10, 20))
     }
 
 let 스쿼트 = Activity(name: "스쿼트") { condition in
-    print("<<스쿼트를 시작합니다>>")
+    print("<<\(스쿼트.name)을(를) 시작합니다>>")
     condition.updateBodyCondition(lowerBodyStrength: getStats(20, 30), fatigueLevel: getStats(10, 20))
 }
 
 let 오래달리기 = Activity(name: "오래달리기") { condition in
-    print("<<오래달리기를 시작합니다>>")
+    print("<<\(오래달리기.name)을(를) 시작합니다>>")
     condition.updateBodyCondition(upperBodyStrength: getStats(5, 10), lowerBodyStrength: getStats(5, 10), muscularEdurance: getStats(20, 30), fatigueLevel: getStats(20, 30))
 }
 
 let 동적휴식 = Activity(name: "동적휴식") { condition in
-    print("<<동적휴식을 시작합니다>>")
+    print("<<\(동적휴식.name)을(를) 시작합니다>>")
     condition.updateBodyCondition(fatigueLevel: getStats(-10, -5))
 }
 
