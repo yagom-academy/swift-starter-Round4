@@ -99,7 +99,6 @@ class BodyCondition {
                 print("피로도가 \(randomStat) 상승합니다.")
                 self.fatigue += randomStat
                 guard self.fatigue < 100 else {
-                    self.currentCondition()
                     throw RoutineError.fatigueOverload
                 }
             }

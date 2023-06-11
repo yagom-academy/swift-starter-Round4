@@ -20,6 +20,7 @@ do {
     try routine.initiateRoutine(condition: bodyCondition)
 } catch {
     print(error.localizedDescription)
+    bodyCondition.currentCondition()
 }
 
 
