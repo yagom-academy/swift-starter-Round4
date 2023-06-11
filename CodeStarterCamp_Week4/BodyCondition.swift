@@ -74,7 +74,7 @@ class BodyCondition {
                 activityInfo.append((activityType, randomStat))
             }
         }
-        changeBodyCondition(muscleInfo: activityInfo)
+        try changeBodyCondition(muscleInfo: activityInfo)
     }
     
     private func changeBodyCondition(muscleInfo: [(ActivityType?, Int)]) {

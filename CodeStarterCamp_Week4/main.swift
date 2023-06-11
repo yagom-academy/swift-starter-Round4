@@ -24,17 +24,18 @@ var activity: Activity = Activity(name: "", action: { bodyCondition in
     guard let type: ActivityType = ActivityType.getActivity(from: activity.name) else {
         return
     }
-    bodyCondition.enhanceMuscle(activityType: type)
+    do {
+        try bodyCondition.enhanceMuscle(activityType: type)
+    } catch {
+        print(error.localizedDescription)
+    }
 })
 
 let bodyCondition: BodyCondition = BodyCondition()
-for _ in 1...5 {
-    if let randomActivity: ActivityType = ActivityType.allCases.randomElement() {
-        let name: String = randomActivity.name
-        activity.name = name
-        activity.action(bodyCondition)
-        
-        // 4. 활동 후 현재의 몸 컨디션을 확인할 수 있는 메서드를 호출합니다.
-        bodyCondition.currentCondition()
-    }
+var routine = Routine(name: "MadCow")
+do {
+    try routine.initiateRoutine(condition: bodyCondition)
+} catch {
+    print(error.localizedDescription)
 }
+
