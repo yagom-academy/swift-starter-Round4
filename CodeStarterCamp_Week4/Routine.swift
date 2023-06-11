@@ -17,21 +17,24 @@ struct Routine {
     ]
     
     func initiateRoutine(condition: BodyCondition) throws {
-        print("루틴을 몇 번 반복할까요?", terminator: "")
+        print("루틴을 몇 번 반복할까요?\t", terminator: "")
         let enteredKey = readLine() ?? ""
         let routineCount: Int = try validation(enterKey: enteredKey)
         
         for count in 1...routineCount {
             print("\(count)번 째 \(self.name)Routine을 시작합니다.")
-            doActivity(condition: condition)
+            printLine()
+            try doActivity(condition: condition)
         }
     }
     
-    private func doActivity(condition: BodyCondition) {
+    private func doActivity(condition: BodyCondition) throws {
         for activity in self.activities {
-            condition.enhanceMuscle(activityType: activity)
-            condition.currentCondition()
+            try condition.enhanceMuscle(activityType: activity)
+            printLine()
         }
+        condition.currentCondition()
+        print("\(self.name)Routine이 완료되었습니다!")
     }
     
     private func validation(enterKey: String) throws -> Int {
