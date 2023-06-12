@@ -8,5 +8,6 @@
 
 import Foundation
 
-print("Hello, World!")
+var bodyCondition = BodyCondition()
+checkBodyCondition(activityName: "윗몸일으키기", bodyCondition: &bodyCondition)
 
