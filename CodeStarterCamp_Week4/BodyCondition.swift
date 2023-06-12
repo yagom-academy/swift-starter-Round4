@@ -8,22 +8,22 @@
 import Foundation
 
 final class BodyCondition {
-    var upperBodyStrength: Int {
+    private var upperBodyStrength: Int {
         didSet {
             print("상체 근력이 \(upperBodyStrength - oldValue) 상승합니다.")
         }
     }
-    var lowerBodyStrength: Int {
+    private var lowerBodyStrength: Int {
         didSet {
             print("하체 근력이 \(lowerBodyStrength - oldValue) 상승합니다.")
         }
     }
-    var muscularEndurance: Int {
+    private var muscularEndurance: Int {
         didSet {
             print("지구력이 \(muscularEndurance - oldValue) 상승합니다.")
         }
     }
-    var fatigueLevel: Int {
+    private var fatigueLevel: Int {
         didSet {
             if fatigueLevel > oldValue {
                 print("피로도가 \(fatigueLevel - oldValue) 상승합니다.")
@@ -33,7 +33,7 @@ final class BodyCondition {
         }
     }
     
-    private func showMyBodyCondition() {
+    func showMyBodyCondition() {
         print("--------------")
         print("현재의 컨디션은 다음과 같습니다.")
         print("상체근력: \(upperBodyStrength)")
@@ -42,6 +42,23 @@ final class BodyCondition {
         print("피로도: \(fatigueLevel)")
         print("--------------")
     }
+    
+    func increaseUpperBodyCondition(by strength: Int) {
+        self.upperBodyStrength += strength
+    }
+    
+    func increaseLowerBodyCondition(by strength: Int) {
+        self.lowerBodyStrength += strength
+    }
+    
+    func increaseMuscularEduranceCondition(by strength: Int) {
+        self.muscularEndurance += strength
+    }
+    
+    func increaseFatigueLevel(by strength: Int) {
+        self.fatigueLevel += strength
+    }
+    
     
     func updateBodyCondition(upperBodyStrength: Int? = nil,
                              lowerBodyStrength: Int? = nil,
