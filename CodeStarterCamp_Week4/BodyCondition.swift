@@ -14,7 +14,7 @@ class BodyCondition {
     private var stamina: Int = 0
     private var fatigue: Int = 0
     
-    func enhanceMuscle(activityType: ActivityType) {
+    func enhanceMuscle(activityType: ActivityType) throws {
         print("<<\(activityType.name)을(를) 시작합니다.>>")
         
         var activityInfo: [(ActivityType?, Int)] = []
@@ -74,10 +74,10 @@ class BodyCondition {
                 activityInfo.append((activityType, randomStat))
             }
         }
-        changeBodyCondition(muscleInfo: activityInfo)
+        try changeBodyCondition(muscleInfo: activityInfo)
     }
     
-    private func changeBodyCondition(muscleInfo: [(ActivityType?, Int)]) {
+    private func changeBodyCondition(muscleInfo: [(ActivityType?, Int)]) throws {
         for info in muscleInfo {
             let activityType: ActivityType? = info.0
             let randomStat: Int = info.1
@@ -98,17 +98,20 @@ class BodyCondition {
             default:
                 print("피로도가 \(randomStat) 상승합니다.")
                 self.fatigue += randomStat
+                guard self.fatigue < 100 else {
+                    throw RoutineError.fatigueOverload
+                }
             }
         }
     }
     
-    func currentCondition() {
-        printLine(length: 20)
+    func showCurrentBodyCondition() {
+        printLine()
         print("현재의 컨디션은 다음과 같습니다.")
         print("상체근력 : \(self.upperMuscle)")
         print("하체근력 : \(self.lowerMuscle)")
         print("근지구력 : \(self.stamina)")
         print("피로도 : \(self.fatigue)")
-        printLine(length: 20)
+        printLine()
     }
 }

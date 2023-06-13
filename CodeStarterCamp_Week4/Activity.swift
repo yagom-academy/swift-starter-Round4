@@ -15,10 +15,14 @@ enum ActivityType: CaseIterable {
     
     var name: String {
         switch self {
-        case .situp: return "윗몸일으키기"
-        case .squat: return "스쿼트"
-        case .running: return "오래달리기"
-        case .rest: return "동적휴식"
+        case .situp:
+            return "윗몸일으키기"
+        case .squat:
+            return "스쿼트"
+        case .running:
+            return "오래달리기"
+        case .rest:
+            return "동적휴식"
         }
     }
     
