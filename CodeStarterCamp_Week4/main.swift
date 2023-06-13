@@ -14,13 +14,13 @@ func printLine(length: Int = 20) {
 }
 
 let bodyCondition: BodyCondition = BodyCondition()
-var routine = Routine(name: "MadCow")
+var routine = Routine(name: "Common")
 
 do {
     try routine.initiateRoutine(condition: bodyCondition)
 } catch {
     print(error.localizedDescription)
-    bodyCondition.currentCondition()
+    bodyCondition.showCurrentBodyCondition()
 }
 
 
