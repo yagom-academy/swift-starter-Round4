@@ -19,7 +19,7 @@ struct Routine {
     func initiateRoutine(condition: BodyCondition) throws {
         print("루틴을 몇 번 반복할까요?\t", terminator: "")
         let enteredKey = readLine() ?? ""
-        let routineCount: Int = try validation(enterKey: enteredKey)
+        let routineCount: Int = try validate(enterKey: enteredKey)
         
         for count in 1...routineCount {
             print("\(count)번 째 \(self.name)Routine을 시작합니다.")
@@ -33,13 +33,12 @@ struct Routine {
             try condition.enhanceMuscle(activityType: activity)
             printLine()
         }
-        condition.currentCondition()
-        print("\(self.name)Routine이 완료되었습니다!")
+        condition.showCurrentBodyCondition()
     }
     
-    private func validation(enterKey: String) throws -> Int {
+    private func validate(enterKey: String) throws -> Int {
         guard let routineCount = Int(enterKey) else {
-            throw RoutineError.notNumber
+            throw RoutineError.invalidInput
         }
         
         guard routineCount > 0 else {
