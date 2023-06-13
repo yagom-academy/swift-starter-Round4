@@ -12,7 +12,7 @@ enum Range {
     case tenToTwenty
     case twentyToThirty
     
-    func randomValue() -> Int {
+    var randomValue: Int {
         switch self {
         case .fiveToTen:
             return Int.random(in: 5...10)

@@ -8,6 +8,6 @@
 
 import Foundation
 
-var bodyCondition = BodyCondition()
-checkBodyCondition(activityName: "윗몸일으키기", bodyCondition: &bodyCondition)
+var bodyCondition: BodyCondition  = BodyCondition()
+checkBodyCondition(activityName: TypesOfActivity.sitUps.description, bodyCondition: &bodyCondition)
 

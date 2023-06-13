@@ -19,18 +19,15 @@ struct Activity {
     func perform(on bodyCondition: inout BodyCondition) {
         action(&bodyCondition)
     }
-    
 }
 
 
-let sitUps: Activity = Activity(name: "윗몸일으키기") { bodyCondition in
-    let amountOfUpperStrength = Range.tenToTwenty.randomValue()
-    let amountOfFatigue = Range.tenToTwenty.randomValue()
+let sitUps: Activity = Activity(name: TypesOfActivity.sitUps.description) { bodyCondition in
+    let amountOfUpperStrength = Range.tenToTwenty.randomValue
+    let amountOfFatigue = Range.tenToTwenty.randomValue
     
-    bodyCondition.upperBodyStrength += amountOfUpperStrength
-    bodyCondition.fatigue += amountOfFatigue
-    
-    printIncrement(name: "윗몸일으키기",
+    bodyCondition.update(upperBodyStrength: amountOfUpperStrength, fatigue: amountOfFatigue)
+    printIncrement(name: TypesOfActivity.sitUps.description,
                    upper: amountOfUpperStrength,
                    fatigue: amountOfFatigue)
     
@@ -38,30 +35,27 @@ let sitUps: Activity = Activity(name: "윗몸일으키기") { bodyCondition in
 
 
 
-let squat: Activity = Activity(name: "스쿼트") { bodyCondition in
-    let amountOfLowerStrength = Range.twentyToThirty.randomValue()
-    let amountOfFatigue = Range.tenToTwenty.randomValue()
+let squat: Activity = Activity(name: TypesOfActivity.squat.description) { bodyCondition in
+    let amountOfLowerStrength = Range.twentyToThirty.randomValue
+    let amountOfFatigue = Range.tenToTwenty.randomValue
     
-    bodyCondition.lowerBodyStrength += amountOfLowerStrength
-    bodyCondition.fatigue += amountOfFatigue
-    
-    printIncrement(name: "스쿼트",
+    bodyCondition.update(lowerBodyStrength: amountOfLowerStrength, fatigue: amountOfFatigue)
+    printIncrement(name: TypesOfActivity.squat.description,
                    lower: amountOfLowerStrength,
                    fatigue: amountOfFatigue)
         
 }
 
-let longRun: Activity = Activity(name: "오래달리기") { bodyCondition in
-    let amountOfMuscle = Range.twentyToThirty.randomValue()
-    let amountOfUpperAndLower = Range.fiveToTen.randomValue()
-    let amountOfFatigue = Range.twentyToThirty.randomValue()
+let longRun: Activity = Activity(name: TypesOfActivity.longRun.description) { bodyCondition in
+    let amountOfMuscle = Range.twentyToThirty.randomValue
+    let amountOfUpperAndLower = Range.fiveToTen.randomValue
+    let amountOfFatigue = Range.twentyToThirty.randomValue
     
-    bodyCondition.muscularEndurance += amountOfMuscle
-    bodyCondition.lowerBodyStrength += amountOfUpperAndLower
-    bodyCondition.upperBodyStrength += amountOfUpperAndLower
-    bodyCondition.fatigue += amountOfFatigue
-    
-    printIncrement(name: "오래달리기",
+    bodyCondition.update(upperBodyStrength: amountOfUpperAndLower,
+                         lowerBodyStrength: amountOfUpperAndLower,
+                         muscularEndurance: amountOfMuscle,
+                         fatigue: amountOfFatigue)
+    printIncrement(name: TypesOfActivity.longRun.description,
                    upper: amountOfUpperAndLower,
                    lower: amountOfUpperAndLower,
                    muscle: amountOfMuscle,
@@ -69,11 +63,11 @@ let longRun: Activity = Activity(name: "오래달리기") { bodyCondition in
     
 }
 
-let activeRest: Activity = Activity(name: "동적휴식") { bodyCondition in
-    let amountOfFatigue = Range.fiveToTen.randomValue()
-    bodyCondition.fatigue -= amountOfFatigue
+let activeRest: Activity = Activity(name: TypesOfActivity.activeRest.description) { bodyCondition in
+    let amountOfFatigue = Range.fiveToTen.randomValue
+    bodyCondition.update(fatigue: amountOfFatigue)
     
-    printIncrement(name: "동적휴식", fatigue: amountOfFatigue)
+    printIncrement(name: TypesOfActivity.activeRest.description, fatigue: amountOfFatigue)
 
 }
 
@@ -88,7 +82,10 @@ func printBodyCondition(bodyCondition: BodyCondition) {
 }
 
 func printIncrement(name activityName: String,
-                            upper: Int? = nil, lower: Int? = nil, muscle: Int? = nil, fatigue: Int? = nil) {
+                    upper: Int? = nil,
+                    lower: Int? = nil,
+                    muscle: Int? = nil,
+                    fatigue: Int? = nil) {
     print("<<\(activityName)을(를) 시작합니다>>")
     if let upper = upper {
         print("상체근력이 \(upper) 상승합니다.")
@@ -107,13 +104,13 @@ func printIncrement(name activityName: String,
 func checkBodyCondition(activityName: String, bodyCondition: inout BodyCondition) {
 
     switch activityName {
-    case "윗몸일으키기":
+    case TypesOfActivity.sitUps.description:
         sitUps.perform(on: &bodyCondition)
-    case "스쿼트":
+    case TypesOfActivity.squat.description:
         squat.perform(on: &bodyCondition)
-    case "오래달리기":
+    case TypesOfActivity.longRun.description:
         longRun.perform(on: &bodyCondition)
-    case "동적휴식":
+    case TypesOfActivity.activeRest.description:
         activeRest.perform(on: &bodyCondition)
     default:
         print("해당하는 활동이 없습니다.")
