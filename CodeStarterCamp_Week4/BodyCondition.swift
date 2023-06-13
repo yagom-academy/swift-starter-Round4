@@ -105,7 +105,7 @@ class BodyCondition {
         }
     }
     
-    func currentCondition() {
+    func showCurrentBodyCondition() {
         printLine()
         print("현재의 컨디션은 다음과 같습니다.")
         print("상체근력 : \(self.upperMuscle)")
