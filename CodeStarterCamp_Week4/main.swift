@@ -8,5 +8,6 @@
 
 import Foundation
 
-print("Hello, World!")
+var bodyCondition: BodyCondition  = BodyCondition()
+checkBodyCondition(activityName: TypesOfActivity.sitUps.description, bodyCondition: &bodyCondition)
 
