@@ -23,7 +23,7 @@ final class BodyCondition {
             print("지구력이 \(muscularEndurance - oldValue) 상승합니다.")
         }
     }
-    private var fatigueLevel: Int {
+    private(set) var fatigueLevel: Int {
         didSet {
             if fatigueLevel > oldValue {
                 print("피로도가 \(fatigueLevel - oldValue) 상승합니다.")

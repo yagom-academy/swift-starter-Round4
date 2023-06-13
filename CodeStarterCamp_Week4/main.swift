@@ -44,7 +44,22 @@ func getRandomStats(range: ClosedRange<Int>) -> Int {
 
 // MARK: - 실행
 var myBodyCondition = BodyCondition(upperBodyStrength: 10, lowerBodyStrength: 20, muscularEndurance: 20, fatigueLevel: 0)
+let hell = Routine(name: "hellRoutine", activities: [윗몸일으키기, 동적휴식, 스쿼트])
 
-윗몸일으키기.action(myBodyCondition)
-동적휴식.action(myBodyCondition)
-스쿼트.action(myBodyCondition)
+func startRoutine(to routine: Routine) {
+    do {
+        let cycle = try routine.inputCycle()
+        for _ in 0..<cycle {
+            try routine.executeRoutine(bodyCondition: myBodyCondition)
+        }
+    } catch RoutineError.inputError {
+        print("잘못된 입력 형식입니다. 다시 입력해주세요.")
+        startRoutine(to: routine)
+    } catch RoutineError.overwork {
+        print("피로도가 100 이상입니다. 루틴을 중단합니다.")
+    } catch {
+        print("알 수 없는 에러가 발생했습니다.")
+    }
+}
+
+startRoutine(to: hell)
