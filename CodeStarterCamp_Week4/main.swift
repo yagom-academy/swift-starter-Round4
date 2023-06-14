@@ -8,5 +8,5 @@
 
 import Foundation
 
-print("Hello, World!")
-
+var misterKimBody: BodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigability: 0)
+윗몸일으키기.action(misterKimBody)
