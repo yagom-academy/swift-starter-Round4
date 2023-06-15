@@ -8,14 +8,13 @@
 
 import Foundation
 
-func executeAction(from min: Int, to max: Int, condition: Status, energy: Bool) -> Int{
-    let randomResult = Int.random(in: min...max)
+func executeAction(condition: Status, energy: Bool, random: Random) {
     if energy == true {
-        print("\(condition.rawValue)이 \(randomResult)만큼 상승합니다.")
+        print("\(condition.rawValue)이 \(random.value)만큼 상승합니다.")
     }  else {
-        print("\(condition.rawValue)이 \(randomResult)만큼 하락합니다.")
+        print("\(condition.rawValue)이 \(random.value)만큼 하락합니다.")
     }
-    return randomResult
+    return 
 }
 
 func tobeActivity(condition: BodyCondition, activity: Activity) {
@@ -33,15 +32,9 @@ func tobeActivity(condition: BodyCondition, activity: Activity) {
 
 var myBodyCondition: BodyCondition = BodyCondition(upperBodyMuscle: 50, lowerBodyMuscle: 50, muscularEndurance: 50, fatigue: 50)
 
-//tobeActivity(condition: myBodyCondition, activity: situp)
-//
-//
-//tobeActivity(condition: myBodyCondition, activity: squat)
-//
-//
-//tobeActivity(condition: myBodyCondition, activity: longrun)
-
-
+tobeActivity(condition: myBodyCondition, activity: situp)
+tobeActivity(condition: myBodyCondition, activity: squat)
+tobeActivity(condition: myBodyCondition, activity: longrun)
 tobeActivity(condition: myBodyCondition, activity: activerest)
 
 

@@ -13,22 +13,22 @@ struct Activity {
 }
 
 let situp: Activity = Activity(name: "윗몸일으키기", action: { BodyCondition in
-    BodyCondition.upperBodyMuscle += executeAction(from: 10, to: 20, condition: .upperBodyMuscle, energy: true)
-    BodyCondition.fatigue += executeAction(from: 10, to: 20, condition: .fatigue, energy: true)
+    BodyCondition.upperBodyMuscle += Random.tenToTwenty.value;executeAction(condition: .upperBodyMuscle, energy: true, random: .tenToTwenty)
+    BodyCondition.fatigue += Random.tenToTwenty.value; executeAction(condition: .fatigue, energy: true, random: .tenToTwenty)
 })
 
 let squat: Activity = Activity(name: "스쿼트", action: { BodyCondition in
-    BodyCondition.lowerBodyMuscle += executeAction(from: 10, to: 20, condition: .lowerBodyMuscle, energy: true)
-    BodyCondition.fatigue += executeAction(from: 10, to: 20, condition: .fatigue, energy: true)
+    BodyCondition.lowerBodyMuscle += Random.tenToTwenty.value
+    BodyCondition.fatigue += Random.tenToTwenty.value
 })
 
 let longrun: Activity = Activity(name: "오래달리기", action: { BodyCondition in
-    BodyCondition.muscularEndurance += executeAction(from: 20, to: 30, condition: .muscularEndurance, energy: true)
-    BodyCondition.upperBodyMuscle += executeAction(from: 5, to: 10, condition: .upperBodyMuscle, energy: true)
-    BodyCondition.lowerBodyMuscle += executeAction(from: 5, to: 10, condition: .lowerBodyMuscle, energy: true)
-    BodyCondition.fatigue += executeAction(from: 20, to: 30, condition: .fatigue, energy: true)
+    BodyCondition.muscularEndurance += Random.tenToTwenty.value; executeAction(condition: .muscularEndurance, energy: true, random: .tenToTwenty)
+    BodyCondition.upperBodyMuscle += Random.fiveToTen.value; executeAction(condition: .upperBodyMuscle, energy: true, random: .fiveToTen)
+    BodyCondition.lowerBodyMuscle += Random.fiveToTen.value; executeAction(condition: .lowerBodyMuscle, energy: true, random: .fiveToTen)
+    BodyCondition.fatigue += Random.tenToTwenty.value; executeAction(condition: .fatigue, energy: true, random: .tenToTwenty)
 })
 
 let activerest: Activity = Activity(name: "동적휴식", action: { BodyCondition in
-    BodyCondition.fatigue -= executeAction(from: 5, to: 10, condition: .fatigue, energy: false)
+    BodyCondition.fatigue -= Random.fiveToTen.value; executeAction(condition: .fatigue, energy: false, random: .fiveToTen)
 })
