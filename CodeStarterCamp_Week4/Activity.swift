@@ -13,22 +13,22 @@ struct Activity {
 }
 
 let situp: Activity = Activity(name: "윗몸일으키기", action: { BodyCondition in
-    BodyCondition.upperBodyMuscle += executeAction(a: 10, b: 20, condtion: .upperBodyMuscle, energy: 5)
-    BodyCondition.fatigue += executeAction(a: 10, b: 20, condtion: .fatigue, energy: 5)
+    BodyCondition.upperBodyMuscle += executeAction(from: 10, to: 20, condition: .upperBodyMuscle, energy: true)
+    BodyCondition.fatigue += executeAction(from: 10, to: 20, condition: .fatigue, energy: true)
 })
 
 let squat: Activity = Activity(name: "스쿼트", action: { BodyCondition in
-    BodyCondition.lowerBodtMuscle += executeAction(a: 20, b: 30, condtion: .lowerBodtMuscle, energy: 5)
-    BodyCondition.fatigue += executeAction(a: 10, b: 20, condtion: .fatigue, energy: 5)
+    BodyCondition.lowerBodyMuscle += executeAction(from: 10, to: 20, condition: .lowerBodyMuscle, energy: true)
+    BodyCondition.fatigue += executeAction(from: 10, to: 20, condition: .fatigue, energy: true)
 })
 
 let longrun: Activity = Activity(name: "오래달리기", action: { BodyCondition in
-    BodyCondition.muscularEndurance += executeAction(a: 20, b: 30, condtion: .muscularEndurance, energy: 5)
-    BodyCondition.upperBodyMuscle += executeAction(a: 5, b: 10, condtion: .upperBodyMuscle, energy: 5)
-    BodyCondition.lowerBodtMuscle += executeAction(a: 5, b: 10, condtion: .lowerBodtMuscle, energy: 5)
-    BodyCondition.fatigue += executeAction(a: 20, b: 30, condtion: .fatigue, energy: 5)
+    BodyCondition.muscularEndurance += executeAction(from: 20, to: 30, condition: .muscularEndurance, energy: true)
+    BodyCondition.upperBodyMuscle += executeAction(from: 5, to: 10, condition: .upperBodyMuscle, energy: true)
+    BodyCondition.lowerBodyMuscle += executeAction(from: 5, to: 10, condition: .lowerBodyMuscle, energy: true)
+    BodyCondition.fatigue += executeAction(from: 20, to: 30, condition: .fatigue, energy: true)
 })
 
 let activerest: Activity = Activity(name: "동적휴식", action: { BodyCondition in
-    BodyCondition.fatigue -= executeAction(a: 5, b: 10, condtion: .fatigue, energy: 3)
+    BodyCondition.fatigue -= executeAction(from: 5, to: 10, condition: .fatigue, energy: false)
 })

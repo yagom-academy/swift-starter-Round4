@@ -8,12 +8,12 @@
 
 import Foundation
 
-func executeAction(a: Int, b: Int, condtion: Status, energy: Int) -> Int{
-    let randomResult = Int.random(in: a...b)
-    if energy >= 5 {
-        print("\(condtion.rawValue)이 \(randomResult)만큼 상승합니다.")
+func executeAction(from min: Int, to max: Int, condition: Status, energy: Bool) -> Int{
+    let randomResult = Int.random(in: min...max)
+    if energy == true {
+        print("\(condition.rawValue)이 \(randomResult)만큼 상승합니다.")
     }  else {
-        print("\(condtion.rawValue)이 \(randomResult)만큼 하락합니다.")
+        print("\(condition.rawValue)이 \(randomResult)만큼 하락합니다.")
     }
     return randomResult
 }
@@ -21,30 +21,28 @@ func executeAction(a: Int, b: Int, condtion: Status, energy: Int) -> Int{
 func tobeActivity(condition: BodyCondition, activity: Activity) {
     print("<<\(activity.name)을 시작합니다.>>")
     activity.action(condition)
-}
-
-func currentBodyCondition(condtion: BodyCondition) {
     print("------------")
     print("현재의 컨디션은 다음과 같습니다.")
-    print("\(Status.upperBodyMuscle.rawValue): \(condtion.upperBodyMuscle)")
-    print("\(Status.lowerBodtMuscle.rawValue): \(condtion.lowerBodtMuscle)")
-    print("\(Status.muscularEndurance.rawValue): \(condtion.muscularEndurance)")
-    print("\(Status.fatigue.rawValue): \(condtion.fatigue)")
+    print("\(Status.upperBodyMuscle.rawValue): \(condition.upperBodyMuscle)")
+    print("\(Status.lowerBodyMuscle.rawValue): \(condition.lowerBodyMuscle)")
+    print("\(Status.muscularEndurance.rawValue): \(condition.muscularEndurance)")
+    print("\(Status.fatigue.rawValue): \(condition.fatigue)")
     print("------------")
 }
 
-var myBodyCondition: BodyCondition = BodyCondition(upperBodyMuscle: 50, lowerBodtMuscle: 50, muscularEndurance: 50, fatigue: 50)
 
-tobeActivity(condition: myBodyCondition, activity: situp)
-currentBodyCondition(condtion: myBodyCondition)
+var myBodyCondition: BodyCondition = BodyCondition(upperBodyMuscle: 50, lowerBodyMuscle: 50, muscularEndurance: 50, fatigue: 50)
 
-tobeActivity(condition: myBodyCondition, activity: squat)
-currentBodyCondition(condtion: myBodyCondition)
+//tobeActivity(condition: myBodyCondition, activity: situp)
+//
+//
+//tobeActivity(condition: myBodyCondition, activity: squat)
+//
+//
+//tobeActivity(condition: myBodyCondition, activity: longrun)
 
-tobeActivity(condition: myBodyCondition, activity: longrun)
-currentBodyCondition(condtion: myBodyCondition)
 
 tobeActivity(condition: myBodyCondition, activity: activerest)
-currentBodyCondition(condtion: myBodyCondition)
+
 
 
