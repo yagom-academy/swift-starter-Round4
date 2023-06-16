@@ -24,39 +24,41 @@ struct Routine {
                 guard let repeatCount = Int(readLine()!), repeatCount > 0 else {
                     throw RoutineError.invalidInput
                 }
-            
-                for count in 1...repeatCount {
-                    print("--------------")
-                    print("\(count) 번째 \(self.name)을(를) 시작합니다.")
-                    try performRoutines(on: &bodyCondition)
-                }
+                try performRoutines(on: &bodyCondition, repeatCount: repeatCount)
                 printBodyCondition(bodyCondition: bodyCondition)
                 break
-            } catch RoutineError.invalidInput {
-                print(RoutineError.invalidInput.description)
             } catch {
-                print(RoutineError.otherError.description)
-                break
+                handleRoutineError(error)
             }
         }
     }
     
-    private func performRoutines(on bodyCondition: inout BodyCondition) throws {
-    
-        for activity in activities {
-            do {
+    private func performRoutines(on bodyCondition: inout BodyCondition, repeatCount: Int) throws {
+        for count in 1...repeatCount {
+            print("--------------")
+            print("\(count) 번째 \(self.name)을(를) 시작합니다.")
+            for activity in activities {
                 guard bodyCondition.fatigue < 100 else {
                     throw RoutineError.fatigueExceeded
                 }
                 activity.perform(on: &bodyCondition)
                 print("--------------")
-            } catch RoutineError.fatigueExceeded {
-                print(RoutineError.fatigueExceeded.description)
-            } catch RoutineError.otherError{
-                print(RoutineError.otherError.description)
             }
         }
-        
-        
+    }
+    
+    private func handleRoutineError(_ error: Error) {
+        if let routineError = error as? RoutineError {
+            switch routineError {
+            case .fatigueExceeded:
+                print(routineError.errorDescription ?? "")
+            case .invalidInput:
+                print(routineError.errorDescription ?? "")
+            case .otherError:
+                print(routineError.errorDescription ?? "")
+            }
+        } else {
+            print(RoutineError.otherError.errorDescription ?? "")
+        }
     }
 }
