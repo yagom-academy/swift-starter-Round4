@@ -8,8 +8,8 @@
 
 import Foundation
 
-func executeAction(condition: Status, energy: Bool, random: Random) {
-    if energy == true {
+func executeAction(condition: Status, updown: Bool, random: Random) {
+    if updown == true {
         print("\(condition.rawValue)이 \(random.value)만큼 상승합니다.")
     }  else {
         print("\(condition.rawValue)이 \(random.value)만큼 하락합니다.")
