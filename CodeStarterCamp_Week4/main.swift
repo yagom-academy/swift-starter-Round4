@@ -42,17 +42,13 @@ let longRun: Activity = Activity(name: "오래달리기") { bodyCondition in
     bodyCondition.lowerBodyStrength += Int.random(in: 5...10)
     bodyCondition.fatigue += Int.random(in: 20...30)
     
-    print("상체근력이 \(bodyCondition.upperBodyStrength) 상승합니다.")
-    print("하체근력이 \(bodyCondition.lowerBodyStrength) 상승합니다.")
-    print("근지구력이 \(bodyCondition.muscularEndurance) 상승합니다.")
-    print("피로도가 \(bodyCondition.fatigue) 상승합니다.")
+    printActivityEffects(name: "오래달리기", bodyCondition: bodyCondition)
 }
 
 let dynamicBreak: Activity = Activity(name: "동적휴식") { bodyCondition in
-    bodyCondition.fatigue -= Int.random(in: 5...10)
-    if bodyCondition.fatigue < 0 {
-        bodyCondition.fatigue = 0
-    }
+    let decreaseAmount = Int.random(in: 5...10)
+        bodyCondition.fatigue -= decreaseAmount
+        bodyCondition.fatigue = max(bodyCondition.fatigue, 0)
     
     print("피로도가 \(bodyCondition.fatigue) 하락합니다.")
 }
@@ -63,6 +59,15 @@ func checkBodyCondition(_ bodyCondition: BodyCondition) {
     print("하체근력: \(bodyCondition.lowerBodyStrength)")
     print("근지구력: \(bodyCondition.muscularEndurance)")
     print("피로도: \(bodyCondition.fatigue)")
+}
+
+func printActivityEffects(name: String, bodyCondition: BodyCondition) {
+    print("<<\(name)을(를) 시작합니다>>")
+    print("상체근력이 \(bodyCondition.upperBodyStrength) 상승합니다.")
+    print("하체근력이 \(bodyCondition.lowerBodyStrength) 상승합니다.")
+    print("근지구력이 \(bodyCondition.muscularEndurance) 상승합니다.")
+    print("피로도가 \(bodyCondition.fatigue) 상승합니다.")
+    print("--------------")
 }
 
 var myBodyCondition = BodyCondition(upperBodyStrength: 100, lowerBodyStrength: 50, muscularEndurance: 50, fatigue: 0)
