@@ -13,6 +13,14 @@ struct BodyCondition {
     var lowerBodyStrength: Int
     var muscularEndurance: Int
     var fatigue: Int
+    
+    func checkBodyCondition() {
+        print("현재의 컨디션은 다음과 같습니다")
+        print("상체근력: \(upperBodyStrength)")
+        print("하체근력: \(lowerBodyStrength)")
+        print("근지구력: \(muscularEndurance)")
+        print("피로도: \(fatigue)")
+    }
 }
 
 struct Activity {
@@ -53,14 +61,6 @@ let dynamicBreak: Activity = Activity(name: "동적휴식") { bodyCondition in
     print("피로도가 \(bodyCondition.fatigue) 하락합니다.")
 }
 
-func checkBodyCondition(_ bodyCondition: BodyCondition) {
-    print("현재의 컨디션은 다음과 같습니다")
-    print("상체근력: \(bodyCondition.upperBodyStrength)")
-    print("하체근력: \(bodyCondition.lowerBodyStrength)")
-    print("근지구력: \(bodyCondition.muscularEndurance)")
-    print("피로도: \(bodyCondition.fatigue)")
-}
-
 func printActivityEffects(name: String, bodyCondition: BodyCondition) {
     print("<<\(name)을(를) 시작합니다>>")
     print("상체근력이 \(bodyCondition.upperBodyStrength) 상승합니다.")
@@ -75,5 +75,5 @@ var myBodyCondition = BodyCondition(upperBodyStrength: 100, lowerBodyStrength: 5
 print("<<윗몸일으키기를(을) 시작합니다>>")
 sitUp.action(&myBodyCondition)
 print("--------------")
-checkBodyCondition(myBodyCondition)
+myBodyCondition.checkBodyCondition()
 print("--------------")
