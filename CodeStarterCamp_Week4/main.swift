@@ -6,7 +6,6 @@
 //  Copyright © yagom academy. All rights reserved.
 //
 
-import Foundation
 
 //step1
 
@@ -82,4 +81,5 @@ let 동적휴식: Activity = Activity(name: "동적휴식", action: { BodyCondit
 
 var me: BodyCondition = BodyCondition()
 윗몸일으키기.action(me)
+동적휴식.action(me)
 me.checkCondition()
