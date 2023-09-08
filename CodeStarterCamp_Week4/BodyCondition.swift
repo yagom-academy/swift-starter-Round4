@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class BodyCondition {
+class BodyCondition {
     private(set) var upperBodyStrength = 0
     private(set) var lowerBodyStrength = 0
     private(set) var muscularEndurance = 0
@@ -26,50 +26,6 @@ final class BodyCondition {
         muscularEndurance = bodyCondition.muscularEndurance
         fatigue = bodyCondition.fatigue
     }
-
-    init(from decoder: Decoder) throws {
-        try decode(from: decoder)
-    }
-}
-
-// MARK: - Codable Copy
-
-extension BodyCondition: Codable {
-    private enum CodingKeys : String, CodingKey {
-        case upperBodyStrength,
-             lowerBodyStrength,
-             muscularEndurance,
-             fatigue
-    }
-
-    var JSONString: String? {
-        let JSONData = try! JSONEncoder().encode(self)
-
-        return String(data: JSONData, encoding: .utf8)
-    }
-
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: BodyCondition.CodingKeys.self)
-        try container.encode(upperBodyStrength, forKey: .upperBodyStrength)
-        try container.encode(lowerBodyStrength, forKey: .lowerBodyStrength)
-        try container.encode(muscularEndurance, forKey: .muscularEndurance)
-        try container.encode(fatigue, forKey: .fatigue)
-    }
-
-    func decode(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: BodyCondition.CodingKeys.self)
-        upperBodyStrength = try container.decode(Int.self, forKey: .upperBodyStrength)
-        lowerBodyStrength = try container.decode(Int.self, forKey: .lowerBodyStrength)
-        muscularEndurance = try container.decode(Int.self, forKey: .muscularEndurance)
-        fatigue = try container.decode(Int.self, forKey: .fatigue)
-    }
-
-    func copy() -> BodyCondition {
-        let encodeData = try! JSONEncoder().encode(self)
-        let decodeData = try! JSONDecoder().decode(BodyCondition.self, from: encodeData)
-
-        return decodeData
-    }
 }
 
 // MARK: - Public
@@ -82,6 +38,10 @@ extension BodyCondition {
         result += "피로도: \(fatigue)\n"
 
         return result
+    }
+
+    func copy() -> BodyCondition {
+        BodyCondition.init(with: self)
     }
 
     func setUpperBodyStrength(_ value: Int) {
@@ -101,10 +61,10 @@ extension BodyCondition {
     }
 
     func changeMessage(from oldCondition: BodyCondition) -> String {
-        var result = changeMessageStatus(name: "상체근력", from: upperBodyStrength, to: oldCondition.upperBodyStrength)
-        result += changeMessageStatus(name: "하체근력", from: lowerBodyStrength, to: oldCondition.lowerBodyStrength)
-        result += changeMessageStatus(name: "근지구력", from: muscularEndurance, to: oldCondition.muscularEndurance)
-        result += changeMessageStatus(name: "피로도", from: fatigue, to: oldCondition.fatigue)
+        var result = changeMessageStatus(name: "상체근력", from: oldCondition.upperBodyStrength, to: upperBodyStrength)
+        result += changeMessageStatus(name: "하체근력", from: oldCondition.lowerBodyStrength, to: lowerBodyStrength)
+        result += changeMessageStatus(name: "근지구력", from: oldCondition.muscularEndurance, to: muscularEndurance)
+        result += changeMessageStatus(name: "피로도", from: oldCondition.fatigue, to: fatigue)
 
         return result
     }
@@ -113,12 +73,12 @@ extension BodyCondition {
 // MARK: - Private
 
 extension BodyCondition {
-    private func changeMessageStatus(name: String, from: Int, to: Int) -> String {
-        if from > to {
-            return "\(name.koreanFinalSyllable(has: "이", not: "가")) \(from - to) 상승합니다.\n"
+    private func changeMessageStatus(name: String, from oldValue: Int, to newValue: Int) -> String {
+        if oldValue < newValue {
+            return "\(name.koreanFinalSyllable(has: "이", not: "가")) \(newValue - oldValue) 상승합니다.\n"
         }
-        else if from < to {
-            return "\(name.koreanFinalSyllable(has: "이", not: "가")) \(to - from) 하락합니다.\n"
+        else if oldValue > newValue {
+            return "\(name.koreanFinalSyllable(has: "이", not: "가")) \(oldValue - newValue) 하락합니다.\n"
         }
         else {
             return ""
