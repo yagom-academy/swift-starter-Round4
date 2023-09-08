@@ -14,10 +14,10 @@ let misterKim = People.init(name: "김상훈",
                                                          muscularEndurance: 20,
                                                          fatigue: 40))
 
-print(misterKim.workout(of: sitUp))
-print(misterKim.workout(of: stretchRest))
-print(misterKim.workout(of: squat))
-print(misterKim.workout(of: stretchRest))
-print(misterKim.workout(of: longRun))
-print(misterKim.workout(of: stretchRest))
-print(misterKim.contidionMessage)
+print(misterKim.workout(sitUp))
+print(misterKim.workout(stretchRest))
+print(misterKim.workout(squat))
+print(misterKim.workout(stretchRest))
+print(misterKim.workout(longRun))
+print(misterKim.workout(stretchRest))
+print(misterKim.conditionMessage)

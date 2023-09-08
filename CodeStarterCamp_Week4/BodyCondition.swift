@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BodyCondition {
+final class BodyCondition {
     private(set) var upperBodyStrength = 0
     private(set) var lowerBodyStrength = 0
     private(set) var muscularEndurance = 0
@@ -25,6 +25,50 @@ class BodyCondition {
         lowerBodyStrength = bodyCondition.lowerBodyStrength
         muscularEndurance = bodyCondition.muscularEndurance
         fatigue = bodyCondition.fatigue
+    }
+
+    init(from decoder: Decoder) throws {
+        try decode(from: decoder)
+    }
+}
+
+// MARK: - Codable Copy
+
+extension BodyCondition: Codable {
+    private enum CodingKeys : String, CodingKey {
+        case upperBodyStrength,
+             lowerBodyStrength,
+             muscularEndurance,
+             fatigue
+    }
+
+    var JSONString: String? {
+        let JSONData = try! JSONEncoder().encode(self)
+
+        return String(data: JSONData, encoding: .utf8)
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: BodyCondition.CodingKeys.self)
+        try container.encode(upperBodyStrength, forKey: .upperBodyStrength)
+        try container.encode(lowerBodyStrength, forKey: .lowerBodyStrength)
+        try container.encode(muscularEndurance, forKey: .muscularEndurance)
+        try container.encode(fatigue, forKey: .fatigue)
+    }
+
+    func decode(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: BodyCondition.CodingKeys.self)
+        upperBodyStrength = try container.decode(Int.self, forKey: .upperBodyStrength)
+        lowerBodyStrength = try container.decode(Int.self, forKey: .lowerBodyStrength)
+        muscularEndurance = try container.decode(Int.self, forKey: .muscularEndurance)
+        fatigue = try container.decode(Int.self, forKey: .fatigue)
+    }
+
+    func copy() -> BodyCondition {
+        let encodeData = try! JSONEncoder().encode(self)
+        let decodeData = try! JSONDecoder().decode(BodyCondition.self, from: encodeData)
+
+        return decodeData
     }
 }
 
@@ -56,37 +100,28 @@ extension BodyCondition {
         fatigue = value
     }
 
-    func diffMessage(withOld oldCondition: BodyCondition) -> String {
-        var result = ""
-        if upperBodyStrength != oldCondition.upperBodyStrength {
-            if upperBodyStrength > oldCondition.upperBodyStrength {
-                result += "상체근력이 \(upperBodyStrength - oldCondition.upperBodyStrength) 상승합니다.\n"
-            } else {
-                result += "상체근력이 \(oldCondition.upperBodyStrength - upperBodyStrength) 하락합니다.\n"
-            }
-        }
-        if lowerBodyStrength != oldCondition.lowerBodyStrength {
-            if lowerBodyStrength > oldCondition.lowerBodyStrength {
-                result += "하체근력이 \(lowerBodyStrength - oldCondition.lowerBodyStrength) 상승합니다.\n"
-            } else {
-                result += "하체근력이 \(oldCondition.lowerBodyStrength - lowerBodyStrength) 하락합니다.\n"
-            }
-        }
-        if muscularEndurance != oldCondition.muscularEndurance {
-            if muscularEndurance > oldCondition.muscularEndurance {
-                result += "근지구력이 \(muscularEndurance - oldCondition.muscularEndurance) 상승합니다.\n"
-            } else {
-                result += "근지구력이 \(oldCondition.muscularEndurance - muscularEndurance) 하락합니다.\n"
-            }
-        }
-        if fatigue != oldCondition.fatigue {
-            if fatigue > oldCondition.fatigue {
-                result += "피로도가 \(fatigue - oldCondition.fatigue) 상승합니다.\n"
-            } else {
-                result += "피로도가 \(oldCondition.fatigue - fatigue) 하락합니다.\n"
-            }
-        }
+    func changeMessage(from oldCondition: BodyCondition) -> String {
+        var result = changeMessageStatus(name: "상체근력", from: upperBodyStrength, to: oldCondition.upperBodyStrength)
+        result += changeMessageStatus(name: "하체근력", from: lowerBodyStrength, to: oldCondition.lowerBodyStrength)
+        result += changeMessageStatus(name: "근지구력", from: muscularEndurance, to: oldCondition.muscularEndurance)
+        result += changeMessageStatus(name: "피로도", from: fatigue, to: oldCondition.fatigue)
 
         return result
+    }
+}
+
+// MARK: - Private
+
+extension BodyCondition {
+    private func changeMessageStatus(name: String, from: Int, to: Int) -> String {
+        if from > to {
+            return "\(name.koreanFinalSyllable(has: "이", not: "가")) \(from - to) 상승합니다.\n"
+        }
+        else if from < to {
+            return "\(name.koreanFinalSyllable(has: "이", not: "가")) \(to - from) 하락합니다.\n"
+        }
+        else {
+            return ""
+        }
     }
 }

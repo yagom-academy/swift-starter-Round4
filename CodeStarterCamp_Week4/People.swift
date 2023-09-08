@@ -20,7 +20,7 @@ class People {
 // MARK: - Public
 
 extension People {
-    var contidionMessage: String {
+    var conditionMessage: String {
         var result = "현재의 컨디션은 다음과 같습니다.\n"
         result += bodyCondition.statusMessage
         result += "--------------"
@@ -28,11 +28,11 @@ extension People {
         return result
     }
 
-    func workout(of activity: Activity) -> String {
+    func workout(_ activity: Activity) -> String {
         var result = "<<\(activity.name)을(를) 시작합니다>>\n"
-        let wasCondition = BodyCondition.init(with: bodyCondition)
+        let oldCondition = bodyCondition.copy()
         activity.action(bodyCondition)
-        result += bodyCondition.diffMessage(withOld: wasCondition)
+        result += bodyCondition.changeMessage(from: oldCondition)
         result += "--------------"
 
         return result
