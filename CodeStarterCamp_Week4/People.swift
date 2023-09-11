@@ -28,7 +28,11 @@ extension People {
         return result
     }
 
-    func workout(_ activity: Activity) -> String {
+    func workout(_ activity: Activity) throws -> String {
+        if bodyCondition.fatigue >= 100 {
+            throw PeopleWorkoutError.tiredness
+        }
+
         var result = "<<\(activity.name)을(를) 시작합니다>>\n"
         let oldCondition = bodyCondition.copy()
         activity.action(bodyCondition)

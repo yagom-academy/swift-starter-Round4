@@ -30,5 +30,12 @@ let longRun = Activity(name: "오래달리기") {
 }
 
 let stretchRest = Activity(name: "동적휴식") {
-    $0.setFatigue(max(0, $0.fatigue - Int.random(in: 5...10)))
+    $0.setFatigue($0.fatigue - Int.random(in: 5...10))
+}
+
+let noWorkoutSleep = Activity(name: "수면") {
+    $0.setUpperBodyStrength($0.upperBodyStrength - Int.random(in: 5...15))
+    $0.setLowerBodyStrength($0.lowerBodyStrength - Int.random(in: 5...15))
+    $0.setMuscularEndurance($0.muscularEndurance - Int.random(in: 5...15))
+    $0.setFatigue($0.fatigue - Int.random(in: 20...50))
 }
