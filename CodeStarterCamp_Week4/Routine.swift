@@ -18,8 +18,18 @@ struct Routine {
             do {
                 count += try readRepeatCount()
             }
+            catch let error as RoutineInputError {
+                switch error {
+                case .cannotRead:
+                    print("사용자의 입력을 받지 못했습니다.")
+                case .notInt:
+                    print("잘못된 입력 형식입니다. 다시 입력해주세요.")
+                case .notPositiveNumber:
+                    print("양의 정수여야 합니다.")
+                }
+            }
             catch {
-                print(errorMessage(for: error))
+                print(error)
             }
         } while count < 1
 
@@ -63,8 +73,12 @@ extension Routine {
                 do {
                     result += try person.workout(activity)
                 }
-                catch {
-                    result += errorMessage(for: error)
+                catch PersonWorkoutError.tiredness {
+                    result += "피로도가 100 이상입니다. 루틴을 중단합니다."
+                    foundError = true
+                }
+                catch  {
+                    result += "\(error)"
                     foundError = true
                 }
                 result += "\n"
@@ -73,27 +87,5 @@ extension Routine {
         result += person.conditionMessage
 
         return result
-    }
-
-    private func errorMessage(for error: Error) -> String {
-        if let inputError = error as? RoutineInputError {
-            switch inputError {
-            case .cannotRead:
-                return "사용자의 입력을 받지 못했습니다."
-            case .notInt:
-                return "잘못된 입력 형식입니다. 다시 입력해주세요."
-            case .notPositiveNumber:
-                return "양의 정수여야 합니다."
-            }
-        }
-
-        if let workoutError = error as? PersonWorkoutError {
-            switch workoutError {
-            case .tiredness:
-                return "피로도가 100 이상입니다. 루틴을 중단합니다."
-            }
-        }
-
-        return error.localizedDescription
     }
 }
