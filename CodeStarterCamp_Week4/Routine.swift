@@ -79,7 +79,7 @@ extension Routine {
         if let inputError = error as? RoutineInputError {
             switch inputError {
             case .cannotRead:
-                fallthrough
+                return "사용자의 입력을 받지 못했습니다."
             case .notInt:
                 return "잘못된 입력 형식입니다. 다시 입력해주세요."
             case .notPositiveNumber:
