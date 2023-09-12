@@ -11,43 +11,42 @@ struct Routine {
     let name: String
     let activities: [Activity]
 
-    func start(with people: People) {
+    func start(with person: Person) {
         print("루틴을 몇 번 반복할까요?")
         var count = 0
         repeat {
-            let countResult = readRepeatCount()
-            switch countResult {
-            case .success(let value):
-                count = value
-            case .failure(let error):
+            do {
+                count += try readRepeatCount()
+            }
+            catch {
                 print(errorMessage(for: error))
             }
         } while count < 1
 
-        print(sessionRepeat(count: count, with: people))
+        print(sessionRepeat(count: count, with: person))
     }
 }
 
 // MARK: - Private
 
 extension Routine {
-    private func readRepeatCount() -> Result<Int, RoutineInputError> {
+    private func readRepeatCount() throws -> Int {
         guard let readValue = readLine() else {
-            return .failure(.cannotRead)
+            throw RoutineInputError.cannotRead
         }
 
         guard let result = Int(readValue) else {
-            return .failure(.notInt)
+            throw RoutineInputError.notInt
         }
 
         if result < 1 {
-            return .failure(.notPositiveNumber)
+            throw RoutineInputError.notPositiveNumber
         }
 
-        return .success(result)
+        return result
     }
 
-    private func sessionRepeat(count: Int, with people: People) -> String {
+    private func sessionRepeat(count: Int, with person: Person) -> String {
         var result = ""
         var foundError = false
         for number in 1...count {
@@ -61,46 +60,40 @@ extension Routine {
                     break
                 }
 
-                let workoutResult = workout(activity, with: people)
-                switch workoutResult {
-                case .success(let message):
-                    result += message
-                case .failure(let error):
+                do {
+                    result += try person.workout(activity)
+                }
+                catch {
                     result += errorMessage(for: error)
                     foundError = true
                 }
                 result += "\n"
             }
         }
-        result += people.conditionMessage
+        result += person.conditionMessage
 
         return result
     }
 
-    private func workout(_ activity: Activity, with people: People) -> Result<String, PeopleWorkoutError> {
-        do {
-            return .success(try people.workout(activity))
+    private func errorMessage(for error: Error) -> String {
+        if let inputError = error as? RoutineInputError {
+            switch inputError {
+            case .cannotRead:
+                fallthrough
+            case .notInt:
+                return "잘못된 입력 형식입니다. 다시 입력해주세요."
+            case .notPositiveNumber:
+                return "양의 정수여야 합니다."
+            }
         }
-        catch {
-            return .failure(error as! PeopleWorkoutError)
-        }
-    }
 
-    private func errorMessage(for error: RoutineInputError) -> String {
-        switch error {
-        case .cannotRead:
-            fallthrough
-        case .notInt:
-            return "잘못된 입력 형식입니다. 다시 입력해주세요."
-        case .notPositiveNumber:
-            return "양의 정수여야 합니다."
+        if let workoutError = error as? PersonWorkoutError {
+            switch workoutError {
+            case .tiredness:
+                return "피로도가 100 이상입니다. 루틴을 중단합니다."
+            }
         }
-    }
 
-    private func errorMessage(for error: PeopleWorkoutError) -> String {
-        switch error {
-        case .tiredness:
-            return "피로도가 100 이상입니다. 루틴을 중단합니다."
-        }
+        return error.localizedDescription
     }
 }

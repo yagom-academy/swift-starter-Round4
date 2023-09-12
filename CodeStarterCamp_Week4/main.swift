@@ -8,7 +8,7 @@
 
 import Foundation
 
-let misterKim = People.init(name: "김상훈", 
+let misterKim = Person.init(name: "김상훈",
                             bodyCondition: BodyCondition(upperBodyStrength: 30,
                                                          lowerBodyStrength: 40,
                                                          muscularEndurance: 20,
