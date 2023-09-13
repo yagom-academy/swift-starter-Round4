@@ -45,19 +45,19 @@ extension BodyCondition {
     }
 
     func setUpperBodyStrength(_ value: Int) {
-        upperBodyStrength = value
+        upperBodyStrength = value < 0 ? 0 : value
     }
 
     func setLowerBodyStrength(_ value: Int) {
-        lowerBodyStrength = value
+        lowerBodyStrength = value < 0 ? 0 : value
     }
 
     func setMuscularEndurance(_ value: Int) {
-        muscularEndurance = value
+        muscularEndurance = value < 0 ? 0 : value
     }
 
     func setFatigue(_ value: Int) {
-        fatigue = value
+        fatigue = value < 0 ? 0 : value
     }
 
     func changeMessage(from oldCondition: BodyCondition) -> String {

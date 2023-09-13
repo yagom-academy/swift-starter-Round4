@@ -1,5 +1,5 @@
 //
-//  People.swift
+//  Person.swift
 //  CodeStarterCamp_Week4
 //
 //  Created by QL Jeong on 2023/09/07.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class People {
+class Person {
     let name: String
     let bodyCondition: BodyCondition
 
@@ -19,7 +19,7 @@ class People {
 
 // MARK: - Public
 
-extension People {
+extension Person {
     var conditionMessage: String {
         var result = "현재의 컨디션은 다음과 같습니다.\n"
         result += bodyCondition.statusMessage
@@ -28,7 +28,11 @@ extension People {
         return result
     }
 
-    func workout(_ activity: Activity) -> String {
+    func workout(_ activity: Activity) throws -> String {
+        if bodyCondition.fatigue >= 100 {
+            throw PersonWorkoutError.tiredness
+        }
+
         var result = "<<\(activity.name)을(를) 시작합니다>>\n"
         let oldCondition = bodyCondition.copy()
         activity.action(bodyCondition)

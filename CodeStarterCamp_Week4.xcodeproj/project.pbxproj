@@ -9,7 +9,10 @@
 /* Begin PBXBuildFile section */
 		34811DE8274B93FB00A1E994 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34811DE7274B93FB00A1E994 /* main.swift */; };
 		7DC0B21F2AAB3D7A0031101D /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC0B21E2AAB3D7A0031101D /* Helper.swift */; };
-		7DF3F48F2AA98E9C00EB72DC /* People.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF3F48E2AA98E9C00EB72DC /* People.swift */; };
+		7DC2323D2AAF341800E8D8F4 /* PersonWorkoutError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC2323C2AAF341800E8D8F4 /* PersonWorkoutError.swift */; };
+		7DEE9B0A2AAF137A0089D1DC /* RoutineInputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEE9B092AAF137A0089D1DC /* RoutineInputError.swift */; };
+		7DEE9B0C2AAF1D5C0089D1DC /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEE9B0B2AAF1D5C0089D1DC /* Routine.swift */; };
+		7DF3F48F2AA98E9C00EB72DC /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF3F48E2AA98E9C00EB72DC /* Person.swift */; };
 		7DF3F4912AA9987500EB72DC /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF3F4902AA9987500EB72DC /* Activity.swift */; };
 		7DF3F4932AA9988B00EB72DC /* BodyCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF3F4922AA9988A00EB72DC /* BodyCondition.swift */; };
 /* End PBXBuildFile section */
@@ -30,7 +33,10 @@
 		34811DE4274B93FB00A1E994 /* CodeStarterCamp_Week4 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CodeStarterCamp_Week4; sourceTree = BUILT_PRODUCTS_DIR; };
 		34811DE7274B93FB00A1E994 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		7DC0B21E2AAB3D7A0031101D /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
-		7DF3F48E2AA98E9C00EB72DC /* People.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = People.swift; sourceTree = "<group>"; };
+		7DC2323C2AAF341800E8D8F4 /* PersonWorkoutError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonWorkoutError.swift; sourceTree = "<group>"; };
+		7DEE9B092AAF137A0089D1DC /* RoutineInputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineInputError.swift; sourceTree = "<group>"; };
+		7DEE9B0B2AAF1D5C0089D1DC /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
+		7DF3F48E2AA98E9C00EB72DC /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		7DF3F4902AA9987500EB72DC /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		7DF3F4922AA9988A00EB72DC /* BodyCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyCondition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,8 +74,11 @@
 				34811DE7274B93FB00A1E994 /* main.swift */,
 				7DF3F4922AA9988A00EB72DC /* BodyCondition.swift */,
 				7DF3F4902AA9987500EB72DC /* Activity.swift */,
-				7DF3F48E2AA98E9C00EB72DC /* People.swift */,
+				7DF3F48E2AA98E9C00EB72DC /* Person.swift */,
 				7DC0B21E2AAB3D7A0031101D /* Helper.swift */,
+				7DEE9B0B2AAF1D5C0089D1DC /* Routine.swift */,
+				7DC2323C2AAF341800E8D8F4 /* PersonWorkoutError.swift */,
+				7DEE9B092AAF137A0089D1DC /* RoutineInputError.swift */,
 			);
 			path = CodeStarterCamp_Week4;
 			sourceTree = "<group>";
@@ -132,9 +141,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
+				7DEE9B0C2AAF1D5C0089D1DC /* Routine.swift in Sources */,
+				7DC2323D2AAF341800E8D8F4 /* PersonWorkoutError.swift in Sources */,
 				7DF3F4912AA9987500EB72DC /* Activity.swift in Sources */,
+				7DEE9B0A2AAF137A0089D1DC /* RoutineInputError.swift in Sources */,
 				7DC0B21F2AAB3D7A0031101D /* Helper.swift in Sources */,
-				7DF3F48F2AA98E9C00EB72DC /* People.swift in Sources */,
+				7DF3F48F2AA98E9C00EB72DC /* Person.swift in Sources */,
 				7DF3F4932AA9988B00EB72DC /* BodyCondition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
