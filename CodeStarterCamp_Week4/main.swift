@@ -8,58 +8,6 @@
 
 import Foundation
 
-struct Activity {
-    let name: String
-    let action: (BodyCondition) -> Void
-}
-
-class BodyCondition {
-    var upperBodyStrength: Int {
-        willSet {
-            print("상체근력이 \(newValue - upperBodyStrength) 상승합니다.")
-        }
-    }
-    var lowerBodyStrength: Int {
-        willSet {
-            print("하체근력이 \(newValue - lowerBodyStrength) 상승합니다.")
-        }
-    }
-    var muscularEndurance: Int {
-        willSet {
-            print("근지구력이 \(newValue - muscularEndurance) 상승합니다.")
-        }
-    }
-    var fatigue: Int {
-        willSet {
-            if newValue > fatigue {
-                print("피로도가 \(newValue - fatigue) 상승합니다.")
-            } else {
-                print("피로도가 \(fatigue - newValue) 하락합니다.")
-            }
-        }
-    }
-    
-    init(upperBodyStrength: Int, lowerBodyStrength: Int, muscularEndurance: Int, fatigue: Int) {
-        self.upperBodyStrength = upperBodyStrength
-        self.lowerBodyStrength = lowerBodyStrength
-        self.muscularEndurance = muscularEndurance
-        self.fatigue = fatigue
-    }
-    
-    
-    func checkCurrent() {
-        print("""
-        --------------
-        현재의 컨디션은 다음과 같습니다.
-        상체근력: \(upperBodyStrength)
-        하체근력: \(lowerBodyStrength)
-        근지구력: \(muscularEndurance)
-        피로도: \(fatigue)
-        --------------
-        """)
-    }
-}
-
 let sitUp = Activity(name: "윗몸일으키기") { bodyCondition in
     print("<<윗몸일으키기를 시작합니다>>")
     bodyCondition.upperBodyStrength += Int.random(in: 10...20)
@@ -104,4 +52,10 @@ let pushUp = Activity(name: "팔굽혀펴기") { bodyCondition in
 }
 
 let bodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
-running.action(bodyCondition)
+let routine = Routine(name: "상체 운동", activities: [sitUp, pullUp, pushUp])
+do {
+    try routine.getInput(with: bodyCondition)
+} catch RoutineError.invalidInput {
+    print("잘못된 입력 형식입니다. 다시 입력해주세요.")
+    try routine.getInput(with: bodyCondition)
+}
