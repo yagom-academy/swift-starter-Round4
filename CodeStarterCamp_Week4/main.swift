@@ -52,10 +52,15 @@ let pushUp = Activity(name: "팔굽혀펴기") { bodyCondition in
 }
 
 let bodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, muscularEndurance: 0, fatigue: 0)
+
 let routine = Routine(name: "상체 운동", activities: [sitUp, pullUp, pushUp])
+
 do {
     try routine.getInput(with: bodyCondition)
 } catch RoutineError.invalidInput {
     print("잘못된 입력 형식입니다. 다시 입력해주세요.")
     try routine.getInput(with: bodyCondition)
+} catch RoutineError.overFatigue {
+    print("피로도가 100 이상입니다. 루틴을 중단합니다.")
+    bodyCondition.checkCurrent()
 }

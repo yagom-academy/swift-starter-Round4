@@ -23,12 +23,8 @@ struct Routine {
               let repeatCount = Int(input) else {
             throw RoutineError.invalidInput
         }
-        do {
-            try self.runActivities(count: repeatCount, with: bodyCondition)
-        } catch RoutineError.overFatigue {
-            print("피로도가 100 이상입니다. 루틴을 중단합니다.")
-            bodyCondition.checkCurrent()
-        }
+        
+        try self.runActivities(count: repeatCount, with: bodyCondition)
     }
     
     func runActivities(count: Int, with bodyCondtion: BodyCondition) throws {
