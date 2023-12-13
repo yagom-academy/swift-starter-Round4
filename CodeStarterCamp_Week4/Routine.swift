@@ -20,7 +20,8 @@ struct Routine {
         print("루틴을 몇 번 반복할까요?")
         let input = readLine()
         guard let input,
-              let repeatCount = Int(input) else {
+              let repeatCount = Int(input),
+              repeatCount > 0 else {
             throw RoutineError.invalidInput
         }
         

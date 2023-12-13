@@ -55,12 +55,18 @@ let bodyCondition = BodyCondition(upperBodyStrength: 0, lowerBodyStrength: 0, mu
 
 let routine = Routine(name: "상체 운동", activities: [sitUp, pullUp, pushUp])
 
-do {
-    try routine.getInput(with: bodyCondition)
-} catch RoutineError.invalidInput {
-    print("잘못된 입력 형식입니다. 다시 입력해주세요.")
-    try routine.getInput(with: bodyCondition)
-} catch RoutineError.overFatigue {
-    print("피로도가 100 이상입니다. 루틴을 중단합니다.")
-    bodyCondition.checkCurrent()
+func promptForRoutineInput() {
+    do {
+        try routine.getInput(with: bodyCondition)
+    } catch RoutineError.invalidInput {
+        print("잘못된 입력 형식입니다. 다시 입력해주세요.")
+        promptForRoutineInput()  // 재귀 호출
+    } catch RoutineError.overFatigue {
+        print("피로도가 100 이상입니다. 루틴을 중단합니다.")
+        bodyCondition.checkCurrent()
+    } catch {
+        print("알 수 없는 오류 발생")
+    }
 }
+
+promptForRoutineInput()  // 함수 호출
