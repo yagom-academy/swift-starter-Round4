@@ -1,5 +1,5 @@
 //
-//  main.swift
+//  practice4.swift
 //  CodeStarterCamp_Week4
 //
 //  Created by Nat Kim on 2023/12/18.
