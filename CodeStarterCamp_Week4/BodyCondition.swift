@@ -45,7 +45,11 @@ class BodyCondition {
         let fatigueIncrease = Int.random(in: 10...20)
         upperBodyStrength += upperBodyStrengthIncrease
         fatigue += fatigueIncrease
-        printStartMessage(activity: .sitUp, upperBodyStrengthIncrease: upperBodyStrengthIncrease, fatigueIncrease: fatigueIncrease)
+        printStartMessage(
+            activity: .sitUp,
+            upperBodyStrengthIncrease: upperBodyStrengthIncrease,
+            fatigueIncrease: fatigueIncrease
+        )
     }
     
     func performSquat() {
@@ -53,7 +57,11 @@ class BodyCondition {
         let fatigueIncrease = Int.random(in: 10...20)
         lowerBodyStrength += lowerBodyStrengthIncrease
         fatigue += fatigueIncrease
-        printStartMessage(activity: .squat, lowerBodyStrengthIncrease: lowerBodyStrengthIncrease, fatigueIncrease: fatigueIncrease)
+        printStartMessage(
+            activity: .squat,
+            lowerBodyStrengthIncrease: lowerBodyStrengthIncrease,
+            fatigueIncrease: fatigueIncrease
+        )
     }
     
     func performLongDistanceRunning() {
@@ -65,13 +73,22 @@ class BodyCondition {
         upperBodyStrength += upperBodyStrengthIncrease
         lowerBodyStrength += lowerBodyStrengthIncrease
         fatigue += fatigueIncrease
-        printStartMessage(activity: .longDistanceRunning, upperBodyStrengthIncrease: upperBodyStrengthIncrease, lowerBodyStrengthIncrease: lowerBodyStrengthIncrease, muscularEnduranceIncrease: muscularEnduranceIncrease, fatigueIncrease: fatigueIncrease)
+        printStartMessage(
+            activity: .longDistanceRunning,
+            upperBodyStrengthIncrease: upperBodyStrengthIncrease,
+            lowerBodyStrengthIncrease: lowerBodyStrengthIncrease,
+            muscularEnduranceIncrease: muscularEnduranceIncrease,
+            fatigueIncrease: fatigueIncrease
+        )
     }
     
     func performDynamicRest() {
         let fatigueDecrease = Int.random(in: 5...10)
         fatigue -= fatigueDecrease
-        printStartMessage(activity: .dynamicRest, fatigueIncrease: -fatigueDecrease)
+        printStartMessage(
+            activity: .dynamicRest,
+            fatigueIncrease: -fatigueDecrease
+        )
     }
     
     func performDoingYoga() {
@@ -80,7 +97,10 @@ class BodyCondition {
         let lowerBodyStrengthIncrease = Int.random(in: 5...10)
         let fatigueDecrease = Int.random(in: 5...10)
         fatigue -= fatigueDecrease
-        printStartMessage(activity: .yoga, fatigueIncrease: -fatigueDecrease)
+        printStartMessage(
+            activity: .yoga,
+            fatigueIncrease: -fatigueDecrease
+        )
     }
     
     private func printStartMessage(
