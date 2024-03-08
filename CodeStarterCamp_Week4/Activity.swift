@@ -55,7 +55,7 @@ enum Exercise: String {
                 let muscularEnduranceIncrease = Int.random(in: 20...30)
                 let upperBodyMuscleStrengthIncrease = Int.random(in: 5...10)
                 let lowerBodyMuscleStrengthIncrease = Int.random(in: 5...10)
-                let fatigueIncrease = Int.random(in: 2...30)
+                let fatigueIncrease = Int.random(in: 20...30)
                 
                 $0.muscularEndurance += muscularEnduranceIncrease
                 $0.upperBodyMuscleStrength += upperBodyMuscleStrengthIncrease
