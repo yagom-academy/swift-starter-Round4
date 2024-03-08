@@ -12,7 +12,6 @@ struct Activity {
     func startWorkout(_ bodyCondition: BodyCondition) {
         print("<<\(name)을(를) 시작합니다>>")
         action(bodyCondition)
-        bodyCondition.showCondition()
     }
 }
 
