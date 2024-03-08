@@ -6,7 +6,9 @@
 //  Copyright © yagom academy. All rights reserved.
 //
 
-import Foundation
+let haruBodyCondition: BodyCondition = BodyCondition(upperBodyStrength: 10, lowerBodyStrength: 10, muscularEndurance: 10, fatigue: 10)
 
-print("Hello, World!")
-
+sitUp.startWorkout(haruBodyCondition)
+activeRest.startWorkout(haruBodyCondition)
+squat.startWorkout(haruBodyCondition)
+longDistanceRunning.startWorkout(haruBodyCondition)
