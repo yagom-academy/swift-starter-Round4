@@ -6,17 +6,16 @@
 //
 
 struct Activity {
-    let name: String
-    let action: (BodyCondition) -> Void
+    let exercise: Exercise
     
     func takeExercise(with bodyCondition: BodyCondition) {
-        print("<<\(name)(을/를) 시작합니다>>")
-        action(bodyCondition)
-        bodyCondition.printTotalConditionState()
+        print("<<\(self.exercise.rawValue)(을/를) 시작합니다>>")
+        self.exercise.workOut(bodyCondition)
+        print("--------------")
     }
 }
 
-enum Exercise: String {
+enum Exercise: String, CaseIterable {
     case sitUp = "윗몸일으키기"
     case squat = "스쿼트"
     case running = "오래달리기"

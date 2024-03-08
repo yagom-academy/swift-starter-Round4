@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		30A303532B9ADE7200C89AF1 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A303522B9ADE7200C89AF1 /* Activity.swift */; };
 		30A303552B9ADE8700C89AF1 /* BodyCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A303542B9ADE8700C89AF1 /* BodyCondition.swift */; };
+		30A303572B9B2A3900C89AF1 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A303562B9B2A3900C89AF1 /* Routine.swift */; };
 		34811DE8274B93FB00A1E994 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34811DE7274B93FB00A1E994 /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		30A303522B9ADE7200C89AF1 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		30A303542B9ADE8700C89AF1 /* BodyCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyCondition.swift; sourceTree = "<group>"; };
+		30A303562B9B2A3900C89AF1 /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
 		34811DE4274B93FB00A1E994 /* CodeStarterCamp_Week4 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CodeStarterCamp_Week4; sourceTree = BUILT_PRODUCTS_DIR; };
 		34811DE7274B93FB00A1E994 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,6 +66,7 @@
 				34811DE7274B93FB00A1E994 /* main.swift */,
 				30A303522B9ADE7200C89AF1 /* Activity.swift */,
 				30A303542B9ADE8700C89AF1 /* BodyCondition.swift */,
+				30A303562B9B2A3900C89AF1 /* Routine.swift */,
 			);
 			path = CodeStarterCamp_Week4;
 			sourceTree = "<group>";
@@ -127,6 +130,7 @@
 			files = (
 				30A303532B9ADE7200C89AF1 /* Activity.swift in Sources */,
 				30A303552B9ADE8700C89AF1 /* BodyCondition.swift in Sources */,
+				30A303572B9B2A3900C89AF1 /* Routine.swift in Sources */,
 				34811DE8274B93FB00A1E994 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
