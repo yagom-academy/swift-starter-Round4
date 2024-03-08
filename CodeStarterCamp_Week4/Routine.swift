@@ -14,9 +14,7 @@ struct Routine {
         self.activities = Exercise.allCases.map{ Activity(exercise: $0) }.shuffled()
     }
     
-    func runRoutine(times count: Int, with condition: BodyCondition) throws {
-        guard condition.fatigue < 100 else { throw RoutineError.exceedingFatigue }
-        
+    func runRoutine(times count: Int, with condition: BodyCondition) throws {        
         for i in 1...count {
             print("\(i) 번째 \(self.name)(을/를) 시작합니다")
             
