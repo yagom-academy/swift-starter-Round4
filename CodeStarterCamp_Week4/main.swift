@@ -6,7 +6,7 @@
 //  Copyright © yagom academy. All rights reserved.
 //
 
-import Foundation
+var myBodyCondition: BodyCondition = BodyCondition(upperMuscleStrength: 30, lowerMuscleStrength: 30, muscularEndurance: 30, fatigue: 30)
 
-print("Hello, World!")
-
+sitUp.startActivity(myBodyCondition)
+activeRecovery.startActivity(myBodyCondition)
